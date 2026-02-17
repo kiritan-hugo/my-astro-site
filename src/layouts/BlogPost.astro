@@ -11,7 +11,7 @@ import { getPopularPosts } from '../lib/getPopularPosts';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage, category, latestPosts, popularPosts } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, category, latestPosts } = Astro.props;
 
 const popular = (await getPopularPosts()).slice(0, 5);
 
