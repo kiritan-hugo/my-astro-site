@@ -5,7 +5,9 @@ import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { getCollection } from 'astro:content';
 import { getPopularPosts } from '../lib/getPopularPosts';
-
+export const prerender = {
+  expiration: 60 * 60 * 24, // 24時間
+};
 
 const posts = await getCollection('blog');
 // 日付の降順に並べる
