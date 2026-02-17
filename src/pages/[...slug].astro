@@ -23,10 +23,6 @@ const latestPosts = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate - a.data.pubDate)
   .slice(0, 5);
 
-/* ★ 人気記事（5件） */
-const popularPosts = (await getCollection('blog'))
-  .filter((p) => p.data.popular)
-  .slice(0, 5);
 
 ---
 
@@ -34,7 +30,6 @@ const popularPosts = (await getCollection('blog'))
   {...post.data}
   headings={headings}
   latestPosts={latestPosts}
-  popularPosts={popularPosts}
 >
   <Content />
 </BlogPost>
