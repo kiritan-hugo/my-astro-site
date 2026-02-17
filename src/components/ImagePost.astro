@@ -1,0 +1,119 @@
+---
+interface Props {
+  src: string;
+  alt?: string;
+  label?: string;
+  labelPosition?: "top-left" | "top-right" | "bottom-left" | "bottom-right";
+  scale?: number;
+  caption?: string;     // 注釈テキスト
+  captionUrl?: string;  // ★ 注釈だけリンク化
+}
+
+const {
+  src,
+  alt = "",
+  label = "",
+  labelPosition = "top-left",
+  scale = 1,
+  caption = "",
+  captionUrl = "",
+} = Astro.props;
+
+const positionClass = {
+  "top-left": "label-top-left",
+  "top-right": "label-top-right",
+  "bottom-left": "label-bottom-left",
+  "bottom-right": "label-bottom-right",
+}[labelPosition];
+---
+
+<div class="image-wrapper" style={`--image-scale: ${scale};`}>
+  {label && <div class={`image-label ${positionClass}`}>{label}</div>}
+
+  <div class="image-frame">
+    <img src={src} alt={alt} />
+  </div>
+
+  {caption && (
+    captionUrl ? (
+      <a href={captionUrl} class="image-caption" target="_blank" rel="noopener">
+        {caption}
+      </a>
+    ) : (
+      <p class="image-caption">{caption}</p>
+    )
+  )}
+</div>
+
+<style>
+/* ▼ 全体 */
+.image-wrapper {
+  position: relative;
+  display: block;
+  width: fit-content;
+  margin: 4rem auto 2rem;
+  transform: scale(var(--image-scale));
+  transform-origin: center top;
+}
+
+/* ▼ ラベル（浮いてるカード） */
+.image-label {
+  position: absolute;
+  background: #fff;
+  padding: 13px 16px;
+  border-radius: 6px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.18);
+  z-index: 2;
+  white-space: nowrap;
+  border: 2px solid #d8cfbd;
+}
+
+.label-top-left { top: -40px; left: -24px; }
+.label-top-right { top: -40px; right: -24px; }
+.label-bottom-left { bottom: -40px; left: -24px; }
+.label-bottom-right { bottom: -40px; right: -24px; }
+
+/* ▼ 画像の白枠 */
+.image-frame {
+  padding: 24px;
+  background: #fff;
+  border-radius: 0;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+}
+
+.image-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ▼ 共通の注釈スタイル（p と a） */
+.image-caption {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #555;
+  margin-top: 0.6rem;
+  line-height: 1.4;
+  display: block;
+  text-decoration: none;
+}
+
+/* ▼ リンクのときだけ pointer にする */
+a.image-caption {
+  cursor: pointer;
+}
+
+a.image-caption:hover {
+  text-decoration: underline;
+}
+
+/* ▼ p のときは通常のカーソル */
+p.image-caption {
+  cursor: default;
+}
+
+</style>

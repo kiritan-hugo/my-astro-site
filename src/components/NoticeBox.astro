@@ -1,0 +1,92 @@
+---
+const presets = {
+  info:  { color: "#33bfa1", icon: "fa-solid fa-info" },
+  warn:  { color: "#e6a23c", icon: "fa-solid fa-triangle-exclamation" },
+  check: { color: "#4caf50", icon: "fa-solid fa-check" },
+  memo:  { color: "#3f5a45", icon: "fa-solid fa-pen" }
+} as const;
+
+type NoticeType = keyof typeof presets;
+
+const {
+  type = "info",
+  text = "",
+  items = null
+}: {
+  type?: NoticeType;
+  text?: string;
+  items?: string[] | null;
+} = Astro.props;
+
+const { color, icon } = presets[type];
+const isArray = Array.isArray(items);
+const isString = typeof text === "string" && text.length > 0;
+---
+
+<div class="notice-box" style={`--nb-color:${color}`}>
+  <i class={`notice-icon ${icon}`}></i>
+  <div class="notice-line"></div>
+
+  <div class="notice-content">
+    {isArray && (
+      <ul>
+        {items.map(item => <li>{item}</li>)}
+      </ul>
+    )}
+
+    {isString && (
+      <p class="notice-text">{text}</p>
+    )}
+  </div>
+</div>
+
+<style>
+.notice-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 0.6rem 0.8rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 1.5rem 0;
+}
+
+/* ← Font Awesome アイコン */
+.notice-icon {
+  font-size: 1.2rem;
+  color: var(--nb-color);
+  margin-top: 2px;
+}
+
+/* ← スクショ風の縦線 */
+.notice-line {
+  width: 2px;
+  background: var(--nb-color);
+  opacity: 0.4;
+  border-radius: 1px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* 内容 */
+.notice-content {
+  flex: 1;
+  line-height: 1.6;
+}
+
+/* 配列 */
+.notice-content ul {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+.notice-content li {
+  margin: 0.2rem 0;
+}
+
+/* 文字列（改行対応） */
+.notice-text {
+  white-space: pre-line;
+  margin: 0;
+}
+</style>

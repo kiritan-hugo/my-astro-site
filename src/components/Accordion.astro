@@ -1,0 +1,72 @@
+---
+const { title = "" } = Astro.props;
+---
+
+<div class="accordion" data-open="false">
+  <button class="accordion-header">
+    <span class="accordion-title">{title}</span>
+    <span class="accordion-icon"></span>
+  </button>
+
+  <div class="accordion-body">
+    <slot />
+  </div>
+</div>
+
+<script client:load>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".accordion").forEach(acc => {
+      const header = acc.querySelector(".accordion-header");
+      header.addEventListener("click", () => {
+        const isOpen = acc.getAttribute("data-open") === "true";
+        acc.setAttribute("data-open", isOpen ? "false" : "true");
+      });
+    });
+  });
+</script>
+
+<style>
+.accordion {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* ▼ ヘッダー */
+.accordion-header {
+  width: 100%;
+  background: #f7f7f7;
+  padding: 0.9rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+}
+
+/* ▼ アイコン */
+.accordion-icon::before {
+  content: "▼";
+  font-size: 0.9rem;
+  transition: transform 0.2s ease;
+}
+
+.accordion[data-open="true"] .accordion-icon::before {
+  content: "▲";
+}
+
+/* ▼ 本文 */
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 1rem;
+  background: white;
+  transition: max-height 0.25s ease, padding 0.25s ease;
+}
+
+.accordion[data-open="true"] .accordion-body {
+  max-height: 500px;
+  padding: 1rem;
+}
+</style>

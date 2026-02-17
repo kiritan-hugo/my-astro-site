@@ -1,0 +1,68 @@
+---
+const {
+  title = "キャプション",
+  items = null
+} = Astro.props;
+
+// items が配列か文字列かを判定
+const isArray = Array.isArray(items);
+const isString = typeof items === "string";
+---
+
+<div class="caption-box">
+  <div class="caption-label">{title}</div>
+
+  {isArray && (
+    <ul>
+      {items.map(item => <li>{item}</li>)}
+    </ul>
+  )}
+
+  {isString && (
+    <p class="caption-text">{items}</p>
+  )}
+</div>
+
+<style>
+.caption-box {
+  border: 2px solid #33bfa1;
+  background: #fcfffc;
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 2.5rem 0;
+  position: relative;
+}
+
+/* 左上のラベル */
+.caption-label {
+  position: absolute;
+  top: -12px;
+  left: 12px;
+  background: #33bfa1;
+  color: #fff;
+  padding: 2px 10px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  font-weight: 400;
+}
+.caption-label:empty {
+  display: none;
+}
+
+/* リスト */
+.caption-box ul {
+  margin-top: 15px;
+  padding-left: 2rem;
+}
+.caption-box li {
+  margin: 0.3rem 0;
+  line-height: 1.6;
+}
+
+/* 文字列用（改行対応） */
+.caption-text {
+  margin-top: 15px;
+  line-height: 1.6;
+  white-space: pre-line; /* ← 改行をそのまま表示 */
+}
+</style>

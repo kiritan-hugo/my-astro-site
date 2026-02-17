@@ -1,0 +1,76 @@
+---
+const {
+  left,
+  right,
+  leftLabel = "",
+  rightLabel = "",
+  left2 = null,
+  right2 = null,
+  leftLabel2 = "",
+  rightLabel2 = ""
+} = Astro.props;
+
+const hasSecondRow = left2 && right2;
+---
+
+<div class="compare-container">
+  <!-- 1段目 -->
+  <div class="compare-row">
+    <div class="compare-item">
+      <img src={left} alt={leftLabel} />
+      {leftLabel && <p class="label">{leftLabel}</p>}
+    </div>
+
+    <div class="compare-item">
+      <img src={right} alt={rightLabel} />
+      {rightLabel && <p class="label">{rightLabel}</p>}
+    </div>
+  </div>
+
+  <!-- 2段目（オプション） -->
+  {hasSecondRow && (
+    <div class="compare-row">
+      <div class="compare-item">
+        <img src={left2} alt={leftLabel2} />
+        {leftLabel2 && <p class="label">{leftLabel2}</p>}
+      </div>
+
+      <div class="compare-item">
+        <img src={right2} alt={rightLabel2} />
+        {rightLabel2 && <p class="label">{rightLabel2}</p>}
+      </div>
+    </div>
+  )}
+</div>
+
+<style>
+.compare-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.0rem;
+  margin: 1.5rem 0;
+}
+
+.compare-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.compare-item {
+  text-align: center;
+}
+
+.compare-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 0px;
+  display: block;
+}
+
+.label {
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  color: #555;
+}
+</style>

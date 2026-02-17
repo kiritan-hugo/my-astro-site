@@ -1,0 +1,83 @@
+---
+import { getEntry } from 'astro:content';
+
+const { slug, caption } = Astro.props;
+
+const post = await getEntry('blog', slug);
+const data = post.data;
+---
+
+<a href={`/${post.id}`} class="caption-box">
+    {caption && <div class="caption-label">{caption}</div>}
+
+    <div class="inner">
+        <img src={post.data.heroImage?.src ?? "/default.jpg"} alt={post.data.title} loading="lazy" />
+        <div class="text">
+        <p class="post-title">{data.title}</p>
+        {data.description && <p>{data.description}</p>}
+        </div>
+    </div>
+</a>
+
+<style>
+.caption-box {
+  display: block;
+  border: 1px solid #080400; /* 茶色 */
+  border-radius: 0px;
+  padding: 18px;
+  background: #fff;
+  margin: 1.5rem 0;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.caption-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.caption-label {
+  position: absolute;
+  top: -12px;
+  left: 12px;
+  background: #fff;
+  padding: 0 6px;
+  font-size: 0.85rem;
+  color: #080400;
+  font-weight: 450;
+}
+
+.inner {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.inner img {
+  width: 160px;          /* 横幅 */
+  aspect-ratio: 16 / 9;  /* ★ 16:9 */
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.caption-box .post-title {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  color: #080400;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+
+.text p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+
+</style>

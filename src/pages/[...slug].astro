@@ -1,0 +1,41 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import BlogPost from '../layouts/BlogPost.astro';
+
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: post,
+  }));
+}
+
+// 追加コード
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+
+const { Content, headings } = await render(post);
+
+/* ★ 新着記事（5件） */
+const latestPosts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate - a.data.pubDate)
+  .slice(0, 5);
+
+/* ★ 人気記事（5件） */
+const popularPosts = (await getCollection('blog'))
+  .filter((p) => p.data.popular)
+  .slice(0, 5);
+
+---
+
+<BlogPost
+  {...post.data}
+  headings={headings}
+  latestPosts={latestPosts}
+  popularPosts={popularPosts}
+>
+  <Content />
+</BlogPost>
+

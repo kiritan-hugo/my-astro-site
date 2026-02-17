@@ -1,0 +1,87 @@
+---
+const { title = "", columns = [], rows = [], note = "" } = Astro.props;
+---
+
+<div class="tbl-wrap">
+
+  {title && <div class="tbl-title">{title}</div>}
+
+  <table class="tbl">
+    <thead>
+      <tr>
+        {columns.map(col => <th>{col}</th>)}
+      </tr>
+    </thead>
+
+    <tbody>
+      {rows.map(row => (
+        <tr>
+          {row.map(cell => (
+            <td set:html={cell}></td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  {note && <p class="tbl-note">{note}</p>}
+</div>
+
+<style>
+/* ▼ 外枠 */
+.tbl-wrap {
+  margin-top: 5rem;
+}
+
+/* ▼ タイトル */
+.tbl-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: #333;
+  padding: 8px 18px;
+  background: #ffffff;          /* 雲の中の白 */
+  border: 2px solid #d8d2c6;    /* ふんわりした輪郭線 */
+  border-radius: 20px;          /* 雲の丸み */
+  display: inline-block;        /* タイトルだけ雲にする */
+  box-shadow: 0 2px 0 #efe9dd;  /* 下にふんわり影で立体感 */
+}
+
+/* ▼ テーブル本体 */
+.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+/* ▼ セル共通 */
+.tbl th,
+.tbl td {
+  border: 1px solid #d8d2c6;
+  padding: 6px 20px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ▼ 1行目ヘッダー */
+.tbl thead th {
+  background: #efe9dd;
+  color: #271d1d;
+  font-weight: 600;
+}
+
+/* ▼ 本文 */
+.tbl tbody td {
+  background: #ffffff;
+  padding: 12px 16px;  /* ← 本文は広め */
+}
+
+/* ▼ 注釈 */
+.tbl-note {
+  text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  font-size: 0.8rem;
+  color: #555;
+}
+</style>

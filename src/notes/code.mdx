@@ -1,0 +1,148 @@
+---
+インポート文
+import Balloon from "../../components/Balloon.astro";
+import CaptionSource from "../../components/CaptionSource.astro";
+import InfoTable from "../../components/InfoTable.astro";
+import InfoTable2 from "../../components/InfoTable2.astro";
+import CaptionBox from "../../components/CaptionBox.astro";
+import NoticeBox from "../../components/NoticeBox.astro";
+import CompareBox from "../../components/CompareBox.astro";
+import RelatedPosts from "../../components/RelatedPosts.astro";
+import MapEmbed from "../../components/MapEmbed.astro";
+import Accordion from "../../components/Accordion.astro";
+import ImagePost from '../../components/ImagePost.astro';
+import ImageCompare from '../../components/ImageCompare.astro';
+import Table from '../../components/Table.astro';
+---
+
+<img src="/src/assets/posts/" alt="" />
+
+・画像＋注釈
+<div class="image-wrap">
+  <img src="" alt="" />
+  <CaptionSource source="" url="" />
+</div>
+
+・画像比較（行数追加可、ラベル削除可）
+<ImageCompare
+    left=""
+    right=""
+    leftLabel=""
+    rightLabel=""
+
+    left2=""
+    right2=""
+    leftLabel2=""
+    rightLabel2=""
+/>
+
+・画像をポストカード表示(ラベルの位置変更可、サイズ変更可、ラベルなし可)
+<ImagePost
+  src=""
+  alt=""
+  label=""
+  labelPosition="top-left"
+  scale={0.85}
+/>
+
+
+・吹き出し
+<Balloon person="kiritan" type="left">
+text
+</Balloon>
+
+<Balloon person="sena" type="left">
+text
+</Balloon>
+
+<Balloon person="kiritan" type="right">
+text
+</Balloon>
+
+<Balloon person="sena" type="right">
+text
+</Balloon>
+
+
+・キャプションボックス（タイトルありなし可、items文字列、配列可）
+<CaptionBox
+  title="この記事の内容"
+  items={[
+    "テント",
+    "寝袋",
+    "焚き火台"
+  ]}
+/>
+
+・比較テーブル
+<CompareBox
+  leftTitle="特徴・魅力"
+  rightTitle="注意点"
+  leftItems={[
+    "標高が高いので夏でも涼しい",
+    "満点の星空が楽しめる",
+    "場内に綺麗な小川がある",
+    "焼き立てのパンが食べられる"
+  ]}
+  rightItems={[
+    "休日は混雑しやすい",
+    "フリーサイトが駐車場から遠い",
+    "キャンプ利用料が少し高め"
+  ]}
+/>
+
+・テーブル（info用2列）
+<InfoTable
+  items={[
+    { label: "名称", value: "神割崎キャンプ場" },
+    { label: "住所", value: "宮城県本吉郡南三陸町戸倉字寺浜81-23<br>※海抜：18m(地理院地図)" },
+    { label: "電話番号", value: "0226-46-9221" },
+    { label: "アクセス", value: "東北自動車道・古川ICより車で約50分" },
+    { label: "公式HP", value: '<a href=""></a>' },
+    { label: "営業期間", value: "通年" },
+    { label: "チェックイン", value: "13:00～18:00（アーリーチェックインは10:00から）" },
+    { label: "チェックアウト", value: "翌11:00（レイトチェックアウトは翌17:00まで）" },
+    { label: "設備・施設", value: "トイレ、洗面台、シャワー（無料）、炊事場、売店、レストラン" },
+    { label: "サイト", value: "芝生（一部砂地あり）" },
+    { label: "ゴミの処理", value: "ゴミ捨て場、灰捨て場あり" }
+]}
+  note="※2025年度の情報です"
+/>
+
+・テーブル（複数列）
+<InfoTable2
+  columns={["1人", "2人"]}
+  rows={[
+    { label: "", values: ["", ""] },
+    { label: "", values: ["", ""] },
+    { label: "", values: ["", ""] }
+  ]}
+  note=""
+/>
+
+・テーブル（1行目ヘッダータイプ タイトル付）
+<Table
+  title=""
+  columns={["", "", ""]}
+  rows={[
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""]
+  ]}
+  note="※2025年10月時点の情報"
+/>
+
+
+・アコーディオン
+<Accordion title="">
+text
+</Accordion>
+
+・関連記事表示
+<RelatedPosts slug="yakinikui-gura" caption="関連記事" />
+
+・googlemap埋め込み最適化
+<MapEmbed src=""  />
+
+☆マージンをあける
+<div style={{ marginBottom: "4rem" }}></div>

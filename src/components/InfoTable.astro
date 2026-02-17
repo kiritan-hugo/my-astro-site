@@ -1,0 +1,61 @@
+---
+const { items = [], note = "" } = Astro.props;
+---
+
+<div class="info-table">
+  <dl>
+    {items.map(item => (
+      <div class="row">
+        <dt>{item.label}</dt>
+        <dd set:html={item.value}></dd>
+      </div>
+    ))}
+  </dl>
+</div>
+
+{note && (
+  <div class="info-note" set:html={note}></div>
+)}
+
+<style>
+.info-table {
+  background: #f9f9f9;
+  padding: 0rem 0rem;
+  border-radius: 6px;
+  border: 1px solid #eee;
+  margin: 1.5rem 0 0.5rem 0;
+}
+
+.info-table dl {
+  margin: 0;
+}
+
+.info-table .row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  padding: 0;
+  border-bottom: 1px solid #eee;
+}
+
+.info-table dt {
+  padding: 0.6rem 0.6rem;
+  font-weight: 600;
+  color: #2f5d3a;
+}
+
+.info-table dd {
+  margin: 0;
+  padding: 0.6rem 0.8rem;
+  background: #fff;
+  border-radius: 4px;
+}
+
+/* 注釈（テーブル外・背景なし・中央寄せ） */
+.info-note {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #555;
+  padding-bottom: 2rem;
+}
+</style>

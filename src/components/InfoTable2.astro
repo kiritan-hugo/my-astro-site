@@ -1,0 +1,83 @@
+---
+const { columns = [], rows = [], note = "" } = Astro.props;
+
+// /*
+// columns = ["項目A", "項目B", "項目C"]
+// rows = [
+//   { label: "項目1", values: ["内容1", "内容2", "内容3"] },
+//   { label: "項目2", values: ["内容1", "内容2", "内容3"] },
+// ]
+// */
+---
+
+
+<table class="infotable2">
+  <thead>
+    <tr>
+      <th></th>
+      {columns.map(col => <th>{col}</th>)}
+    </tr>
+  </thead>
+
+  <tbody>
+    {rows.map(row => (
+      <tr>
+        <th class="row-label">{row.label}</th>
+        {row.values.map(v => <td>{v}</td>)}
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+{note && (
+  <p class="infotable2-note">{note}</p>
+)}
+
+<style>
+/* セル共通 */
+.infotable2 th {
+  border: 1px solid #d8d2c6;
+  padding: 10px 14px;
+  text-align: center;
+}
+.infotable2 td {
+  border: 1px solid #d8d2c6;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+}
+
+/* 上の横ヘッダー */
+.infotable2 thead th {
+  background: #efe9dd;
+  color: #271d1d;
+  font-weight: 500;
+}
+
+/* 左の縦ヘッダー */
+.infotable2 .row-label {
+  background: #efe9dd;
+  color: #271d1d;
+  font-weight: 600;
+  white-space: nowrap;
+  text-align: center;
+  width: auto;
+  min-width: 90px;
+}
+
+/* 行の色なし */
+.infotable2 tbody tr td {
+  background: transparent;
+}
+
+/* ▼ 注釈（InfoTable と同じ雰囲気） */
+.infotable2-note {
+  text-align: center;   /* ← 中央寄せ */
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  font-size: 0.8rem;
+  color: #555;       /* ← 本文と同じ色にする */
+  padding: 0;           /* ← デザイン要素を全部消す */
+  border: none;         /* ← 左線などを完全に無効化 */
+}
+</style>

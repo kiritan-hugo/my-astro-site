@@ -1,0 +1,97 @@
+---
+const {
+  leftTitle = "特徴・魅力",
+  rightTitle = "注意点",
+  leftItems = [],
+  rightItems = []
+} = Astro.props;
+---
+
+<div class="compare-box">
+  <div class="column left">
+    <div class="label">{leftTitle}</div>
+    <ul>
+      {leftItems.map(item => <li>{item}</li>)}
+    </ul>
+  </div>
+
+  <div class="column right">
+    <div class="label">{rightTitle}</div>
+    <ul>
+      {rightItems.map(item => <li>{item}</li>)}
+    </ul>
+  </div>
+</div>
+
+<style>
+.compare-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem;
+  margin: 3.0rem 0;
+}
+
+/* カード風 */
+.column {
+  border-radius: 10px;
+  padding: 1.2rem 1rem;
+  position: relative;
+  background: #fff;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  border: none;
+}
+
+/* 左（森グリーン） */
+.column.left {
+  background: #eef7f0;      /* 淡いミント */
+  border-left: 4px solid #6bbf72; /* 森グリーンのアクセント */
+}
+
+/* 右（夕焼けレッド） */
+.column.right {
+  background: #ffe8e5;          /* 夕焼けの淡い赤 */
+  border-left: 4px solid #ff8a70; /* 夕焼けオレンジのアクセント */
+}
+
+/* ラベル（タイトル） */
+.label {
+  position: absolute;
+  top: -14px;
+  left: 12px;
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  z-index: 2;
+}
+
+/* 左ラベル（森グリーン） */
+.left .label {
+  background: #4fae5a;
+}
+
+/* 右ラベル（夕焼けレッド） */
+.right .label {
+  background: #ff5e5e; /* 夕焼けの赤 */
+}
+
+/* リスト */
+ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+li {
+  margin: 0.3rem 0;
+  line-height: 1.6;
+}
+
+/* スマホ対応 */
+@media (max-width: 700px) {
+  .compare-box {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

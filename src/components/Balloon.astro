@@ -1,0 +1,175 @@
+---
+import { characters } from "../data/characters";
+
+const { person = "kiritan", type = "left" } = Astro.props;
+const char = characters[person];
+---
+<div class={`balloon ${type} ${person}`}>
+  <div class="balloon-icon-wrap">
+    <img src={char.icon} alt={char.name} class="balloon-icon" />
+    <div class="balloon-name">{char.name}</div>
+  </div>
+
+  <div class="balloon-body">
+    <slot />
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const balloons = document.querySelectorAll(".balloon-body");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+      }
+    });
+  }, {
+    threshold: 0.3
+  });
+
+  balloons.forEach(b => observer.observe(b));
+});
+</script>
+
+<style>
+/* 全体レイアウト */
+.balloon {
+  display: flex;
+  gap: 1.2rem;
+  margin: 2.2rem 0;
+  align-items: flex-start;
+}
+
+.balloon.right {
+  flex-direction: row-reverse;
+}
+
+/* 1行のときは高さが小さくなるので、その場合だけ padding を減らす */
+.balloon-body:has(p:only-child) {
+  padding: 0rem 1rem;
+}
+
+/* アイコン＋名前 */
+.balloon-icon-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+
+}
+
+.balloon-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.balloon-name {
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #333;
+}
+
+/* 吹き出し本体 */
+.balloon-body {
+  padding: 1.2rem 1.4rem;
+  border-radius: 14px;
+  line-height: 1.7; 
+  min-height: 0; /* 高さの自動調整を許可 */
+  position: relative;
+  max-width: 650px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-color);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  overflow: visible;
+  opacity: 0;
+  /* スクロールでふわっとあにめーしょん */
+  transform: translateY(10px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.balloon-body.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ▼ 外側：枠線（三角の外側） */
+.balloon.left .balloon-body::before {
+  content: "";
+  position: absolute;
+  left: -14px;
+  top: 28px;
+  width: 14px;
+  height: 20px;
+  background: var(--border-color);
+  clip-path: polygon(0 50%, 100% 0, 100% 100%); /* ★ 左向き */
+
+}
+
+
+
+/* ▼ 内側：背景（三角の内側） */
+.balloon.left .balloon-body::after {
+  content: "";
+  position: absolute;
+  left: -11px;
+  top: 30px;
+  width: 12px;
+  height: 16px;
+  background: var(--bg-color);
+  clip-path: polygon(0 50%, 100% 0, 100% 100%); /* ★ 左向き */
+
+}
+
+
+/* ▼ 外側：枠線（三角の外側） */
+.balloon.right .balloon-body::before {
+  content: "";
+  position: absolute;
+  right: -14px;
+  top: 28px;
+  width: 14px;
+  height: 20px;
+  background: var(--border-color);
+  clip-path: polygon(100% 50%, 0 0, 0 100%); /* ★ 右向き */
+}
+
+
+
+/* ▼ 内側：背景（三角の内側） */
+.balloon.right .balloon-body::after {
+  content: "";
+  position: absolute;
+  right: -11px;
+  top: 30px;
+  width: 12px;
+  height: 16px;
+  background: var(--bg-color);
+  clip-path: polygon(100% 50%, 0 0, 0 100%); /* ★ 右向き */
+}
+
+
+
+
+/* ▼▼ キャラ別スタイル ▼▼ */
+
+/* kiritan：枠＝緑、背景＝白 */
+.balloon.kiritan {
+  --border-color: #33bfa1;
+  --bg-color: #ffffff;
+}
+
+/* sena：枠＝緑、背景＝薄い緑 */
+.balloon.sena {
+  --border-color: #33bfa1;
+  --bg-color: #e8fff5;
+}
+
+
+
+</style>

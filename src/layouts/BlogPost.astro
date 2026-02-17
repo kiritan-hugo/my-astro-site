@@ -4,83 +4,562 @@ import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
-import Header from '../components/Header.astro';
+import HeaderArticle from "../components/HeaderArticle.astro";
+import { Toc } from 'astro/components';
+import { getPopularPosts } from '../lib/getPopularPosts';
+
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, category, latestPosts, popularPosts } = Astro.props;
+
+const popular = (await getPopularPosts()).slice(0, 5);
+
+// 日付フォーマット関数
+const formatDate = (date) =>
+  new Date(date)
+    .toLocaleDateString("ja-JP", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+    .replace(/\//g, "-");
+
+// TOC h番号管理
+let h2Count = 0;
+let h3Count = 0;
+
 ---
 
-<html lang="en">
+
+<html lang="ja">
 	<head>
 		<BaseHead title={title} description={description} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+			rel="stylesheet"
+		/>
+
+
 	</head>
 
 	<body>
-		<Header />
-		<main>
-			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<h1>{title}</h1>
-						<hr />
+    <HeaderArticle />
+	<main class="article-layout">
+		<!-- -----メインコンテンツ----- -->
+		<div class="main-column">
+
+			<!-- -----ヒーローセクション----- -->
+			<section class="article-hero">
+				<h1 class="title">{title}</h1>
+				<div class="hero-meta-row">
+					<p class="category">{category}</p>
+					<div class="meta">
+						<span><i class="fa-regular fa-clock"></i> {formatDate(pubDate)}</span>
+						{updatedDate && <span><i class="fa-solid fa-arrows-rotate"></i>{formatDate(updatedDate)}</span>}
 					</div>
-					<slot />
 				</div>
+
+				{heroImage && (
+					<img src={heroImage.src} alt={title} class="hero-image" />
+				)}
+			</section>
+
+			<!-- -----本文TOC----- -->
+			<nav class="toc-main">
+			<h3 class="toc-main-title">目次</h3>
+
+			<div class="toc-main-container" id="tocMainContainer">
+				<ul>
+				{
+					(() => {
+					let h2Count = 0;
+					let h3Count = 0;
+
+					return Astro.props.headings.map(h => {
+						if (h.depth === 2) {
+						h2Count++;
+						h3Count = 0;
+						return (
+							<li class="toc-main-level-2">
+							<a href={`#${h.slug}`}>
+								{h2Count}｜ {h.text}
+							</a>
+							</li>
+						);
+						}
+
+						if (h.depth === 3) {
+						h3Count++;
+						return (
+							<li class="toc-main-level-3">
+							<a href={`#${h.slug}`}>
+								{h2Count}-{h3Count}｜ {h.text}
+							</a>
+							</li>
+						);
+						}
+
+						return null;
+					});
+					})()
+				}
+				</ul>
+			</div>
+
+			<button class="toc-main-toggle" id="tocMainToggle">もっと見る</button>
+			</nav>
+
+			<article class="main-post-content">
+			<slot /> 		 <!-- 本文 -->
 			</article>
-		</main>
-		<Footer />
-	</body>
+
+		</div>
+		<!-- ----------サイドバー---------- -->
+		<aside class="sidebar">
+
+		<!-- 新着記事 -->
+			<section class="sidebar-block latest-cards" aria-label="新着記事">
+			<h3 class="sidebar-title">新着記事</h3>
+			<ul class="latest-cards-list">
+				{latestPosts.map(post => (
+				<li class="card" key={post.id ?? post.url}>
+					<a class="card-link" href={`/${post.id}`} rel="noopener noreferrer">
+					<div class="card-thumb">
+						{post.data.heroImage ? (
+						<Image
+							src={post.data.heroImage}
+							alt={post.data.title}
+							class="thumb-img"
+							sizes="80px"
+						/>
+						) : (
+						<div class="thumb-fallback" aria-hidden="true">No Image</div>
+						)}
+					</div>
+
+					<div class="card-body">
+						<div class="card-title" title={post.data.title}>{post.data.title}</div>
+						<div class="card-meta">
+						<time datetime={post.data.pubDate ? new Date(post.data.pubDate).toISOString() : ''}>
+							<i class="fa-regular fa-clock"></i> {formatDate(post.data.pubDate)}
+						</time>
+						</div>
+					</div>
+					</a>
+				</li>
+				))}
+			</ul>
+			</section>
+
+				<!-- 人気記事 -->
+			<section class="sidebar-block latest-cards" aria-label="人気記事">
+			<h3 class="sidebar-title">人気記事</h3>
+
+			<ul class="latest-cards-list">
+				{popular.map(post => (
+				<li class="card" key={post.astro.id}>
+					<a class="card-link" href={`/${post.astro.id}`} rel="noopener noreferrer">
+
+					<div class="card-thumb">
+						{post.astro.data.heroImage ? (
+						<Image
+							src={post.astro.data.heroImage}
+							alt={post.astro.data.title}
+							class="thumb-img"
+							sizes="80px"
+						/>
+						) : (
+						<div class="thumb-fallback" aria-hidden="true">No Image</div>
+						)}
+					</div>
+
+					<div class="card-body">
+						<div class="card-title" title={post.astro.data.title}>
+						{post.astro.data.title}
+						</div>
+
+						<div class="card-meta">
+						<time datetime={post.astro.data.pubDate ? new Date(post.astro.data.pubDate).toISOString() : ''}>
+							<i class="fa-regular fa-clock"></i>
+							{formatDate(post.astro.data.pubDate)}
+						</time>
+						<span class="pv-count">{post.pageviews} PV</span>
+						</div>
+					</div>
+
+					</a>
+				</li>
+				))}
+			</ul>
+			</section>
+			<!-- サイドバー用追従型TOC + 広告 -->
+			<section class="sidebar-block toc-sticky">
+			<h3 class="sidebar-title">目次</h3>
+
+			<div class="toc-side-container">
+				<nav class="toc-side">
+				<ul>
+					{
+					(() => {
+						let h2Count = 0;
+						let h3Count = 0;
+
+						return Astro.props.headings.map(h => {
+						if (h.depth === 2) {
+							h2Count++;
+							h3Count = 0;
+							return (
+							<li class="toc-side-level-2">
+								<a href={`#${h.slug}`}>
+								{h2Count}｜ {h.text}
+								</a>
+							</li>
+							);
+						}
+
+						if (h.depth === 3) {
+							h3Count++;
+							return (
+							<li class="toc-side-level-3">
+								<a href={`#${h.slug}`}>
+								{h2Count}-{h3Count}｜ {h.text}
+								</a>
+							</li>
+							);
+						}
+
+						return null;
+						});
+					})()
+					}
+				</ul>
+				</nav>
+			</div>
+
+			<!-- 広告（追従） -->
+			<div class="toc-side-ad">
+				<div class="ad-box">広告スペース</div>
+			</div>
+			</section>		
+		</aside>
+	</main>
+    <Footer />
+
+	<script>
+	// 本文TOC
+	const tocMainContainer = document.getElementById("tocMainContainer");
+	const tocMainToggle = document.getElementById("tocMainToggle");
+
+	tocMainToggle.addEventListener("click", () => {
+	tocMainContainer.classList.toggle("expanded");
+	tocMainToggle.textContent = tocMainContainer.classList.contains("expanded")
+		? "閉じる"
+		: "もっと見る";
+	});
+
+	</script>
+  </body>
 </html>
+
+
+<style>
+
+/* 全体レイアウト */
+.article-layout {
+  display: flex;
+  gap: 2rem;
+  padding-top: 150px;
+}
+/* メイン記事（900px） */
+.main-column {
+	flex: 1;
+	max-width: 850px;
+	min-width: 0;
+}
+/* サイドバー（300px） */
+.sidebar {
+	flex: 0 0 25%;
+	max-width: 300px;
+	min-width: 300px;
+	/* min-width: 200px; */
+}
+.sidebar-block {
+  margin-bottom: 2rem; /* 好きな値に調整できる */
+}
+
+.sidebar-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: #e9f4e9; /* 柔らかいグリーン */
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: #2f5d3a; /* 深い森のグリーン */
+  margin-bottom: 1rem;
+  border-left: 4px solid #4a7c59; /* アウトドア感のある濃いグリーン */
+}
+/* サイドバー 新着カード */
+.latest-cards-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+/* カード枠 */
+.latest-cards-list .card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.card-link {
+  display: flex;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.5rem;
+}
+
+/* サムネイル領域（固定サイズ） */
+.card-thumb {
+  width:100px;
+  height: 60px;
+  overflow: hidden;
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+}
+
+/* 画像がない場合のフォールバック */
+.thumb-fallback {
+  font-size: 0.75rem;
+  color: #888;
+  padding: 0.25rem;
+}
+
+/* 右側の本文領域 */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  flex: 1;
+}
+
+/* タイトル（右上） */
+.card-title {
+  font-size: 0.80rem; /* 少し小さめに調整 */
+  font-weight: 570;
+  margin: 0 0 0.2rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* 2行以上は省略 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.6;
+}
+
+/* 日付（右下） */
+.card-meta {
+  font-size: 0.65rem;
+  color: #666;
+  margin-top: 0.1rem;
+}
+
+/* ホバーとフォーカスの視覚フィードバック */
+.card-link:hover,
+.card-link:focus {
+  background: #fafafa;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0,123,255,0.06);
+}
+
+
+
+/* -----本文TOCのCSS----- */
+
+/* 本文 TOC（中央寄せ・シンプル） */
+.toc-main {
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  padding: 1.2rem 1.4rem;
+  border-radius: 8px;
+}
+
+.toc-main-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #333;
+}
+
+.toc-main-container {
+  max-height: 220px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.toc-main-container.expanded {
+  max-height: 2000px;
+}
+
+.toc-main ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-main-level-2 {
+  margin: 0.5rem 0;
+}
+
+.toc-main-level-3 {
+  margin-left: 1rem;
+  font-size: 0.95rem;
+}
+
+.toc-main a {
+  text-decoration: none;
+  color: #333;
+}
+
+.toc-main a:hover {
+  text-decoration: underline;
+}
+
+.toc-main-toggle {
+  margin-top: 1rem;
+  background: #f2f2f2;
+  color: #333;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.toc-main-toggle:hover {
+  background: #e5e5e5;
+}
+
+/* サイドバー TOC（ラベル風） */
+
+/* sticky */
+.toc-sticky {
+  position: sticky;
+  top: 10px;
+  z-index: 10;
+}
+
+/* ★ スクロール式 TOC */
+.toc-side-container {
+  max-height: 400px;      /* 好きな高さに調整 */
+  overflow-y: auto;       /* スクロール可能にする */
+  padding-right: 6px;     /* スクロールバー分の余白 */
+}
+
+/* TOC デザイン */
+.toc-side {
+  background: #f8f8f8;
+  padding: 1px 1rem 1rem 1rem; /* 上だけ減らす */
+  border-radius: 8px;
+}
+/* サイドバー TOC のリストマーカーを消す */
+.toc-side ul,
+.toc-side li {
+  list-style: none;
+  padding: 0;
+}
+
+.toc-side-level-2 a {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.toc-side-level-3 {
+  margin-left: 1rem;
+  font-size: 0.80rem;
+}
+
+.toc-side a {
+  color: #333;
+  text-decoration: none;
+}
+
+.toc-side a:hover {
+  text-decoration: underline;
+}
+
+/* 広告 */
+.toc-side-ad {
+  margin-top: 1.5rem;
+}
+
+.ad-box {
+  background: #f2f2f2;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* ---ヒーローセクションcss--- */
+.article-hero .title {
+font-size: 1.50rem;
+}
+.hero-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* カテゴリと日付の間の余白 */
+  margin-bottom: 1rem;
+}
+
+/* カテゴリをタグ風に */
+.category {
+  background: #e9f4e9;
+  color: #2f5d3a;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border-left: 3px solid #4a7c59;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* メタデータ（日付） */
+.meta {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+
+@media (max-width: 970px) {
+  .sidebar {
+    display: none;
+  }
+  .article-layout {
+  padding-top: 100px;
+  }
+}
+
+
+</style>

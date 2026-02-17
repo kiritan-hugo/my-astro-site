@@ -30,8 +30,9 @@
 	font-style: normal;
 	font-display: swap;
 }
+
 body {
-	font-family: "Atkinson", sans-serif;
+	font-family: "Noto Sans JP", sans-serif;
 	margin: 0;
 	padding: 0;
 	text-align: left;
@@ -40,15 +41,18 @@ body {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: rgb(var(--gray-dark));
-	font-size: 20px;
+	font-size: 16px;
 	line-height: 1.7;
+	/* overflow-x: hidden; */
+
 }
 main {
-	width: 720px;
-	max-width: calc(100% - 2em);
-	margin: auto;
-	padding: 3em 1em;
+  width: 1200px;
+  max-width: calc(100% - 2em);
+  margin: auto;
+  padding: 3em 1em;
 }
+
 h1,
 h2,
 h3,
@@ -62,18 +66,90 @@ h6 {
 h1 {
 	font-size: 3.052em;
 }
-h2 {
-	font-size: 2.441em;
+.main-post-content h2 {
+  position: relative;
+  padding: 18px 20px 18px 28px;
+  font-size: 1.45rem;
+  font-weight: 550;
+  background: #eef4ef;
+  border: 2px solid #d5ddd5; /* ← 枠を追加 */
+  border-radius: 8px;        /* ← 少し大きめにしてラベル感UP */
+  color: #000000;
+  margin: 3rem 0 2.8rem;
 }
-h3 {
-	font-size: 1.953em;
+
+.main-post-content h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 8px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    #4a7c59,
+    #8b6f47
+  );
+  border-radius: 6px 0 0 6px; /* ← 枠と自然につながるように調整 */
 }
-h4 {
-	font-size: 1.563em;
+.main-post-content h3, .entry-content h3 {
+  position: relative;
+  font-size: 1.25rem;
+  font-weight: 510;
+  color: #000000;
+  padding-bottom: 16px;
+  margin: 3.6rem 0 2.6rem;
+  text-indent: 0.8rem; /* ← ここで前にスペースを作る */
 }
+
+.main-post-content h3::after, .entry-content h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 55%;
+  height: 5px;
+  background: linear-gradient(
+    to right,
+    #8b6f47 0%,
+    #4a7c59 60%,
+    rgba(74,124,89,0) 100%
+  );
+  border-radius: 3px;
+}
+
+.main-post-content h4, .entry-content h4 {
+  position: relative;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #3a3a3a;
+  padding-left: 0;
+  padding-bottom: 4px;
+  margin: 1.4rem 0 0.8rem;
+}
+
+.main-post-content h4::after, .entry-content h4::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 28%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    #8b6f47 0%,
+    #4a7c59 60%,
+    rgba(74,124,89,0) 100%
+  );
+  border-radius: 2px;
+}
+
 h5 {
 	font-size: 1.25em;
 }
+
+
+
 strong,
 b {
 	font-weight: 700;
@@ -85,7 +161,13 @@ a:hover {
 	color: var(--accent);
 }
 p {
-	margin-bottom: 1em;
+	margin-bottom: 24px;
+	line-height: 1.8;	
+}
+
+.article p {
+	margin-bottom: 24px;
+	line-height: 1.8;
 }
 .prose p {
 	margin-bottom: 2em;
@@ -100,10 +182,11 @@ input {
 table {
 	width: 100%;
 }
+/* 表示画像の調整 */
 img {
 	max-width: 100%;
 	height: auto;
-	border-radius: 8px;
+	border-radius: 0px;  
 }
 code {
 	padding: 2px 5px;
@@ -153,3 +236,44 @@ hr {
 	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
 }
+
+
+/*---------- .xml(記事用)でつかうcss ----------*/
+/* 画像をセンターに持ってくる */
+.image-wrap {
+text-align: center;
+}
+.image-wrap img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* 文字を太くする */
+.b {
+	font-weight: bold;
+}
+/* 文字を赤くする */
+.red {
+	color: red;
+}
+/* 文字を赤く＋太字にする */
+.red-b {
+	color: red;
+	font-weight: bold;
+}
+/* 文字を青くする */
+.blue {
+	color: blue;
+}
+/* 文字を青く＋太字にする */
+.blue-b {
+	color: blue;
+	font-weight: bold;
+}
+/* 文字にアンダーライン付与 */
+.marker-yellow {
+    background: linear-gradient(transparent 65%, #fff33f 60%);
+}
+
