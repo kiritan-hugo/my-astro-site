@@ -6,4 +6,5 @@ export const bigquery = new BigQuery({
     client_email: import.meta.env.BIGQUERY_CLIENT_EMAIL,
     private_key: import.meta.env.BIGQUERY_PRIVATE_KEY,
   },
+  location: "asia-northeast1",
 });

@@ -33,7 +33,7 @@ export async function getPopularPosts(limit = 10) {
       ep_location.value.string_value AS page_location,
       COUNT(*) AS pageviews
     FROM
-      \`andes-life-analytics.analytics_XXXXXXXX.events_*\`,
+      \`andes-life-analytics.analytics_423065429.events_*\`,
       UNNEST(event_params) AS ep_location
     WHERE
       event_name = "page_view"
