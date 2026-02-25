@@ -16,12 +16,61 @@ import NoticeBox from "../../components/NoticeBox.astro";
 import CompareBox from "../../components/CompareBox.astro";
 import RelatedPosts from "../../components/RelatedPosts.astro";
 import MapEmbed from "../../components/MapEmbed.astro";
+import ImageWithCaption from '../../components/ImageWithCaption.astro';
+import ButtonLink from '../../components/ButtonLink.astro';
+
+import img01 from '../../assets/posts/2023/hukiage/1689057617465-800x600.jpg';
+import img02 from '../../assets/posts/2023/hukiage/1689057607808-800x600.jpg';
+import img03 from '../../assets/posts/2023/hukiage/hukiage-hp-800x369.jpg';
+import img04 from '../../assets/posts/2023/hukiage/Screenshot-2024-09-04-15.13.03.png';
+import img05 from '../../assets/posts/2023/hukiage/9848_color.png';
+import img06 from '../../assets/posts/2023/hukiage/bike_a17.png';
+import img07 from '../../assets/posts/2023/hukiage/hot-spring.png';
+import img08 from '../../assets/posts/2023/hukiage/1689057618228-800x600.jpg';
+import img09 from '../../assets/posts/2023/hukiage/1689057627398-800x600.jpg';
+import img10 from '../../assets/posts/2023/hukiage/1689057620056-800x600.jpg';
+import img11 from '../../assets/posts/2023/hukiage/1689057635010-800x600.jpg';
+import img12 from '../../assets/posts/2023/hukiage/167453621_3750673538491172_1979649678723395362_n.jpg';
+import img13 from '../../assets/posts/2023/hukiage/1689057607808-800x600.jpg';
+import img14 from '../../assets/posts/2023/hukiage/1689057631681-800x600.jpg';
+import img15 from '../../assets/posts/2023/hukiage/1689057610077-800x600.jpg';
+import img16 from '../../assets/posts/2023/hukiage/1689057609358-800x600.jpg';
+import img17 from '../../assets/posts/2023/hukiage/1689057608543-800x600.jpg';
+import img18 from '../../assets/posts/2023/hukiage/1689057613426-800x600.jpg';
+import img19 from '../../assets/posts/2023/hukiage/1689057612774-800x600.jpg';
+import img20 from '../../assets/posts/2023/hukiage/1689057611323-800x600.jpg';
+import img21 from '../../assets/posts/2023/hukiage/1689057614173-800x600.jpg';
+import img22 from '../../assets/posts/2023/hukiage/1689057628098-800x600.jpg';
+import img23 from '../../assets/posts/2023/hukiage/1689057620867-800x600.jpg';
+import img24 from '../../assets/posts/2023/hukiage/restraunt-narukonokaze.jpeg';
+import img25 from '../../assets/posts/2023/hukiage/1689057619480-800x600.jpg';
+import img26 from '../../assets/posts/2023/hukiage/1689057618874-800x600.jpg';
+import img27 from '../../assets/posts/2023/hukiage/1689057606048-800x600.jpg';
+import img28 from '../../assets/posts/2023/hukiage/1689057606634-800x600.jpg';
+import img29 from '../../assets/posts/2023/hukiage/1689057605045-800x600.jpg';
+import img30 from '../../assets/posts/2023/hukiage/1689057635010-800x600.jpg';
+import img31 from '../../assets/posts/2023/hukiage/1689057604364-800x600.jpg';
+import img32 from '../../assets/posts/2023/hukiage/1689057603829-800x600.jpg';
+import img33 from '../../assets/posts/2023/hukiage/1689057602671-800x600.jpg';
+import img34 from '../../assets/posts/2023/hukiage/1689057603242-800x600.jpg';
+import img35 from '../../assets/posts/2023/hukiage/1689057602189-800x600.jpg';
+import img36 from '../../assets/posts/2023/hukiage/1689057601200-800x600.jpg';
+import img37 from '../../assets/posts/2023/hukiage/text_yoyaku_fuyou.png';
+import img38 from '../../assets/posts/2023/hukiage/26500157_s.jpg';
+import img39 from '../../assets/posts/2023/hukiage/1689057628634-800x600.jpg';
+import img40 from '../../assets/posts/2023/hukiage/1689652140276-800x600.jpg';
+import img41 from '../../assets/posts/2023/hukiage/super-trust-800x600.jpg';
+import img42 from '../../assets/posts/2023/hukiage/images-1.jpeg';
+import img43 from '../../assets/posts/2023/hukiage/20230704_130841-800x600.jpg';
+import img44 from '../../assets/posts/2023/hukiage/1688569280062-800x600.jpg';
+import img45 from '../../assets/posts/2023/hukiage/1689652237482-800x600.jpg';
+import img46 from '../../assets/posts/2023/hukiage/1689057635592-800x600.jpg';
 
 こんにちは、kiritanです。
 
 今回紹介するのは、宮城県大崎市にある『**吹上高原キャンプ場**』です。
 
-<img src="/src/assets/posts/2023/hukiage/1689057617465-800x600.jpg" alt="" />
+<img src={img01.src} alt="" />
 
 吹上高原キャンプ場は**鳴子温泉**で有名な宮城県大崎市の北西部に位置する<span class="marker-yellow">**標高300mの高原キャンプ場です**。</span>
 
@@ -45,7 +94,7 @@ import MapEmbed from "../../components/MapEmbed.astro";
 
 そして吹上高原キャンプ場の最大の特徴ともいえるのが**広大な面積であるテントサイト**。
 
-<img src="/src/assets/posts/2023/hukiage/1689057607808-800x600.jpg" alt="" />
+<img src={img02.src} alt="" />
 
 その広さはテントが300張もできるほど。
 
@@ -96,10 +145,13 @@ import MapEmbed from "../../components/MapEmbed.astro";
 
 ### 基本情報
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2023/hukiage/hukiage-hp-800x369.jpg" alt="" />
-  <CaptionSource source="出典：オニコウベスキー場公式サイト"  />
-</div>
+<ImageWithCaption
+  src={img03.src} 
+  caption="出典：オニコウベスキー場公式サイト"
+  url=""
+  width="100%"
+  align="center"
+/>
 
 <InfoTable
   items={[
@@ -123,7 +175,13 @@ import MapEmbed from "../../components/MapEmbed.astro";
 
 2025年度の料金体制です。
 
-<img src="/src/assets/posts/2023/hukiage/Screenshot-2024-09-04-15.13.03.png" alt="" />
+<ImageWithCaption
+  src={img04.src} 
+  caption=""
+  url=""
+  width="95%"
+  align="center"
+/>
 
 吹上高原キャンプ場では、**予約が要らないフリーサイト**と<span class="red">**予約が必要**</span>**な電源付きサイト**の2つがあります。
 
@@ -135,7 +193,13 @@ import MapEmbed from "../../components/MapEmbed.astro";
 
 ◆自動車利用の場合
 
-<img src="/src/assets/posts/2023/hukiage/9848_color.png" alt="" />
+<ImageWithCaption
+  src={img05.src} 
+  caption=""
+  url=""
+  width="25%"
+  align="left"
+/>
 
 <InfoTable2
   columns={["1人", "2人", "3人","4人"]}
@@ -151,7 +215,13 @@ import MapEmbed from "../../components/MapEmbed.astro";
 
 ◆バイク利用の場合
 
-<img src="/src/assets/posts/2023/hukiage/bike_a17.png" alt="" />
+<ImageWithCaption
+  src={img06.src} 
+  caption=""
+  url=""
+  width="25%"
+  align="left"
+/>
 
 <InfoTable2
   columns={["1人", "2人"]}
@@ -164,8 +234,6 @@ import MapEmbed from "../../components/MapEmbed.astro";
   ]}
   note="※2025年度の料金表"
 />
-
-
 
 ※上記価格はすべて税込になります。
 
@@ -189,7 +257,13 @@ WILD-1メンバーズなら<span class="marker-yellow">**平日の利用料金�
 
 ◆すぱ鬼首の湯　温泉利用料金
 
-<img src="/src/assets/posts/2023/hukiage/hot-spring.png" alt="" />
+<ImageWithCaption
+  src={img07.src} 
+  caption=""
+  url=""
+  width="30%"
+  align="left"
+/>
 
 <InfoTable2
   columns={[" 大人", " 子供（小学生以下）"]}
@@ -207,46 +281,43 @@ WILD-1メンバーズなら<span class="marker-yellow">**平日の利用料金�
 <NoticeBox
   type="check"
   text={`スノーピーク会員なら特別料金で入浴できます。
-会員登録は無料です。`}
+会員登録は無料なので、あらかじめ登録しておくとお得です！`}
 />
 
-
-**スノーピーク会員なら特別料金で入浴できます。**  
-会員登録は無料なので、あらかじめ登録しておくとお得です！
-
-[スノーピーク ポイント会員登録はこちらから](https://ec.snowpeak.co.jp/snowpeak/ja/membership/membershipIndex)
+<ButtonLink
+  text="スノーピーク ポイント会員登録はこちらから"
+  url="https://ec.snowpeak.co.jp/snowpeak/ja/membership/membershipIndex"
+  size=""
+/>
 
 ### 予約方法
 
-予約は「電話予約」のみです。
+予約は<span class="red">電話予約のみです。</span>
 
-下記番号から電源付きサイト、レンタル用品の予約ができます。
+下記番号から電源付きサイトとレンタル用品の予約ができます。
 
-電話番号：0229-86-2493  
-受付時間：10:00-17:00 
+<span class="b">電話番号：0229-86-2493  
+受付時間：10:00-17:00 </span>
 
-※電源付きサイトは利用日の3ヶ月前から予約可。
-
-**注意点**
-
-前日のキャンセルはキャンセル料が発生します。  
+※電源付きサイトは利用日の3ヶ月前から予約可。  
+※前日のキャンセルはキャンセル料が発生します。  
 （キャンセル料：前日50％、当日100％）
 
 ### 受付方法
 
-<img src="/src/assets/posts/2023/hukiage/1689057618228-800x600.jpg" alt="" />
+<img src={img08.src} alt="" />
 
 受付は平日と休日で場所がかわります。
 
 休日はキャンプ場入り口の受付棟で受付します。
 
-<img src="/src/assets/posts/2023/hukiage/1689057627398-800x600.jpg" alt="" />
+<img src={img09.src} alt="" />
 
 かわって平日は「すぱ鬼首の湯」内の受付で行います。
 
-<img src="/src/assets/posts/2023/hukiage/1689057620056-800x600.jpg" alt="" />
+<img src={img10.src} alt="" />
 
-<img src="/src/assets/posts/2023/hukiage/1689057635010-800x600.jpg" alt="" />
+<img src={img11.src} alt="" />
 
 チェックイン時間はどちらも10:00〜17:00まで。
 
@@ -254,9 +325,14 @@ WILD-1メンバーズなら<span class="marker-yellow">**平日の利用料金�
 
 ## 吹上高原キャンプ場｜場内マップ
 
-<img src="/src/assets/posts/2023/hukiage/167453621_3750673538491172_1979649678723395362_n.jpg" alt="" />
 
-こちらが吹上高原キャンプ場の場内マップです。
+<ImageWithCaption
+  src={img12.src} 
+  caption=""
+  url=""
+  width="90%"
+  align="center"
+/>
 
 ## 吹上高原キャンプ場｜サイト
 
@@ -266,7 +342,7 @@ WILD-1メンバーズなら<span class="marker-yellow">**平日の利用料金�
 
 ### 芝生サイト
 
-<img src="/src/assets/posts/2023/hukiage/1689057607808-800x600.jpg" alt="" />
+<img src={img13.src} alt="" />
 
 吹上高原キャンプ場のサイトのほとんどの面積を占める芝生のフリーサイト。
 
@@ -297,7 +373,7 @@ WILD-1メンバーズなら<span class="marker-yellow">**平日の利用料金�
 
 ### 林間サイト
 
-<img src="/src/assets/posts/2023/hukiage/1689057631681-800x600.jpg" alt="" />
+<img src={img14.src} alt="" />
 
 キャンプ場入り口から左の奥へとすすんでいくと林間エリアがみえてきます。
 
@@ -327,7 +403,7 @@ WILD-1メンバーズなら<span class="marker-yellow">**平日の利用料金�
 
 ### 電源付サイト（予約制・別料金）
 
-<img src="/src/assets/posts/2023/hukiage/1689057610077-800x600.jpg" alt="" />
+<img src={img15.src} alt="" />
 
 予約で利用できる電源付きサイトです。  
 それぞれのサイトは区画分けされており、大型テントを建てても余裕な広さがあります。
@@ -338,9 +414,9 @@ WILD-1メンバーズなら<span class="marker-yellow">**平日の利用料金�
 
 炊事場からも近いので、GWやお盆など混雑する時期に利用する人も多そうです。
 
-<img src="/src/assets/posts/2023/hukiage/1689057609358-800x600.jpg" alt="" />
+<img src={img16.src} alt="" />
 
-<img src="/src/assets/posts/2023/hukiage/1689057608543-800x600.jpg" alt="" />
+<img src={img17.src} alt="" />
 
 ちなみに電源の差し込み口は3口でした。数に困らなそうですね♪
 
@@ -364,25 +440,25 @@ WILD-1メンバーズなら<span class="marker-yellow">**平日の利用料金�
 
 ### 炊事場
 
-<img src="/src/assets/posts/2023/hukiage/1689057613426-800x600.jpg" alt="" />
+<img src={img18.src} alt="" />
 
 炊事棟は場内に4ヶ所あります。
 
 外のシンクで焚き火台や網が掃除できます。
 
-<img src="/src/assets/posts/2023/hukiage/1689057612774-800x600.jpg" alt="" />
+<img src={img19.src} alt="" />
 
 炊事棟内は綺麗に掃除されています。
 
 洗剤、スポンジは置いてません。
 
-<img src="/src/assets/posts/2023/hukiage/1689057611323-800x600.jpg" alt="" />
+<img src={img20.src} alt="" />
 
 炊事棟の中に灰捨て場がありました。
 
 ### トイレ
 
-<img src="/src/assets/posts/2023/hukiage/1689057614173-800x600.jpg" alt="" />
+<img src={img21.src} alt="" />
 
 場内に4ヶ所あるトイレです。
 
@@ -392,7 +468,7 @@ WILD-1メンバーズなら<span class="marker-yellow">**平日の利用料金�
 
 ### ゴミ捨て場
 
-<img src="/src/assets/posts/2023/hukiage/1689057628098-800x600.jpg" alt="" />
+<img src={img22.src} alt="" />
 
 受付棟の対面にゴミ捨て場があります。
 
@@ -407,7 +483,7 @@ WILD-1メンバーズなら<span class="marker-yellow">**平日の利用料金�
 
 ### レストラン鳴子の風
 
-<img src="/src/assets/posts/2023/hukiage/1689057620867-800x600.jpg" alt="" />
+<img src={img23.src} alt="" />
 
 キャンプ場入り口にある「吹上高原センターハウス」にはレストランがあります。
 
@@ -415,16 +491,21 @@ WILD-1メンバーズなら<span class="marker-yellow">**平日の利用料金�
 
 営業時間は10:00〜15:00。設営後の昼食に利用してみるのもおすすめです♪
 
-[こちらから公式ホームページにアクセスできます。](https://www.onikoube.com/contents/54)
+<ImageWithCaption
+  src={img24.src} 
+  caption="出典：オニコウベスキー場公式サイト"
+  url=""
+  width="55%"
+  align="left"
+/>
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2023/hukiage/restraunt-narukonokaze.jpeg"  alt="キャンプ場" whide="800" />
-  <CaptionSource source="出典：オニコウベスキー場公式サイト"  />
-</div>
+[こちらから公式ホームページにアクセスできます。](https://www.onikoube.com/green/restaurant-naruko-no-kaze/)
+
+
 
 ## 吹上高原キャンプ場｜すぱ鬼首の湯
 
-<img src="/src/assets/posts/2023/hukiage/1689057619480-800x600.jpg" alt="" />
+<img src={img25.src} alt="" />
 
 吹上高原キャンプ場の敷地には、天然温泉の「すぱ鬼首の湯」があります。
 
@@ -432,39 +513,38 @@ WILD-1メンバーズなら<span class="marker-yellow">**平日の利用料金�
 
 1回券と1日利用券の2種類の入浴券があり、1日利用券の場合『当日12時から翌12時まで』何回でも入浴できます。
 <Balloon person="kiritan" type="left">
-夜と翌朝など2回以上利用する人は1日利用券がおトク！
+2回以上利用する方は1日利用券がお得です！
 </Balloon>
 
 
-<img src="/src/assets/posts/2023/hukiage/1689057618874-800x600.jpg" alt="" />
+<img src={img26.src} alt="" />
 
 入り口にある券売機で入浴券を購入します。
 
-**キャッシュレスには対応していません。**現金を忘れずに持っていきましょう。
+<span class="red">キャッシュレスには対応してません</span>でした。
 
-<img src="/src/assets/posts/2023/hukiage/1689057635592-800x600.jpg" alt="" />
+<img src={img46.src} alt="" />
 
 中に入ると、右手に受付、左手に下駄箱、売店が正面あります。
 
-<img src="/src/assets/posts/2023/hukiage/1689057606048-800x600.jpg" alt="" />
+<img src={img27.src} alt="" />
 
-<img src="/src/assets/posts/2023/hukiage/1689057606634-800x600.jpg" alt="" />
+<img src={img28.src} alt="" />
 
 売店にはキャンプで欠かせない薪や木炭といった燃料のほかに、
 
-<img src="/src/assets/posts/2023/hukiage/1689057605045-800x600.jpg" alt="" />
+<img src={img29.src} alt="" />
 
 調味料や調理器具といった、忘れたときに困るアイテムがひと通り揃っていました。
 <Balloon person="sena" type="left">
 ロックアイスも売ってるから連泊しても大丈夫！
 </Balloon>
 
-
-<img src="/src/assets/posts/2023/hukiage/1689057635010-800x600.jpg" alt="" />
+<img src={img30.src} alt="" />
 
 入浴する際は、受付に入浴券を渡します。
 
-<img src="/src/assets/posts/2023/hukiage/1689057604364-800x600.jpg" alt="" />
+<img src={img31.src} alt="" />
 
 脱衣所の様子です。
 
@@ -475,13 +555,13 @@ WILD-1メンバーズなら<span class="marker-yellow">**平日の利用料金�
 
 
 <Balloon person="sena" type="right">
-GWやお盆はかなり混みやすい印象だよ
+GWやお盆の時期はかなり混んでたよ
 </Balloon>
 
 
-<img src="/src/assets/posts/2023/hukiage/1689057603829-800x600.jpg" alt="" />
+<img src={img32.src} alt="" />
 
-<img src="/src/assets/posts/2023/hukiage/1689057602671-800x600.jpg" alt="" />
+<img src={img33.src} alt="" />
 
 洗面台は3つあります。
 
@@ -489,13 +569,13 @@ GWやお盆はかなり混みやすい印象だよ
 
 ちょっとした改良点だけど嬉しいですね。
 
-<img src="/src/assets/posts/2023/hukiage/1689057603242-800x600.jpg" alt="" />
+<img src={img34.src} alt="" />
 
 脱衣所内にコインロッカーがあります。
 
 利用するには100円かかってしまうので、貴重品は車に置いてきたほうが経済的ですね。
 
-<img src="/src/assets/posts/2023/hukiage/1689057602189-800x600.jpg" alt="" />
+<img src={img35.src} alt="" />>
 
 洗い場と内湯の様子です。脱衣場に比べて中はけっこう広めです。
 
@@ -503,7 +583,7 @@ GWやお盆はかなり混みやすい印象だよ
 
 泉質は無色透明で匂いもありませんでした。
 
-<img src="/src/assets/posts/2023/hukiage/1689057601200-800x600.jpg" alt="" />
+<img src={img36.src} alt="" />
 
 外には自然に囲まれた岩造りの露天風呂がありました。
 
@@ -512,14 +592,17 @@ GWやお盆はかなり混みやすい印象だよ
 景色のいい露天風呂が楽しめるのは吹上高原キャンプ場ならでは♪
 </Balloon>
 
-
-\[ad\]
-
 ## 吹上高原キャンプ場の特徴と魅力
 
 ### ①予約不要のフリーサイト
 
-<img src="/src/assets/posts/2023/hukiage/text_yoyaku_fuyou.png" alt="" />
+<ImageWithCaption
+  src={img37.src} 
+  caption=""
+  url=""
+  width="40%"
+  align="left"
+/>
 
 みなさんも突発的にキャンプに行きたくなることありますよね？  
 そんなときでも飛び入りでキャンプできるのが予約不要の利点です。
@@ -532,7 +615,13 @@ GWやお盆はかなり混みやすい印象だよ
 
 ### ②全面車の乗り入れが可能
 
-<img src="/src/assets/posts/2023/hukiage/26500157_s.jpg" alt="" />
+<ImageWithCaption
+  src={img38.src} 
+  caption=""
+  url=""
+  width="70%"
+  align="left"
+/>
 
 キャンプにこだわってくると必然的に荷物が増えますよね。
 
@@ -543,10 +632,9 @@ GWやお盆はかなり混みやすい印象だよ
 ハードルが低くなるから気軽にキャンプできるね！
 </Balloon>
 
-
 ### ③標高が高いので涼しい
 
-<img src="/src/assets/posts/2023/hukiage/1689057628634-800x600.jpg" alt="" />
+<img src={img39.src} alt="" />
 
 夏キャンプをするにあたって、1番気になるのが気温です。
 
@@ -556,13 +644,11 @@ GWやお盆はかなり混みやすい印象だよ
 
 また標高が高い場所は空気中の水分量が少なく乾燥しているため、**空気は澄んで星空がきれいに見えることもあります。**
 
-<img src="/src/assets/posts/2023/hukiage/1689652140276-800x600.jpg" alt="" />
+<img src={img40.src} alt="" />
+
 <Balloon person="kiritan" type="left">
 綺麗な星空を眺めるのもキャンプの醍醐味！
 </Balloon>
-
-
-\[ad\]
 
 ## 吹上高原キャンプ場の周辺情報
 
@@ -574,7 +660,13 @@ GWやお盆はかなり混みやすい印象だよ
 
 ### スーパーセンターＴＲＵＳＴ 岩出山店
 
-<img src="/src/assets/posts/2023/hukiage/super-trust-800x600.jpg" alt="" />
+<ImageWithCaption
+  src={img41.src} 
+  caption=""
+  url=""
+  width="60%"
+  align="left"
+/>
 
 日用品やアウトドア用品のほか生鮮食品も取り扱っている総合ディスカウントストア。
 
@@ -595,7 +687,13 @@ GWやお盆はかなり混みやすい印象だよ
 
 ### ウジエスーパー 岩出山店
 
-<img src="/src/assets/posts/2023/hukiage/images-1.jpeg" alt="" />
+<ImageWithCaption
+  src={img42.src} 
+  caption=""
+  url=""
+  width="60%"
+  align="left"
+/>
 
 地元密着のスーパーで、地産の新鮮な野菜や特産品も取り扱ってます。
 
@@ -616,7 +714,13 @@ GWやお盆はかなり混みやすい印象だよ
 
 ### ザビのカレー
 
-<img src="/src/assets/posts/2023/hukiage/20230704_130841-800x600.jpg" alt="" />
+<ImageWithCaption
+  src={img43.src} 
+  caption=""
+  url=""
+  width="70%"
+  align="left"
+/>
 
 岩出山にあるパキスタン料理屋さん。インドカレーがメインのお店です。
 
@@ -637,17 +741,25 @@ GWやお盆はかなり混みやすい印象だよ
 
 ### やっこ食堂
 
-<img src="/src/assets/posts/2023/hukiage/1688569280062-800x600.jpg" alt="" />
+<ImageWithCaption
+  src={img44.src} 
+  caption=""
+  url=""
+  width="70%"
+  align="left"
+/>
 
 平日お昼のみ営業している定食屋さん。
 
 お店周辺は閑散としており人の姿もほとんど無いにも関わらず、駐車場はいつも満杯で、開店と同時にものすごく混みます。
 
-中華そばとかつ丼が有名で、はるばる遠くから食べにくるファンもいるそうです。
+中華そばとかつ丼が有名で、遠くからわざわざ食べにくるファンもいるそうです。
 
-キャンプ場からはかなり距離がありわざわざ行くには遠すぎるので、仙台方面からキャンプ場へ向かう際に立ち寄るのがおすすめです。
+キャンプ場からは距離があるので、仙台方面からキャンプ場へ向かう際に立ち寄るのがおすすめ。
 
-実際に私も食べてきました。（その時の様子はこちら↓）
+私もよく通っているお気に入りのお店です。
+
+<RelatedPosts slug="yakko-syokudo" caption="関連記事" />
 
 <InfoTable
   items={[
@@ -681,9 +793,10 @@ GWやお盆はかなり混みやすい印象だよ
 めちゃくちゃ広いサイトなのに予約不要で、**突発的にキャンプしたいなと思ったらすぐにいける**のが便利ですよね。
 
 今年もこれからまだまだキャンプが楽しめる季節、週末予約がいっぱいでどこに行くか迷っている方はぜひ足を運んでみてください。
+
 <Balloon person="sena" type="right">
   熱中症対策は忘れずにね！
 </Balloon>
 
 
-<img src="/src/assets/posts/2023/hukiage/1689652237482-800x600.jpg" alt="" />
+<img src={img45.src} alt="" />

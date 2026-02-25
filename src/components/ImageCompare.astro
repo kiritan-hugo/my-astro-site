@@ -1,46 +1,76 @@
 ---
 const {
+  // 1段目
   left,
   right,
   leftLabel = "",
   rightLabel = "",
+
+  // 2段目
   left2 = null,
   right2 = null,
   leftLabel2 = "",
-  rightLabel2 = ""
+  rightLabel2 = "",
+
+  // ★ 3段目（追加）
+  left3 = null,
+  right3 = null,
+  leftLabel3 = "",
+  rightLabel3 = "",
+
+  // ★ キャプションを画像内に重ねるオプション
+  overlay = false
 } = Astro.props;
 
 const hasSecondRow = left2 && right2;
+const hasThirdRow = left3 && right3;
 ---
 
 <div class="compare-container">
+
   <!-- 1段目 -->
   <div class="compare-row">
-    <div class="compare-item">
+    <div class={`compare-item ${overlay ? "overlay" : ""}`}>
       <img src={left} alt={leftLabel} />
       {leftLabel && <p class="label">{leftLabel}</p>}
     </div>
 
-    <div class="compare-item">
+    <div class={`compare-item ${overlay ? "overlay" : ""}`}>
       <img src={right} alt={rightLabel} />
       {rightLabel && <p class="label">{rightLabel}</p>}
     </div>
   </div>
 
-  <!-- 2段目（オプション） -->
+  <!-- 2段目 -->
   {hasSecondRow && (
     <div class="compare-row">
-      <div class="compare-item">
+      <div class={`compare-item ${overlay ? "overlay" : ""}`}>
         <img src={left2} alt={leftLabel2} />
         {leftLabel2 && <p class="label">{leftLabel2}</p>}
       </div>
 
-      <div class="compare-item">
+      <div class={`compare-item ${overlay ? "overlay" : ""}`}>
         <img src={right2} alt={rightLabel2} />
         {rightLabel2 && <p class="label">{rightLabel2}</p>}
       </div>
     </div>
   )}
+
+  <!-- ★ 3段目（追加） -->
+  {hasThirdRow && (
+    <div class="compare-row">
+      <div class={`compare-item ${overlay ? "overlay" : ""}`}>
+        <img src={left3} alt={leftLabel3} />
+        {leftLabel3 && <p class="label">{leftLabel3}</p>}
+      </div>
+
+      <div class={`compare-item ${overlay ? "overlay" : ""}`}>
+        <img src={right3} alt={rightLabel3} />
+        {rightLabel3 && <p class="label">{rightLabel3}</p>}
+      </div>
+    </div>
+  )}
+
 </div>
 
 <style>
@@ -54,11 +84,12 @@ const hasSecondRow = left2 && right2;
 .compare-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 0.8rem;
 }
 
 .compare-item {
   text-align: center;
+  position: relative; /* overlay 用 */
 }
 
 .compare-item img {
@@ -68,9 +99,27 @@ const hasSecondRow = left2 && right2;
   display: block;
 }
 
+/* 通常のキャプション */
 .label {
   margin-top: 0.4rem;
   font-size: 0.75rem;
   color: #555;
+}
+
+/* ★ overlay モード（画像の中に重ねる） */
+.compare-item.overlay .label {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.288);
+  border-radius: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>

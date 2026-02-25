@@ -1,0 +1,88 @@
+---
+const {
+  text = "外部リンク",
+  url = "#",
+  icon = true,
+  color = "#33bfa1",
+  size = "medium",
+  align = "center"   // ← 追加！ left | center | right
+} = Astro.props;
+
+const sizeClass = {
+  small: "btn-small",
+  medium: "btn-medium",
+  large: "btn-large"
+}[size] ?? "btn-medium";
+
+const alignClass = {
+  left: "align-left",
+  center: "align-center",
+  right: "align-right"
+}[align] ?? "align-center";
+---
+
+<div class={`button-wrap ${alignClass}`}>
+  <a href={url} class={`button-link ${sizeClass}`} target="_blank" rel="noopener noreferrer" style={`--btn-color: ${color};`}>
+    {text}
+    {icon && <span class="icon">↗</span>}
+  </a>
+</div>
+
+<style>
+/* 外側：配置だけ担当 */
+.button-wrap {
+  display: flex;
+  margin: 1.2rem 0;
+}
+
+.align-left {
+  justify-content: flex-start;
+}
+
+.align-center {
+  justify-content: center;
+}
+
+.align-right {
+  justify-content: flex-end;
+}
+
+/* 内側：ボタンデザイン */
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.75rem 3.0rem;   /* ← 横長＆高さアップ */
+  background: var(--btn-color);
+  color: #fff;
+  border-radius: 30px;        /* ← 少し丸めて優しい印象 */
+  text-decoration: none;
+  font-size: 1rem;        /* ← 少し大きく */
+  font-weight: 600;
+  transition: 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+
+.button-link:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.icon {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* サイズバリエーション */
+.btn-small {
+  padding: 0.5rem 1.0rem;
+  font-size: 0.85rem;
+}
+
+.btn-large {
+  padding: 0.9rem 1.8rem;
+  font-size: 1.05rem;
+}
+
+</style>

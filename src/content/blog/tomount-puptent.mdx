@@ -8,28 +8,654 @@ category:
     - campgear
 ---
 import Balloon from "../../components/Balloon.astro";
+import CaptionSource from "../../components/CaptionSource.astro";
+import InfoTable from "../../components/InfoTable.astro";
+import InfoTable2 from "../../components/InfoTable2.astro";
+import CaptionBox from "../../components/CaptionBox.astro";
+import NoticeBox from "../../components/NoticeBox.astro";
+import CompareBox from "../../components/CompareBox.astro";
+import RelatedPosts from "../../components/RelatedPosts.astro";
+import MapEmbed from "../../components/MapEmbed.astro";
+import Accordion from "../../components/Accordion.astro";
+import ImagePost from '../../components/ImagePost.astro';
+import ImageCompare from '../../components/ImageCompare.astro';
+import Table from '../../components/Table.astro';
+import MoshimoCard from '../../components/MoshimoCard.astro';
+import TwitterEmbed from '../../components/TwitterEmbed.astro';
+import ImageWithCaption from '../../components/ImageWithCaption.astro';
+import ButtonLink from '../../components/ButtonLink.astro';
+import QuoteBox from '../../components/QuoteBox.astro';
+import StepBlock from '../../components/StepBlock.astro';
 
-import k_icon from "../../assets/images/kiritan_profile.jpg";
-import s_icon from "../../assets/images/sena_profile.png";
+import img01 from '../../assets/posts/2023/tomount_puptent/BDK-79TC-1-e1659800110161-800x500.jpg';
+import img02 from '../../assets/posts/2023/tomount_puptent/41hxIef3VpL._AC_SY355_.jpg';
+import img03 from '../../assets/posts/2023/tomount_puptent/tomount-puptent1.jpg';
+import img04 from '../../assets/posts/2023/tomount_puptent/tomount-puptent6.jpg';
+import img05 from '../../assets/posts/2023/tomount_puptent/tomount-puptent3.jpg';
+import img06 from '../../assets/posts/2023/tomount_puptent/tomount-puptent2.jpg';
+import img07 from '../../assets/posts/2023/tomount_puptent/tomount-puptent4.jpg';
+import img08 from '../../assets/posts/2023/tomount_puptent/tomount-puptent5.jpg';
+import img09 from '../../assets/posts/2023/tomount_puptent/tomount-puptent7.jpg';
+import img10 from '../../assets/posts/2023/tomount_puptent/1659711170360-800x600.jpg';
+import img11 from '../../assets/posts/2023/tomount_puptent/1659711170681-800x600.jpg';
+import img12 from '../../assets/posts/2023/tomount_puptent/1659711171058-800x600.jpg';
+import img13 from '../../assets/posts/2023/tomount_puptent/1659711172552-800x600.jpg';
+import img14 from '../../assets/posts/2023/tomount_puptent/1659711171738-800x600.jpg';
+import img15 from '../../assets/posts/2023/tomount_puptent/1659711173934-800x600.jpg';
+import img16 from '../../assets/posts/2023/tomount_puptent/1659711173296-800x600.jpg';
+import img17 from '../../assets/posts/2023/tomount_puptent/1659711173593-800x600.jpg';
+import img18 from '../../assets/posts/2023/tomount_puptent/1659711174239-800x600.jpg';
+import img19 from '../../assets/posts/2023/tomount_puptent/1659711181002-800x600.jpg';
+import img20 from '../../assets/posts/2023/tomount_puptent/1659711172052-800x600.jpg';
+import img21 from '../../assets/posts/2023/tomount_puptent/1659711174597-800x600.jpg';
+import img22 from '../../assets/posts/2023/tomount_puptent/1659711174239-800x600.jpg';
+import img23 from '../../assets/posts/2023/tomount_puptent/1659711180186-800x600.jpg';
+import img24 from '../../assets/posts/2023/tomount_puptent/1659711179941-800x600.jpg';
+import img25 from '../../assets/posts/2023/tomount_puptent/1659711181002-800x600.jpg';
+import img26 from '../../assets/posts/2023/tomount_puptent/kirakira-women.png';
+import img27 from '../../assets/posts/2023/tomount_puptent/ppuptent-atui-800x600.jpg';
+import img28 from '../../assets/posts/2023/tomount_puptent/1659711174597-800x600.jpg';
+import img29 from '../../assets/posts/2023/tomount_puptent/1690623841992-800x600.jpg';
 
+キャンプを楽しむのに必要不可欠な「テント」。
 
+みなさんはどんなテントを使っていますか？
 
-普通の文章です。
+いまは多種多様なテントが数多く出回っており、人数や用途によって使い分けができます。
 
-また普通の文章に戻ります。
+その中でも私がソロキャンパーの方におすすめしたいのが『**パップテント**』です。
 
-<Balloon
-  icon={k_icon}
-  name="kiritan"
-  side="left"
->
-  このテント、設営がめっちゃ簡単だったよ！
+<Balloon person="sena" type="left">
+パップテント？
 </Balloon>
 
-<Balloon
-  icon={s_icon}
-  name="sena"
-  side="right"
->
-  ほんと？TC 素材なのに軽いのは良いね。
+「パップテント」という言葉にあまり聞きなじみのない方もいますよね。
+
+そこで今回は、
+
+<CaptionBox
+  title=""
+  items={[
+    "パップテントってなに？",
+    "パップテントが人気な理由は？",
+    "パップテントの選び方は？"
+  ]}
+/>
+
+などの気になるポイントを含め、
+
+筆者が愛用している『**TOMOUNTのパップテント**』を<span class="marker-yellow">**1年間使い続けた感想**</span>をもとに詳しくレビューしていきます！
+
+<Balloon person="kiritan" type="left">
+パップテントを使い始めてからソロキャンプがより楽しく、快適になりました！
 </Balloon>
+
+## パップテントってなに？
+
+<ImageWithCaption
+  src={img01.src}
+  caption="ソロベース BDK-79TC　引用元:BUNDOK公式サイト"
+  url="https://kawase-net.jp/products/post-13952/"
+  width="80%"
+  align="center"
+/>
+
+パップテントとは、軍隊が野営するときに使用するものとして開発されたテントです。
+
+**幕と2本のポール、ロープがあれば設営できるシンプルな構造**でつくられています。
+
+一般的なテントとくらべて<span class="marker-yellow">地面がむき出しになっているのが特徴ですね。</span>
+
+<Balloon person="sena" type="right">
+野営スタイルってかんじだね！
+</Balloon>
+
+
+そのため快適に寝るには**キャンプマットやコットの選択が欠かせません。**
+
+↓パップテントにあわせて使えるコットを紹介しています。
+
+<RelatedPosts slug="tomount-2waycotto" caption="あわせて読みたい" />
+
+そんなちょっとだけ不便なパップテントですが、<span class="red">**ある理由**</span>で**ソロキャンパーから高い人気**を得ています。
+
+## パップテントの人気の理由
+
+パップテントがソロキャンパーに人気な理由として、**4つの優れている点**があります。
+
+<CaptionBox
+  title=""
+  items={[
+    "設営が簡単",
+    "難燃性が高い",
+    "アレンジが効きやすい",
+    "見た目がカッコいい"
+  ]}
+/>
+
+### ①設営が簡単
+
+前述でもお伝えしましたが、幕と2本ポール、ロープのみで設営できるシンプルな構造なため、設営も撤収も簡単に済みます。
+
+暑い日に設営や撤収に時間がかかってしまうと体力がごっそり削られますが、パップテントなら平気です。
+
+またパップテントのほとんどが本体重量5kg未満と軽いので、持ち運びやすいのもメリット。\[pcbr\]キャンプツーリングのお供にする人も多いです。
+
+<Balloon person="kiritan" type="left">
+パップテントの起源は、軍人用テントです。  
+素早く行動がとれるように、設営が簡単に作られているそうですよ。
+</Balloon>
+パップテントの起源は、軍人用テントです。  
+素早く行動がとれるように、設営が簡単に作られているそうですよ。
+
+### ②難燃性が高い
+
+**「焚火してたら火の粉が飛んでテントに穴が開いちゃった（泣）」**
+
+なんて悲しい思いをしたことはありませんか？
+
+パップテントの生地は、<span class="marker-yellow"><span class="b">難燃加工が施された<span class="red">難燃性の高い素材</span></span>が採用されています。</span>
+
+テントのそばで焚火をしたり、ガスをつかって調理をしても平気です！
+
+ストレスなくキャンプを満喫できるのはパップテントならではのポイントです。
+
+### ③アレンジが効く仕様
+
+パップテントは簡易的なテントでありながら、前面を張りだしてタープで拡張したような前室がつくれます。
+
+虫よけ蚊帳をつけたり、ポールを二股化にして居住空間を広げたり、設営方法のバリエーションが多いです。
+
+他のテントでは真似できない様々なアレンジが効くのがパップテントの醍醐味でもあります。
+
+<Balloon person="sena" type="left">
+ソロならパップテント1つで快適に過ごせるよ！
+</Balloon>
+
+
+### ④見た目がかっこいい
+
+もともと軍人用のテントであるためかグリーンやブラウンなどのラインナップが多いです。
+
+自然と調和するミリタリー調の色合いと無骨なデザインのパップテントは、キャンプサイトで目立つこと間違いなしです。
+
+ワンポールやドーム型といったテントとは一味違った雰囲気があります。
+
+## パップテントの選び方は？
+
+パップテントの仕様が分かってきたところで、テントの選び方が気になるかと思います。
+
+そこで**パップテントを選ぶ基準**をまとめました！
+
+<CaptionBox
+  title="パップテントを選ぶ基準"
+  items={[
+    "サイズ",
+    "寝生地袋",
+    "ポールの形状",
+    "スカートの有無"
+  ]}
+/>
+
+１つずつ確認していきましょう。
+
+### ①テントのサイズで選ぶ
+
+サイズをチェックしてから購入することは重要です。
+
+パップテントの天井高は、<span class="red">**一般的なテントよりも低め**</span>です。  
+高さが100cmしかないテントもあります。
+
+あまりに低いテントを選ぶとかがんで移動しなくてはいけなくなり、腰に負担がかかりやすく<span class="marker-yellow">**腰痛持ちの方は危険です。**</span>
+
+自分の身長に合わせて選ぶと、快適に過ごせるパップテントを見つけられるでしょう。
+
+<Balloon person="kiritan" type="right">
+初めて購入する方は、**天井高が150cm以上あるパップテント**を選ぶと快適に過ごせます！
+</Balloon>
+
+
+
+### ②テントの素材で選ぶ
+
+パップテントの素材にはいくつか種類があります。
+
+ポリコットン（TC素材）は、**ポリエステルとコットンの混紡素材**で今流行りの素材です。
+
+下記の表にそれぞれの特徴をまとめてみました！
+
+<InfoTable2
+  columns={["ポリエステル","ナイロン","ポリコットン"]}
+  rows={[
+    { label: "重量", values: ["軽い", "軽い","比較的重い"] },
+    { label: "防水性", values: ["良い", "良い","普通"] },
+    { label: "防水性", values: ["低い", "低い","高い"] },
+    { label: "耐久性", values: ["普通", "普通","高い"] },
+    { label: "価格", values: ["普通", "普通","比較的高価"] }
+  ]}
+/>
+
+長期的に使用するなら<span class="red">耐久性</span>と<span class="red">難燃性が高い</span>**ポリコットン製**がオススメです。
+
+ポリエステル・ナイロン製はツーリングや雨天時でもキャンプを楽しみたいっていう方向けになります。
+
+それぞれメリット、デメリットがあるので価格と相談しながら選びましょう！
+
+### ③ポールの形状で選ぶ
+
+パップテントのメインポールには、通常の「1本タイプ」と、ポールを2本使う「二股タイプ」があります。
+
+室内空間をできるだけ確保したい方は断然、<span class="marker-yellow">**二股タイプがオススメです。**</span>
+
+二股にすることでポールに沿ってテント側面を張れるため、テント内のデットスペースが少なくなります。
+
+まずは付属の一本タイプで試してみて広さに満足できなかったら二股ポールを購入すると無駄がないですね。
+
+### ④スカートの有無で選ぶ
+
+意外と見落としがちですがかなり重要なポイントです。
+
+スカートが付いているパップテントであれば、<span class="red">テント内に雨水や冷気が入り込まず</span>快適に過ごせます。
+
+冬キャンも視野にいれているキャンパーは<span class="marker-yellow">**スカート付きを選びましょう。**</span>
+
+\[ad\]
+
+## 筆者が愛用しているのは『TOMOUNTパップテント』
+
+ここからは筆者が愛用してるパップテントを紹介していきます。
+
+私がここ数年、愛用しているのはこちらの商品↓
+
+<ImageWithCaption
+  src={img02.src}
+  caption=""
+  url=""
+  width="70%"
+  align="center"
+/>
+
+**『TOMOUNT』のパップテントです。**
+
+<Balloon person="man_ayashii" type="left">
+TOMOUNTってどこのメーカー？名前聞いたことないから怪しいな…
+</Balloon>
+
+と警戒する人もいると思います。
+
+**実際のところ私も購入するまでは<span class="red">そっち側の人間でした。</span>**
+
+そこでTOMOUNTを知らない人に向けて、このメーカーについて別記事で紹介しています。  
+記事を読むと<span class="red">**安心できるメーカー**</span>であることが分かりますよ♪
+
+<RelatedPosts slug="tomount-2waycotto" caption="あわせて読みたい" />
+
+### TOMOUNTパップテントはどんな商品？
+
+TOMOUNTパップテントはAmazonでのレビュー数は730件超え、<span class="red">★4.3を獲得する人気商品です。</span>
+
+<span class="marker-yellow">**使って満足したというユーザーの声**が非常に多く見受けられます。</span>
+
+### TOMOUNT パップテントのスペック
+
+TOMOUNTのパップテントは、値段は約12,000円と低価格帯にもかかわらず、必要な機能はひと通り兼ね備えています。
+
+<InfoTable
+  items={[
+    { label: "カラー", value: "アイボリー" },
+    { label: "本体サイズ", value: "テント：長さ360cmｘ幅200cmｘ高さ115cm<br>インナーテント：長さ210cmｘ幅80cmｘ高さ100cm" },
+    { label: "収納時サイズ", value: "50ｘ20ｘ20cm" },
+    { label: "重量", value: "5.7kg" },
+    { label: "材質", value: "テント生地：ポリコットン<br>インナーテント：210Dオックスフォード（底面）" }
+]}
+  note=""
+/>
+
+<ImageCompare
+    left={img03.src}
+    right={img04.src}
+    leftLabel="難燃性・耐久性に優れたT/C生地"
+    rightLabel="ポリコットンだから耐水性もあり"
+
+    left2={img05.src}
+    right2={img06.src}
+    leftLabel2="フルクローズ可能メッシュ付きインナーテント"
+    rightLabel2="冷気や雨風を防げるスカート付き"
+
+    left3={img07.src}
+    right3={img08.src}
+    leftLabel3="操作しやすいダブルジッパー"
+    rightLabel3="室内にランタンフックを搭載"
+
+    overlay={true}
+/>
+
+ただ、ポールはメインの2本しか付属していないので、前面を張り出すには別途サブポールの準備が必要です。
+
+<ImageWithCaption
+  src={img09.src}
+  caption=""
+  url=""
+  width="50%"
+  align="left"
+/>
+
+
+<Balloon person="kiritan" type="left">
+サブポールは高さ調整ができる分割タイプがオススメです。
+</Balloon>
+
+<MoshimoCard
+  html={`<!-- START MoshimoAffiliateEasyLink --><script type="text/javascript">(function(b,c,f,g,a,d,e){b.MoshimoAffiliateObject=a;b[a]=b[a]||function(){arguments.currentScript=c.currentScript||c.scripts[c.scripts.length-2];(b[a].q=b[a].q||[]).push(arguments)};c.getElementById(a)||(d=c.createElement(f),d.src=g,d.id=a,e=c.getElementsByTagName("body")[0],e.appendChild(d))})(window,document,"script","//dn.msmstatic.com/site/cardlink/bundle.js?20220329","msmaflink");msmaflink({"n":"VASTLAND(ヴァストランド) テントポール タープポール スチール 2本セット ブラック 最長174cm 直径16mm 収納袋付き","b":"ヴァストランド(VASTLAND)","t":"VL0264","d":"https:\/\/m.media-amazon.com","c_p":"\/images\/I","p":["\/418u7nrv4DL._SL500_.jpg","\/5162HTpU2RL._SL500_.jpg","\/516FWZyZkaL._SL500_.jpg","\/51VJYswH-7L._SL500_.jpg","\/51vz2n6GYgL._SL500_.jpg","\/51h5KvvuWoL._SL500_.jpg","\/51Qzol2xmqL._SL500_.jpg"],"u":{"u":"https:\/\/www.amazon.co.jp\/dp\/B0B2DG12HG","t":"amazon","r_v":""},"v":"2.1","b_l":[{"id":1,"u_tx":"Amazonで見る","u_bc":"#f79256","u_url":"https:\/\/www.amazon.co.jp\/dp\/B0B2DG12HG","a_id":3559162,"p_id":170,"pl_id":27060,"pc_id":185,"s_n":"amazon","u_so":1},{"id":2,"u_tx":"楽天市場で見る","u_bc":"#f76956","u_url":"https:\/\/search.rakuten.co.jp\/search\/mall\/VASTLAND(%E3%83%B4%E3%82%A1%E3%82%B9%E3%83%88%E3%83%A9%E3%83%B3%E3%83%89)%20%E3%83%86%E3%83%B3%E3%83%88%E3%83%9D%E3%83%BC%E3%83%AB%20%E3%82%BF%E3%83%BC%E3%83%97%E3%83%9D%E3%83%BC%E3%83%AB%20%E3%82%B9%E3%83%81%E3%83%BC%E3%83%AB%202%E6%9C%AC%E3%82%BB%E3%83%83%E3%83%88%20%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF%20%E6%9C%80%E9%95%B7174cm%20%E7%9B%B4%E5%BE%8416mm%20%E5%8F%8E%E7%B4%8D%E8%A2%8B%E4%BB%98%E3%81%8D\/","a_id":3550058,"p_id":54,"pl_id":27059,"pc_id":54,"s_n":"rakuten","u_so":2},{"id":3,"u_tx":"Yahoo!ショッピングで見る","u_bc":"#66a7ff","u_url":"https:\/\/shopping.yahoo.co.jp\/search?first=1\u0026p=VASTLAND(%E3%83%B4%E3%82%A1%E3%82%B9%E3%83%88%E3%83%A9%E3%83%B3%E3%83%89)%20%E3%83%86%E3%83%B3%E3%83%88%E3%83%9D%E3%83%BC%E3%83%AB%20%E3%82%BF%E3%83%BC%E3%83%97%E3%83%9D%E3%83%BC%E3%83%AB%20%E3%82%B9%E3%83%81%E3%83%BC%E3%83%AB%202%E6%9C%AC%E3%82%BB%E3%83%83%E3%83%88%20%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF%20%E6%9C%80%E9%95%B7174cm%20%E7%9B%B4%E5%BE%8416mm%20%E5%8F%8E%E7%B4%8D%E8%A2%8B%E4%BB%98%E3%81%8D","a_id":3550138,"p_id":1225,"pl_id":27061,"pc_id":1925,"s_n":"yahoo","u_so":3}],"eid":"TSwWI","s":"s"});</script><div id="msmaflink-TSwWI">リンク</div><!-- MoshimoAffiliateEasyLink END -->`}
+/>
+
+## TOMOUNTパップテントの組み立て方
+
+ここからは実際に使っている様子をお伝えします。
+
+<ImageWithCaption
+  src={img10.src}
+  caption=""
+  url=""
+  width="100%"
+  align="left"
+/>
+
+まずは組み立て方について説明していきます。
+
+付属品は以下の通りです。
+
+<ImageCompare
+    left={img11.src}
+    right={img12.src}
+
+/>
+
+<CaptionBox
+  title="付属品"
+  items={[
+    "テント",
+    "インナーテント",
+    "メインポール×2本",
+    "ペグ×22本",
+    "ガイロープ×6本（2m×4本、2.5m×2本）"
+  ]}
+/>
+
+それでは組み立てていきます。  
+（所要時間は10分程度）
+
+<StepBlock
+  step={1}
+  title="メインポールを2本組み立てる"
+  text=""
+  images={[img13.src]}
+  imagewidth="80%"
+  caption=""/>
+
+<StepBlock
+  step={2}
+  title="テントを広げる"
+  text=""
+  images={[img14.src]}
+  imagewidth="80%"
+  caption=""/>
+
+<StepBlock
+  step={3}
+  title="メインポールをテントの端の穴（2箇所）に差し込み立ち上げる"
+  text={"立ち上げと同時に、片側2箇所ずつガイロープを張ります。\nこのとき使用するガイロープは2mのものです。"}
+  images={[img15.src]}
+  imagewidth="80%"
+  caption=""/>
+
+ <StepBlock
+  step={4}
+  title="テントの周囲のペグを打ち込む（8箇所）"
+  text=""
+  images={[img16.src,img17.src]}
+  imagewidth="80%"
+  caption="ペグを打ち込んだらアジャスターで張り具合を調整します。"/>
+
+<StepBlock
+  step={5}
+  title="サブポール（別途用意）を使って前面を張り出す"
+  text="メインポールよりサブポールを少し高くすると、広々と快適な空間になります。  "
+  images={[img18.src]}
+  imagewidth="80%"
+  caption="ここでは2.5mのガイロープを使用します"/>
+
+  <StepBlock
+  step={6}
+  title="各所テンションを調整したら完成！"
+  text=""
+  images={[img19.src]}
+  imagewidth="80%"
+  caption="ここまで初めての方でも15分足らずで設営できます。"/>
+
+<Balloon person="sena" type="left">
+パップテントは設営がかんたん♪
+</Balloon>
+
+<ImageWithCaption
+  src={img20.src}
+  caption=""
+  url=""
+  width="80%"
+  align="left"
+/>
+
+付属品のインナーテントは日中は邪魔になるので寝る前に取り付けます。
+
+吊り下げ式なので天井のフックに引っ掛けるだけの簡単設計です！
+
+<ImageWithCaption
+  src={img21.src}
+  caption="パップテントの中からの眺めはこんなかんじ。シンプルな構造ですが広く快適に過ごせます。"
+  url=""
+  width="100%"
+  align="center"
+/>
+
+
+## TOMOUNTパップテントの使用感について
+
+<ImageWithCaption
+  src={img22.src}
+  caption=""
+  url=""
+  width="100%"
+  align="center"
+/>
+
+続いて実際に使用した感想を伝えていきます。
+
+今回は同じメーカーであるTOMOUNTのコットと合わせてみました。色合いもいいので。
+
+<ImageWithCaption
+  src={img23.src}
+  caption=""
+  url=""
+  width="100%"
+  align="center"
+/>
+
+テント内の広さは奥行きがあまりないものの、横幅は広くつくられているため窮屈さは感じられません。
+
+高さが115cmと低めなのがパップテントの特徴でもあり<span class="red">デメリットでもありますが</span>、座って作業する分には**なにも問題もありませんでした。**
+
+ただ移動するときは少し屈まないと頭が擦れるので、慣れるまではしんどいです。
+
+<ImageWithCaption
+  src={img24.src}
+  caption=""
+  url=""
+  width="100%"
+  align="center"
+/>
+
+続いて居住スペースについてです。
+
+パップテントの前面を張り出しているおかげで写真でみるより**だいぶ広く感じます。**
+
+<ImageWithCaption
+  src={img25.src}
+  caption=""
+  url=""
+  width="100%"
+  align="center"
+/>
+
+写真のようにソロ用にギアをいくつか置いても、すべてテント下で作業できるほどに広い空間でした。
+
+<Balloon person="kiritan" type="left">
+めちゃくちゃ快適です！
+</Balloon>
+
+またポールの左右やコットの下に空きスペースがあります。
+
+テントをフルクローズしたときに<span class="b">荷物が外にほったらかしになり、夜露でびしょびしょ。</span>  
+なんて悲劇が起きないのが<span class="red-b">嬉しいポイント</span>です。
+
+
+<ImageWithCaption
+  src={img26.src}
+  caption=""
+  url=""
+  width="30%"
+  align="left"
+/>
+そして気になるのは<span class="b">スカート付きのテントってどうなんだい？</span>ってところ。
+
+<span class="blue">**スカートの効果でテント内への風の吹き込みがなく快適に過ごせる！**</span>  
+と思いきや<span class="red">暑い・・。</span>
+
+**<span class="red">テントの中がめちゃくちゃ暑い！！</span>　です。**
+
+<ImageWithCaption
+  src={img27.src}
+  caption=""
+  url=""
+  width="100%"
+  align="center"
+/>
+
+この日は10年に1度の酷暑日。<span class="red">**危うく死にかけました。**</span>
+
+どうやら<span class="marker-yellow">**夏はスカートを捲り上げて通気性を上げたほうがいい**みたいです…。</span>
+
+<Balloon person="sena" type="right">
+でも冬は暖かそうだね(笑)
+</Balloon>
+
+
+<ImageWithCaption
+  src={img28.src}
+  caption=""
+  url=""
+  width="100%"
+  align="center"
+/>
+
+とまあいろいろ感想がありましたが、まとめると以下の通りです。
+
+<CompareBox
+  leftTitle=" 良かった点"
+  rightTitle=" イマイチだった点"
+  leftItems={[
+    " 設営・撤収が簡単で早い",
+    "テント内が思ったより広い",
+    "生地が厚く遮光性が高い",
+    "近くで焚き火が楽しめた"
+  ]}
+  rightItems={[
+    " 通気性があまりよくない",
+    "濡れると乾くまで時間がかかる（コットン特有の問題）"
+  ]}
+/>
+
+コットン特有の問題で濡れると生地に水分が浸透してしまい、乾くまで時間がかかります。  
+雨の日は撥水性が高いテントを使ったほうが、あと片付けが楽かなぁと思います。
+
+その他は現状特に不満点は見つかりません。
+
+<Balloon person="kiritan" type="left">
+パップテント恐るべし…。
+</Balloon>
+
+## SNSの評判
+
+最後にSNSで口コミをチェックしてみましょう。
+
+<TwitterEmbed url="https://twitter.com/yokosanGOGO/status/1601553700753141760?ref_src=twsrc%5Etfw" />
+
+<TwitterEmbed url="https://twitter.com/zex_frion/status/1404457201603780611?ref_src=twsrc%5Etfw" />
+
+<TwitterEmbed url="https://twitter.com/yaaakun_camp/status/1667859345605005317?ref_src=twsrc%5Etfw" />
+
+<TwitterEmbed url="https://twitter.com/solo_camper928/status/1638060412758528000?ref_src=twsrc%5Etfw" />
+
+<TwitterEmbed url="https://twitter.com/yokosanGOGO/status/1635051976722649089?ref_src=twsrc%5Etfw" />
+
+<TwitterEmbed url="https://twitter.com/sasurai_okk/status/1593111128691068929?ref_src=twsrc%5Etfw" />
+
+<CaptionBox
+  title=""
+  items={[
+    "見た目に一目惚れして思わず選んだ",
+    "15分以内で設営できた",
+    "10％割引でお得に買っちゃった"
+  ]}
+/>
+
+
+口コミではみなさん楽しそうにキャンプされていました。
+
+<span class="marker-yellow">そして**意外と女性キャンパーの使用率が高かった**のが印象にのこりました。</span>
+
+<Balloon person="sena" type="left">
+TOMOUNTのパップテントは色合いが可愛いから女性でも使いやすいよ！
+</Balloon>
+
+Amazonでは<span class="red">定期的にセールを実施しています</span>。  
+セール時にはかなり安く購入できる高コスパなパップテントです。
+
+<MoshimoCard
+  html={`<!-- START MoshimoAffiliateEasyLink --><script type="text/javascript">(function(b,c,f,g,a,d,e){b.MoshimoAffiliateObject=a;b[a]=b[a]||function(){arguments.currentScript=c.currentScript||c.scripts[c.scripts.length-2];(b[a].q=b[a].q||[]).push(arguments)};c.getElementById(a)||(d=c.createElement(f),d.src=g,d.id=a,e=c.getElementsByTagName("body")[0],e.appendChild(d))})(window,document,"script","//dn.msmstatic.com/site/cardlink/bundle.js?20220329","msmaflink");msmaflink({"n":"TOMOUNT パップテント TC軍幕 ソロテント ポリコットン 煙突穴付き インナー付き サイドウォール付き 多機能 日よけ 焚火 遮光 4シーズン適用 (グリーン)","b":"EVERPEAK","t":"12345touch","d":"https:\/\/m.media-amazon.com","c_p":"\/images\/I","p":["\/31EPvtdUyrL._SL500_.jpg","\/51RTZdIkLxL._SL500_.jpg","\/61QXkCXTzNL._SL500_.jpg","\/61Ez1mLVa5L._SL500_.jpg","\/51TlKjWv5VL._SL500_.jpg","\/41Q+BQgfKmL._SL500_.jpg","\/51oahYTvcWL._SL500_.jpg"],"u":{"u":"https:\/\/www.amazon.co.jp\/dp\/B0FH6NVK1P","t":"amazon","r_v":""},"v":"2.1","b_l":[{"id":1,"u_tx":"Amazonで見る","u_bc":"#f79256","u_url":"https:\/\/www.amazon.co.jp\/dp\/B0FH6NVK1P","a_id":3559162,"p_id":170,"pl_id":27060,"pc_id":185,"s_n":"amazon","u_so":1},{"id":2,"u_tx":"楽天市場で見る","u_bc":"#f76956","u_url":"https:\/\/search.rakuten.co.jp\/search\/mall\/TOMOUNT%20%E3%83%91%E3%83%83%E3%83%97%E3%83%86%E3%83%B3%E3%83%88%20TC%E8%BB%8D%E5%B9%95%20%E3%82%BD%E3%83%AD%E3%83%86%E3%83%B3%E3%83%88%20%E3%83%9D%E3%83%AA%E3%82%B3%E3%83%83%E3%83%88%E3%83%B3%20%E7%85%99%E7%AA%81%E7%A9%B4%E4%BB%98%E3%81%8D%20%E3%82%A4%E3%83%B3%E3%83%8A%E3%83%BC%E4%BB%98%E3%81%8D%20%E3%82%B5%E3%82%A4%E3%83%89%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB%E4%BB%98%E3%81%8D%20%E5%A4%9A%E6%A9%9F%E8%83%BD%20%E6%97%A5%E3%82%88%E3%81%91%20%E7%84%9A%E7%81%AB%20%E9%81%AE%E5%85%89%204%E3%82%B7%E3%83%BC%E3%82%BA%E3%83%B3%E9%81%A9%E7%94%A8%20(%E3%82%B0%E3%83%AA%E3%83%BC%E3%83%B3)\/","a_id":3550058,"p_id":54,"pl_id":27059,"pc_id":54,"s_n":"rakuten","u_so":2},{"id":3,"u_tx":"Yahoo!ショッピングで見る","u_bc":"#66a7ff","u_url":"https:\/\/shopping.yahoo.co.jp\/search?first=1\u0026p=TOMOUNT%20%E3%83%91%E3%83%83%E3%83%97%E3%83%86%E3%83%B3%E3%83%88%20TC%E8%BB%8D%E5%B9%95%20%E3%82%BD%E3%83%AD%E3%83%86%E3%83%B3%E3%83%88%20%E3%83%9D%E3%83%AA%E3%82%B3%E3%83%83%E3%83%88%E3%83%B3%20%E7%85%99%E7%AA%81%E7%A9%B4%E4%BB%98%E3%81%8D%20%E3%82%A4%E3%83%B3%E3%83%8A%E3%83%BC%E4%BB%98%E3%81%8D%20%E3%82%B5%E3%82%A4%E3%83%89%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB%E4%BB%98%E3%81%8D%20%E5%A4%9A%E6%A9%9F%E8%83%BD%20%E6%97%A5%E3%82%88%E3%81%91%20%E7%84%9A%E7%81%AB%20%E9%81%AE%E5%85%89%204%E3%82%B7%E3%83%BC%E3%82%BA%E3%83%B3%E9%81%A9%E7%94%A8%20(%E3%82%B0%E3%83%AA%E3%83%BC%E3%83%B3)","a_id":3550138,"p_id":1225,"pl_id":27061,"pc_id":1925,"s_n":"yahoo","u_so":3}],"eid":"9wYph","s":"s"});</script><div id="msmaflink-9wYph">リンク</div><!-- MoshimoAffiliateEasyLink END -->`}
+/>
+
+
+## 【まとめ】TOMOUNTパップテントは高コスパでこれから始める人におすすめ！
+
+<CaptionBox
+  title="おすすめポイント"
+  items={[
+    "パップテントは設営・撤収が簡単！",
+    "TC素材で難燃性が高く焚き火キャンプができる！",
+    "人気メーカーBUNDOKにはないカラー展開！",
+    "スカート付きで4シーズン対応！"
+  ]}
+/>
+
+パップテントを購入する前は、ドームテントとタープを使ってソロキャンプを楽しんでいました。いつも設営に30分以上費やし、設営し終わるころはいつもクタクタになっているのが当たり前…。
+
+しかしパップテントは「テント+タープ」の機能を兼ね備えつつ、15分以内と短時間で設営できちゃう魅力的なテントです！
+
+<Balloon person="kiritan" type="right">
+私にソロキャンプの手軽さを教えてくれた神アイテムです。
+</Balloon>
+
+まだ使ったことがない方は、この機会にパップテントを検討してみてはいかがでしょうか？
+
+<MoshimoCard
+  html={`<!-- START MoshimoAffiliateEasyLink --><script type="text/javascript">(function(b,c,f,g,a,d,e){b.MoshimoAffiliateObject=a;b[a]=b[a]||function(){arguments.currentScript=c.currentScript||c.scripts[c.scripts.length-2];(b[a].q=b[a].q||[]).push(arguments)};c.getElementById(a)||(d=c.createElement(f),d.src=g,d.id=a,e=c.getElementsByTagName("body")[0],e.appendChild(d))})(window,document,"script","//dn.msmstatic.com/site/cardlink/bundle.js?20220329","msmaflink");msmaflink({"n":"TOMOUNT パップテント TC軍幕 ソロテント ポリコットン 煙突穴付き インナー付き サイドウォール付き 多機能 日よけ 焚火 遮光 4シーズン適用 (グリーン)","b":"EVERPEAK","t":"12345touch","d":"https:\/\/m.media-amazon.com","c_p":"\/images\/I","p":["\/31EPvtdUyrL._SL500_.jpg","\/51RTZdIkLxL._SL500_.jpg","\/61QXkCXTzNL._SL500_.jpg","\/61Ez1mLVa5L._SL500_.jpg","\/51TlKjWv5VL._SL500_.jpg","\/41Q+BQgfKmL._SL500_.jpg","\/51oahYTvcWL._SL500_.jpg"],"u":{"u":"https:\/\/www.amazon.co.jp\/dp\/B0FH6NVK1P","t":"amazon","r_v":""},"v":"2.1","b_l":[{"id":1,"u_tx":"Amazonで見る","u_bc":"#f79256","u_url":"https:\/\/www.amazon.co.jp\/dp\/B0FH6NVK1P","a_id":3559162,"p_id":170,"pl_id":27060,"pc_id":185,"s_n":"amazon","u_so":1},{"id":2,"u_tx":"楽天市場で見る","u_bc":"#f76956","u_url":"https:\/\/search.rakuten.co.jp\/search\/mall\/TOMOUNT%20%E3%83%91%E3%83%83%E3%83%97%E3%83%86%E3%83%B3%E3%83%88%20TC%E8%BB%8D%E5%B9%95%20%E3%82%BD%E3%83%AD%E3%83%86%E3%83%B3%E3%83%88%20%E3%83%9D%E3%83%AA%E3%82%B3%E3%83%83%E3%83%88%E3%83%B3%20%E7%85%99%E7%AA%81%E7%A9%B4%E4%BB%98%E3%81%8D%20%E3%82%A4%E3%83%B3%E3%83%8A%E3%83%BC%E4%BB%98%E3%81%8D%20%E3%82%B5%E3%82%A4%E3%83%89%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB%E4%BB%98%E3%81%8D%20%E5%A4%9A%E6%A9%9F%E8%83%BD%20%E6%97%A5%E3%82%88%E3%81%91%20%E7%84%9A%E7%81%AB%20%E9%81%AE%E5%85%89%204%E3%82%B7%E3%83%BC%E3%82%BA%E3%83%B3%E9%81%A9%E7%94%A8%20(%E3%82%B0%E3%83%AA%E3%83%BC%E3%83%B3)\/","a_id":3550058,"p_id":54,"pl_id":27059,"pc_id":54,"s_n":"rakuten","u_so":2},{"id":3,"u_tx":"Yahoo!ショッピングで見る","u_bc":"#66a7ff","u_url":"https:\/\/shopping.yahoo.co.jp\/search?first=1\u0026p=TOMOUNT%20%E3%83%91%E3%83%83%E3%83%97%E3%83%86%E3%83%B3%E3%83%88%20TC%E8%BB%8D%E5%B9%95%20%E3%82%BD%E3%83%AD%E3%83%86%E3%83%B3%E3%83%88%20%E3%83%9D%E3%83%AA%E3%82%B3%E3%83%83%E3%83%88%E3%83%B3%20%E7%85%99%E7%AA%81%E7%A9%B4%E4%BB%98%E3%81%8D%20%E3%82%A4%E3%83%B3%E3%83%8A%E3%83%BC%E4%BB%98%E3%81%8D%20%E3%82%B5%E3%82%A4%E3%83%89%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB%E4%BB%98%E3%81%8D%20%E5%A4%9A%E6%A9%9F%E8%83%BD%20%E6%97%A5%E3%82%88%E3%81%91%20%E7%84%9A%E7%81%AB%20%E9%81%AE%E5%85%89%204%E3%82%B7%E3%83%BC%E3%82%BA%E3%83%B3%E9%81%A9%E7%94%A8%20(%E3%82%B0%E3%83%AA%E3%83%BC%E3%83%B3)","a_id":3550138,"p_id":1225,"pl_id":27061,"pc_id":1925,"s_n":"yahoo","u_so":3}],"eid":"9wYph","s":"s"});</script><div id="msmaflink-9wYph">リンク</div><!-- MoshimoAffiliateEasyLink END -->`}
+/>
+
+
+<ImageWithCaption
+  src={img29.src}
+  caption=""
+  url=""
+  width="100%"
+  align="center"
+/>

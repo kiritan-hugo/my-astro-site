@@ -1,0 +1,115 @@
+---
+const {
+  step = 1,
+  title = "",
+  text = "",
+  images = [],          // ★ image → images（複数対応）
+  caption = "",
+  imagewidth = "100%",
+  children
+} = Astro.props;
+---
+
+<div class="step-item">
+  <div class="step-content">
+
+    <div class="step-header">
+      <div class="step-tag">STEP {step}</div>
+      <div class="step-title">{title}</div>
+    </div>
+
+    <!-- ★ テキスト内で \n を改行として扱う -->
+    <p class="step-text">{text}</p>
+
+    <!-- ★ 複数画像対応 -->
+    {images.length > 0 && (
+      <div class="step-images">
+        {images.map(img => (
+          <div class="step-image-wrap">
+            <img
+              src={img}
+              alt=""
+              class="step-image"
+              style={{ width: imagewidth }}
+            />
+          </div>
+        ))}
+
+        {caption && <div class="step-caption">{caption}</div>}
+
+        <!-- ★ 画像の下に children を挿入 -->
+        {children}
+      </div>
+    )}
+
+  </div>
+</div>
+
+<style>
+.step-item {
+  margin: 1.6rem 0;
+}
+
+.step-content {
+  background: #f4faf8;
+  padding: 1rem 1.2rem;
+  border-radius: 10px;
+  border: 1px solid #dcebe7;
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.step-tag {
+  background: #59b29f;
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px 6px 6px 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.step-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.step-text {
+  margin: 0;
+  line-height: 1.7;
+  color: #444;
+  white-space: pre-line; /* ★ 改行を反映 */
+}
+
+/* ★ 複数画像を縦に並べる（横並びにしたいなら row に変更） */
+.step-images {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+
+.step-image-wrap {
+  display: inline-block;
+  text-align: center;
+}
+
+.step-image {
+  border-radius: 0px;
+}
+
+.step-caption {
+  margin-top: -0.5rem;
+  font-size: 0.85rem;
+  color: #6a7f78;
+  text-align: center;
+}
+</style>

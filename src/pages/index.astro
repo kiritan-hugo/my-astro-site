@@ -9,6 +9,15 @@ export const prerender = {
   expiration: 60 * 60 * 24, // 24時間
 };
 
+// 日付フォーマット関数
+const formatDate = (date) => {
+  const d = new Date(date);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+};
+
 const posts = await getCollection('blog');
 // 日付の降順に並べる
 posts.sort((a, b) => b.data.pubDate - a.data.pubDate);
@@ -94,7 +103,7 @@ const categorySections = {
                   {post.data.category}
                 </span>
                 <h3>{post.data.title}</h3>
-                <p class="post-date"><i class="fa-regular fa-clock"></i> {post.data.pubDate.toLocaleDateString()}</p>
+                <p class="post-date"><i class="fa-regular fa-clock"></i> {formatDate(post.data.pubDate)}</p>
               </div>
             </a>
           ))}
@@ -119,7 +128,7 @@ const categorySections = {
 
                 <p class="post-date">
                   <i class="fa-regular fa-clock"></i>
-                  {post.astro.data.pubDate.toLocaleDateString()}
+                  {formatDate(post.astro.data.pubDate)}
                 </p>
 
                 <p class="post-date">{post.pageviews} PV</p>
@@ -149,7 +158,7 @@ const categorySections = {
                   {post.data.category}
                 </span>
                 <h3>{post.data.title}</h3>
-                <p class="post-date"><i class="fa-regular fa-clock"></i> {post.data.pubDate.toLocaleDateString()}</p>
+                <p class="post-date"><i class="fa-regular fa-clock"></i> {formatDate(post.data.pubDate)}</p>
               </div>
             </a>
           ))}
@@ -169,7 +178,7 @@ const categorySections = {
                   {post.data.category}
                 </span>
                 <h3>{post.data.title}</h3>
-                <p class="post-date"><i class="fa-regular fa-clock"></i> {post.data.pubDate.toLocaleDateString()}</p>
+                <p class="post-date"><i class="fa-regular fa-clock"></i> {formatDate(post.data.pubDate)}</p>
               </div>
             </a>
           ))}
@@ -190,7 +199,7 @@ const categorySections = {
                   {post.data.category}
                 </span>
                 <h3>{post.data.title}</h3>
-                <p class="post-date"><i class="fa-regular fa-clock"></i> {post.data.pubDate.toLocaleDateString()}</p>
+                <p class="post-date"><i class="fa-regular fa-clock"></i> {formatDate(post.data.pubDate)}</p>
               </div>
             </a>
           ))}
@@ -210,7 +219,7 @@ const categorySections = {
                   {post.data.category}
                 </span>
                 <h3>{post.data.title}</h3>
-                <p class="post-date"><i class="fa-regular fa-clock"></i> {post.data.pubDate.toLocaleDateString()}</p>
+                <p class="post-date"><i class="fa-regular fa-clock"></i> {formatDate(post.data.pubDate)}</p>
               </div>
             </a>
           ))}
@@ -225,7 +234,7 @@ const categorySections = {
       <div class="profile-grid">
 <!-- 1人目プロフィール -->
         <div class="profile-card">
-          <img src="/src/assets/images/kiritan_profile.jpg" alt="profile" class="profile-image" />
+          <img src="/public/images/kiritan_profile.jpg" alt="profile" class="profile-image" />
 
           <h2 class="profile-name">kiritan</h2>
           <p class="profile-subname">わたしが編集者のアシクサだ。 </p>
@@ -243,7 +252,7 @@ const categorySections = {
 
 <!-- 2人目プロフィール -->
         <div class="profile-card">
-          <img src="/src/assets/images/sena_profile.png" alt="profile" class="profile-image" />
+          <img src="/public/images/sena_profile.png" alt="profile" class="profile-image" />
 
           <h2 class="profile-name">sena</h2>
           <p class="profile-subname">アシスタントとアシクサの飼い主。 </p>
@@ -350,15 +359,15 @@ body {
 }
 
 .hero-content h1 {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   font-weight: 400;
-  margin-bottom: 1.9rem;
+  margin-bottom: 2.5rem;
   letter-spacing: 0.05em;
   color: #fff;
 }
 
 .hero-content p {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   opacity: 0.9;
   color: #fff;
 }

@@ -15,7 +15,30 @@ import CompareBox from "../../components/CompareBox.astro";
 import RelatedPosts from "../../components/RelatedPosts.astro";
 import MapEmbed from "../../components/MapEmbed.astro";
 import ImageCompare from "../../components/ImageCompare.astro";
+import ImageWithCaption from '../../components/ImageWithCaption.astro';
 
+import img01 from '../../assets/posts/2022/usinodamu/20220728_141405-800x600.jpg';
+import img02 from '../../assets/posts/2022/usinodamu/20220728_141445-800x600.jpg';
+import img03 from '../../assets/posts/2022/usinodamu/point-9-1-800x600.jpg';
+import img04 from '../../assets/posts/2022/usinodamu/20220728_141548.jpg';
+import img05 from '../../assets/posts/2022/usinodamu/20220728_141600.jpg';
+import img06 from '../../assets/posts/2022/usinodamu/20220728_141621-800x600.jpg';
+import img07 from '../../assets/posts/2022/usinodamu/1666918914048-800x600.jpg';
+import img08 from '../../assets/posts/2022/usinodamu/1666917447053.jpg';
+import img09 from '../../assets/posts/2022/usinodamu/1666918420688.jpg';
+import img10 from '../../assets/posts/2022/usinodamu/1666917445850.jpg';
+import img11 from '../../assets/posts/2022/usinodamu/1666918420230.jpg';
+import img12 from '../../assets/posts/2022/usinodamu/1666918419862-800x600.jpg';
+import img13 from '../../assets/posts/2022/usinodamu/1666918418911-800x600.jpg';
+import img14 from '../../assets/posts/2022/usinodamu/1666918419359-800x600.jpg';
+import img15 from '../../assets/posts/2022/usinodamu/1666918418552-800x600.jpg';
+import img16 from '../../assets/posts/2022/usinodamu/1666918331381-800x600.jpg';
+import img17 from '../../assets/posts/2022/usinodamu/images.jpg';
+import img18 from '../../assets/posts/2022/usinodamu/images-1.jpg';
+import img19 from '../../assets/posts/2022/usinodamu/images-2.jpg';
+import img20 from '../../assets/posts/2022/usinodamu/1689559845042-800x600.jpg';
+import img21 from '../../assets/posts/2022/usinodamu/1689559843918-800x600.jpg';
+import img22 from '../../assets/posts/2022/usinodamu/point-18-800x600.jpg';
 
 キャンプをするにあたって気になるのがキャンプ場の利用料金。
 
@@ -49,7 +72,7 @@ import ImageCompare from "../../components/ImageCompare.astro";
 
 ## 牛野ダムキャンプ場｜宮城県大衡村
 
-<img src="/src/assets/posts/2022/usinodamu/20220728_141405-800x600.jpg" alt="牛野ダムキャンプ場案内図" />
+<img src={img01.src} alt="" />
 
 牛野ダムキャンプ場は、宮城県大衡村にある牛野ダムの周囲につくられた湖畔サイトです。
 
@@ -99,7 +122,7 @@ import ImageCompare from "../../components/ImageCompare.astro";
 
 ### メインエリア
 
-<img src="/src/assets/posts/2022/usinodamu/20220728_141445-800x600.jpg" alt="牛野ダムキャンプ場メインエリア" />
+<img src={img02.src} alt="" />
 
 ここのエリアは全体的に平地で斜面が少ないのが特徴です。
 
@@ -131,13 +154,11 @@ import ImageCompare from "../../components/ImageCompare.astro";
 
 ### 対岸エリア
 
-<img src="/src/assets/posts/2022/usinodamu/point-9-1-800x600.jpg" alt="牛野ダムキャンプ場林間エリア" />
+<img src={img03.src} alt="" />
 
 こちらは設営場所が斜面になっている所が多く、広く設営するには不向きに感じます。
 
 また林間サイトなので虫がかなり多いです。
-
-虫が苦手なキャンパーさんは結構キツイかも…
 
 ただ、木々が多いため木陰でタープいらずなのと、湖畔が目の前にあり眺めがいいところがメリットです。
 
@@ -174,7 +195,7 @@ import ImageCompare from "../../components/ImageCompare.astro";
 ### 炊事場
 
 <div class="image-wrap">
-  <img src="/src/assets/posts/2022/usinodamu/20220728_141548.jpg" alt="キャンプ場炊事棟" />
+  <img src={img04.src} alt="キャンプ場炊事棟" />
   <CaptionSource source="▲炊事棟" />
 </div>
 
@@ -183,7 +204,7 @@ import ImageCompare from "../../components/ImageCompare.astro";
 かまどが4基ありました。
 
 <div class="image-wrap">
-  <img src="/src/assets/posts/2022/usinodamu/20220728_141600.jpg" alt="キャンプ場水道" />
+  <img src={img05.src} alt="キャンプ場水道" />
   <CaptionSource source="▲コイン式の水道" />
 </div>
 
@@ -194,7 +215,7 @@ import ImageCompare from "../../components/ImageCompare.astro";
 ### トイレ
 
 <div class="image-wrap">
-  <img src="/src/assets/posts/2022/usinodamu/20220728_141621-800x600.jpg" alt="牛野ダムキャンプ場トイレ" />
+  <img src={img06.src} alt="牛野ダムキャンプ場トイレ" />
   <CaptionSource source="冬季は多目的トイレのみ利用できます" />
 </div>
 
@@ -222,7 +243,7 @@ import ImageCompare from "../../components/ImageCompare.astro";
 
 森が秋色に深まる10月に牛野ダムキャンプ場に遊びに行きました。
 
-<img src="/src/assets/posts/2022/usinodamu/1666918914048-800x600.jpg" alt="" />
+<img src={img07.src} alt="" />
 
 この日は秋晴れで空気が澄んでおり暑くもなく寒くもなくといった気温。  
 広葉樹はすっかり色づいて秋らしい一面をみせてます。
@@ -230,13 +251,13 @@ import ImageCompare from "../../components/ImageCompare.astro";
 牛野ダムキャンプ場は毎年夏が終わる頃に放流するらしく、ダム湖がカラカラになっていました。
 
 <ImageCompare
-    left="/src/assets/posts/2022/usinodamu/1666917447053.jpg"
-    right="/src/assets/posts/2022/usinodamu/1666918420688.jpg"
+    left={img08.src}
+    right={img09.src}
     leftLabel="6月"
     rightLabel="10月"
 
-    left2="/src/assets/posts/2022/usinodamu/1666917445850.jpg"
-    right2="/src/assets/posts/2022/usinodamu/1666918420230.jpg"
+    left2={img10.src}
+    right2={img11.src}
     leftLabel2="6月"
     rightLabel2="10月"
 />
@@ -245,20 +266,20 @@ import ImageCompare from "../../components/ImageCompare.astro";
 
 水位が減って水があったところも歩けるようになっていたので少し散策してみました。
 
-<img src="/src/assets/posts/2022/usinodamu/1666918419862-800x600.jpg" alt="" />
+<img src={img12.src} alt="" />
 
 草の間にできた道を進むと小さな川が出現。
 
-<img src="/src/assets/posts/2022/usinodamu/1666918418911-800x600.jpg" alt="" />
+<img src={img13.src} alt="" />
 
-<img src="/src/assets/posts/2022/usinodamu/1666918419359-800x600.jpg" alt="" />
+<img src={img14.src} alt="" />
 
-<img src="/src/assets/posts/2022/usinodamu/1666918418552-800x600.jpg" alt="" />
+<img src={img15.src} alt="" />
 
 いつもと違う雰囲気でキャンプの楽しさも倍増です。
 
 <div class="image-wrap">
-  <img src="/src/assets/posts/2022/usinodamu/1666918331381-800x600.jpg" alt="牛野ダムキャンプ場トイレ" />
+  <img src={img16.src} alt="牛野ダムキャンプ場トイレ" />
   <CaptionSource source="深夜にタヌキが訪問してきました。" />
 </div>
 
@@ -275,7 +296,13 @@ import ImageCompare from "../../components/ImageCompare.astro";
 
 ### ヤマザワ 吉岡店
 
-<img src="/src/assets/posts/2022/usinodamu/images.jpg" alt="" />
+<ImageWithCaption
+  src={img17.src} 
+  caption=""
+  url=""
+  width="60%"
+  align="left"
+/>
 
 敷地内にはサンデーと100円ショップのダイソーがあります。  
 食料品もキャンプ用品も買えるので大変便利です。
@@ -293,7 +320,13 @@ import ImageCompare from "../../components/ImageCompare.astro";
 
 ### ウジエスーパー 吉岡店
 
-<img src="/src/assets/posts/2022/usinodamu/images-1.jpg" alt="" />
+<ImageWithCaption
+  src={img18.src} 
+  caption=""
+  url=""
+  width="60%"
+  align="left"
+/>
 
 近くにセブンイレブンもあります。
 
@@ -312,7 +345,13 @@ import ImageCompare from "../../components/ImageCompare.astro";
 
 ### クスリのアオキ 大和吉岡店
 
-<img src="/src/assets/posts/2022/usinodamu/images-2.jpg" alt="" />
+<ImageWithCaption
+  src={img19.src} 
+  caption=""
+  url=""
+  width="60%"
+  align="left"
+/>
 
 こちらはスーパーではなくドラッグストアですが、日用品とか食料品が安く買えます。  
 
@@ -330,7 +369,13 @@ import ImageCompare from "../../components/ImageCompare.astro";
 
 ### 花おりの湯
 
-<img src="/src/assets/posts/2022/usinodamu/1689559845042-800x600.jpg" alt="" />
+<ImageWithCaption
+  src={img20.src} 
+  caption=""
+  url=""
+  width="60%"
+  align="left"
+/>
 
 毎分930リットルの豊富な湯量を贅沢にそして大胆に使っている天然・源泉かけ流し植物性由来のモール泉です。  
 敷地内にバーベキュー広場やドックラン広場、車中泊エリアがあるのが特徴。
@@ -352,7 +397,13 @@ import ImageCompare from "../../components/ImageCompare.astro";
 
 ### 豆坂温泉 三峰荘
 
-<img src="/src/assets/posts/2022/usinodamu/1689559843918-800x600.jpg" alt="" />
+<ImageWithCaption
+  src={img21.src} 
+  caption=""
+  url=""
+  width="60%"
+  align="left"
+/>
 
 男女ともに内湯と露天風呂があります。  
 その他、打たせ湯、箱風呂、桶風呂があったりとバラエティに富んだ温泉施設になってます。お湯の温度は比較的高め。  
@@ -395,7 +446,7 @@ import ImageCompare from "../../components/ImageCompare.astro";
 
 まだ行ったことがない方はもちろん、気になっている方も一度足を運んでみてはいかがでしょうか。
 
-<img src="/src/assets/posts/2022/usinodamu/point-18-800x600.jpg" alt="牛野ダムキャンプ場" />
+<img src={img22.src} alt="" />
 
 当ブログでは**利用料金がお手頃なキャンプ場**を中心に紹介しています。
 

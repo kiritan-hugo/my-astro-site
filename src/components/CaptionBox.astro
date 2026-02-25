@@ -7,6 +7,11 @@ const {
 // items が配列か文字列かを判定
 const isArray = Array.isArray(items);
 const isString = typeof items === "string";
+
+// Markdown風リンク [text](url) を <a href="url">text</a> に変換
+const parseMarkdownLinks = (text) => {
+  return text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+};
 ---
 
 <div class="caption-box">
@@ -14,12 +19,14 @@ const isString = typeof items === "string";
 
   {isArray && (
     <ul>
-      {items.map(item => <li>{item}</li>)}
+      {items.map(item => (
+        <li set:html={parseMarkdownLinks(item)}></li>
+      ))}
     </ul>
   )}
 
   {isString && (
-    <p class="caption-text">{items}</p>
+    <p class="caption-text" set:html={parseMarkdownLinks(items)}></p>
   )}
 </div>
 

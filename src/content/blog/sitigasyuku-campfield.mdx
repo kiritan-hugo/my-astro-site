@@ -17,11 +17,72 @@ import MapEmbed from "../../components/MapEmbed.astro";
 import Table from "../../components/Table.astro";
 import ImagePost from '../../components/ImagePost.astro';
 import ImageCompare from '../../components/ImageCompare.astro';
+import ImageWithCaption from '../../components/ImageWithCaption.astro';
 
+import img01 from '../../assets/posts/2023/sitigasyuku/1696994542982-edited.jpg';
+import img02 from '../../assets/posts/2023/sitigasyuku/giv2-800x508.jpg';
+import img03 from '../../assets/posts/2023/sitigasyuku/1696994542670-800x600.jpg';
+import img04 from '../../assets/posts/2023/sitigasyuku/Screeendhot-2026-02-14 153755.png';
+import img05 from '../../assets/posts/2023/sitigasyuku/Screenshot-2025-10-01-11.01.43-800x496.jpg';
+import img06 from '../../assets/posts/2023/sitigasyuku/1696994558933-800x600.jpg';
+import img07 from '../../assets/posts/2023/sitigasyuku/1696994544276-800x600.jpg';
+import img08 from '../../assets/posts/2023/sitigasyuku/1696998480164-800x600.jpg';
+import img09 from '../../assets/posts/2023/sitigasyuku/1696994538383-800x600.jpg';
+import img10 from '../../assets/posts/2023/sitigasyuku/1696994538007-800x600.jpg';
+import img11 from '../../assets/posts/2023/sitigasyuku/1696994558933-800x600.jpg';
+import img12 from '../../assets/posts/2023/sitigasyuku/1696994559660-800x600.jpg';
+import img13 from '../../assets/posts/2023/sitigasyuku/1696994559999-800x600.jpg';
+import img14 from '../../assets/posts/2023/sitigasyuku/1696994561056-800x600.jpg';
+import img15 from '../../assets/posts/2023/sitigasyuku/1696994559332-800x600.jpg';
+import img16 from '../../assets/posts/2023/sitigasyuku/1696994542982-800x600.jpg';
+import img17 from '../../assets/posts/2023/sitigasyuku/1696994538716-800x600.jpg';
+import img18 from '../../assets/posts/2023/sitigasyuku/1696994539032-800x600.jpg';
+import img19 from '../../assets/posts/2023/sitigasyuku/1696994556255-800x600.jpg';
+import img20 from '../../assets/posts/2023/sitigasyuku/1696994557573-800x600.jpg';
+import img21 from '../../assets/posts/2023/sitigasyuku/1696994539749-800x600.jpg';
+import img22 from '../../assets/posts/2023/sitigasyuku/1696994550532-800x600.jpg';
+import img23 from '../../assets/posts/2023/sitigasyuku/1696994551557-800x600.jpg';
+import img24 from '../../assets/posts/2023/sitigasyuku/1696994551913-800x600.jpg';
+import img25 from '../../assets/posts/2023/sitigasyuku/1696994548898-800x600.jpg';
+import img26 from '../../assets/posts/2023/sitigasyuku/1696994550232-800x600.jpg';
+import img27 from '../../assets/posts/2023/sitigasyuku/1696994545822-800x600.jpg';
+import img28 from '../../assets/posts/2023/sitigasyuku/1696994546579-800x600.jpg';
+import img29 from '../../assets/posts/2023/sitigasyuku/1696994546146-800x600.jpg';
+import img30 from '../../assets/posts/2023/sitigasyuku/1696994547188-800x600.jpg';
+import img31 from '../../assets/posts/2023/sitigasyuku/1696994549266-800x600.jpg';
+import img32 from '../../assets/posts/2023/sitigasyuku/1696994540576-800x600.jpg';
+import img33 from '../../assets/posts/2023/sitigasyuku/1696994545104-800x600.jpg';
+import img34 from '../../assets/posts/2023/sitigasyuku/1696994540928-800x600.jpg';
+import img35 from '../../assets/posts/2023/sitigasyuku/1696994558604-800x600.jpg';
+import img36 from '../../assets/posts/2023/sitigasyuku/1696994555885-800x600.jpg';
+import img37 from '../../assets/posts/2023/sitigasyuku/1697003293057-800x600.jpg';
+import img38 from '../../assets/posts/2023/sitigasyuku/1696994558604-800x600.jpg';
+import img39 from '../../assets/posts/2023/sitigasyuku/1696994557212-800x600.jpg';
+import img40 from '../../assets/posts/2023/sitigasyuku/1696994555567-800x600.jpg';
+import img41 from '../../assets/posts/2023/sitigasyuku/ge9.png';
+import img42 from '../../assets/posts/2023/sitigasyuku/giv2-800x508.jpg';
+import img43 from '../../assets/posts/2023/sitigasyuku/1696994543312-800x600.jpg';
+import img44 from '../../assets/posts/2023/sitigasyuku/1696994542670-800x600.jpg';
+import img45 from '../../assets/posts/2023/sitigasyuku/1696994542353-800x600.jpg';
+import img46 from '../../assets/posts/2023/sitigasyuku/1697452624997-800x1066.jpg';
+import img47 from '../../assets/posts/2023/sitigasyuku/1696994555203-800x600.jpg';
+import img48 from '../../assets/posts/2023/sitigasyuku/1696994553536-800x600.jpg';
+import img49 from '../../assets/posts/2023/sitigasyuku/1696994553220-800x600.jpg';
+import img50 from '../../assets/posts/2023/sitigasyuku/top-800x379.jpg';
+import img51 from '../../assets/posts/2023/sitigasyuku/1698292959977-800x600.jpg';
+import img52 from '../../assets/posts/2023/sitigasyuku/1696994552239-800x600.jpg';
+import img53 from '../../assets/posts/2023/sitigasyuku/1697600839496-800x600.jpg';
+import img54 from '../../assets/posts/2023/sitigasyuku/gac3.png';
+import img55 from '../../assets/posts/2023/sitigasyuku/gac6.png';
+import img56 from '../../assets/posts/2023/sitigasyuku/gac7.png';
+import img57 from '../../assets/posts/2023/sitigasyuku/1696994554840-800x600.jpg';
+import img58 from '../../assets/posts/2023/sitigasyuku/1696994554179-800x600.jpg';
+import img59 from '../../assets/posts/2023/sitigasyuku/1696994553856-800x600.jpg';
+import img60 from '../../assets/posts/2023/sitigasyuku/1696994554501-800x600.jpg';
 
 今回は宮城県刈田郡七ヶ宿町にある『みやぎ蔵王きららの森キャンプ場』を紹介します。
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994542982-edited.jpg" alt="" />
+<img src={img01.src} alt="" />
 
 七ヶ宿町は宮城県の南西端に位置し、福島県と山形県に接する小さな町。可住地面積は七ヶ宿町全体の約10％ほどしかない山がちな土地柄です。
 
@@ -35,10 +96,13 @@ import ImageCompare from '../../components/ImageCompare.astro';
 
 空気がとても澄み渡っているのも高原ならでは。とても綺麗な夜空が楽しめるキャンプ場でもあります。
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2023/sitigasyuku/giv2-800x508.jpg" alt="" />
-  <CaptionSource source="出典：みやぎ蔵王きららの森キャンプ場公式HP" url="https://zao-7kashuku.jp/kirara/" />
-</div>
+<ImageWithCaption
+  src={img02.src} 
+  caption="出典：みやぎ蔵王きららの森キャンプ場公式HP"
+  url="https://zao-7kashuku.jp/kirara/"
+  width="100%"
+  align="center"
+/>
 
 <Balloon person="kiritan" type="right">
 写真のような満点の星空も天気が良ければ楽しめます。
@@ -46,7 +110,7 @@ import ImageCompare from '../../components/ImageCompare.astro';
 
 またキャンプ場ではめずらしく、焼き立てのパンが楽しめるサービスもあります。
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994542670-800x600.jpg" alt="" />
+<img src={img03.src} alt="" />
 
 <Balloon person="sena" type="left">
 朝からキャンプ場で焼き立てのパンが食べられるのもここだけ！
@@ -77,10 +141,13 @@ import ImageCompare from '../../components/ImageCompare.astro';
 
 ## みやぎ蔵王きららの森キャンプ場｜宮城県刈田郡七ヶ宿町
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2023/sitigasyuku/Screeendhot-2026-02-14 153755.png" alt="" />
-  <CaptionSource source="出典：みやぎ蔵王きららの森キャンプ場公式HP" url="https://zao-7kashuku.jp/kirara/" />
-</div>
+<ImageWithCaption
+  src={img04.src} 
+  caption="出典：みやぎ蔵王きららの森キャンプ場公式HP"
+  url="https://zao-7kashuku.jp/kirara/"
+  width="100%"
+  align="center"
+/>
 
 ### 基本情報
 
@@ -154,26 +221,30 @@ import ImageCompare from '../../components/ImageCompare.astro';
 
 ## みやぎ蔵王きららの森キャンプ場｜場内マップ
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2023/sitigasyuku/Screenshot-2025-10-01-11.01.43-800x496.jpg" alt="" />
-  <CaptionSource source="みやぎ蔵王きららの森キャンプ場公式HP" url="https://zao-7kashuku.jp/kirara/" />
-</div>
+<ImageWithCaption
+  src={img05.src} 
+  caption="みやぎ蔵王きららの森キャンプ場公式HP"
+  url="https://zao-7kashuku.jp/kirara/"
+  width="100%"
+  align="center"
+/>
 
 ### 受付方法
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994558933-800x600.jpg" alt="" />
+<img src={img06.src} alt="" />
 
 キャンプ場に到着したら、センターハウスに向かいましょう。
 
 大きな建物なので分かりやすいです。
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994544276-800x600.jpg" alt="" />
+<img src={img07.src} alt="" />
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696998480164-800x600.jpg" alt="" />
+<img src={img08.src} alt="" />
 
 チェックインをすると『入場ゲートのリモコン』と、番号がかかれた『プラカード』が受け取れます。
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994538383-800x600.jpg" alt="" />
+<img src={img09.src} alt="" />
+
 <Balloon person="kiritan" type="left">
 プラカードは設営したテントに掲示しよう！
 </Balloon>
@@ -183,7 +254,7 @@ import ImageCompare from '../../components/ImageCompare.astro';
 
 パンの予約をした場合はこのような黄色の引換券がもらえます。
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994538007-800x600.jpg" alt="" />
+<img src={img10.src} alt="" />
 
 <Balloon person="sena" type="left">
 翌朝受け取るときに必要になるから捨てないでね〜
@@ -193,15 +264,15 @@ import ImageCompare from '../../components/ImageCompare.astro';
 
 ### センターハウス
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994558933-800x600.jpg" alt="" />
+<img src={img11.src} alt="" />
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994559660-800x600.jpg" alt="" />
+<img src={img12.src} alt="" />
 
 センターハウスの中には、トイレや休憩スペースのほかに、子どもの遊び場や売店があります。
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994559999-800x600.jpg" alt="" />
+<img src={img13.src} alt="" />
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994561056-800x600.jpg" alt="" />
+<img src={img14.src} alt="" />
 
 売店にはお菓子や調味料といった食料品のほか、キャンプで使う消耗品が数多く陳列されておりました。
 
@@ -213,7 +284,7 @@ import ImageCompare from '../../components/ImageCompare.astro';
 子供連れの家族には嬉しいラインナップだね♪
 </Balloon>
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994559332-800x600.jpg" alt="" />
+<img src={img15.src} alt="" />
 
 火持ちが良い広葉樹の薪は700円と手頃な価格で売られています。
 
@@ -231,34 +302,40 @@ import ImageCompare from '../../components/ImageCompare.astro';
 
 ### 入場ゲート
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2023/sitigasyuku/1696994542982-800x600.jpg" alt="" />
-  <CaptionSource source="▲オートサイト、コテージ、キャビンの入口" url="" />
-</div>
+<ImageWithCaption
+  src={img16.src} 
+  caption="▲オートサイト、コテージ、キャビンの入口"
+  url=""
+  width="100%"
+  align="center"
+/>
 
 <div style={{ marginBottom: "2rem" }}></div>
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2023/sitigasyuku/1696994538716-800x600.jpg" alt="" />
-  <CaptionSource source="▲フリーサイトの入口" url="" />
-</div>
+<ImageWithCaption
+  src={img17.src} 
+  caption="▲フリーサイトの入口"
+  url=""
+  width="100%"
+  align="center"
+/>
 
 入場ゲートに近づいて受付でもらったゲートリモコンを操作するとチェーンが下がり車で入ることができます。  
 チェーンは自動で上がるので速やかに通過しましょう。
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994539032-800x600.jpg" alt="" />
+<img src={img18.src} alt="" />
 
 ### 駐車場
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994556255-800x600.jpg" alt="" />
+<img src={img19.src} alt="" />
 
 今回利用したのは「フリーサイト」。フリーサイト用の駐車場を利用しました。
 
 しっかり予約数分の区画があるので、車がいっぱいで停められないよ！なんてことはありません。
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994557573-800x600.jpg" alt="" />
+<img src={img20.src} alt="" />
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994539749-800x600.jpg" alt="" />
+<img src={img21.src} alt="" />
 
 駐車場の隅にキャンプ道具の運搬で使える『リヤカー』が置かれています。
 
@@ -273,21 +350,21 @@ import ImageCompare from '../../components/ImageCompare.astro';
 
 炊事場はキャンプ場のオートサイトエリアに1か所あります。
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994550532-800x600.jpg" alt="" />
+<img src={img22.src} alt="" />
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994551557-800x600.jpg" alt="" />
+<img src={img23.src} alt="" />
 
 炊事場のなかは8台のシンクが『コの字』に並んでます。
 
 中央にある長テーブルはランタンとか仮置きするのにちょうどいいです。
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994551913-800x600.jpg" alt="" />
+<img src={img24.src} alt="" />
 
 壁には鏡がついていました。
 
 これはキャンプ中も身だしなみに気を使えと言うことですね。
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994548898-800x600.jpg" alt="" />
+<img src={img25.src} alt="" />
 
 みやぎ蔵王きららの森キャンプ場の公式HPによると、**炊事棟にあるコンセントは炊飯器などの調理器具の電源に使っていい**みたいです。
 
@@ -297,7 +374,7 @@ import ImageCompare from '../../components/ImageCompare.astro';
 
 ### サニタリー棟
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994550232-800x600.jpg" alt="" />
+<img src={img26.src} alt="" />
 
 サニタリー棟は炊事棟を降りた下側にあります。
 
@@ -305,7 +382,7 @@ import ImageCompare from '../../components/ImageCompare.astro';
 
 トイレは場内に1か所しかありませんので、フリーサイト、オートサイト、ログキャビンの利用者はこちらを使用することになります。
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994545822-800x600.jpg" alt="" />
+<img src={img27.src} alt="" />
 
 トイレのなかはキレイに清掃されていて使いやすい印象をうけました。
 
@@ -313,21 +390,21 @@ import ImageCompare from '../../components/ImageCompare.astro';
 
 ### シャワー室
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994546579-800x600.jpg" alt="" />
+<img src={img28.src} alt="" />
 
 トイレの隣にはシャワー室が併設されています。
 
 男子トイレと女子トイレのちょうど中間にあり、それぞれトイレから直接アクセスできます。
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994546146-800x600.jpg" alt="" />
+<img src={img29.src} alt="" />
 
 温水シャワーは4機あって、利用料金は5分200円でした。
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994547188-800x600.jpg" alt="" />
+<img src={img30.src} alt="" />
 
 意外と忘れがちなドライヤーが常設されていました。嬉しいですね。
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994549266-800x600.jpg" alt="" />
+<img src={img31.src} alt="" />
 
 洗濯機と乾燥機は2台ずつありました。値段はそれぞれ以下のとおりです。
 
@@ -340,21 +417,25 @@ import ImageCompare from '../../components/ImageCompare.astro';
 
 ### 炭捨て場
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994540576-800x600.jpg" alt="" />
+<img src={img32.src} alt="" />
 
 炭捨て場は「サニタリー棟」と「オートサイトNo.8付近」の場内2か所にあります。
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2023/sitigasyuku/1696994545104-800x600.jpg" alt="" />
-  <CaptionSource source="▲サニタリー棟" url="" />
-</div>
+<ImageWithCaption
+  src={img33.src} 
+  caption="▲サニタリー棟"
+  url=""
+  width="100%"
+  align="center"
+/>
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2023/sitigasyuku/1696994540928-800x600.jpg" alt="" />
-  <CaptionSource source="▲オートサイトNo.8付近" url="" />
-</div>
-
-\[ad\]
+<ImageWithCaption
+  src={img34.src} 
+  caption="▲オートサイトNo.8付近"
+  url=""
+  width="100%"
+  align="center"
+/>
 
 ## みやぎ蔵王きららの森キャンプ場｜テントサイト
 
@@ -367,7 +448,7 @@ import ImageCompare from '../../components/ImageCompare.astro';
 ### オートAサイト
 
 <ImagePost
-  src="/src/assets/posts/2023/sitigasyuku/gac3.png"
+  src={img54.src}
   alt=""
   label="全5区画（No.3〜7）"
   labelPosition="top-left"
@@ -387,7 +468,7 @@ import ImageCompare from '../../components/ImageCompare.astro';
 ### オートBサイト
 
 <ImagePost
-  src="/src/assets/posts/2023/sitigasyuku/gac6.png"
+  src={img55.src}
   alt=""
   label="全5区画（No.1・2・13〜15）"
   labelPosition="top-left"
@@ -407,7 +488,7 @@ Aサイトよりは狭いものの約60㎡の広さがあるので普通にキ�
 ### オートCサイト
 
 <ImagePost
-  src="/src/assets/posts/2023/sitigasyuku/gac7.png"
+  src={img56.src}
   alt=""
   label="全5区画（No.8〜12）"
   labelPosition="top-left"
@@ -425,7 +506,7 @@ Aサイトよりは狭いものの約60㎡の広さがあるので普通にキ�
 
 ### フリーサイト
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994558604-800x600.jpg" alt="" />
+<img src={img35.src} alt="" />
 
 電源・水道はありませんが、広々とテントを張りたい方、自由なレイアウトでキャンプを楽しみたい方にはやはり、フリーサイトがおすすめです。
 
@@ -435,19 +516,25 @@ Aサイトよりは狭いものの約60㎡の広さがあるので普通にキ�
 上り坂といっても寝ても気にならないくらい緩やかです
 </Balloon>
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2023/sitigasyuku/1696994555885-800x600.jpg" alt="" />
-  <CaptionSource source="▲駐車場側（フリーサイト）" url="" />
-</div>
+<ImageWithCaption
+  src={img36.src} 
+  caption=""
+  url=""
+  width="100%"
+  align="center"
+/>
 
 駐車場側エリアが荷物の搬出がしやすくて人気です。
 
 チェックインしたら真っ先に埋まります。
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2023/sitigasyuku/1697003293057-800x600.jpg" alt="" />
-  <CaptionSource source="▲中間付近（フリーサイト）" url="" />
-</div>
+<ImageWithCaption
+  src={img37.src} 
+  caption=""
+  url=""
+  width="100%"
+  align="center"
+/>
 
 炊事棟とサニタリー棟が近くにある中間〜奥のエリアに設営するのもおすすめです。
 
@@ -457,10 +544,13 @@ Aサイトよりは狭いものの約60㎡の広さがあるので普通にキ�
 こっちのエリアもそこそこ人気があるね
 </Balloon>
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2023/sitigasyuku/1696994558604-800x600.jpg" alt="" />
-  <CaptionSource source="▲奥側（フリーサイト）" url="" />
-</div>
+<ImageWithCaption
+  src={img38.src} 
+  caption=""
+  url=""
+  width="100%"
+  align="center"
+/>
 
 他人と離れたところに設営したい、静かに楽しみたい方はフリーサイトの一番奥がおすすめです。
 
@@ -490,9 +580,9 @@ Aサイトよりは狭いものの約60㎡の広さがあるので普通にキ�
 
 みやぎ蔵王きららの森キャンプ場の目玉といってもいいかもしれません。
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994557212-800x600.jpg" alt="" />
+<img src={img39.src} alt="" />
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994555567-800x600.jpg" alt="" />
+<img src={img40.src} alt="" />
 
 場内には底がみえるほど綺麗な小川が流れています。
 
@@ -500,10 +590,14 @@ Aサイトよりは狭いものの約60㎡の広さがあるので普通にキ�
 
 オートサイトとフリーサイトの間にあり、深さがそこまでないので安心して子どもを遊ばせることができますよ。
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2023/sitigasyuku/ge9.png" alt="" />
-  <CaptionSource source="出典：みやぎ蔵王きららの森キャンプ場公式HP" url="https://zao-7kashuku.jp/kirara/" />
-</div>
+<ImageWithCaption
+  src={img41.src} 
+  caption="出典：みやぎ蔵王きららの森キャンプ場公式HP"
+  url="https://zao-7kashuku.jp/kirara/"
+  width="100%"
+  align="center"
+/>
+
 キャンプ場の夏季限定イベント『川魚のつかみどり体験』の会場としても利用されているそうです。
 
 ### ②満点の星空が楽しめる
@@ -512,10 +606,13 @@ Aサイトよりは狭いものの約60㎡の広さがあるので普通にキ�
 
 宮城のなかでも標高が高い『みやぎ蔵王きららの森キャンプ場』では最大限に綺麗な星空が楽しめます。
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2023/sitigasyuku/giv2-800x508.jpg" alt="" />
-  <CaptionSource source="出典：みやぎ蔵王きららの森キャンプ場公式HP" url="https://zao-7kashuku.jp/kirara/" />
-</div>
+<ImageWithCaption
+  src={img42.src} 
+  caption="出典：みやぎ蔵王きららの森キャンプ場公式HP"
+  url="https://zao-7kashuku.jp/kirara/"
+  width="100%"
+  align="center"
+/>
 
 満点の星空はひと目みたら忘れられなくなる景色です。
 
@@ -530,15 +627,15 @@ Aサイトよりは狭いものの約60㎡の広さがあるので普通にキ�
 
 その願い、みやぎ蔵王きららの森キャンプ場なら<span class="marker-yellow"><span class="red-b">叶います。</span></span>
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994543312-800x600.jpg" alt="" />
+<img src={img43.src} alt="" />
 
 朝起きたらコーヒーを飲む人ってキャンプ場では結構いますよね...？
 
 そんな美味しいコーヒーといただけるのが焼きたてのパン！
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994542670-800x600.jpg" alt="" />
+<img src={img44.src} alt="" />
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994542353-800x600.jpg" alt="" />
+<img src={img45.src} alt="" />
 
 ウインナーやスクランブルエッグなんかと合わせたら、幸せいっぱいで脳がバクハツします。
 
@@ -546,8 +643,7 @@ Aサイトよりは狭いものの約60㎡の広さがあるので普通にキ�
 朝から幸せ…。
 </Balloon>
 
-
-<img src="/src/assets/posts/2023/sitigasyuku/1697452624997-800x1066.jpg" alt="" />
+<img src={img46.src} alt="" />
 
 焼き立てパンは全部で4種類。
 
@@ -561,9 +657,6 @@ Aサイトよりは狭いものの約60㎡の広さがあるので普通にキ�
 是非食べてみてください！
 </Balloon>
 
-
-\[ad\]
-
 ## みやぎ蔵王きららの森キャンプ場の周辺情報
 
 最後に周辺情報を紹介します。
@@ -574,19 +667,19 @@ Aサイトよりは狭いものの約60㎡の広さがあるので普通にキ�
 
 ### ファミリーマート+COOP 七ヶ宿店
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994555203-800x600.jpg" alt="" />
+<img src={img47.src} alt="" />
 
 ファミリーマートとCOOPが合体した、宮城県内で2店舗しかないめずらしいスーパーです。  
 こちらがキャンプ場から一番近いお店になります。
 
 <ImageCompare
-    left="/src/assets/posts/2023/sitigasyuku/1696994554840-800x600.jpg"
-    right="/src/assets/posts/2023/sitigasyuku/1696994554179-800x600.jpg"
+    left={img57.src}
+    right={img58.src}
     leftLabel="新鮮なフルーツ"
     rightLabel="野菜は種類が豊富"
 
-    left2="/src/assets/posts/2023/sitigasyuku/1696994553856-800x600.jpg"
-    right2="/src/assets/posts/2023/sitigasyuku/1696994554501-800x600.jpg"
+    left2={img59.src}
+    right2={img60.src}
     leftLabel2="卵や豆腐、練り物など"
     rightLabel2="お肉だけでなくお刺身も"
 />
@@ -614,29 +707,32 @@ Aサイトよりは狭いものの約60㎡の広さがあるので普通にキ�
 
 ### wood&Spa　や･すまっしぇ
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994553536-800x600.jpg" alt="" />
+<img src={img48.src} alt="" />
 
 こちらがキャンプ場から一番近い入浴施設。
 
 キャンプでかいた汗は湯船に浸かってスッキリしたいですよね。
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994553220-800x600.jpg" alt="" />
+<img src={img49.src} alt="" />
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2023/sitigasyuku/top-800x379.jpg" alt="" />
-  <CaptionSource source="出典：七ヶ宿まちづくりHP" url="https://7kashuku.jp/wood-spa/" />
-</div>
+<ImageWithCaption
+  src={img50.src} 
+  caption="出典：七ヶ宿まちづくりHP"
+  url="https://7kashuku.jp/wood-spa/"
+  width="100%"
+  align="center"
+/>
 
 『wood&Spa や･すまっしぇ』は環境を配慮し化石燃料を使用せず、再生可能エネルギー「木質バイオマス」を使用した公衆浴場です。
 
 
 浴場内にはノーマルの湯船とお湯に炭酸ガスを溶かした『人工炭酸泉』、サウナがあります。
 
-<img src="/src/assets/posts/2023/sitigasyuku/1698292959977-800x600.jpg" alt="" />
+<img src={img51.src} alt="" />
 
 受付時に<span class="red">『七ヶ宿オートキャンプ場』の領収書を提示すると割引価格で利用できます。</span>
 
-<img src="/src/assets/posts/2023/sitigasyuku/1696994552239-800x600.jpg" alt="" />
+<img src={img52.src} alt="" />
 
 キャンプ場利用割引で町内利用と同価格になり、大人600円→400円、子供300円→200円になります。
 
@@ -686,4 +782,4 @@ Aサイトよりは狭いものの約60㎡の広さがあるので普通にキ�
 
 仙台市からもあまり遠くないので気になった方はぜひ足を運んでみてください。
 
-<img src="/src/assets/posts/2023/sitigasyuku/1697600839496-800x600.jpg" alt="" />
+<img src={img53.src} alt="" />

@@ -13,13 +13,120 @@ import Accordion from "../../components/Accordion.astro";
 import ImagePost from '../../components/ImagePost.astro';
 import ImageCompare from '../../components/ImageCompare.astro';
 import Table from '../../components/Table.astro';
+import MoshimoCard from '../../components/MoshimoCard.astro';
+import TwitterEmbed from '../../components/TwitterEmbed.astro';
+import ImageWithCaption from '../../components/ImageWithCaption.astro';
+import ButtonLink from '../../components/ButtonLink.astro';
+import QuoteBox from '../../components/QuoteBox.astro';
+import StepBlock from '../../components/StepBlock.astro';
 ---
 
-<img src="/src/assets/posts/" alt="" />
+import img01 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img02 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img03 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img04 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img05 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img06 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img07 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img08 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img09 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img10 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img11 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img12 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img13 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img14 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img15 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img16 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img17 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img18 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img19 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img20 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img21 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img22 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img23 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img24 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img25 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img26 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img27 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img28 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img29 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img30 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img31 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img32 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img33 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img34 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img35 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img36 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img37 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img38 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img39 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img40 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img41 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img42 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img43 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img44 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img45 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img46 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img47 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img48 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img49 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
+import img50 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
 
-・画像＋注釈
+・画像を貼るとき（src以下のインポート画像の場合）
+import img01 from '../../assets/posts/2023/xx/xx.jpg';
+{img.src}
+
+<img src={img.src} alt="" />
+
+/src/assets/posts/2023/tomount_puptent/
+
+・画像＋注釈（シン中央）
+<ImageWithCaption
+  src={img.src} 
+  caption=""
+  url=""
+  width="100%"
+  align="center"
+/>
+
+・画像＋注釈（シンレフト）
+<ImageWithCaption
+  src={img.src} 
+  caption=""
+  url=""
+  width="100%"
+  align="left"
+/>
+
+
+・引用ブロック
+<QuoteBox
+  text=""
+  source=""
+  url=""
+/>
+
+
+・ボタン型リンク生成（sizeはsmallかnomalかlargeの3種類、デフォはnomal）
+<ButtonLink
+  text="ogawa公式サイト"
+  url="https://www.campal.co.jp/"
+  size=""
+/>
+
+・ツイート埋め込み
+<TwitterEmbed url="" />
+
+
+・もしもアフィリエイトカード埋め込み
+<MoshimoCard
+  html={``}
+/>
+
+
+
+・注釈センター
 <div class="image-wrap">
-  <img src="" alt="" />
   <CaptionSource source="" url="" />
 </div>
 
@@ -66,7 +173,7 @@ text
 
 ・キャプションボックス（タイトルありなし可、items文字列、配列可）
 <CaptionBox
-  title="この記事の内容"
+  title=""
   items={[
     "テント",
     "寝袋",
@@ -138,11 +245,27 @@ text
 text
 </Accordion>
 
+
 ・関連記事表示
 <RelatedPosts slug="yakinikui-gura" caption="関連記事" />
+
 
 ・googlemap埋め込み最適化
 <MapEmbed src=""  />
 
+
+・ステップボックス text内で改行するときは{"テキスト\nテキスト"}と記入
+<StepBlock
+  step={1}
+  title=""
+  text=""
+  images={[""]}
+  imagewidth="80%"
+  caption=""/>
+
+
 ☆マージンをあける
 <div style={{ marginBottom: "4rem" }}></div>
+
+☆マージンを狭める
+<div style="margin-top:-10px;"></div>

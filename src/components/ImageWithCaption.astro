@@ -1,0 +1,74 @@
+---
+const {
+  src,
+  alt = "",
+  caption = "",
+  url = "",
+  width = "auto",
+  align = "center" // left | center | right
+} = Astro.props;
+
+const alignClass = {
+  left: "align-left",
+  center: "align-center",
+  right: "align-right"
+}[align] ?? "align-center";
+---
+
+<div class={`image-wrap ${alignClass}`}>
+  <div class="inner-wrap" style={`width: ${width};`}>
+    <img src={src} alt={alt} />
+    {caption && (
+      url
+        ? <p class="caption"><a href={url} target="_blank" rel="noopener noreferrer">{caption}</a></p>
+        : <p class="caption">{caption}</p>
+    )}
+  </div>
+</div>
+
+<style>
+/* 外側：配置だけ担当 */
+.image-wrap {
+  margin: 2rem 0;
+  display: flex;
+}
+
+.align-left {
+  justify-content: flex-start;
+}
+
+.align-center {
+  justify-content: center;
+}
+
+.align-right {
+  justify-content: flex-end;
+}
+
+/* 内側：画像とキャプションをまとめて中央揃え */
+.inner-wrap {
+  text-align: center;
+}
+
+.inner-wrap img {
+  width: 100%;
+  height: auto;
+  border-radius: 0px;
+}
+
+/* キャプション */
+.caption {
+  margin-top: 0.5rem;
+  margin-bottom: 0rem;
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.caption a {
+  color: #666;
+  text-decoration: none;
+}
+.caption a:hover {
+  opacity: 0.8;
+}
+</style>

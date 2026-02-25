@@ -5,7 +5,6 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import HeaderArticle from "../components/HeaderArticle.astro";
-import { Toc } from 'astro/components';
 import { getPopularPosts } from '../lib/getPopularPosts';
 
 type Props = CollectionEntry<'blog'>['data'];
@@ -15,14 +14,13 @@ const { title, description, pubDate, updatedDate, heroImage, category, latestPos
 const popular = (await getPopularPosts()).slice(0, 5);
 
 // 日付フォーマット関数
-const formatDate = (date) =>
-  new Date(date)
-    .toLocaleDateString("ja-JP", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    })
-    .replace(/\//g, "-");
+const formatDate = (date) => {
+  const d = new Date(date);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+};
 
 // TOC h番号管理
 let h2Count = 0;
@@ -40,6 +38,8 @@ let h3Count = 0;
 			href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
 			rel="stylesheet"
 		/>
+
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 
 	</head>

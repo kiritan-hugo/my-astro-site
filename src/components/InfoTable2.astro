@@ -34,6 +34,10 @@ const { columns = [], rows = [], note = "" } = Astro.props;
 )}
 
 <style>
+  .infotable2{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
 /* セル共通 */
 .infotable2 th {
   border: 1px solid #d8d2c6;
@@ -45,6 +49,7 @@ const { columns = [], rows = [], note = "" } = Astro.props;
   padding-left: 20px;
   padding-right: 20px;
   text-align: center;
+  white-space: pre-line; /* ← ★ これを追加 */
 }
 
 /* 上の横ヘッダー */

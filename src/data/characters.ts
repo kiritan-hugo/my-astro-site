@@ -1,14 +1,17 @@
 export const characters = {
   kiritan: {
     name: "kiritan",
-    icon: "/src/assets/images/kiritan_profile.jpg",
+    icon: "/public/images/kiritan_profile.jpg",
   },
   sena: {
     name: "sena",
-    icon: "/src/assets/images/sena_profile.png",
+    icon: "/public/images/sena_profile.png",
   },
   woman: {
-    icon: "/src/assets/images/worried-woman.png"
+    icon: "/public/images/worried-woman.png"
+  },
+  man_ayashii: {
+    icon: "/public/images/pose_ayashii_man.png"
   }
 //   asikusa: {
 //     name: "アシクサ",

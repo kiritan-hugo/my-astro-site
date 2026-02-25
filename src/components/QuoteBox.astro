@@ -1,0 +1,99 @@
+---
+const {
+  text = "",
+  url = "",
+  source = "", // ★ 追加：引用元テキスト
+} = Astro.props;
+
+// source があればそれを表示、なければ url を表示
+const sourceLabel = source || url;
+---
+
+<div class="quote-box">
+  <div class="quote-lines"></div>
+
+  <div class="quote-content">
+    <p class="quote-text">{text}</p>
+
+    {url && (
+      <p class="quote-source">
+        <a href={url} target="_blank" rel="noopener noreferrer">
+          {sourceLabel}
+        </a>
+      </p>
+    )}
+  </div>
+</div>
+
+<style>
+/* 全体ボックス */
+.quote-box {
+  background: #fcfffc;
+  padding: 1.4rem 1.6rem;
+  margin: 2rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+
+  display: flex;
+  gap: 1.2rem; /* 線とテキストの距離 */
+  align-items: stretch; /* ← 縦線が伸びる */
+}
+
+/* 左の縦線2本（横に並べる） */
+.quote-lines {
+  display: flex;
+  flex-direction: row; /* 横に並べる */
+  gap: 3px;            /* 2本の間隔 */
+  margin-left: 0px;    /* 左端から少し離す */
+
+  align-self: stretch; /* ← 親の高さに合わせて縦に伸びる */
+}
+
+.quote-lines::before,
+.quote-lines::after {
+  content: "";
+  width: 1px;          /* 細い縦線 */
+  background: #59b29f;
+  border-radius: 2px;
+  opacity: 0.9;
+
+  /* 高さをテキストに合わせて自動で伸ばす */
+  height: auto;
+  flex: 1;             /* ← これで縦に伸びる */
+}
+
+/* テキスト部分 */
+.quote-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* ← 上：本文 / 下：ソース */
+}
+
+/* 本文 */
+.quote-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #333;
+  margin: 0 0 0.8rem 0;
+  white-space: pre-line;
+}
+
+/* ソース（左揃え・斜体・薄い同系色） */
+.quote-source {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #9eafab;
+  text-align: left;
+}
+
+.quote-source a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.quote-source a:hover {
+  opacity: 0.8;
+}
+</style>
