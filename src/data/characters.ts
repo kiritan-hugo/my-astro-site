@@ -1,17 +1,22 @@
+import kiritanIcon from '../assets/images/kiritan_profile.jpg';
+import senaIcon from '../assets/images/sena_profile.png';
+import womanIcon from '../assets/images/worried-woman.png';
+import man_ayashiiIcon from '../assets/images/pose_ayashii_man.png';
+
 export const characters = {
   kiritan: {
     name: "kiritan",
-    icon: "/public/images/kiritan_profile.jpg",
+    icon: kiritanIcon
   },
   sena: {
     name: "sena",
-    icon: "/public/images/sena_profile.png",
+    icon: senaIcon
   },
   woman: {
-    icon: "/public/images/worried-woman.png"
+    icon: womanIcon
   },
   man_ayashii: {
-    icon: "/public/images/pose_ayashii_man.png"
+    icon: man_ayashiiIcon
   }
 //   asikusa: {
 //     name: "アシクサ",

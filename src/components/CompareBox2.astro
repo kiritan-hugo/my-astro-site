@@ -1,0 +1,75 @@
+---
+const {
+  leftTitle = "メリット",
+  rightTitle = "デメリット",
+  leftItems = [],
+  rightItems = [],
+  labelBgLeft = "#4fae5a",   // ← 左ラベル背景色
+  labelBgRight = "#ff5e5e"   // ← 右ラベル背景色
+} = Astro.props;
+---
+
+<div class="compare-box">
+  <div class="column">
+    <div class="label" style={{ background: labelBgLeft }}>
+      {leftTitle}
+    </div>
+    <ul>
+      {leftItems.map(item => <li>{item}</li>)}
+    </ul>
+  </div>
+
+  <div class="column">
+    <div class="label" style={{ background: labelBgRight }}>
+      {rightTitle}
+    </div>
+    <ul>
+      {rightItems.map(item => <li>{item}</li>)}
+    </ul>
+  </div>
+</div>
+
+<style>
+.compare-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin: 2.5rem 0;
+}
+
+.column {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.2rem 1rem;
+  position: relative;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.label {
+  position: absolute;
+  top: -14px;
+  left: 12px;
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+li {
+  margin: 0.3rem 0;
+  line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  .compare-box {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

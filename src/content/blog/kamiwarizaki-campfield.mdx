@@ -17,13 +17,72 @@ import CompareBox from "../../components/CompareBox.astro";
 import RelatedPosts from "../../components/RelatedPosts.astro";
 import MapEmbed from "../../components/MapEmbed.astro";
 import Accordion from "../../components/Accordion.astro";
+import ImageWithCaption from '../../components/ImageWithCaption.astro';
 
+import img01 from '../../assets/posts/2022/kamiwarizaki/1663573483487-800x600.jpg';
+import img02 from '../../assets/posts/2022/kamiwarizaki/Screenshot-2025-10-01-11.32.01-800x363.jpg';
+import img03 from '../../assets/posts/2022/kamiwarizaki/9342c129d257c87ed2fe9c38a731624c-800x566.jpg';
+import img04 from '../../assets/posts/2022/kamiwarizaki/86fec6f5b61cdab7d488ff08ea477f24-2-800x1132.jpg';
+import img05 from '../../assets/posts/2022/kamiwarizaki/2112_kamiwarizaki_camp_naka_ol.webp';
+import img06 from '../../assets/posts/2022/kamiwarizaki/1663573454029-800x600.jpg';
+import img07 from '../../assets/posts/2022/kamiwarizaki/1663573452790.jpg';
+import img08 from '../../assets/posts/2022/kamiwarizaki/1663573457692.jpg';
+import img09 from '../../assets/posts/2022/kamiwarizaki/1663573464019.jpg';
+import img10 from '../../assets/posts/2022/kamiwarizaki/1663573480127-800x600.jpg';
+import img11 from '../../assets/posts/2022/kamiwarizaki/1663573475467.jpg';
+import img12 from '../../assets/posts/2022/kamiwarizaki/1663573474396.jpg';
+import img13 from '../../assets/posts/2022/kamiwarizaki/1663573479103.jpg';
+import img14 from '../../assets/posts/2022/kamiwarizaki/1663573451217-800x600.jpg';
+import img15 from '../../assets/posts/2022/kamiwarizaki/1663573448979.jpg';
+import img16 from '../../assets/posts/2022/kamiwarizaki/1663573441777.jpg';
+import img17 from '../../assets/posts/2022/kamiwarizaki/1663573437566.jpg';
+import img18 from '../../assets/posts/2022/kamiwarizaki/1663573431243-800x600.jpg';
+import img19 from '../../assets/posts/2022/kamiwarizaki/1663573430325.jpg';
+import img20 from '../../assets/posts/2022/kamiwarizaki/1663573429412.jpg';
+import img21 from '../../assets/posts/2022/kamiwarizaki/1663573427489.jpg';
+import img22 from '../../assets/posts/2022/kamiwarizaki/1663573487448-800x600.jpg';
+import img23 from '../../assets/posts/2022/kamiwarizaki/1663573495053-800x600.jpg';
+import img24 from '../../assets/posts/2022/kamiwarizaki/1663573493165-800x600.jpg';
+import img25 from '../../assets/posts/2022/kamiwarizaki/1663573489384.jpg';
+import img26 from '../../assets/posts/2022/kamiwarizaki/1663573490539.jpg';
+import img27 from '../../assets/posts/2022/kamiwarizaki/1663573491019.jpg';
+import img28 from '../../assets/posts/2022/kamiwarizaki/1663573488916-800x600.jpg';
+import img29 from '../../assets/posts/2022/kamiwarizaki/1663573455693-800x600.jpg';
+import img30 from '../../assets/posts/2022/kamiwarizaki/1663573401320-800x600.jpg';
+import img31 from '../../assets/posts/2022/kamiwarizaki/1663573408296.jpg';
+import img32 from '../../assets/posts/2022/kamiwarizaki/1663573406963.jpg';
+import img33 from '../../assets/posts/2022/kamiwarizaki/1663573406639.jpg';
+import img34 from '../../assets/posts/2022/kamiwarizaki/1663573411859.jpg';
+import img35 from '../../assets/posts/2022/kamiwarizaki/1663573409224.jpg';
+import img36 from '../../assets/posts/2022/kamiwarizaki/1663573409636.jpg';
+import img37 from '../../assets/posts/2022/kamiwarizaki/1663573408963.jpg';
+import img38 from '../../assets/posts/2022/kamiwarizaki/1663573405544.jpg';
+import img39 from '../../assets/posts/2022/kamiwarizaki/1663573403618.jpg';
+import img40 from '../../assets/posts/2022/kamiwarizaki/1663573403312.jpg';
+import img41 from '../../assets/posts/2022/kamiwarizaki/1663573402880.jpg';
+import img42 from '../../assets/posts/2022/kamiwarizaki/1663573462164-800x600.jpg';
+import img43 from '../../assets/posts/2022/kamiwarizaki/1663573478631.jpg';
+import img44 from '../../assets/posts/2022/kamiwarizaki/1663573437967.jpg';
+import img45 from '../../assets/posts/2022/kamiwarizaki/1663573430325.jpg';
+import img46 from '../../assets/posts/2022/kamiwarizaki/1663573464924-800x600.jpg';
+import img47 from '../../assets/posts/2022/kamiwarizaki/1663573483062-800x600.jpg';
+import img48 from '../../assets/posts/2022/kamiwarizaki/1663573469887.jpg';
+import img49 from '../../assets/posts/2022/kamiwarizaki/1665000304124.jpg';
+import img50 from '../../assets/posts/2022/kamiwarizaki/1663573458427-800x600.jpg';
+import img51 from '../../assets/posts/2022/kamiwarizaki/1666174725387-800x600.jpg';
+import img52 from '../../assets/posts/2022/kamiwarizaki/1663573455693-800x600.jpg';
+import img53 from '../../assets/posts/2022/kamiwarizaki/1663573461473-800x600.jpg';
+import img54 from '../../assets/posts/2022/kamiwarizaki/kanyou.jpg';
+import img55 from '../../assets/posts/2022/kamiwarizaki/kanyou-onsen.jpg';
+import img56 from '../../assets/posts/2022/kamiwarizaki/1666174311459.jpg';
+import img57 from '../../assets/posts/2022/kamiwarizaki/kamiwarizaki-hinode-1.webp';
+import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jpg';
 
 こんにちは、kiritanです。
 
 今回は宮城県南三陸町にある『神割崎キャンプ場』を紹介していきます。
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573483487-800x600.jpg" alt="" />
+<img src={img01.src} alt="" />
 
 『神割崎キャンプ場』は南三陸のリアス式海岸沿いにあるキャンプ場。
 
@@ -59,10 +118,13 @@ import Accordion from "../../components/Accordion.astro";
 
 ## 神割崎キャンプ場｜宮城県南三陸町
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2022/kamiwarizaki/Screenshot-2025-10-01-11.32.01-800x363.jpg" alt="神割崎キャンプ場HP" />
-  <CaptionSource source="出典：神割崎キャンプ場公式サイト" url="https://www.m-kankou.jp/kamiwari-camp/" />
-</div>
+<ImageWithCaption
+  src={img02.src} 
+  caption="出典：神割崎キャンプ場公式サイト"
+  url="https://www.m-kankou.jp/kamiwari-camp/"
+  width="100%"
+  align="center"
+/>
 
 ### 基本情報
 
@@ -97,15 +159,21 @@ import Accordion from "../../components/Accordion.astro";
   ]}
 />
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2022/kamiwarizaki/9342c129d257c87ed2fe9c38a731624c-800x566.jpg" alt="神割崎キャンプ場料金表" />
-  <CaptionSource source="出典：神割崎キャンプ場公式サイト" url="https://www.m-kankou.jp/kamiwari-camp/fee-plan2023/" />
-</div>
+<ImageWithCaption
+  src={img03.src} 
+  caption="出典：神割崎キャンプ場公式サイト"
+  url="https://www.m-kankou.jp/kamiwari-camp/fee-plan2023/"
+  width="100%"
+  align="center"
+/>
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2022/kamiwarizaki/86fec6f5b61cdab7d488ff08ea477f24-2-800x1132.jpg" alt="神割崎キャンプ場料金表" />
-  <CaptionSource source="出典：神割崎キャンプ場公式サイト" url="https://www.m-kankou.jp/kamiwari-camp/fee-plan2023/" />
-</div>
+<ImageWithCaption
+  src={img04.src} 
+  caption="出典：神割崎キャンプ場公式サイト"
+  url="https://www.m-kankou.jp/kamiwari-camp/fee-plan2023/"
+  width="100%"
+  align="center"
+/>
 
 支払方法は現金のほかクレジットカード、電子マネーが利用可能です。
 
@@ -141,10 +209,13 @@ import Accordion from "../../components/Accordion.astro";
 
 ## 神割崎キャンプ場｜場内マップ
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2022/kamiwarizaki/2112_kamiwarizaki_camp_naka_ol.webp" alt="神割崎キャンプ場場内マップ" />
-  <CaptionSource source="出典：神割崎キャンプ場公式サイト" url="https://www.m-kankou.jp/kamiwari-camp/" />
-</div>
+<ImageWithCaption
+  src={img05.src} 
+  caption="出典：神割崎キャンプ場公式サイト"
+  url="https://www.m-kankou.jp/kamiwari-camp/"
+  width="100%"
+  align="center"
+/>
 
 ## 神割崎キャンプ場｜サイト
 
@@ -154,13 +225,13 @@ import Accordion from "../../components/Accordion.astro";
 
 ### 第1キャンプ場
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573454029-800x600.jpg" alt="" />
+<img src={img06.src} alt="" />
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573452790.jpg" alt="" />
+<img src={img07.src} alt="" />
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573457692.jpg" alt="" />
+<img src={img08.src} alt="" />
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573464019.jpg" alt="" />
+<img src={img09.src} alt="" />
 
 神割崎キャンプ場の中央に位置するのが第1キャンプ場です。
 
@@ -175,16 +246,19 @@ import Accordion from "../../components/Accordion.astro";
 
 ### 第2キャンプ場
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573480127-800x600.jpg" alt="" />
+<img src={img10.src} alt="" />
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573475467.jpg" alt="" />
+<img src={img11.src} alt="" />
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573474396.jpg" alt="" />
+<img src={img12.src} alt="" />
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2022/kamiwarizaki/1663573479103.jpg" alt="神割崎第2キャンプ場入口" />
-  <CaptionSource source="▲サイト入口" />
-</div>
+<ImageWithCaption
+  src={img13.src} 
+  caption="▲サイト入口"
+  url=""
+  width="100%"
+  align="center"
+/>
 
 第2キャンプ場はキャンプ場正面入口から右に入っていくとあります。
 
@@ -198,13 +272,13 @@ import Accordion from "../../components/Accordion.astro";
 
 ### 第3キャンプ場
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573451217-800x600.jpg" alt="" />
+<img src={img14.src} alt="" />
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573448979.jpg" alt="" />
+<img src={img15.src} alt="" />
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573441777.jpg" alt="" />
+<img src={img16.src} alt="" />
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573437566.jpg" alt="" />
+<img src={img17.src} alt="" />
 
 第1キャンプ場の奥へ進むと第3キャンプ場が広がってきます。
 
@@ -220,13 +294,13 @@ import Accordion from "../../components/Accordion.astro";
 
 ### 第4キャンプ場
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573431243-800x600.jpg" alt="" />
+<img src={img18.src} alt="" />
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573430325.jpg" alt="" />
+<img src={img19.src} alt="" />
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573429412.jpg" alt="" />
+<img src={img20.src} alt="" />
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573427489.jpg" alt="" />
+<img src={img21.src} alt="" />
 
 入口から一番離れている奥地にあるのが第4キャンプ場です。  
 第3キャンプ場からさらに奥に進むと見えてきます。
@@ -245,7 +319,8 @@ import Accordion from "../../components/Accordion.astro";
 
 ### 駐車場
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573487448-800x600.jpg" alt="" />
+<img src={img22.src} alt="" />
+
 
 キャンプ場入り口に道路を挟んで2箇所に駐車場があります。  
 こちらは**フリーサイトとログキャビン利用者**の駐車場になっています。
@@ -254,7 +329,7 @@ import Accordion from "../../components/Accordion.astro";
 
 ### 管理棟
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573495053-800x600.jpg" alt="" />
+<img src={img23.src} alt="" />
 
 キャンプ場の入口にあり、利用料金の支払いやキャンプ用品のレンタルを行っています。
 
@@ -266,26 +341,25 @@ import Accordion from "../../components/Accordion.astro";
 
 ○レンタルコーナー　
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573493165-800x600.jpg" alt="" />
+<img src={img24.src} alt="" />
 
 ○売店　
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573489384.jpg" alt="" />
+<img src={img25.src} alt="" />
 
+<img src={img26.src} alt="" />
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573490539.jpg" alt="" />
-
-
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573491019.jpg" alt="" />
+<img src={img27.src} alt="" />
 
 ○レストラン　11：00～16：00頃迄【定休日：月・火曜日（祝日除く）】
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573488916-800x600.jpg" alt="" />
+
+<img src={img28.src} alt="" />
 
 レストランの詳しいメニューは[こちらから](https://www.m-kankou.jp/kamiwari-camp/page-7268/)
 
 ### サニタリー棟
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573455693-800x600.jpg" alt="" />
+<img src={img29.src} alt="" />
 
 第1キャンプ場近くにあるサニタリー棟。  
 こちらは2021年にリニューアルしています。
@@ -294,7 +368,8 @@ import Accordion from "../../components/Accordion.astro";
 
 ○洗い場
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573401320-800x600.jpg" alt="" />
+<img src={img30.src} alt="" />
+
 
 建物中央に洗い場があります。
 
@@ -302,10 +377,9 @@ import Accordion from "../../components/Accordion.astro";
 
 ○トイレ
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573408296.jpg" alt="" />
+<img src={img31.src} alt="" />
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573406963.jpg" alt="" />
-
+<img src={img32.src} alt="" />
 
 2021年のリニューアルに併せてトイレが一新されました。  
 
@@ -316,17 +390,17 @@ import Accordion from "../../components/Accordion.astro";
 まるでホテルのようだ…
 </Balloon>
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573406639.jpg" alt="" />
+<img src={img33.src} alt="" />
 
 リニューアルで手洗いから温水が出るように進化を遂げました。
 
 ○シャワールーム
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573411859.jpg" alt="" />
+<img src={img34.src} alt="" />
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573409224.jpg" alt="" />
+<img src={img35.src} alt="" />
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573409636.jpg" alt="" />
+<img src={img36.src} alt="" />
 
 温水シャワーが<span class="b">24時間いつでも利用できます。</span><span class="red-b">しかも無料。</span>
 
@@ -335,24 +409,23 @@ import Accordion from "../../components/Accordion.astro";
 
 ここまで設備がいいと勘違いしそうですが、備え付けのシャンプーやタオルはありません。各自持参してきましょう。
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573408963.jpg" alt="" />
+<img src={img37.src} alt="" />
 
 シャワールーム内には飲料用の水道と紙コップが用意されています。  
 入浴後の水分補給もバッチリですね！
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573405544.jpg" alt="" />
+<img src={img38.src} alt="" />
 
 脱衣所にはなんと<span class="red-b">コンセントが完備されています！</span>  
 壁には<span class="b">『ドライヤー、ヘアアイロン使用の際にご利用ください』</span>と記されています。  
 
 シャワーのあとにドライヤーが使えず髪を乾かせないキャンプ場がざらにあるので、こういう配慮があるのは本当に嬉しいです。
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573403618.jpg" alt="" />
+<img src={img39.src} alt="" />
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573403312.jpg" alt="" />
+<img src={img40.src} alt="" />
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573402880.jpg" alt="" />
-
+<img src={img41.src} alt="" />
 
 奥には『浴室』と書かれた扉があり、説明書きを読んだところ、浴室にお湯を張って入浴OKとのこと。
 
@@ -361,27 +434,37 @@ import Accordion from "../../components/Accordion.astro";
 **神割崎キャンプ場恐るべし。**
 
 ### 炊事場
+<ImageWithCaption
+  src={img42.src} 
+  caption="炊事棟-第1キャンプ場"
+  url=""
+  width="100%"
+  align="center"
+/>
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2022/kamiwarizaki/1663573462164-800x600.jpg" alt="炊事棟-第1キャンプ場" />
-  <CaptionSource source="炊事棟-第1キャンプ場" />
-</div>
-<img src="" alt="" />
+<ImageWithCaption
+  src={img43.src} 
+  caption="炊事棟-第2キャンプ場"
+  url=""
+  width="100%"
+  align="center"
+/>
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2022/kamiwarizaki/1663573478631.jpg" alt="炊事棟-第2キャンプ場" />
-  <CaptionSource source="炊事棟-第2キャンプ場" />
-</div>
+<ImageWithCaption
+  src={img44.src} 
+  caption="炊事棟-第3キャンプ場"
+  url=""
+  width="100%"
+  align="center"
+/>
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2022/kamiwarizaki/1663573437967.jpg" alt="炊事棟-第3キャンプ場" />
-  <CaptionSource source="炊事棟-第3キャンプ場" />
-</div>
-
-<div class="image-wrap">
-  <img src="/src/assets/posts/2022/kamiwarizaki/1663573430325.jpg" alt="炊事棟-第4キャンプ場" />
-  <CaptionSource source="炊事棟-第4キャンプ場" />
-</div>
+<ImageWithCaption
+  src={img45.src} 
+  caption="炊事棟-第4キャンプ場"
+  url=""
+  width="100%"
+  align="center"
+/>
 
 炊事場は第1～第4キャンプ場にそれぞれ1棟ずつあります。  
 ※第2キャンプ場は水道のみ
@@ -390,7 +473,7 @@ import Accordion from "../../components/Accordion.astro";
 
 ### BBQ広場
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573464924-800x600.jpg" alt="" />
+<img src={img46.src} alt="" />
 
 かまどが24基、半数は屋根付きの場所にあります。
 
@@ -398,7 +481,7 @@ import Accordion from "../../components/Accordion.astro";
 
 ### トイレ
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573483062-800x600.jpg" alt="" />
+<img src={img47.src} alt="" />
 
 正面駐車場のトイレ
 
@@ -423,9 +506,9 @@ import Accordion from "../../components/Accordion.astro";
 
 ### ゴミ捨て場
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573469887.jpg" alt="" />
+<img src={img48.src} alt="" />
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1665000304124.jpg" alt="" />
+<img src={img49.src} alt="" />
 
 管理棟下にゴミ捨て場があります。
 
@@ -436,7 +519,7 @@ import Accordion from "../../components/Accordion.astro";
 
 ### 炭捨て場
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573458427-800x600.jpg" alt="" />
+<img src={img50.src} alt="" />
 
 第1キャンプ場の裏に炭捨て場があります。
 
@@ -449,7 +532,7 @@ import Accordion from "../../components/Accordion.astro";
 
 ### ①景色が最高
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1666174725387-800x600.jpg" alt="" />
+<img src={img51.src} alt="" />
 
 神割崎キャンプ場といえば<span class="red">**これに尽きます。**</span>
 リアス式海岸特有の荒々しい海の一面、水平線まで見渡せる景色は感動ものです。
@@ -470,7 +553,7 @@ import Accordion from "../../components/Accordion.astro";
 
 ### ③設備が新しく綺麗
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573455693-800x600.jpg" alt="" />
+<img src={img52.src} alt="" />
 
 サニタリー棟は<span class="red-b">**2021年にリニューアルされました。**</span>
 
@@ -487,13 +570,11 @@ import Accordion from "../../components/Accordion.astro";
 
 ### ⑤キャンプ初心者・未経験者に優しいつくり
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1663573461473-800x600.jpg" alt="" />
+<img src={img53.src} alt="" />
 
 ここ神割崎キャンプ場はレンタル品の数がおおく、料金も安いのでキャンプ始めたての人にとって嬉しい仕様になっています。
 
 大人数が利用できるログキャビンもあるので、普段アウトドアをしないファミリー層でも手軽に楽しめます。
-
-\[ad\]
 
 ## 神割崎キャンプ場の周辺情報
 
@@ -518,15 +599,21 @@ import Accordion from "../../components/Accordion.astro";
 
 ### 南三陸ホテル 観洋
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2022/kamiwarizaki/kanyou.jpg" alt="" />
-  <CaptionSource source="出典：南三陸ホテル観洋 公式サイト" />
-</div>
+<ImageWithCaption
+  src={img54.src} 
+  caption="出典：南三陸ホテル観洋 公式サイト"
+  url=""
+  width="100%"
+  align="center"
+/>
 
-<div class="image-wrap">
-  <img src="/src/assets/posts/2022/kamiwarizaki/kanyou-onsen.jpg" alt="" />
-  <CaptionSource source="▲三陸沖を見渡せる『インフィニティ温泉』" />
-</div>
+<ImageWithCaption
+  src={img55.src} 
+  caption="三陸沖を見渡せる『インフィニティ温泉』"
+  url=""
+  width="100%"
+  align="center"
+/>
 
 神割崎キャンプ場からほど近い温泉旅館で日中は日帰り温泉として利用できます。
 
@@ -548,9 +635,9 @@ import Accordion from "../../components/Accordion.astro";
 
 ### 神割崎
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1666174311459.jpg" alt="" />
+<img src={img56.src} alt="" />
 
-<img src="/src/assets/posts/2022/kamiwarizaki/kamiwarizaki-hinode-1.webp" alt="" />
+<img src={img57.src} alt="" />
 
 2月中旬と10月下旬頃にみれる『神の日の出』
 
@@ -598,4 +685,4 @@ import Accordion from "../../components/Accordion.astro";
 宮城県で人気1位を争うキャンプ場。  
 キャンプ場をお困りの際はぜひ足を運んでみてください！
 
-<img src="/src/assets/posts/2022/kamiwarizaki/1666176198191-800x600.jpg" alt="" />
+<img src={img58.src} alt="" />
