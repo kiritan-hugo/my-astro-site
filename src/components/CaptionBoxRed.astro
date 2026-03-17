@@ -1,0 +1,50 @@
+---
+const { label = "POINT" } = Astro.props;
+---
+
+<div class="caption-red-top">
+  <div class="caption-red-top-label">{label}</div>
+  <div class="caption-red-top-body">
+    <slot />
+  </div>
+</div>
+
+<style>
+.caption-red-top {
+  border: 1px solid #d62828; /* 赤色 */
+  border-radius: 0px;
+  background: #fff6f6; /* 薄い赤背景 */
+  padding: 0;
+  margin: 1.5rem 0;
+  overflow: hidden;
+}
+
+/* ▼ 上部ラベル（中央寄せ） */
+.caption-red-top-label {
+  background: #d62828; /* 赤 */
+  color: #fff;         /* 白文字 */
+  padding: 0.3rem 1rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  text-align: center;  /* ★ 中央寄せ */
+  border-bottom: 2px solid #d62828;
+}
+
+/* ▼ 本文（黒文字） */
+.caption-red-top-body {
+  padding: 1rem 1.2rem;
+  color: #222;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ▼ リスト対応 */
+.caption-red-top-body ul,
+.caption-red-top-body ol {
+  margin: 0.4rem 0 0 1.2rem;
+}
+
+.caption-red-top-body li {
+  margin-bottom: 0.3rem;
+}
+</style>

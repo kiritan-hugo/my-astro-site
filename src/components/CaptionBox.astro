@@ -1,33 +1,13 @@
 ---
-const {
-  title = "キャプション",
-  items = null
-} = Astro.props;
-
-// items が配列か文字列かを判定
-const isArray = Array.isArray(items);
-const isString = typeof items === "string";
-
-// Markdown風リンク [text](url) を <a href="url">text</a> に変換
-const parseMarkdownLinks = (text) => {
-  return text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
-};
+const { title = "キャプション" } = Astro.props;
 ---
 
 <div class="caption-box">
   <div class="caption-label">{title}</div>
 
-  {isArray && (
-    <ul>
-      {items.map(item => (
-        <li set:html={parseMarkdownLinks(item)}></li>
-      ))}
-    </ul>
-  )}
-
-  {isString && (
-    <p class="caption-text" set:html={parseMarkdownLinks(items)}></p>
-  )}
+  <div class="caption-body">
+    <slot />
+  </div>
 </div>
 
 <style>
@@ -56,20 +36,25 @@ const parseMarkdownLinks = (text) => {
   display: none;
 }
 
-/* リスト */
-.caption-box ul {
+/* 本文（Markdown対応） */
+.caption-body {
   margin-top: 15px;
-  padding-left: 2rem;
-}
-.caption-box li {
-  margin: 0.3rem 0;
+  color: #222;
   line-height: 1.6;
 }
 
-/* 文字列用（改行対応） */
-.caption-text {
-  margin-top: 15px;
-  line-height: 1.6;
-  white-space: pre-line; /* ← 改行をそのまま表示 */
+/* リスト対応 */
+.caption-body ul,
+.caption-body ol {
+  margin: 0.4rem 0 0 1.2rem;
+}
+
+.caption-body li {
+  margin-bottom: 0.3rem;
+}
+
+/* 改行対応（Markdownの改行も反映） */
+.caption-body p {
+  white-space: pre-line;
 }
 </style>

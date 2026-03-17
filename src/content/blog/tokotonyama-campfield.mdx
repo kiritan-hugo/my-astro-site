@@ -18,6 +18,7 @@ import Table from "../../components/Table.astro";
 import ImagePost from '../../components/ImagePost.astro';
 import ImageCompare from '../../components/ImageCompare.astro';
 import ImageWithCaption from '../../components/ImageWithCaption.astro';
+import { Image } from "astro:assets";
 
 import img01 from '../../assets/posts/2022/tokotonyama/tokotonnyama-web-800x549.jpg';
 import img02 from '../../assets/posts/2022/tokotonyama/1669202248637-800x600.jpg';
@@ -100,15 +101,11 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 
 そんなとことん山キャンプ場の魅力や、サイト・施設の情報を紹介していきます！
 
-
-<CaptionBox
-  title="この記事を読めばこれが分かる！"
-  items={[
-    "キャンプサイト、宿泊施設の種類",
-    "とことん山キャンプ場の施設の詳細",
-    "24時間入り放題の温泉について"
-  ]}
-/>
+<CaptionBox title="この記事を読めばこれが分かる！">
+    - キャンプサイト、宿泊施設の種類
+    - とことん山キャンプ場の施設の詳細
+    - 24時間入り放題の温泉について
+</CaptionBox>
 
 <Balloon person="kiritan" type="left">
 牛野ダムキャンプ場にいたキャンパーさんにもここのキャンプ場をおすすめされました！
@@ -119,7 +116,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 ## とことん山キャンプ場｜秋田県湯沢市
 
 <ImageWithCaption
-  src={img01.src} 
+  src={img01} 
   caption="出典：とことん山キャンプ場公式サイト"
   url="https://tokotonyama.com"
   width="100%"
@@ -201,20 +198,20 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 
 ### 受付方法
 
-<img src={img02.src} alt="" />
+<Image src={img02} alt="" />
 
 キャンプ場入口にある管理事務所で受付できます。
 
 受付を終えると、キャンプ場利用案内書と番号が書かれたプラカードがもらえるので、車の見える位置においておきましょう。
 
-<img src={img03.src} alt="" />
+<Image src={img03} alt="" />
 
-<img src={img04.src} alt="" />
+<Image src={img04} alt="" />
 
 ## とことん山キャンプ場｜場内マップ
 
 <ImageWithCaption
-  src={img05.src} 
+  src={img05} 
   caption="出典：とことん山キャンプ場公式サイト"
   url="https://tokotonyama.com"
   width="100%"
@@ -229,7 +226,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 
 ### サイトA
 
-<img src={img06.src} alt="" />
+<Image src={img06} alt="" />
 
 3つの中で1番の広さを誇るサイトA。ここは林間サイトで地面のほとんどは土になっています。
 
@@ -241,7 +238,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 
 ### サイトB
 
-<img src={img07.src} alt="" />
+<Image src={img07} alt="" />
 
 サイトAのお隣、トイレを挟んで北に位置するのがサイトB。こちらも林間サイトで地面は土になっています。
 
@@ -251,7 +248,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 
 ### サイトC
 
-<img src={img08.src} alt="" />
+<Image src={img08} alt="" />
 
 サイトBと道路を挟んで目の前にあるのがサイトC。
 
@@ -260,7 +257,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 
 広々と使えるので**大型テントを設営したい人にオススメです。**
 
-<img src={img09.src} alt="" />
+<Image src={img09} alt="" />
 
 ちなみに行った日はサニタリー棟新設工事の影響で区画が少し狭くなっていました。  
 サニタリー棟が完成したら元通りになるので12月以降が楽しみですね。
@@ -280,7 +277,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 室内にはひと通りの設備が備わっていますが浴室はないので共同の露天風呂を利用します。
 
 <ImageWithCaption
-  src={img10.src} 
+  src={img10} 
   caption="バンガロー楢（なら）"
   url=""
   width="100%"
@@ -288,7 +285,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 />
 
 <ImageWithCaption
-  src={img11.src} 
+  src={img11} 
   caption="バンガロー橡（とち）"
   url=""
   width="100%"
@@ -296,7 +293,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 />
 
 <ImageWithCaption
-  src={img12.src} 
+  src={img12} 
   caption="バンガロー楓（かえで）"
   url=""
   width="100%"
@@ -310,7 +307,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 バンガローと違い、コテージにはそれぞれ浴室がついてます。
 
 <ImageWithCaption
-  src={img13.src} 
+  src={img13} 
   caption="コテージ杉（すぎ）"
   url=""
   width="100%"
@@ -318,7 +315,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 />
 
 <ImageWithCaption
-  src={img14.src} 
+  src={img14} 
   caption="コテージ橅（ぶな）"
   url=""
   width="100%"
@@ -326,7 +323,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 />
 
 <ImageWithCaption
-  src={img15.src} 
+  src={img15} 
   caption="コテージ檜（ひのき）"
   url=""
   width="100%"
@@ -340,7 +337,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 室内は携帯充電用のコンセントのみとシンプルなつくりになっています。
 
 <ImageWithCaption
-  src={img16.src} 
+  src={img16} 
   caption="ツリーハウス"
   url=""
   width="100%"
@@ -354,7 +351,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 ※11:00〜16:00までに限り日帰り利用も可能。
 
 <ImageWithCaption
-  src={img17.src} 
+  src={img17} 
   caption="交流センター（出典：とことん山キャンプ場HP）"
   url=""
   width="100%"
@@ -367,13 +364,13 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 
 ### 管理棟
 
-<img src={img18.src} alt="" />
+<Image src={img18} alt="" />
 
 管理棟ではキャンプ場・日帰り露天風呂・宿泊施設の受付、売店、レンタル品の貸出しを行っています。  
 **営業時間は8:30〜17:00。**
 
 <ImageWithCaption
-  src={img19.src} 
+  src={img19} 
   caption="▲管理棟のなか"
   url=""
   width="100%"
@@ -385,15 +382,15 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 売店ではキャンプ用品・消耗品やアルコール類などの飲み物のほか、カップ麺やお菓子、アイスなどが販売されていました。  
 広葉樹や針葉樹の薪も売っていて、購入すると焚き付け用の薪がもらえるサービスもありました。
 
-<img src={img20.src} alt="" />
+<Image src={img20} alt="" />
 
-<img src={img21.src} alt="" />
+<Image src={img21} alt="" />
 
-<img src={img22.src} alt="" />
+<Image src={img22} alt="" />
 
-<img src={img23.src} alt="" />
+<Image src={img23} alt="" />
 
-<img src={img24.src} alt="" />
+<Image src={img24} alt="" />
 
 ### レンタル品が借りられる
 
@@ -403,7 +400,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 レンタル品の詳細は[公式ホームページ](https://tokotonyama.com/items)をご参照ください。
 
 <ImageWithCaption
-  src={img64.src} 
+  src={img64} 
   caption="▲スポーツ用品もレンタルできます！"
   url=""
   width="100%"
@@ -416,7 +413,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 土日になるとサイト側の駐車場が混み合います。
 
 <ImageWithCaption
-  src={img25.src} 
+  src={img25} 
   caption="▲管理棟前"
   url=""
   width="100%"
@@ -424,7 +421,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 />
 
 <ImageWithCaption
-  src={img26.src} 
+  src={img26} 
   caption="▲サイトA前"
   url=""
   width="100%"
@@ -436,9 +433,9 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 キャンプ場利用者同士の交流の場として開放している施設。  
 サイトAの南側にあり、**8:30〜17:00まで利用可能です**。
 
-<img src={img27.src} alt="" />
+<Image src={img27} alt="" />
 
-<img src={img28.src} alt="" />
+<Image src={img28} alt="" />
 
 交流棟の横にある**リヤカー**は自由に使ってOKです。
 
@@ -447,7 +444,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 </Balloon>
 
 <ImageWithCaption
-  src={img29.src} 
+  src={img29} 
   caption="▲荷物が多いキャンパーには必須ですね"
   url=""
   width="100%"
@@ -458,9 +455,9 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 
 サイトA内にブランコとターザンロープがありました。
 
-<img src={img30.src} alt="" />
+<Image src={img30} alt="" />
 
-<img src={img31.src} alt="" />
+<Image src={img31} alt="" />
 
 キャンプだけじゃ飽きてしまう小さい子どもにもってこいですね。
 
@@ -472,18 +469,18 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 
 サイトAの中央にあり、ゴミ捨て場と灰捨て場が併設されています。
 
-<img src={img32.src} alt="" />
+<Image src={img32} alt="" />
 
-<img src={img33.src} alt="" />
+<Image src={img33} alt="" />
 
 蛇口は8つ。休日はけっこう混みあいます。
 
-<img src={img34.src} alt="" />
+<Image src={img34} alt="" />
 
 こちらの蛇口からはお湯が出ます。
 
 <ImageWithCaption
-  src={img35.src} 
+  src={img35} 
   caption="▲こう洗うと楽ですよ！とママさんキャンパーに教えてもらいました"
   url=""
   width="100%"
@@ -493,7 +490,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 写真のように備え付けのボウルを使って洗い物ができます。  
 頑固な油汚れもスルっと落ちるのでありがたいです。
 
-<img src={img36.src} alt="" />
+<Image src={img36} alt="" />
 
 ちなみにグリルなどは外の蛇口で洗えます。  
 注意書きによると<span class="red">洗剤を使わないように！</span>とのことでした。
@@ -503,36 +500,36 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 炊事棟北面に**燃えるゴミ専用のゴミ捨て場**があります。  
 缶・ビン・ペットボトル、ダンボールは<span class="red">**管理棟受付前にて回収を行っています。**</span>（9:00〜11:00）
 
-<img src={img37.src} alt="" />
+<Image src={img37} alt="" />
 
 ※不燃物(乾電池やライター)、粗大ごみなどは捨てることはできません。
 
 ### 灰捨て場
 
-<img src={img38.src} alt="" />
+<Image src={img38} alt="" />
 
 灰捨て場は炊事場南面、入口の横に設置してありました。
 
 ### トイレ
 
-<img src={img39.src} alt="" />
+<Image src={img39} alt="" />
 
 トイレは駐車場横、交流棟内、露天風呂内の3箇所にあります。
 
-<img src={img40.src} alt="" />
+<Image src={img40} alt="" />
 
-<img src={img41.src} alt="" />
+<Image src={img41} alt="" />
 
-<img src={img42.src} alt="" />
+<Image src={img42} alt="" />
 
-<img src={img43.src} alt="" />
+<Image src={img43} alt="" />
 
 和式・洋式があり温水洗浄便座はついていませんでした。  
 古めのトイレですが、トイレ内は常に清掃されており気持ちよく使うことができました。
 
 ## とことん山キャンプ場｜天然温泉の露天風呂
 
-<img src={img44.src} alt="" />
+<Image src={img44} alt="" />
 
 とことん山キャンプ場最大の魅力である天然温泉の露天風呂です。
 
@@ -540,7 +537,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 **チェックイン〜チェックアウトまで何回でも入浴できます。**
 
 <ImageWithCaption
-  src={img45.src} 
+  src={img45} 
   caption=""
   url=""
   width="100%"
@@ -548,7 +545,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 />
 
 <ImageWithCaption
-  src={img46.src} 
+  src={img46} 
   caption="コインロッカー（100円）"
   url=""
   width="100%"
@@ -556,7 +553,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 />
 
 <ImageWithCaption
-  src={img47.src} 
+  src={img47} 
   caption="洗面台（ドライヤー1台あり）"
   url=""
   width="100%"
@@ -564,7 +561,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 />
 
 <ImageWithCaption
-  src={img48.src} 
+  src={img48} 
   caption="トイレ"
   url=""
   width="100%"
@@ -576,7 +573,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 コインロッカー利用に100円かかってしまうので、貴重品は車にあずけてきたほうが無難かもしれません。
 
 <ImageWithCaption
-  src={img49.src} 
+  src={img49} 
   caption="▲シャワー（2台）"
   url=""
   width="100%"
@@ -587,7 +584,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 シャンプー、リンス、ボディソープは標準搭載です。
 
 <ImageWithCaption
-  src={img50.src} 
+  src={img50} 
   caption="▲露天風呂（上段）"
   url=""
   width="100%"
@@ -595,7 +592,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 />
 
 <ImageWithCaption
-  src={img51.src} 
+  src={img51} 
   caption="▲露天風呂（中段）"
   url=""
   width="100%"
@@ -603,7 +600,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 />
 
 <ImageWithCaption
-  src={img52.src} 
+  src={img52} 
   caption="▲露天風呂（下段）"
   url=""
   width="100%"
@@ -614,23 +611,23 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 
 露天風呂は段々畑のような3段式になっており、上から下に行くに連れて温度が低くなる仕組みです。
 
-<img src={img53.src} alt="" />
+<Image src={img53} alt="" />
 
 1つの露天風呂には10人くらい入れそうです。
 
-<img src={img54.src} alt="" />
+<Image src={img54} alt="" />
 
 露天風呂から見える景色は最高です。
 
 この日は11月だったので紅葉を楽しめましたが、冬だと雪見風呂なんかも楽しめそうですね。
 
-<img src={img55.src} alt="" />
+<Image src={img55} alt="" />
 
 ## とことん山キャンプ場の特徴と魅力
 
 ### ①とことん山は年中無休営業。
 
-<img src={img56.src} alt="" />
+<Image src={img56} alt="" />
 
 **年中無休営業なのでいつでもキャンプができます。**
 
@@ -638,7 +635,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 
 ### ②とことん山はいつでも温泉に入れる。
 
-<img src={img57.src} alt="" />
+<Image src={img57} alt="" />
 
 キャンプ場に滞在中、24時間いつでも入浴できるなんて全国でも珍しいです。
 
@@ -668,7 +665,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 ### 産地直売施設　あぐり館みなせ
 
 <ImageWithCaption
-  src={img58.src} 
+  src={img58} 
   caption="出典：とことん山キャンプ場HP"
   url=""
   width="100%"
@@ -696,7 +693,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 ### かえで庵
 
 <ImageWithCaption
-  src={img59.src} 
+  src={img59} 
   caption="出典：とことん山キャンプ場HP"
   url=""
   width="100%"
@@ -723,7 +720,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 ### 小安峡大墳湯
 
 <ImageWithCaption
-  src={img60.src} 
+  src={img60} 
   caption="出典：湯沢市公式観光サイト"
   url=""
   width="100%"
@@ -750,7 +747,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 ### 川原毛地獄・川原毛大湯滝
 
 <ImageWithCaption
-  src={img61.src} 
+  src={img61} 
   caption="川原毛地獄（出典：湯沢市公式観光サイト）"
   url=""
   width="100%"
@@ -763,7 +760,7 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 いたるところから蒸気が吹き出し、あたりは硫黄臭で包まれています。
 
 <ImageWithCaption
-  src={img62.src} 
+  src={img62} 
   caption="川原毛地獄（出典：湯沢市公式観光サイト）"
   url=""
   width="100%"
@@ -793,18 +790,15 @@ import img64 from '../../assets/posts/2022/tokotonyama/1669202262816-800x600.jpg
 
 秋田のとことん山キャンプ場を紹介しました。
 
-<CaptionBox
-  title=""
-  items={[
-    "林間サイトならではの四季折々の景色が楽しめる",
-    "天然温泉の露天風呂が24時間入り放題",
-    "年中無休でこれからの時期は雪中キャンプもできる"
-  ]}
-/>
+<CaptionBox title="">
+    - 林間サイトならではの四季折々の景色が楽しめる
+    - 天然温泉の露天風呂が24時間入り放題
+    - 年中無休でこれからの時期は雪中キャンプもできる
+</CaptionBox>
 
 24時間入り放題の露天風呂は必見です。  
 周辺には全国でも珍しい観光名所があるので秋田に行く機会があったら是非寄ってみてください！
 
 次回は散策もしてみたいなと思います！
 
-<img src={img63.src} alt="" />
+<Image src={img63} alt="" />

@@ -18,6 +18,7 @@ import RelatedPosts from "../../components/RelatedPosts.astro";
 import MapEmbed from "../../components/MapEmbed.astro";
 import Accordion from "../../components/Accordion.astro";
 import ImageWithCaption from '../../components/ImageWithCaption.astro';
+import { Image } from "astro:assets";
 
 import img01 from '../../assets/posts/2022/kamiwarizaki/1663573483487-800x600.jpg';
 import img02 from '../../assets/posts/2022/kamiwarizaki/Screenshot-2025-10-01-11.32.01-800x363.jpg';
@@ -82,7 +83,7 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 今回は宮城県南三陸町にある『神割崎キャンプ場』を紹介していきます。
 
-<img src={img01.src} alt="" />
+<Image src={img01} alt="" />
 
 『神割崎キャンプ場』は南三陸のリアス式海岸沿いにあるキャンプ場。
 
@@ -119,7 +120,7 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 ## 神割崎キャンプ場｜宮城県南三陸町
 
 <ImageWithCaption
-  src={img02.src} 
+  src={img02} 
   caption="出典：神割崎キャンプ場公式サイト"
   url="https://www.m-kankou.jp/kamiwari-camp/"
   width="100%"
@@ -151,16 +152,13 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 **2025年度より大幅に変更になりました。** 
 
-<CaptionBox
-  title="変更になった点"
-  items={[
-    "利用料金の改定",
-    "シーズン料金の導入"
-  ]}
-/>
+<CaptionBox title="変更になった点">
+    - 利用料金の改定
+    - シーズン料金の導入
+</CaptionBox>
 
 <ImageWithCaption
-  src={img03.src} 
+  src={img03} 
   caption="出典：神割崎キャンプ場公式サイト"
   url="https://www.m-kankou.jp/kamiwari-camp/fee-plan2023/"
   width="100%"
@@ -168,7 +166,7 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 />
 
 <ImageWithCaption
-  src={img04.src} 
+  src={img04} 
   caption="出典：神割崎キャンプ場公式サイト"
   url="https://www.m-kankou.jp/kamiwari-camp/fee-plan2023/"
   width="100%"
@@ -177,12 +175,11 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 支払方法は現金のほかクレジットカード、電子マネーが利用可能です。
 
-<CaptionBox
-  title="料金例"
-  items="【レギュラーシーズンの場合】
-  大人2人、小学生2人、テント1張り、タープ1張りのフリーサイト利用で
-  600円×4人＋500円＋500円 ＝ 3,400円"
-/>
+<CaptionBox title="料金例">
+    【レギュラーシーズンの場合】
+    大人2人、小学生2人、テント1張り、タープ1張りのフリーサイト利用で
+    600円×4人＋500円＋500円 ＝ 3,400円
+</CaptionBox>
 
 キャンプギアを持っていない方向けに『手ぶらでキャンプ』といったプランもあります。  
 詳しくは[公式サイト](https://www.m-kankou.jp/kamiwari-camp/)をチェックしてください！
@@ -210,7 +207,7 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 ## 神割崎キャンプ場｜場内マップ
 
 <ImageWithCaption
-  src={img05.src} 
+  src={img05} 
   caption="出典：神割崎キャンプ場公式サイト"
   url="https://www.m-kankou.jp/kamiwari-camp/"
   width="100%"
@@ -225,13 +222,13 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 ### 第1キャンプ場
 
-<img src={img06.src} alt="" />
+<Image src={img06} alt="" />
 
-<img src={img07.src} alt="" />
+<Image src={img07} alt="" />
 
-<img src={img08.src} alt="" />
+<Image src={img08} alt="" />
 
-<img src={img09.src} alt="" />
+<Image src={img09} alt="" />
 
 神割崎キャンプ場の中央に位置するのが第1キャンプ場です。
 
@@ -246,14 +243,14 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 ### 第2キャンプ場
 
-<img src={img10.src} alt="" />
+<Image src={img10} alt="" />
 
-<img src={img11.src} alt="" />
+<Image src={img11} alt="" />
 
-<img src={img12.src} alt="" />
+<Image src={img12} alt="" />
 
 <ImageWithCaption
-  src={img13.src} 
+  src={img13} 
   caption="▲サイト入口"
   url=""
   width="100%"
@@ -272,13 +269,13 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 ### 第3キャンプ場
 
-<img src={img14.src} alt="" />
+<Image src={img14} alt="" />
 
-<img src={img15.src} alt="" />
+<Image src={img15} alt="" />
 
-<img src={img16.src} alt="" />
+<Image src={img16} alt="" />
 
-<img src={img17.src} alt="" />
+<Image src={img17} alt="" />
 
 第1キャンプ場の奥へ進むと第3キャンプ場が広がってきます。
 
@@ -294,13 +291,13 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 ### 第4キャンプ場
 
-<img src={img18.src} alt="" />
+<Image src={img18} alt="" />
 
-<img src={img19.src} alt="" />
+<Image src={img19} alt="" />
 
-<img src={img20.src} alt="" />
+<Image src={img20} alt="" />
 
-<img src={img21.src} alt="" />
+<Image src={img21} alt="" />
 
 入口から一番離れている奥地にあるのが第4キャンプ場です。  
 第3キャンプ場からさらに奥に進むと見えてきます。
@@ -319,7 +316,7 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 ### 駐車場
 
-<img src={img22.src} alt="" />
+<Image src={img22} alt="" />
 
 
 キャンプ場入り口に道路を挟んで2箇所に駐車場があります。  
@@ -329,7 +326,7 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 ### 管理棟
 
-<img src={img23.src} alt="" />
+<Image src={img23} alt="" />
 
 キャンプ場の入口にあり、利用料金の支払いやキャンプ用品のレンタルを行っています。
 
@@ -341,25 +338,25 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 ○レンタルコーナー　
 
-<img src={img24.src} alt="" />
+<Image src={img24} alt="" />
 
 ○売店　
 
-<img src={img25.src} alt="" />
+<Image src={img25} alt="" />
 
-<img src={img26.src} alt="" />
+<Image src={img26} alt="" />
 
-<img src={img27.src} alt="" />
+<Image src={img27} alt="" />
 
 ○レストラン　11：00～16：00頃迄【定休日：月・火曜日（祝日除く）】
 
-<img src={img28.src} alt="" />
+<Image src={img28} alt="" />
 
 レストランの詳しいメニューは[こちらから](https://www.m-kankou.jp/kamiwari-camp/page-7268/)
 
 ### サニタリー棟
 
-<img src={img29.src} alt="" />
+<Image src={img29} alt="" />
 
 第1キャンプ場近くにあるサニタリー棟。  
 こちらは2021年にリニューアルしています。
@@ -368,7 +365,7 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 ○洗い場
 
-<img src={img30.src} alt="" />
+<Image src={img30} alt="" />
 
 
 建物中央に洗い場があります。
@@ -377,9 +374,9 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 ○トイレ
 
-<img src={img31.src} alt="" />
+<Image src={img31} alt="" />
 
-<img src={img32.src} alt="" />
+<Image src={img32} alt="" />
 
 2021年のリニューアルに併せてトイレが一新されました。  
 
@@ -390,17 +387,17 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 まるでホテルのようだ…
 </Balloon>
 
-<img src={img33.src} alt="" />
+<Image src={img33} alt="" />
 
 リニューアルで手洗いから温水が出るように進化を遂げました。
 
 ○シャワールーム
 
-<img src={img34.src} alt="" />
+<Image src={img34} alt="" />
 
-<img src={img35.src} alt="" />
+<Image src={img35} alt="" />
 
-<img src={img36.src} alt="" />
+<Image src={img36} alt="" />
 
 温水シャワーが<span class="b">24時間いつでも利用できます。</span><span class="red-b">しかも無料。</span>
 
@@ -409,23 +406,23 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 ここまで設備がいいと勘違いしそうですが、備え付けのシャンプーやタオルはありません。各自持参してきましょう。
 
-<img src={img37.src} alt="" />
+<Image src={img37} alt="" />
 
 シャワールーム内には飲料用の水道と紙コップが用意されています。  
 入浴後の水分補給もバッチリですね！
 
-<img src={img38.src} alt="" />
+<Image src={img38} alt="" />
 
 脱衣所にはなんと<span class="red-b">コンセントが完備されています！</span>  
 壁には<span class="b">『ドライヤー、ヘアアイロン使用の際にご利用ください』</span>と記されています。  
 
 シャワーのあとにドライヤーが使えず髪を乾かせないキャンプ場がざらにあるので、こういう配慮があるのは本当に嬉しいです。
 
-<img src={img39.src} alt="" />
+<Image src={img39} alt="" />
 
-<img src={img40.src} alt="" />
+<Image src={img40} alt="" />
 
-<img src={img41.src} alt="" />
+<Image src={img41} alt="" />
 
 奥には『浴室』と書かれた扉があり、説明書きを読んだところ、浴室にお湯を張って入浴OKとのこと。
 
@@ -435,7 +432,7 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 ### 炊事場
 <ImageWithCaption
-  src={img42.src} 
+  src={img42} 
   caption="炊事棟-第1キャンプ場"
   url=""
   width="100%"
@@ -443,7 +440,7 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 />
 
 <ImageWithCaption
-  src={img43.src} 
+  src={img43} 
   caption="炊事棟-第2キャンプ場"
   url=""
   width="100%"
@@ -451,7 +448,7 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 />
 
 <ImageWithCaption
-  src={img44.src} 
+  src={img44} 
   caption="炊事棟-第3キャンプ場"
   url=""
   width="100%"
@@ -459,7 +456,7 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 />
 
 <ImageWithCaption
-  src={img45.src} 
+  src={img45} 
   caption="炊事棟-第4キャンプ場"
   url=""
   width="100%"
@@ -473,7 +470,7 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 ### BBQ広場
 
-<img src={img46.src} alt="" />
+<Image src={img46} alt="" />
 
 かまどが24基、半数は屋根付きの場所にあります。
 
@@ -481,7 +478,7 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 ### トイレ
 
-<img src={img47.src} alt="" />
+<Image src={img47} alt="" />
 
 正面駐車場のトイレ
 
@@ -494,21 +491,18 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 第3と第4キャンプ場は<span class="red">汲み取り式で少し古めなので注意</span>。
 
-<CaptionBox
-  title="綺麗なトイレを利用したい方はこちらがオススメ！"
-  items={[
-    "第1キャンプ場利用者...サニタリーハウス",
-    "第2キャンプ場利用者...正面駐車場",
-    "第3キャンプ場利用者...サニタリーハウス",
-    "第4キャンプ場利用者...サニタリーハウス"
-  ]}
-/>
+<CaptionBox title="綺麗なトイレを利用したい方はこちらがオススメ！">
+    - 第1キャンプ場利用者...サニタリーハウス
+    - 第2キャンプ場利用者...正面駐車場
+    - 第3キャンプ場利用者...サニタリーハウス
+    - 第4キャンプ場利用者...サニタリーハウス
+</CaptionBox>
 
 ### ゴミ捨て場
 
-<img src={img48.src} alt="" />
+<Image src={img48} alt="" />
 
-<img src={img49.src} alt="" />
+<Image src={img49} alt="" />
 
 管理棟下にゴミ捨て場があります。
 
@@ -519,7 +513,7 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 ### 炭捨て場
 
-<img src={img50.src} alt="" />
+<Image src={img50} alt="" />
 
 第1キャンプ場の裏に炭捨て場があります。
 
@@ -532,7 +526,7 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 ### ①景色が最高
 
-<img src={img51.src} alt="" />
+<Image src={img51} alt="" />
 
 神割崎キャンプ場といえば<span class="red">**これに尽きます。**</span>
 リアス式海岸特有の荒々しい海の一面、水平線まで見渡せる景色は感動ものです。
@@ -553,7 +547,7 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 ### ③設備が新しく綺麗
 
-<img src={img52.src} alt="" />
+<Image src={img52} alt="" />
 
 サニタリー棟は<span class="red-b">**2021年にリニューアルされました。**</span>
 
@@ -570,7 +564,7 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 ### ⑤キャンプ初心者・未経験者に優しいつくり
 
-<img src={img53.src} alt="" />
+<Image src={img53} alt="" />
 
 ここ神割崎キャンプ場はレンタル品の数がおおく、料金も安いのでキャンプ始めたての人にとって嬉しい仕様になっています。
 
@@ -600,7 +594,7 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 ### 南三陸ホテル 観洋
 
 <ImageWithCaption
-  src={img54.src} 
+  src={img54} 
   caption="出典：南三陸ホテル観洋 公式サイト"
   url=""
   width="100%"
@@ -608,7 +602,7 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 />
 
 <ImageWithCaption
-  src={img55.src} 
+  src={img55} 
   caption="三陸沖を見渡せる『インフィニティ温泉』"
   url=""
   width="100%"
@@ -635,9 +629,9 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 ### 神割崎
 
-<img src={img56.src} alt="" />
+<Image src={img56} alt="" />
 
-<img src={img57.src} alt="" />
+<Image src={img57} alt="" />
 
 2月中旬と10月下旬頃にみれる『神の日の出』
 
@@ -668,15 +662,12 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 
 宮城県南三陸にある神割崎キャンプ場を紹介しました。
 
-<CaptionBox
-  title=""
-  items={[
-    "サイトからの眺望が最高",
-    "設備が新しい",
-    "料金がお手頃（シャワーは無料！）",    
-    "冬季も利用できる"
-  ]}
-/>
+<CaptionBox title="">
+    - サイトからの眺望が最高
+    - 設備が新しい
+    - 料金がお手頃（シャワーは無料！）
+    - 冬季も利用できる
+</CaptionBox>
 
 第1,第3キャンプ場から見える三陸の海岸は絶景。
 
@@ -685,4 +676,4 @@ import img58 from '../../assets/posts/2022/kamiwarizaki/1666176198191-800x600.jp
 宮城県で人気1位を争うキャンプ場。  
 キャンプ場をお困りの際はぜひ足を運んでみてください！
 
-<img src={img58.src} alt="" />
+<Image src={img58} alt="" />

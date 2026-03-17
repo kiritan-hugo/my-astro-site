@@ -16,6 +16,7 @@ import RelatedPosts from "../../components/RelatedPosts.astro";
 import MapEmbed from "../../components/MapEmbed.astro";
 import ImageCompare from "../../components/ImageCompare.astro";
 import ImageWithCaption from '../../components/ImageWithCaption.astro';
+import { Image } from "astro:assets";
 
 import img01 from '../../assets/posts/2022/usinodamu/20220728_141405-800x600.jpg';
 import img02 from '../../assets/posts/2022/usinodamu/20220728_141445-800x600.jpg';
@@ -52,15 +53,12 @@ import img22 from '../../assets/posts/2022/usinodamu/point-18-800x600.jpg';
 
 現に無料キャンプ場といえば、
 
-<CaptionBox
-  title=""
-  items={[
-    "テントを張るスペースが少ない",
-    "斜面が多く、平地が少ない",
-    "水洗トイレが無く、臭いがする",
-    "景観があまり良くない"
-  ]}
-/>
+<CaptionBox title="">
+- テントを張るスペースが少ない
+- 斜面が多く、平地が少ない
+- 水洗トイレが無く、臭いがする
+- 景観があまり良くない
+</CaptionBox>
 
 などのマイナス面をレビューしている方が多数います。
 
@@ -72,7 +70,7 @@ import img22 from '../../assets/posts/2022/usinodamu/point-18-800x600.jpg';
 
 ## 牛野ダムキャンプ場｜宮城県大衡村
 
-<img src={img01.src} alt="" />
+<Image src={img01} alt="" />
 
 牛野ダムキャンプ場は、宮城県大衡村にある牛野ダムの周囲につくられた湖畔サイトです。
 
@@ -110,19 +108,14 @@ import img22 from '../../assets/posts/2022/usinodamu/point-18-800x600.jpg';
 ## 牛野ダムキャンプ場｜サイト
 
 牛野ダムキャンプ場は、大きくわけて2種類のサイトがあります。
-<CaptionBox
-  title=""
-  items={[
-    "メインエリア（芝サイト）",
-    "対岸エリア（林間サイト）"
-
-  ]}
-/>
-
+<CaptionBox title="">
+- メインエリア（芝サイト）
+- 対岸エリア（林間サイト）
+</CaptionBox>
 
 ### メインエリア
 
-<img src={img02.src} alt="" />
+<Image src={img02} alt="" />
 
 ここのエリアは全体的に平地で斜面が少ないのが特徴です。
 
@@ -154,7 +147,7 @@ import img22 from '../../assets/posts/2022/usinodamu/point-18-800x600.jpg';
 
 ### 対岸エリア
 
-<img src={img03.src} alt="" />
+<Image src={img03} alt="" />
 
 こちらは設営場所が斜面になっている所が多く、広く設営するには不向きに感じます。
 
@@ -195,7 +188,7 @@ import img22 from '../../assets/posts/2022/usinodamu/point-18-800x600.jpg';
 ### 炊事場
 
 <div class="image-wrap">
-  <img src={img04.src} alt="キャンプ場炊事棟" />
+  <Image src={img04} alt="キャンプ場炊事棟" />
   <CaptionSource source="▲炊事棟" />
 </div>
 
@@ -204,7 +197,7 @@ import img22 from '../../assets/posts/2022/usinodamu/point-18-800x600.jpg';
 かまどが4基ありました。
 
 <div class="image-wrap">
-  <img src={img05.src} alt="キャンプ場水道" />
+  <Image src={img05} alt="キャンプ場水道" />
   <CaptionSource source="▲コイン式の水道" />
 </div>
 
@@ -215,7 +208,7 @@ import img22 from '../../assets/posts/2022/usinodamu/point-18-800x600.jpg';
 ### トイレ
 
 <div class="image-wrap">
-  <img src={img06.src} alt="牛野ダムキャンプ場トイレ" />
+  <Image src={img06} alt="牛野ダムキャンプ場トイレ" />
   <CaptionSource source="冬季は多目的トイレのみ利用できます" />
 </div>
 
@@ -243,7 +236,7 @@ import img22 from '../../assets/posts/2022/usinodamu/point-18-800x600.jpg';
 
 森が秋色に深まる10月に牛野ダムキャンプ場に遊びに行きました。
 
-<img src={img07.src} alt="" />
+<Image src={img07} alt="" />
 
 この日は秋晴れで空気が澄んでおり暑くもなく寒くもなくといった気温。  
 広葉樹はすっかり色づいて秋らしい一面をみせてます。
@@ -251,13 +244,13 @@ import img22 from '../../assets/posts/2022/usinodamu/point-18-800x600.jpg';
 牛野ダムキャンプ場は毎年夏が終わる頃に放流するらしく、ダム湖がカラカラになっていました。
 
 <ImageCompare
-    left={img08.src}
-    right={img09.src}
+    left={img08}
+    right={img09}
     leftLabel="6月"
     rightLabel="10月"
 
-    left2={img10.src}
-    right2={img11.src}
+    left2={img10}
+    right2={img11}
     leftLabel2="6月"
     rightLabel2="10月"
 />
@@ -266,20 +259,20 @@ import img22 from '../../assets/posts/2022/usinodamu/point-18-800x600.jpg';
 
 水位が減って水があったところも歩けるようになっていたので少し散策してみました。
 
-<img src={img12.src} alt="" />
+<Image src={img12} alt="" />
 
 草の間にできた道を進むと小さな川が出現。
 
-<img src={img13.src} alt="" />
+<Image src={img13} alt="" />
 
-<img src={img14.src} alt="" />
+<Image src={img14} alt="" />
 
-<img src={img15.src} alt="" />
+<Image src={img15} alt="" />
 
 いつもと違う雰囲気でキャンプの楽しさも倍増です。
 
 <div class="image-wrap">
-  <img src={img16.src} alt="牛野ダムキャンプ場トイレ" />
+  <Image src={img16} alt="牛野ダムキャンプ場トイレ" />
   <CaptionSource source="深夜にタヌキが訪問してきました。" />
 </div>
 
@@ -290,17 +283,17 @@ import img22 from '../../assets/posts/2022/usinodamu/point-18-800x600.jpg';
 買い出しには時間がかかるので**食材を購入してから来る**のをおすすめします。
 
 <Balloon person="sena" type="right">
-お風呂にいった帰りにお店に寄るといいかもね！
+お風呂にいくなら帰りにお店に寄るといいかもね！
 </Balloon>
 
 
 ### ヤマザワ 吉岡店
 
 <ImageWithCaption
-  src={img17.src} 
+  src={img17} 
   caption=""
   url=""
-  width="60%"
+  width="65%"
   align="left"
 />
 
@@ -321,10 +314,10 @@ import img22 from '../../assets/posts/2022/usinodamu/point-18-800x600.jpg';
 ### ウジエスーパー 吉岡店
 
 <ImageWithCaption
-  src={img18.src} 
+  src={img18} 
   caption=""
   url=""
-  width="60%"
+  width="65%"
   align="left"
 />
 
@@ -346,10 +339,10 @@ import img22 from '../../assets/posts/2022/usinodamu/point-18-800x600.jpg';
 ### クスリのアオキ 大和吉岡店
 
 <ImageWithCaption
-  src={img19.src} 
+  src={img19} 
   caption=""
   url=""
-  width="60%"
+  width="65%"
   align="left"
 />
 
@@ -370,10 +363,10 @@ import img22 from '../../assets/posts/2022/usinodamu/point-18-800x600.jpg';
 ### 花おりの湯
 
 <ImageWithCaption
-  src={img20.src} 
+  src={img20} 
   caption=""
   url=""
-  width="60%"
+  width="65%"
   align="left"
 />
 
@@ -398,10 +391,10 @@ import img22 from '../../assets/posts/2022/usinodamu/point-18-800x600.jpg';
 ### 豆坂温泉 三峰荘
 
 <ImageWithCaption
-  src={img21.src} 
+  src={img21} 
   caption=""
   url=""
-  width="60%"
+  width="65%"
   align="left"
 />
 
@@ -428,17 +421,14 @@ import img22 from '../../assets/posts/2022/usinodamu/point-18-800x600.jpg';
 
 東北キャンパーの聖地と呼ばれている「牛野ダムキャンプ場」の紹介でした。
 
-<CaptionBox
-  title="牛野ダムキャンプ場のココがスゴイ！"
-  items={[
-    "サイト代が無料！（その分ご飯とお酒にお金を使える）",
-    "設営しやすい平坦で広いメインサイト",
-    "林間サイトの樹木の美しさ",
-    "隠れ家的ポジションのサイトもあり",
-    "四季の移ろいを感じられる環境",
-    "ダム湖を一望できる景観"
-  ]}
-/>
+<CaptionBox title="牛野ダムキャンプ場のココがスゴイ！">
+- サイト代が無料！（その分ご飯とお酒にお金を使える）
+- 設営しやすい平坦で広いメインサイト
+- 林間サイトの樹木の美しさ
+- 隠れ家的ポジションのサイトもあり
+- 四季の移ろいを感じられる環境
+- ダム湖を一望できる景観
+</CaptionBox>
 
 私も数回ここに通っていますが、**無料キャンプ場のレベルを遥かに超えています。**
 
@@ -446,7 +436,7 @@ import img22 from '../../assets/posts/2022/usinodamu/point-18-800x600.jpg';
 
 まだ行ったことがない方はもちろん、気になっている方も一度足を運んでみてはいかがでしょうか。
 
-<img src={img22.src} alt="" />
+<Image src={img22} alt="" />
 
 当ブログでは**利用料金がお手頃なキャンプ場**を中心に紹介しています。
 

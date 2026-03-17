@@ -1,24 +1,34 @@
 ---
 インポート文
 import Balloon from "../../components/Balloon.astro";
-import CaptionSource from "../../components/CaptionSource.astro";
-import InfoTable from "../../components/InfoTable.astro";
-import InfoTable2 from "../../components/InfoTable2.astro";
-import CaptionBox from "../../components/CaptionBox.astro";
-import NoticeBox from "../../components/NoticeBox.astro";
-import CompareBox from "../../components/CompareBox.astro";
-import RelatedPosts from "../../components/RelatedPosts.astro";
-import MapEmbed from "../../components/MapEmbed.astro";
-import Accordion from "../../components/Accordion.astro";
-import ImagePost from '../../components/ImagePost.astro';
-import ImageCompare from '../../components/ImageCompare.astro';
-import Table from '../../components/Table.astro';
+
 import MoshimoCard from '../../components/MoshimoCard.astro';
 import TwitterEmbed from '../../components/TwitterEmbed.astro';
+import MapEmbed from "../../components/MapEmbed.astro";
+
+import { Image } from "astro:assets";
 import ImageWithCaption from '../../components/ImageWithCaption.astro';
+import ImageCompare from '../../components/ImageCompare.astro';
+import ImagePost from '../../components/ImagePost.astro';
+
+import CaptionBox from "../../components/CaptionBox.astro";
+import CompareBox from "../../components/CompareBox.astro";
+
+import InfoTable from "../../components/InfoTable.astro";
+import InfoTable2 from "../../components/InfoTable2.astro";
+import Table from '../../components/Table.astro';
+
 import ButtonLink from '../../components/ButtonLink.astro';
+
+import Accordion from "../../components/Accordion.astro";
 import QuoteBox from '../../components/QuoteBox.astro';
 import StepBlock from '../../components/StepBlock.astro';
+
+import RelatedPosts from "../../components/RelatedPosts.astro";
+
+
+import CaptionSource from "../../components/CaptionSource.astro";
+import NoticeBox from "../../components/NoticeBox.astro";
 ---
 
 import img01 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
@@ -72,17 +82,24 @@ import img48 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
 import img49 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
 import img50 from '../../assets/posts/2023/ogawa_relax/-800x600.jpg';
 
+☆マージンをあける
+<div style={{ marginBottom: "4rem" }}></div>
+
+☆マージンを狭める
+<div style="margin-top:-10px;"></div>
+
+☆テキスト文字大きくする
+<span style="font-size: 1.4rem;"></span>
+
 ・画像を貼るとき（src以下のインポート画像の場合）
 import img01 from '../../assets/posts/2023/xx/xx.jpg';
-{img.src}
 
-<img src={img.src} alt="" />
 
-/src/assets/posts/2023/tomount_puptent/
+<Image src={img} alt="" />
 
 ・画像＋注釈（シン中央）
 <ImageWithCaption
-  src={img.src} 
+  src={img} 
   caption=""
   url=""
   width="100%"
@@ -91,7 +108,7 @@ import img01 from '../../assets/posts/2023/xx/xx.jpg';
 
 ・画像＋注釈（シンレフト）
 <ImageWithCaption
-  src={img.src} 
+  src={img} 
   caption=""
   url=""
   width="100%"
@@ -114,6 +131,9 @@ import img01 from '../../assets/posts/2023/xx/xx.jpg';
   size=""
 />
 
+・googlemap埋め込み最適化
+<MapEmbed src=""  />
+
 ・ツイート埋め込み
 <TwitterEmbed url="" />
 
@@ -122,36 +142,6 @@ import img01 from '../../assets/posts/2023/xx/xx.jpg';
 <MoshimoCard
   html={``}
 />
-
-
-
-・注釈センター
-<div class="image-wrap">
-  <CaptionSource source="" url="" />
-</div>
-
-・画像比較（行数追加可、ラベル削除可）
-<ImageCompare
-    left=""
-    right=""
-    leftLabel=""
-    rightLabel=""
-
-    left2=""
-    right2=""
-    leftLabel2=""
-    rightLabel2=""
-/>
-
-・画像をポストカード表示(ラベルの位置変更可、サイズ変更可、ラベルなし可)
-<ImagePost
-  src=""
-  alt=""
-  label=""
-  labelPosition="top-left"
-  scale={0.85}
-/>
-
 
 ・吹き出し
 <Balloon person="kiritan" type="left">
@@ -172,13 +162,33 @@ text
 
 
 ・キャプションボックス（タイトルありなし可、items文字列、配列可）
-<CaptionBox
-  title=""
-  items={[
-    "テント",
-    "寝袋",
-    "焚き火台"
-  ]}
+<CaptionBox title="">
+  本文です。
+</CaptionBox>
+
+
+・画像比較（行数追加可、ラベル削除可）
+<ImageCompare
+    left={img}
+    right={img}
+    leftLabel=""
+    rightLabel=""
+
+    left2={img}
+    right2={img}
+    leftLabel2=""
+    rightLabel2=""
+/>
+↓これで画像内にキャプション表示可
+overlay={true}
+
+・画像をポストカード表示(ラベルの位置変更可、サイズ変更可、ラベルなし可)
+<ImagePost
+  src={img}
+  alt=""
+  label=""
+  labelPosition="top-left"
+  scale={0.85}
 />
 
 ・比較テーブル
@@ -216,8 +226,18 @@ text
   note="※2025年度の情報です"
 />
 
-・googlemap埋め込み最適化
-<MapEmbed src=""  />
+<InfoTable
+  items={[
+    { label: "", value: "" },
+    { label: "", value: "" },
+    { label: "", value: "" },
+    { label: "", value: "" },
+    { label: "", value: "" }
+]}
+  note=""
+/>
+
+
 
 ・テーブル（複数列）
 <InfoTable2
@@ -242,6 +262,14 @@ text
   note="※2025年10月時点の情報"
 />
 
+・ステップボックス text内で改行するときは{"テキスト\nテキスト"}と記入
+<StepBlock
+  step={1}
+  title=""
+  text=""
+  images={[img05.src]}
+  imagewidth="80%"
+  caption=""/>
 
 ・アコーディオン
 <Accordion title="">
@@ -252,21 +280,31 @@ text
 ・関連記事表示
 <RelatedPosts slug="yakinikui-gura" caption="関連記事" />
 
-・ステップボックス text内で改行するときは{"テキスト\nテキスト"}と記入
-<StepBlock
-  step={1}
-  title=""
-  text=""
-  images={[""]}
-  imagewidth="80%"
-  caption=""/>
+・タブ切り替えキャプション
+<TabCaptionBox
+  client:load
+  tabs={[
+    {
+      label: "特徴",
+      content: `
+        <p>この商品の特徴です。</p>
+        <ul>
+          <li>軽い</li>
+          <li>安い</li>
+          <li>扱いやすい</li>
+        </ul>
+      `
+    },
+    {
+      label: "注意点",
+      content: `
+        <p>注意点はこちら。</p>
+        <ul>
+          <li>耐久性はそこそこ</li>
+        </ul>
+      `
+    }
+  ]}
+/>
 
 
-☆マージンをあける
-<div style={{ marginBottom: "4rem" }}></div>
-
-☆マージンを狭める
-<div style="margin-top:-10px;"></div>
-
-☆テキスト文字大きくする
-<span style="font-size: 1.4rem;"></span>

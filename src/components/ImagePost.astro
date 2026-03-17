@@ -1,12 +1,14 @@
 ---
+import { Image } from "astro:assets";
+
 interface Props {
-  src: string;
+  src: any;              // ← 文字列ではなく「import 画像オブジェクト」を受け取る
   alt?: string;
   label?: string;
   labelPosition?: "top-left" | "top-right" | "bottom-left" | "bottom-right";
   scale?: number;
-  caption?: string;     // 注釈テキスト
-  captionUrl?: string;  // ★ 注釈だけリンク化
+  caption?: string;
+  captionUrl?: string;
 }
 
 const {
@@ -31,7 +33,7 @@ const positionClass = {
   {label && <div class={`image-label ${positionClass}`}>{label}</div>}
 
   <div class="image-frame">
-    <img src={src} alt={alt} />
+    <Image src={src} alt={alt} />
   </div>
 
   {caption && (
@@ -46,7 +48,6 @@ const positionClass = {
 </div>
 
 <style>
-/* ▼ 全体 */
 .image-wrapper {
   position: relative;
   display: block;
@@ -56,7 +57,7 @@ const positionClass = {
   transform-origin: center top;
 }
 
-/* ▼ ラベル（浮いてるカード） */
+/* ラベル */
 .image-label {
   position: absolute;
   background: #fff;
@@ -77,7 +78,7 @@ const positionClass = {
 .label-bottom-left { bottom: -40px; left: -24px; }
 .label-bottom-right { bottom: -40px; right: -24px; }
 
-/* ▼ 画像の白枠 */
+/* 白枠 */
 .image-frame {
   padding: 24px;
   background: #fff;
@@ -85,13 +86,14 @@ const positionClass = {
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
 }
 
-.image-frame img {
+/* Astro の <Image /> が生成する img を対象にする */
+.image-frame :global(img) {
   display: block;
   width: 100%;
   height: auto;
 }
 
-/* ▼ 共通の注釈スタイル（p と a） */
+/* 注釈 */
 .image-caption {
   text-align: center;
   font-size: 0.75rem;
@@ -102,7 +104,6 @@ const positionClass = {
   text-decoration: none;
 }
 
-/* ▼ リンクのときだけ pointer にする */
 a.image-caption {
   cursor: pointer;
 }
@@ -111,9 +112,7 @@ a.image-caption:hover {
   text-decoration: underline;
 }
 
-/* ▼ p のときは通常のカーソル */
 p.image-caption {
   cursor: default;
 }
-
 </style>

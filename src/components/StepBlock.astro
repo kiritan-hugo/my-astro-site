@@ -1,15 +1,21 @@
 ---
+import { Image } from "astro:assets";
+
 const {
   step = 1,
   title = "",
   text = "",
-  images = [],          // ★ image → images（複数対応）
+  images = [],
   caption = "",
   imagewidth = "100%",
   children
 } = Astro.props;
----
 
+// ★ import 画像オブジェクトだけを通す（これが決定打）
+const validImages = images.filter(
+  img => img && typeof img === "object" && typeof img.src === "string" && img.src.length > 0
+);
+---
 <div class="step-item">
   <div class="step-content">
 
@@ -18,15 +24,14 @@ const {
       <div class="step-title">{title}</div>
     </div>
 
-    <!-- ★ テキスト内で \n を改行として扱う -->
     <p class="step-text">{text}</p>
 
-    <!-- ★ 複数画像対応 -->
-    {images.length > 0 && (
+    {validImages.length > 0 && (
       <div class="step-images">
-        {images.map(img => (
+
+        {validImages.map(img => (
           <div class="step-image-wrap">
-            <img
+            <Image
               src={img}
               alt=""
               class="step-image"
@@ -37,7 +42,6 @@ const {
 
         {caption && <div class="step-caption">{caption}</div>}
 
-        <!-- ★ 画像の下に children を挿入 -->
         {children}
       </div>
     )}
@@ -85,10 +89,9 @@ const {
   margin: 0;
   line-height: 1.7;
   color: #444;
-  white-space: pre-line; /* ★ 改行を反映 */
+  white-space: pre-line;
 }
 
-/* ★ 複数画像を縦に並べる（横並びにしたいなら row に変更） */
 .step-images {
   margin-top: 1rem;
   display: flex;
@@ -102,8 +105,11 @@ const {
   text-align: center;
 }
 
-.step-image {
+/* Astro の <Image /> が生成する img を対象にする */
+.step-image-wrap :global(img) {
   border-radius: 0px;
+  width: 100%;
+  height: auto;
 }
 
 .step-caption {

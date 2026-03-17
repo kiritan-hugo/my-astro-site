@@ -21,6 +21,7 @@ import ImagePost from '../../components/ImagePost.astro';
 import ImageCompare from '../../components/ImageCompare.astro';
 import Table from '../../components/Table.astro';
 import ImageWithCaption from '../../components/ImageWithCaption.astro';
+import { Image } from "astro:assets";
 
 import img01 from '../../assets/posts/2022/usinodamuPoint/20220729_103042-800x600.jpg';
 import img02 from '../../assets/posts/2022/usinodamuPoint/20220729_103055-800x600.jpg';
@@ -90,7 +91,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント１
 
 <ImageWithCaption
-  src={img01.src} 
+  src={img01} 
   caption="メインサイトの中でもっとも東にあるサイト"
   url=""
   width="100%"
@@ -100,7 +101,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント２
 
 <ImageWithCaption
-  src={img02.src} 
+  src={img02} 
   caption="ポイント２と３は手前に駐車場があります"
   url=""
   width="100%"
@@ -110,7 +111,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント３
 
 <ImageWithCaption
-  src={img03.src} 
+  src={img03} 
   caption="写真の左側に向かって斜面になってます"
   url=""
   width="100%"
@@ -120,7 +121,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント４
 
 <ImageWithCaption
-  src={img04.src} 
+  src={img04} 
   caption="上段東側にある広いサイトで休日は大人気"
   url=""
   width="100%"
@@ -130,7 +131,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント５
 
 <ImageWithCaption
-  src={img05.src} 
+  src={img05} 
   caption="上段中央の広いサイトでここも人気"
   url=""
   width="100%"
@@ -140,7 +141,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント６
 
 <ImageWithCaption
-  src={img06.src} 
+  src={img06} 
   caption="中段にあるそこそこ広いサイト。ほどよい高さでダム湖が一望できる"
   url=""
   width="100%"
@@ -150,7 +151,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント７
 
 <ImageWithCaption
-  src={img07.src} 
+  src={img07} 
   caption="サークル状になっている下段サイト。水たまりになりやすいので注意"
   url=""
   width="100%"
@@ -160,7 +161,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント８
 
 <ImageWithCaption
-  src={img08.src} 
+  src={img08} 
   caption="下段中央のサイト。平坦で設営しやすい"
   url=""
   width="100%"
@@ -170,7 +171,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント９
 
 <ImageWithCaption
-  src={img09.src} 
+  src={img09} 
   caption="下段西側サイト"
   url=""
   width="100%"
@@ -180,7 +181,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント１０
 
 <ImageWithCaption
-  src={img10.src} 
+  src={img10} 
   caption="トイレと炊事棟にもっとも近いサイト。人通りは多いけどソロキャンパーに人気"
   url=""
   width="100%"
@@ -203,7 +204,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント1
 
 <ImageWithCaption
-  src={img11.src} 
+  src={img11} 
   caption="牛野ダムに入って最初に現れる設営ポイント"
   url=""
   width="100%"
@@ -211,7 +212,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 />
 
 <ImageWithCaption
-  src={img12.src} 
+  src={img12} 
   caption="ダム湖が一望できます"
   url=""
   width="100%"
@@ -220,12 +221,12 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 
 ### ポイント2
 
-<img src={img13.src} alt="" />
+<Image src={img13} alt="" />
 
-<img src={img14.src} alt="" />
+<Image src={img14} alt="" />
 
 <ImageWithCaption
-  src={img41.src} 
+  src={img41} 
   caption="数ヶ所設営できそうなポイントがあります"
   url=""
   width="100%"
@@ -235,7 +236,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント3
 
 <ImageWithCaption
-  src={img15.src} 
+  src={img15} 
   caption="トイレ裏の駐車場の一角"
   url=""
   width="100%"
@@ -243,7 +244,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 />
 
 <ImageWithCaption
-  src={img16.src} 
+  src={img16} 
   caption="駐車場奥側のここでも設営できそう"
   url=""
   width="100%"
@@ -253,7 +254,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント4
 
 <ImageWithCaption
-  src={img17.src} 
+  src={img17} 
   caption="橋渡ってすぐの場所。トイレが近くて人気のポジション"
   url=""
   width="100%"
@@ -263,7 +264,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント5
 
 <ImageWithCaption
-  src={img18.src} 
+  src={img18} 
   caption="隠れ家みたいでここも人気"
   url=""
   width="100%"
@@ -271,7 +272,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 />
 
 <ImageWithCaption
-  src={img19.src} 
+  src={img19} 
   caption="ダム湖が一望できます"
   url=""
   width="100%"
@@ -281,7 +282,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント6
 
 <ImageWithCaption
-  src={img20.src} 
+  src={img20} 
   caption="道路沿いにある広めなポイント"
   url=""
   width="100%"
@@ -291,7 +292,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント7
 
 <ImageWithCaption
-  src={img21.src} 
+  src={img21} 
   caption="側溝の奥にあるポイント。ソロにおすすめ"
   url=""
   width="100%"
@@ -301,7 +302,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント8
 
 <ImageWithCaption
-  src={img22.src} 
+  src={img22} 
   caption="カーブにさしかかったところ"
   url=""
   width="100%"
@@ -309,7 +310,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 />
 
 <ImageWithCaption
-  src={img23.src} 
+  src={img23} 
   caption="そこそこ広さがあるのでグループやファミリーに◎"
   url=""
   width="100%"
@@ -319,7 +320,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント9
 
 <ImageWithCaption
-  src={img24.src} 
+  src={img24} 
   caption="広めの林間サイト"
   url=""
   width="100%"
@@ -327,7 +328,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 />
 
 <ImageWithCaption
-  src={img25.src} 
+  src={img25} 
   caption="週末はメインと並んでここも混み合います"
   url=""
   width="100%"
@@ -337,7 +338,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント10
 
 <ImageWithCaption
-  src={img26.src} 
+  src={img26} 
   caption="こちらもかなり広めの林間サイト"
   url=""
   width="100%"
@@ -345,7 +346,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 />
 
 <ImageWithCaption
-  src={img27.src} 
+  src={img27} 
   caption="週末は埋まることも"
   url=""
   width="100%"
@@ -355,7 +356,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント11
 
 <ImageWithCaption
-  src={img28.src} 
+  src={img28} 
   caption="カーブに設営ポイント"
   url=""
   width="100%"
@@ -363,7 +364,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 />
 
 <ImageWithCaption
-  src={img29.src} 
+  src={img29} 
   caption="ソロには十分なスペース"
   url=""
   width="100%"
@@ -373,7 +374,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント12
 
 <ImageWithCaption
-  src={img30.src} 
+  src={img30} 
   caption="フェンスの後ろに設営スペース"
   url=""
   width="100%"
@@ -381,7 +382,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 />
 
 <ImageWithCaption
-  src={img31.src} 
+  src={img31} 
   caption="斜面と雑草が生い茂っているので設営に難あり"
   url=""
   width="100%"
@@ -391,7 +392,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント13
 
 <ImageWithCaption
-  src={img32.src} 
+  src={img32} 
   caption="ダム湖と反対側の草地にスペース。ここでキャンプしてる人を見たことないので気になります。"
   url=""
   width="100%"
@@ -401,7 +402,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント14
 
 <ImageWithCaption
-  src={img33.src} 
+  src={img33} 
   caption="カーブの内側のこちらも雑草が多いので設営が大変かも"
   url=""
   width="100%"
@@ -411,7 +412,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント15
 
 <ImageWithCaption
-  src={img34.src} 
+  src={img34} 
   caption="駐車場に入る手前のカーブ。平坦で設営しやすそう"
   url=""
   width="100%"
@@ -421,7 +422,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント16
 
 <ImageWithCaption
-  src={img35.src} 
+  src={img35} 
   caption="カーブのところの駐車場"
   url=""
   width="100%"
@@ -429,7 +430,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 />
 
 <ImageWithCaption
-  src={img36.src} 
+  src={img36} 
   caption="駐車場奥に設営ポイント。よくファミリーキャンパーを見かけます"
   url=""
   width="100%"
@@ -439,7 +440,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント17
 
 <ImageWithCaption
-  src={img37.src} 
+  src={img37} 
   caption="道路脇にソロ用の設営ポイント"
   url=""
   width="100%"
@@ -449,7 +450,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント18
 
 <ImageWithCaption
-  src={img38.src} 
+  src={img38} 
   caption="隠れ家的ポジションその2"
   url=""
   width="100%"
@@ -457,7 +458,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 />
 
 <ImageWithCaption
-  src={img39.src} 
+  src={img39} 
   caption="ここからもダム湖が一望できます。"
   url=""
   width="100%"
@@ -467,7 +468,7 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 ### ポイント19
 
 <ImageWithCaption
-  src={img40.src} 
+  src={img40} 
   caption="出口最終コーナーに設営スペース。ミニマムキャンパーなら設営できます"
   url=""
   width="100%"
@@ -478,35 +479,28 @@ import img41 from '../../assets/posts/2022/usinodamuPoint/point-2-6-800x600.jpg'
 
 私のおすすめポイントをまとめました。  
 気になる方は、以下のリンクから飛んで確認してください。
-<CaptionBox
-  title="メインエリア"
-  items={[
-    "[ポイント1](#ポイント１)",
-    "[ポイント2](#ポイント２)",
-    "[ポイント3](#ポイント３)",
-    "[ポイント4](#ポイント４)",
-    "[ポイント5](#ポイント５)",
-    "[ポイント6](#ポイント６)",
-    "[ポイント10](#ポイント１０)"
-  ]}
-/>
 
-<CaptionBox
-  title="ダム湖外周エリア"
-  items={[
-    "[ポイント1](#ポイント1)",
-    "[ポイント2](#ポイント2)",
-    "[ポイント4](#ポイント4)",
-    "[ポイント5](#ポイント5)",
-    "[ポイント8](#ポイント8)",
-    "[ポイント9](#ポイント9)",
-    "[ポイント10](#ポイント10)",
-    "[ポイント15](#ポイント15)",
-    "[ポイント16](#ポイント16)",
-    "[ポイント18](#ポイント18)"
-  ]}
-/>
-
+<CaptionBox title="メインエリア">
+- [ポイント1](#ポイント１)
+- [ポイント2](#ポイント２)
+- [ポイント3](#ポイント３)
+- [ポイント4](#ポイント４)
+- [ポイント5](#ポイント５)
+- [ポイント6](#ポイント６)
+- [ポイント10](#ポイント１０)
+</CaptionBox>
+<CaptionBox title="ダム湖外周エリア">
+- [ポイント1](#ポイント1)
+- [ポイント2](#ポイント2)
+- [ポイント4](#ポイント4)
+- [ポイント5](#ポイント5)
+- [ポイント8](#ポイント8)
+- [ポイント9](#ポイント9)
+- [ポイント10](#ポイント10)
+- [ポイント15](#ポイント15)
+- [ポイント16](#ポイント16)
+- [ポイント18](#ポイント18)
+</CaptionBox>
 
 ## 最後に
 

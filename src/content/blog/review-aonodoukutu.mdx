@@ -7,3 +7,225 @@ heroImage: '/public/images/hero/review-aonodoukutu.jpg'
 category: 
     - miscellaneous
 ---
+import img01 from '../../assets/posts/2022/iwate_aonodoukutu/1659343964426-800x600.jpg';
+import img02 from '../../assets/posts/2022/iwate_aonodoukutu/arika-800x1067.jpg';
+import img03 from '../../assets/posts/2022/iwate_aonodoukutu/1659343976649-800x600.jpg';
+import img04 from '../../assets/posts/2022/iwate_aonodoukutu/1659343976083-800x600.jpg';
+import img05 from '../../assets/posts/2022/iwate_aonodoukutu/1659343984177-800x600.jpg';
+import img06 from '../../assets/posts/2022/iwate_aonodoukutu/VideoCapture_20220808-175233-e1659957725893-800x1081.jpg';
+import img07 from '../../assets/posts/2022/iwate_aonodoukutu/1659343981206-800x1067.jpg';
+import img08 from '../../assets/posts/2022/iwate_aonodoukutu/1659343980603-800x600.jpg';
+import img09 from '../../assets/posts/2022/iwate_aonodoukutu/1659343985812-800x600.jpg';
+import img10 from '../../assets/posts/2022/iwate_aonodoukutu/img_sappa_14.jpg';
+import img11 from '../../assets/posts/2022/iwate_aonodoukutu/img_sappa_15.jpg';
+
+import MapEmbed from "../../components/MapEmbed.astro";
+import { Image } from "astro:assets";
+import ImageWithCaption from '../../components/ImageWithCaption.astro';
+import InfoTable from "../../components/InfoTable.astro";
+import CaptionBox from "../../components/CaptionBox.astro";
+import RelatedPosts from "../../components/RelatedPosts.astro";
+import QuoteBox from '../../components/QuoteBox.astro';
+import Balloon from "../../components/Balloon.astro";
+
+
+こんにちはkiritanです。
+
+今回は、いわて旅行第二弾となる「青の洞窟」に行ったときの様子を紹介していきます。
+
+前回の記事を読んでない方は、こちらから⇩
+
+<RelatedPosts slug="review-joudogahama" caption="関連記事" />
+
+## 青の洞窟とは
+
+<QuoteBox
+  text="陸中海岸の「青の洞窟」と異名をとる八戸穴は、青森県の八戸市まで続いているという伝説から名づけられました。  
+昔、この穴に入っていった犬が、数年後八戸市で見つかった為、この穴は八戸まで続いているということになり、八戸穴と呼ばれるようになったとか。  
+実際の穴の内部は8メートル程で行き止まりです。入口は半分海に浸かっている為、小舟でないと侵入できません。  
+穴の入り口から差し込む太陽光に透明な海水が美しく青く輝くことから、近年、陸中の青の洞窟とも呼ばれるようになりました。"
+  source="浄土ヶ浜マリンハウスより"
+  url="http://j-marine.com/sappa"
+/>
+
+## 基本情報
+
+「浄土ヶ浜マリンハウス」さんから小型船に乗り「青の洞窟」へ行くことになります。
+
+<InfoTable
+  items={[
+    { label: "名称", value: "浄土ヶ浜マリンハウス" },
+    { label: "住所", value: "岩手県宮古市日立浜町32-4" },
+    { label: "電話番号", value: "0193-63-1327" },
+    { label: "営業時間", value: " 8:30～17:00（定休日：無）<br>※3月～11月のみ営業（冬季休業）" },
+    { label: "アクセス", value: "【車】宮古駅から10分<br>〈久慈方面より〉三陸道　宮古北ICから10分<br>〈釜石方面より〉宮古盛岡横断道路　宮古港ICから8分<br>〈盛岡方面より〉東北自動車道盛岡南ICから120分<br>【バス】　宮古駅から（奥浄土ヶ浜行）で20分、「奥浄土ヶ浜」バス停下車そば   宮古駅から（宮古病院行）で13分、「浄土ヶ浜ビジターセンター」バス停下車、徒歩15分 「浄土ヶ浜ビジターセンター」からエレベーターに乗って降りるとウッドデッキがありますので、そのままトンネルを抜けるとマリンハウスが見えます。" },
+    { label: "駐車場", value: "「浄土ヶ浜ビジターセンター」の駐車場が利用できます" },
+    { label: "公式HP", value: '<a href="http://j-marine.com/index.html">http://j-marine.com/index.html</a>' },
+]}
+  note="※2022年8月時点の情報"
+/>
+
+<MapEmbed src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3072.0366870565467!2d141.9775335150275!3d39.648888879461836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f85cb5b370611fd%3A0xb023eb1a103791c2!2z5rWE5Zyf44O25rWc44Oe44Oq44Oz44OP44Km44K5!5e0!3m2!1sja!2sjp!4v1659942929940!5m2!1sja!2sjp"  />
+
+## 乗船～「青の洞窟」まで
+
+### 小型船「さっぱ船」へ乗船
+
+<ImageWithCaption
+  src={img01} 
+  caption="▲浄土ヶ浜マリンハウス"
+  url=""
+  width="100%"
+  align="center"
+/>
+
+青の洞窟へいくためには、浄土ヶ浜マリンハウスで乗船受付をします。
+
+この日は平日とあって人は少なめでした。
+
+<span class="marker-yellow">料金は1人1,500円で、所要時間は20分ほど</span>になります。
+
+受付を済ませたら安全のため、ヘルメットとライフジャケットを装着します。
+
+<ImageWithCaption
+  src={img02} 
+  caption="工事現場の人みたいになります"
+  url=""
+  width="100%"
+  align="center"
+/>
+
+ちなみに、受付で「かっぱえびせん」が貰えます。  
+これはウミネコ達にあげるエサで、**人間たちのおやつではないです。**
+
+### いざ出航！！
+
+<ImageWithCaption
+  src={img03} 
+  caption="▲桟橋のようす"
+  url=""
+  width="100%"
+  align="center"
+/>
+
+受付を済ませたら桟橋のほうに移動します。
+
+桟橋には今回乗る船とスタッフ、そして**大量のウミネコ**がスタンバイしてます。（怖い）
+
+乗ったのは3人乗りの小型船で、私とチンチラと、もう一人玄人っぽいおじさんが乗船してきました。
+
+**船員が揃ったらいよいよ出航です！**
+
+<span style="font-size: 1.4rem;">**青の洞窟めざしていくぞ～！**</span>　ぶーん。（モーター音）
+　　
+
+ってあれ？　**バックで出航かーい！**（転がる音）
+
+<ImageWithCaption
+  src={img04} 
+  caption="綺麗な海と切り立った断崖の相対が最高です"
+  url=""
+  width="100%"
+  align="center"
+/>
+
+### 「青の洞窟」まで
+
+<Image src={img05} alt="" />
+
+青の洞窟までは浄土ヶ浜湾を一周しつつスタッフさんが豆知識を教えてくれます。
+
+（いろいろ教えてもらったけど結局わすれちゃったな。）
+
+唯一覚えていたのが、**カモメとウミネコの見分け方について。**
+
+足の色で見分けがつくそうで、**カモメの足の色は赤色**、**ウミネコは黄色**って教えてくれました。  
+
+かっぱえびせんを空中にほうり投げると足の色を確認しやすいですよ。
+
+## いよいよ「青の洞窟」とご対面！
+
+<ImageWithCaption
+  src={img06} 
+  caption="▲「青の洞窟」外観"
+  url=""
+  width="100%"
+  align="center"
+/>
+
+船に揺られて約13分。いよいよ青の洞窟へ到着しました。
+
+洞窟内部は、小型船1隻がギリギリ入るサイズ。
+
+意外と狭く、奥は行き止まりになっていました。
+
+<ImageWithCaption
+  src={img07} 
+  caption="▲「青の洞窟」内部"
+  url=""
+  width="100%"
+  align="center"
+/>
+
+<Balloon person="sena" type="left">
+あれ？青くないよ？
+</Balloon>
+
+ん？おかしいな。  
+わたしはすぐさま脳内ハードディスクを読み込んだ。
+
+事前に調べた情報では、
+
+<CaptionBox title="">
+洞窟の入り口から太陽光が差し込み、透明度の高い海水を通過して海底で反射した光が暗い洞窟内の海水面から抜け、それが海底からライトアップされたような効果となり、入り口付近の海水を青い光で満たす仕組みになっているため、洞窟全体が青く染まる。
+</CaptionBox>
+
+**あ、今日曇りじゃん。太陽差し込んでないわ。**
+
+<Balloon person="kiritan" type="left">
+＼(^o^)／
+</Balloon>
+
+*スタッフさん*  
+**さあ、後ろを振り向いてください。青く光っているのが見えますよ。**
+
+<Image src={img08} alt="" />
+
+！！！！！！！！！
+
+**めちゃめちゃ青い！きれーい！！！**
+
+なんと青く見えるタイミングは、洞窟奥から入口に向かう途中だったのです。
+
+みれてよかった...。
+
+## まとめ
+
+<Image src={img09} alt="" />
+
+1人1,500円で楽しめる本州最東端の「青の洞窟」はいかがでしたか？
+
+岩手県にこんな神秘的なスポットがあったとは知りませんでした。
+
+今回あいにくの天気でしたが、晴天だったらもっと透き通って青くみえるらしいですよ！
+
+▼このようにコバルトブルー色になるそうです！
+
+<ImageWithCaption
+  src={img10} 
+  caption="出典：浄土ヶ浜マリンハウス"
+  url=""
+  width="100%"
+  align="center"
+/>
+
+<ImageWithCaption
+  src={img11} 
+  caption="出典：浄土ヶ浜マリンハウス"
+  url=""
+  width="100%"
+  align="center"
+/>
+
+みなさんも是非、浄土ヶ浜に来た際にはチェックしてみてください！
+

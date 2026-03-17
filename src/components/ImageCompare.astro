@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 const {
   // 1段目
   left,
@@ -12,31 +14,30 @@ const {
   leftLabel2 = "",
   rightLabel2 = "",
 
-  // ★ 3段目（追加）
+  // 3段目
   left3 = null,
   right3 = null,
   leftLabel3 = "",
   rightLabel3 = "",
 
-  // ★ キャプションを画像内に重ねるオプション
+  // overlay モード
   overlay = false
 } = Astro.props;
 
 const hasSecondRow = left2 && right2;
 const hasThirdRow = left3 && right3;
 ---
-
 <div class="compare-container">
 
   <!-- 1段目 -->
   <div class="compare-row">
     <div class={`compare-item ${overlay ? "overlay" : ""}`}>
-      <img src={left} alt={leftLabel} />
+      <Image src={left} alt={leftLabel} />
       {leftLabel && <p class="label">{leftLabel}</p>}
     </div>
 
     <div class={`compare-item ${overlay ? "overlay" : ""}`}>
-      <img src={right} alt={rightLabel} />
+      <Image src={right} alt={rightLabel} />
       {rightLabel && <p class="label">{rightLabel}</p>}
     </div>
   </div>
@@ -45,27 +46,27 @@ const hasThirdRow = left3 && right3;
   {hasSecondRow && (
     <div class="compare-row">
       <div class={`compare-item ${overlay ? "overlay" : ""}`}>
-        <img src={left2} alt={leftLabel2} />
+        <Image src={left2} alt={leftLabel2} />
         {leftLabel2 && <p class="label">{leftLabel2}</p>}
       </div>
 
       <div class={`compare-item ${overlay ? "overlay" : ""}`}>
-        <img src={right2} alt={rightLabel2} />
+        <Image src={right2} alt={rightLabel2} />
         {rightLabel2 && <p class="label">{rightLabel2}</p>}
       </div>
     </div>
   )}
 
-  <!-- ★ 3段目（追加） -->
+  <!-- 3段目 -->
   {hasThirdRow && (
     <div class="compare-row">
       <div class={`compare-item ${overlay ? "overlay" : ""}`}>
-        <img src={left3} alt={leftLabel3} />
+        <Image src={left3} alt={leftLabel3} />
         {leftLabel3 && <p class="label">{leftLabel3}</p>}
       </div>
 
       <div class={`compare-item ${overlay ? "overlay" : ""}`}>
-        <img src={right3} alt={rightLabel3} />
+        <Image src={right3} alt={rightLabel3} />
         {rightLabel3 && <p class="label">{rightLabel3}</p>}
       </div>
     </div>
@@ -92,21 +93,22 @@ const hasThirdRow = left3 && right3;
   position: relative; /* overlay 用 */
 }
 
-.compare-item img {
+/* Astro の <Image /> が生成する img を対象にする */
+.compare-item :global(img) {
+  height: 260px;       /* ← 高さ揃え（今まで通り） */
+  object-fit: cover;   /* ← 縦横比が違っても綺麗に揃う */
   width: 100%;
-  height: auto;
-  border-radius: 0px;
   display: block;
 }
 
-/* 通常のキャプション */
+/* 通常キャプション */
 .label {
   margin-top: 0.4rem;
   font-size: 0.75rem;
   color: #555;
 }
 
-/* ★ overlay モード（画像の中に重ねる） */
+/* overlay モード */
 .compare-item.overlay .label {
   position: absolute;
   bottom: 6px;
@@ -116,7 +118,7 @@ const hasThirdRow = left3 && right3;
   padding: 2px 8px;
   font-size: 0.75rem;
   color: white;
-  background: rgba(0, 0, 0, 0.288);
+  background: rgba(0, 0, 0, 0.28);
   border-radius: 6px;
   white-space: nowrap;
   overflow: hidden;

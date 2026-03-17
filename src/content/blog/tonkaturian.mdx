@@ -15,6 +15,7 @@ import TwitterEmbed from '../../components/TwitterEmbed.astro';
 import ImageWithCaption from '../../components/ImageWithCaption.astro';
 import CaptionBox from "../../components/CaptionBox.astro";
 import ImageCompare from '../../components/ImageCompare.astro';
+import { Image } from "astro:assets";
 
 import img01 from '../../assets/posts/2023/tonkatu_rian/1693360030065-800x600.jpg';
 import img02 from '../../assets/posts/2023/tonkatu_rian/1693360026361-800x600.jpg';
@@ -71,17 +72,17 @@ import img37 from '../../assets/posts/2023/tonkatu_rian/image.jpeg';
 とんかつ梨庵は仙台市泉区にある北中山の住宅地にあるお店です。  
 北中山４丁目と西中山１丁目の境界に位置してます。
 
-<img src={img01.src} alt="" />
+<Image src={img01} alt="" />
 
 もともと一軒家だった住宅を改装されたそうで、一階部分がお店になっています。
 
-<img src={img02.src} alt="" />
+<Image src={img02} alt="" />
 
 緑豊かな外観から雰囲気のよさが伝わってきます。
 
 こんな見た目の建物が「とんかつ屋」だなんて、初めて訪れた人は誰も思いませんよね。
 
-<img src={img03.src} alt="" />
+<Image src={img03} alt="" />
 
 <Balloon person="kiritan" type="left">
 期待値が高まります…
@@ -93,7 +94,7 @@ import img37 from '../../assets/posts/2023/tonkatu_rian/image.jpeg';
 『とんかつ梨庵』はお店の正面と裏手に2つの駐車場があります。
 
 <ImageWithCaption
-  src={img04.src} 
+  src={img04} 
   caption="▲お店の前は2台駐車できます"
   url=""
   width="100%"
@@ -101,7 +102,7 @@ import img37 from '../../assets/posts/2023/tonkatu_rian/image.jpeg';
 />
 
 <ImageWithCaption
-  src={img05.src} 
+  src={img05} 
   caption=""
   url=""
   width="100%"
@@ -109,7 +110,7 @@ import img37 from '../../assets/posts/2023/tonkatu_rian/image.jpeg';
 />
 
 <ImageWithCaption
-  src={img06.src} 
+  src={img06} 
   caption="▲お店の裏は9台駐車可能。"
   url=""
   width="100%"
@@ -118,13 +119,13 @@ import img37 from '../../assets/posts/2023/tonkatu_rian/image.jpeg';
 
 それぞれあわせて計11台の駐車区画があります。店内がそこまで広くないので、見合った数だと思います。
 
-<img src={img07.src} alt="" />
+<Image src={img07} alt="" />
 
 ちなみに裏手は建物脇の通路から行けます。
 
 目印の看板はこちら。
 
-<img src={img08.src} alt="" />
+<Image src={img08} alt="" />
 
 <Balloon person="kiritan" type="left">
 通路が狭いので大きい車は店舗前にとめたほうがいいかも
@@ -136,15 +137,15 @@ import img37 from '../../assets/posts/2023/tonkatu_rian/image.jpeg';
 
 それでは店内に入っていきます。
 
-<img src={img09.src} alt="" />
+<Image src={img09} alt="" />
 
-<img src={img10.src} alt="" />
+<Image src={img10} alt="" />
 
 のれんをくぐるとまず広がるのはお家のような玄関。  
 まるで親戚の家に遊びに来たような感覚です。
 
 <ImageWithCaption
-  src={img11.src} 
+  src={img11} 
   caption="▲店内は土足厳禁です"
   url=""
   width="100%"
@@ -153,11 +154,11 @@ import img37 from '../../assets/posts/2023/tonkatu_rian/image.jpeg';
 
 続いては店内の様子。
 
-<img src={img12.src} alt="" />
+<Image src={img12} alt="" />
 
 テーブル4人掛けが2席、2人掛けが4席、カウンターが4席ありました。
 
-<img src={img13.src} alt="" />
+<Image src={img13} alt="" />
 
 玄関とは裏腹にまるでカフェのような空間が広がっています。
 
@@ -167,11 +168,11 @@ import img37 from '../../assets/posts/2023/tonkatu_rian/image.jpeg';
 ほんとにとんかつ出してるお店？
 </Balloon>
 
-<img src={img14.src} alt="" />
+<Image src={img14} alt="" />
 
 窓に近い席だと中庭をながめながら食事ができそうです。
 
-<img src={img37.src} alt="" />
+<Image src={img37} alt="" />
 
 窓枠にはこんな置物も。
 
@@ -183,13 +184,10 @@ import img37 from '../../assets/posts/2023/tonkatu_rian/image.jpeg';
 
 とんかつ梨庵のメニューは主に2種類あります。
 
-<CaptionBox
-  title=""
-  items={[
-    "グランドメニュー",
-    "お昼のみお得なランチメニュー"
-  ]}
-/>
+<CaptionBox title="">
+    - グランドメニュー
+    - お昼のみお得なランチメニュー
+</CaptionBox>
 
 どちらもおすすめのセットメニューのほか、海鮮フライや肉＋海鮮フライセット、お子様メニューがあります。
 
@@ -201,7 +199,7 @@ import img37 from '../../assets/posts/2023/tonkatu_rian/image.jpeg';
 
 ランチメニューに比べてカツが大きかったり、フライの数が多かったりと内容が異なります。
 
-<img src={img15.src} alt="" />
+<Image src={img15} alt="" />
 
 ### ランチメニュー
 
@@ -216,8 +214,8 @@ import img37 from '../../assets/posts/2023/tonkatu_rian/image.jpeg';
 お店イチオシの『梨庵セットA』『梨庵セットB』はグランドメニューよりランチのほうが安くて大変お得です。
 
 <ImageCompare
-    left={img16.src}
-    right={img17.src}
+    left={img16}
+    right={img17}
     leftLabel=""
     rightLabel=""
 />
@@ -228,15 +226,15 @@ import img37 from '../../assets/posts/2023/tonkatu_rian/image.jpeg';
 
 家族でシェアしたり、カレーにトッピングしたりとお店とはまた違った楽しみができます。
 
-<img src={img18.src} alt="" />
+<Image src={img18} alt="" />
 
-<img src={img19.src} alt="" />
+<Image src={img19} alt="" />
 
 テイクアウトはライス大盛り無料です。
 
 ごはんが進むおかずばかりなので嬉しいですね。
 
-<img src={img20.src} alt="" />
+<Image src={img20} alt="" />
 
 ちなみに店内食事の場合、ライスとキャベツがおかわりし放題です。
 
@@ -252,7 +250,7 @@ import img37 from '../../assets/posts/2023/tonkatu_rian/image.jpeg';
 
 先に卓上の調味料をみておきましょう。
 
-<img src={img21.src} alt="" />
+<Image src={img21} alt="" />
 
 卓上にはソースとからしと岩塩がありました。
 
@@ -268,9 +266,9 @@ import img37 from '../../assets/posts/2023/tonkatu_rian/image.jpeg';
 
 注文すると真っ先にゴマがやってきました。
 
-<img src={img22.src} alt="" />
+<Image src={img22} alt="" />
 
-<img src={img23.src} alt="" />
+<Image src={img23} alt="" />
 
 熱中してゴマをすりすり…。
 
@@ -279,7 +277,7 @@ import img37 from '../../assets/posts/2023/tonkatu_rian/image.jpeg';
 つづいてやってきたのはドレッシング。  
 キャベツにかける用ですね。
 
-<img src={img24.src} alt="" />
+<Image src={img24} alt="" />
 
 
 和風とシーザーの2種類です。  
@@ -290,7 +288,7 @@ import img37 from '../../assets/posts/2023/tonkatu_rian/image.jpeg';
 しばらくまっていると、本日の主役がお披露目！
 
 <ImageWithCaption
-  src={img25.src} 
+  src={img25} 
   caption="▲梨庵セットA（海老フライ2尾、ヒレカツ1個、巻カツ2個）"
   url=""
   width="100%"
@@ -298,7 +296,7 @@ import img37 from '../../assets/posts/2023/tonkatu_rian/image.jpeg';
 />
 
 <ImageWithCaption
-  src={img26.src} 
+  src={img26} 
   caption="▲ロースカツセット（ランチ130g）"
   url=""
   width="100%"
@@ -311,7 +309,7 @@ import img37 from '../../assets/posts/2023/tonkatu_rian/image.jpeg';
 
 、、、その前にセットのドリンクで乾杯しましょう。
 
-<img src={img27.src} alt="" />
+<Image src={img27} alt="" />
 
 桃酢とマスカット酢のドリンクです。今回は炭酸割りにしました。
 
@@ -325,19 +323,19 @@ import img37 from '../../assets/posts/2023/tonkatu_rian/image.jpeg';
 
 それでは料理をいただきます。
 
-<img src={img28.src} alt="" />
+<Image src={img28} alt="" />
 
-<img src={img29.src} alt="" />
+<Image src={img29} alt="" />
 
-<img src={img30.src} alt="" />
+<Image src={img30} alt="" />
 
-<img src={img31.src} alt="" />
+<Image src={img31} alt="" />
 
 **！！！！！！**
 
-<img src={img32.src} alt="" />
+<Image src={img32} alt="" />
 
-<img src={img33.src} alt="" />
+<Image src={img33} alt="" />
 
 **！！！！！！！！！！！！**
 
@@ -355,11 +353,11 @@ import img37 from '../../assets/posts/2023/tonkatu_rian/image.jpeg';
 <span style="font-size: 1.1rem;">【2位】海老フライ・ヒレカツ</span>  
 <span style="font-size: 1.1rem;">【3位】巻きカツ</span>
 
-<img src={img34.src} alt="" />
+<Image src={img34} alt="" />
 
 あっという間に完食。大満足です。
 
-<img src={img35.src} alt="" />
+<Image src={img35} alt="" />
 
 ちなみに梨庵セットAにはデザートがついてきます。
 
@@ -385,7 +383,7 @@ SNSをみてても女性のお客さんが多いですね。
 
 ## 『とんかつ梨庵』は隠れた名店！記念日やデートにおすすめなお店です。
 
-<img src={img36.src} alt="" />
+<Image src={img36} alt="" />
 
 いかがでしたでしょうか。
 
