@@ -1,0 +1,137 @@
+---
+/* FooterMenu.astro */
+import { FaListUl, FaHouse, FaTent, FaPenNib, FaChevronUp } from "react-icons/fa6";
+---
+
+<nav class="mobile-footer-menu" id="mobileFooterMenu">
+  <ul class="menu-list">
+    <li>
+      <button onclick="document.getElementById('mobileTocOverlay')?.classList.add('is-active')">
+        <FaListUl className="icon" />
+        <span>目次</span>
+      </button>
+    </li>
+    <li>
+      <a href="/">
+        <FaHouse className="icon" />
+        <span>ホーム</span>
+      </a>
+    </li>
+    <li>
+      <a href="/category/camp">
+        <FaTent className="icon" />
+        <span>キャンプ</span>
+      </a>
+    </li>
+    <li>
+      <a href="/category/miscellaneous">
+        <FaPenNib className="icon" />
+        <span>雑記</span>
+      </a>
+    </li>
+    <li>
+      <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <FaChevronUp className="icon" />
+        <span>トップへ</span>
+      </button>
+    </li>
+  </ul>
+</nav>
+
+<script>
+  const setupFooterMenu = () => {
+    let lastScrollY = window.scrollY;
+    const footerMenu = document.getElementById('mobileFooterMenu');
+    const showThreshold = 300; 
+
+    if (!footerMenu) return;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+
+      // 1. ページ最上部付近では隠す
+      if (currentScrollY < showThreshold) {
+        footerMenu.classList.remove('is-active');
+        lastScrollY = currentScrollY;
+        return;
+      }
+
+      // 2. スクロール方向による出し入れ
+      if (Math.abs(currentScrollY - lastScrollY) > 5) {
+        if (currentScrollY > lastScrollY) {
+          footerMenu.classList.add('is-active');
+        } else {
+          footerMenu.classList.remove('is-active');
+        }
+      }
+      lastScrollY = currentScrollY;
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', setupFooterMenu);
+  document.addEventListener('astro:page-load', setupFooterMenu);
+</script>
+
+<style>
+  .mobile-footer-menu {
+    display: none;
+  }
+
+  @media (max-width: 970px) {
+    .mobile-footer-menu {
+      display: block;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid #eee;
+      z-index: 9999;
+      transform: translateY(100%);
+      transition: transform 0.3s ease-out;
+    }
+
+    .mobile-footer-menu.is-active {
+      transform: translateY(0);
+    }
+
+    .menu-list {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 0;
+      padding: 8px 0 calc(8px + env(safe-area-inset-bottom));
+      list-style: none;
+    }
+
+    .menu-list li {
+      flex: 1;
+    }
+
+    .menu-list a, 
+    .menu-list button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      background: none;
+      border: none;
+      color: #4a7c59; 
+      width: 100%;
+      cursor: pointer;
+      padding: 4px 0;
+      font-family: inherit;
+    }
+
+    .icon {
+      font-size: 1.3rem;
+      margin-bottom: 2px;
+    }
+
+    .menu-list span {
+      font-size: 0.65rem;
+      font-weight: 600;
+    }
+  }
+</style>

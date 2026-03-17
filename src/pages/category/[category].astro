@@ -1,0 +1,133 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import HeaderArticle from '../../components/HeaderArticle.astro';
+import Footer from '../../components/Footer.astro';
+import FooterMenu from '../../components/FooterMenu.astro';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog');
+
+  // 1. 生成したい「全パターン」を定義する
+  // URLスラッグ : [そのページに含める記事のカテゴリID]
+  const pathConfigs = {
+    // --- まとめページ ---
+    "outdoor": ["outdoor", "campsite", "campgear"],
+    "miscellaneous": ["miscellaneous", "gourmet"],
+    
+    // --- 個別ページ（これらも残す） ---
+    "campsite": ["campsite"],
+    "campgear": ["campgear"],
+    "gourmet": ["gourmet"],
+    // もし他にもあればここに追加してください
+  };
+
+  return Object.entries(pathConfigs).map(([slug, categoryList]) => {
+    const filteredPosts = allPosts
+      .filter((post) => {
+        const cat = post.data.category;
+        const catString = (typeof cat === 'object' && cat !== null) 
+          ? (cat as any).id || cat.toString() 
+          : cat;
+        return categoryList.includes(catString);
+      })
+      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+    return {
+      params: { category: slug },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+const { category } = Astro.params;
+const { posts } = Astro.props;
+
+// 表示用タイトルのマッピング（すべてのスラッグ分を用意）
+const categoryMap: Record<string, string> = {
+  "outdoor": "アウトドア関連",
+  "miscellaneous": "雑記一覧",
+  "campsite": "キャンプ場紹介",
+  "campgear": "キャンプギア紹介",
+  "gourmet": "グルメ情報",
+};
+
+// 記事カード内のバッジ用（記事本来のカテゴリ名を表示）
+const subCategoryMap: Record<string, string> = {
+  "campsite": "キャンプ場",
+  "campgear": "キャンプギア",
+  "outdoor": "アウトドア",
+  "miscellaneous": "雑記",
+  "gourmet": "グルメ",
+};
+
+const displayCategory = categoryMap[category] || category;
+---
+
+<html lang="ja">
+  <head>
+    <BaseHead title={`${displayCategory}の記事一覧`} description={`${displayCategory}に関する記事をまとめたページです。`} />
+  </head>
+  <body>
+    <HeaderArticle />
+
+    <main class="category-container">
+      <header class="category-header">
+        <span class="label">Category</span>
+        <h1>{displayCategory}</h1>
+        <p>{posts.length} 件の記事があります</p>
+      </header>
+
+      <div class="post-grid">
+        {posts.map((post) => {
+          const rawCat = post.data.category;
+          const catStr = (typeof rawCat === 'object' && rawCat !== null) ? (rawCat as any).id || rawCat.toString() : rawCat;
+          const subCatName = subCategoryMap[catStr] || catStr;
+
+          return (
+            <a href={`/${post.id}/`} class="post-card">
+              <div class="card-thumb-wrap">
+                {post.data.heroImage ? (
+                  <img src={post.data.heroImage.src} alt="" />
+                ) : (
+                  <div class="no-image">No Image</div>
+                )}
+                <span class="card-badge">{subCatName}</span>
+              </div>
+              <div class="post-info">
+                <time><i class="fa-regular fa-clock"></i> {post.data.pubDate.toLocaleDateString('ja-JP')}</time>
+                <h2>{post.data.title}</h2>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </main>
+
+    <Footer />
+    <FooterMenu />
+  </body>
+</html>
+
+<style>
+  /* スタイルは前回と同じなので省略（そのまま維持してください） */
+  .category-container { max-width: 1000px; margin: 0 auto; padding: 160px 1.5rem 4rem; }
+  .category-header { text-align: center; margin-bottom: 3rem; }
+  .category-header .label { display: inline-block; color: #4a7c59; font-weight: bold; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; border-bottom: 2px solid #4a7c59; margin-bottom: 0.5rem; }
+  .category-header h1 { font-size: 2.2rem; margin: 0.5rem 0; color: #333; font-weight: 700; }
+  .category-header p { color: #666; font-size: 0.9rem; }
+  .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2.5rem 1.5rem; }
+  .post-card { text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: all 0.3s ease; }
+  .card-thumb-wrap { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; margin-bottom: 1rem; background: #eee; }
+  .post-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .post-card:hover img { transform: scale(1.05); }
+  .card-badge { position: absolute; top: 10px; left: 10px; background: rgba(47, 93, 58, 0.9); color: #fff; font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; font-weight: 500; z-index: 1; }
+  .post-info time { display: block; font-size: 0.75rem; color: #888; margin-bottom: 0.5rem; }
+  .post-info h2 { font-size: 1.05rem; margin: 0; line-height: 1.5; font-weight: 600; color: #333; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .no-image { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 0.8rem; }
+  @media (max-width: 768px) {
+    .category-container { padding-top: 100px; }
+    .post-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .category-header h1 { font-size: 1.8rem; }
+  }
+</style>

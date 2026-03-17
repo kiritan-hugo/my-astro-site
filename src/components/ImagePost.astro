@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 
 interface Props {
-  src: any;              // ← 文字列ではなく「import 画像オブジェクト」を受け取る
+  src: any;
   alt?: string;
   label?: string;
   labelPosition?: "top-left" | "top-right" | "bottom-left" | "bottom-right";
@@ -52,6 +52,7 @@ const positionClass = {
   position: relative;
   display: block;
   width: fit-content;
+  max-width: 100%; /* 親要素からはみ出さないように */
   margin: 4rem auto 2rem;
   transform: scale(var(--image-scale));
   transform-origin: center top;
@@ -84,35 +85,52 @@ const positionClass = {
   background: #fff;
   border-radius: 0;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
 }
 
-/* Astro の <Image /> が生成する img を対象にする */
 .image-frame :global(img) {
   display: block;
   width: 100%;
   height: auto;
 }
 
-/* 注釈 */
 .image-caption {
   text-align: center;
   font-size: 0.75rem;
   color: #555;
-  margin-top: 0.6rem;
+  margin-top: 0.8rem;
   line-height: 1.4;
   display: block;
   text-decoration: none;
 }
 
-a.image-caption {
-  cursor: pointer;
-}
+/* ▼ 970px以下（レスポンシブ対応） */
+@media (max-width: 970px) {
+  .image-wrapper {
+    /* スマホではScaleを無効化するか、控えめにする（レイアウト崩れ防止） */
+    --image-scale: 1 !important; 
+    width: 100%; 
+    margin: 4rem auto 1.5rem;
+  }
 
-a.image-caption:hover {
-  text-decoration: underline;
-}
+  .image-frame {
+    padding: 12px; /* 白枠を細くして画像を大きく見せる */
+  }
 
-p.image-caption {
-  cursor: default;
+  .image-label {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+
+  /* ラベルの飛び出しを抑える */
+  .label-top-left { top: -30px; left: 0px; }
+  .label-top-right { top: -30px; right: 0px; }
+  .label-bottom-left { bottom: -25px; left: 5px; }
+  .label-bottom-right { bottom: -25px; right: 5px; }
+
+  .image-caption {
+    font-size: 0.7rem;
+    padding: 0 10px;
+  }
 }
 </style>

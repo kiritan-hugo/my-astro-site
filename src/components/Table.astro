@@ -3,26 +3,27 @@ const { title = "", columns = [], rows = [], note = "" } = Astro.props;
 ---
 
 <div class="tbl-wrap">
-
   {title && <div class="tbl-title">{title}</div>}
 
-  <table class="tbl">
-    <thead>
-      <tr>
-        {columns.map(col => <th>{col}</th>)}
-      </tr>
-    </thead>
-
-    <tbody>
-      {rows.map(row => (
+  <div class="tbl-scroll-container">
+    <table class="tbl">
+      <thead>
         <tr>
-          {row.map(cell => (
-            <td set:html={cell}></td>
-          ))}
+          {columns.map(col => <th>{col}</th>)}
         </tr>
-      ))}
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        {rows.map(row => (
+          <tr>
+            {row.map(cell => (
+              <td set:html={cell}></td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
 
   {note && <p class="tbl-note">{note}</p>}
 </div>
@@ -41,11 +42,18 @@ const { title = "", columns = [], rows = [], note = "" } = Astro.props;
   margin-bottom: 0.8rem;
   color: #333;
   padding: 8px 18px;
-  background: #ffffff;          /* 雲の中の白 */
-  border: 2px solid #d8d2c6;    /* ふんわりした輪郭線 */
-  border-radius: 20px;          /* 雲の丸み */
-  display: inline-block;        /* タイトルだけ雲にする */
-  box-shadow: 0 2px 0 #efe9dd;  /* 下にふんわり影で立体感 */
+  background: #ffffff;
+  border: 2px solid #d8d2c6;
+  border-radius: 20px;
+  display: inline-block;
+  box-shadow: 0 2px 0 #efe9dd;
+}
+
+/* ▼ 横スクロール用のコンテナ設定 */
+.tbl-scroll-container {
+  overflow-x: auto; /* 横にはみ出た時にスクロールさせる */
+  -webkit-overflow-scrolling: touch; /* iOSでのスクロールを滑らかに */
+  border-radius: 8px; /* 角を少し丸く */
 }
 
 /* ▼ テーブル本体 */
@@ -53,15 +61,16 @@ const { title = "", columns = [], rows = [], note = "" } = Astro.props;
   width: 100%;
   border-collapse: collapse;
   font-size: 0.95rem;
+  min-width: 500px; /* スマホで潰れすぎないよう、最小幅を確保 */
 }
 
 /* ▼ セル共通 */
 .tbl th,
 .tbl td {
   border: 1px solid #d8d2c6;
-  padding: 6px 20px;
+  padding: 12px 20px;
   text-align: center;
-  white-space: nowrap;
+  /* white-space: nowrap;  ← PCでも長い文字があるとはみ出る原因になるので削除推奨 */
 }
 
 /* ▼ 1行目ヘッダー */
@@ -69,12 +78,12 @@ const { title = "", columns = [], rows = [], note = "" } = Astro.props;
   background: #efe9dd;
   color: #271d1d;
   font-weight: 600;
+  white-space: nowrap; /* ヘッダーだけは一行で見せたいことが多いので残す */
 }
 
 /* ▼ 本文 */
 .tbl tbody td {
   background: #ffffff;
-  padding: 12px 16px;  /* ← 本文は広め */
 }
 
 /* ▼ 注釈 */
@@ -84,5 +93,22 @@ const { title = "", columns = [], rows = [], note = "" } = Astro.props;
   margin-bottom: 2rem;
   font-size: 0.8rem;
   color: #555;
+}
+
+/* ▼ 970px以下（スマホ・タブレット対応） */
+@media (max-width: 970px) {
+  .tbl {
+    font-size: 0.85rem; /* 文字を少し小さく */
+  }
+  
+  .tbl th,
+  .tbl td {
+    padding: 10px 12px; /* 余白を詰める */
+  }
+
+  .tbl-title {
+    font-size: 1rem;
+    padding: 6px 14px;
+  }
 }
 </style>

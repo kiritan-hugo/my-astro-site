@@ -171,6 +171,57 @@ const char = characters[person];
   --bg-color: #e8fff5;
 }
 
+/* ▼▼ スマホ用対応 (970px以下) ▼▼ */
+@media (max-width: 970px) {
+  .balloon {
+    gap: 0.8rem;
+    margin: 1.5rem 0;
+  }
+
+  /* アイコンを小さく */
+  .balloon-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .balloon-name {
+    font-size: 0.65rem;
+  }
+
+  /* 吹き出しの余白を調整 */
+  .balloon-body {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* 左側の三角形の位置をアイコンの中央（15px付近）へ */
+  .balloon.left .balloon-body::before {
+    top: 15px;
+    left: -13px;
+    width: 13px;
+    height: 18px;
+  }
+  .balloon.left .balloon-body::after {
+    top: 16px;
+    left: -10px;
+    width: 11px;
+    height: 16px;
+  }
+
+  /* 右側の三角形の位置をアイコンの中央（15px付近）へ */
+  .balloon.right .balloon-body::before {
+    top: 15px;
+    right: -13px;
+    width: 13px;
+    height: 18px;
+  }
+  .balloon.right .balloon-body::after {
+    top: 16px;
+    right: -10px;
+    width: 11px;
+    height: 16px;
+  }
+}
 
 
 </style>

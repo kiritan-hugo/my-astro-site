@@ -124,4 +124,36 @@ const hasThirdRow = left3 && right3;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* ▼▼ スマホ用対応 (970px以下) ▼▼ */
+@media (max-width: 970px) {
+  .compare-container {
+    gap: 0.5rem; /* 行間の隙間を少し詰める */
+    margin: 1rem 0;
+  }
+
+  .compare-row {
+    gap: 0.4rem; /* 左右の画像同士の隙間を詰める */
+  }
+
+  /* 画像の高さ制限を解除、またはスマホ用に低くする */
+  .compare-item :global(img) {
+    height: 140px;      /* 260pxからスマホ用にダウン */
+    border-radius: 4px; /* ついでに角を少し丸くするとスマホっぽくなります */
+  }
+
+  /* ラベルの調整 */
+  .label {
+    font-size: 0.65rem; /* 文字を小さく */
+    margin-top: 0.3rem;
+  }
+
+  /* overlay モードのラベル調整 */
+  .compare-item.overlay .label {
+    bottom: 4px;
+    padding: 1px 6px;
+    font-size: 0.6rem;
+    max-width: 90%; /* はみ出し防止 */
+  }
+}
 </style>

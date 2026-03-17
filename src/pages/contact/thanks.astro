@@ -1,0 +1,174 @@
+---
+import SimpleLayout from "../../layouts/BaseLayout.astro";
+export const prerender = false;
+---
+
+<SimpleLayout title="送信完了">
+  <div class="thanks-wrapper">
+    <div class="checkmark"></div>
+
+    <h1 class="thanks-title">送信が完了しました</h1>
+    <p class="thanks-text">
+      お問い合わせありがとうございます。内容を確認し、折り返しご連絡いたします。
+    </p>
+
+    <a href="/" class="back-home-btn">トップへ戻る</a>
+
+    <!-- 描画される円形ゲージ -->
+    <div class="circle-draw">
+      <svg class="draw-ring" width="140" height="140">
+        <circle
+          class="draw-ring__circle"
+          stroke="#59b29f"
+          stroke-width="8"
+          fill="transparent"
+          r="64"
+          cx="70"
+          cy="70"
+        />
+      </svg>
+      <div class="count-text"><span id="count">5</span>s</div>
+    </div>
+
+    <p class="auto-redirect">
+      <span id="count2">5</span>秒後に自動的にトップへ戻ります
+    </p>
+  </div>
+
+  <script>
+    const circle = document.querySelector(".draw-ring__circle");
+    const radius = circle.r.baseVal.value;
+    const circumference = 2 * Math.PI * radius;
+
+    circle.style.strokeDasharray = `${circumference} ${circumference}`;
+    circle.style.strokeDashoffset = circumference;
+
+    // 1秒かけて円を描く
+    setTimeout(() => {
+      circle.style.transition = "stroke-dashoffset 1s ease-out";
+      circle.style.strokeDashoffset = 0;
+    }, 100);
+
+    // 描画後にカウントダウン開始（5秒）
+    setTimeout(() => {
+      let count = 5;
+      const countEl = document.getElementById("count");
+      const countEl2 = document.getElementById("count2");
+
+      const timer = setInterval(() => {
+        count--;
+        countEl.textContent = count;
+        countEl2.textContent = count;
+
+        if (count === 0) {
+          clearInterval(timer);
+          window.location.href = "/";
+        }
+      }, 1000);
+    }, 1100); // 描画完了後に開始
+  </script>
+</SimpleLayout>
+
+<style>
+.thanks-wrapper {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+/* チェックマークアニメーション */
+.checkmark {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  border: 4px solid #59b29f;
+  position: relative;
+  animation: pop 0.4s ease-out forwards;
+}
+
+.checkmark::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 32px;
+  width: 22px;
+  height: 40px;
+  border-right: 4px solid #59b29f;
+  border-bottom: 4px solid #59b29f;
+  transform: rotate(45deg) scale(0);
+  transform-origin: left top;
+  animation: check 0.4s ease-out 0.3s forwards;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes check {
+  0% { transform: rotate(45deg) scale(0); }
+  100% { transform: rotate(45deg) scale(1); }
+}
+
+/* タイトル・テキスト */
+.thanks-title {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.thanks-text {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* トップへ戻るボタン */
+.back-home-btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.8rem 1.6rem;
+  background: #59b29f;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.back-home-btn:hover {
+  background: #4a9a89;
+}
+
+/* 描画される円形ゲージ */
+.circle-draw {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 2rem auto 1rem;
+}
+
+.draw-ring__circle {
+  transform-origin: center;
+  transform: rotate(-90deg); /* 上から描く */
+}
+
+.count-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.auto-redirect {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+</style>
