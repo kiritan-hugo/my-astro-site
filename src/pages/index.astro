@@ -78,6 +78,7 @@ const categorySections = {
         <h1>アンデスライフへようこそ！</h1>
         <p>東北地方のキャンプ場とおいしいグルメを紹介します。</p>
       </div>
+      <div class="hero-scroll-guide"><span></span></div>
     </section>  
 
     <main>
@@ -145,9 +146,13 @@ const categorySections = {
     <h2 class="category-section-subtitle">～カテゴリー別記事～</h2>
     <section class="category-section">
       
-      <!-- campsite -->
-      <div class="category-block">
-        <img src="/images/logos/campsite.png" alt="campsite" class="category-logo" />
+<div class="category-block">
+        <div class="category-header">
+          <img src="/images/logos/campsite.png" alt="campsite" class="category-logo" />
+          <div class="swipe-guide-container">
+            <span class="swipe-hint">Swipe &gt;&gt;</span>
+          </div>
+        </div>
 
         <div class="post-grid">
           {categorySections.campsite.map(post => (
@@ -165,9 +170,13 @@ const categorySections = {
         </div>
       </div>
 
-      <!-- campgear -->
       <div class="category-block">
-        <img src="/images/logos/campgear.png" alt="campgear" class="category-logo" />
+        <div class="category-header">
+          <img src="/images/logos/campgear.png" alt="campgear" class="category-logo" />
+          <div class="swipe-guide-container">
+            <span class="swipe-hint">Swipe &gt;&gt;</span>
+          </div>
+        </div>
 
         <div class="post-grid">
           {categorySections.campgear.map(post => (
@@ -185,10 +194,12 @@ const categorySections = {
         </div>
       </div>
 
-      <!-- outdoor -->
       <div class="category-block">
-        <div class="logo-center">
+        <div class="category-header">
           <img src="/images/logos/outdoor.png" alt="outdoor" class="category-logo" />
+          <div class="swipe-guide-container">
+            <span class="swipe-hint">Swipe &gt;&gt;</span>
+          </div>
         </div>
         <div class="post-grid">
           {categorySections.outdoor.map(post => (
@@ -206,9 +217,13 @@ const categorySections = {
         </div>
       </div>
 
-      <!-- miscellaneous -->
       <div class="category-block">
-        <img src="images//logos/miscellaneous.png" alt="miscellaneous" class="category-logo" />
+        <div class="category-header">
+          <img src="/images/logos/miscellaneous.png" alt="miscellaneous" class="category-logo" />
+          <div class="swipe-guide-container">
+            <span class="swipe-hint">Swipe &gt;&gt;</span>
+          </div>
+        </div>
 
         <div class="post-grid">
           {categorySections.miscellaneous.map(post => (
@@ -310,404 +325,407 @@ const categorySections = {
   </body>
 </html>
 
-<style>
+<style is:global>
+  /* =============================================
+     1. 共通設定 & リセット
+     ============================================= */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
 
-  /* おまけセクションcss */
-.youtube-center {
-  display: flex;
-  justify-content: center;
-  margin: 1.5rem 0;
-}
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+    font-family: "Noto Sans JP", sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
 
-.youtube-box {
-  width: 50%;          /* ★ 小さめにしたいならここを調整（例：60% / 50%） */
-  max-width: 680px;    /* ★ PC で大きくなりすぎないように上限を設定 */
-  aspect-ratio: 16 / 9;
-  position: relative;
-}
-
-.youtube-box iframe {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-
-
-/* -------------  共通仕様css----------------- */
-body {
-  font-family: "Noto Sans JP", sans-serif;
-}
-.bottom-space{
+  .bottom-space {
     margin-bottom: 5rem;
-}
-
-/* ----------ヒーロー動画セクション---------- */
-/* まず両方非表示にしておく */
-.pc-video,
-.sp-video {
-  display: none;
-}
-
-/* PC用（768px以上） */
-@media (min-width: 768px) {
-  .pc-video {
-    display: block;
   }
-}
 
-/* スマホ用（768px未満） */
-@media (max-width: 768px) {
-  .sp-video {
-    display: block;
+  /* =============================================
+     2. ヒーロー動画セクション (スクロールガイド追加)
+     ============================================= */
+  
+  /* 下スクロールを促す矢印のアニメーション */
+  @keyframes sdb-scroll {
+    0% { transform: rotate(-45deg) translate(0, 0); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: rotate(-45deg) translate(-20px, 20px); opacity: 0; }
   }
+
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 480px;
+    overflow: hidden;
+  }
+
+  .hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.85) contrast(0.95) saturate(1.15);
+  }
+
+  .pc-video { display: block; }
+  .sp-video { display: none; }
+
+  @media (max-width: 970px) {
+    .pc-video { display: none; }
+    .sp-video { display: block; }
+    .hero-content h1 { font-size: 1.5rem !important; padding: 0 1.5rem; line-height: 1.6; }
+    .hero-content p { font-size: 0.9rem !important; }
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(249, 167, 52, 0.05);
+    backdrop-filter: blur(0.5px);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .hero-content h1 {
+    font-size: 1.7rem;
+    font-weight: 400;
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.05em;
+    color: #fff;
+  }
+
+  .hero-content p {
+    font-size: 1.15rem;
+    opacity: 0.9;
+    color: #fff;
+  }
+
+  /* ★スクロールガイド（V字矢印）の配置 */
+  .hero-scroll-guide {
+    position: absolute;
+    bottom: 60px; /* 下部からの距離 */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .hero-scroll-guide span {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin-left: -12px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-animation: sdb-scroll 2s infinite;
+    animation: sdb-scroll 2s infinite;
+    box-sizing: border-box;
+  }
+
+  /* =============================================
+     3. 新着・人気記事 (アニメーション維持)
+     ============================================= */
+  .post-switcher {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    justify-content: center;
+  }
+
+  .tab {
+    padding: 0.5rem 1.2rem;
+    border: none;
+    background: #f2f2f2;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+
+  .tab.active { background: #333; color: #fff; }
+
+  .tab-content {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease, height 0.25s ease;
+  }
+
+  .tab-content.active {
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+    overflow: visible;
+  }
+
+  .tab-content:not(.active) .post-card { opacity: 0; transform: translateY(6px); }
+  .tab-content.active .post-card { opacity: 1; transform: translateY(0); transition: opacity 0.28s ease, transform 0.28s ease; }
+  .tab-content.active .post-card:nth-child(1) { transition-delay: 0.05s; }
+  .tab-content.active .post-card:nth-child(2) { transition-delay: 0.10s; }
+  .tab-content.active .post-card:nth-child(3) { transition-delay: 0.15s; }
+  .tab-content.active .post-card:nth-child(4) { transition-delay: 0.20s; }
+  .tab-content.active .post-card:nth-child(5) { transition-delay: 0.25s; }
+  .tab-content.active .post-card:nth-child(6) { transition-delay: 0.30s; }
+
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.8rem;
+  }
+
+  .post-card {
+    display: block;
+    background: #fff;
+    text-decoration: none;
+    color: inherit;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    background-image: radial-gradient(#f0f0f0 1px, transparent 1px);
+    background-size: 15px 15px;
+  }
+
+  .post-card:hover {
+    transform: scale(1.03) rotate(1.5deg);
+    box-shadow: 15px 15px 30px rgba(0,0,0,0.1);
+    z-index: 10;
+  }
+
+  .post-card::after {
+    content: "";
+    position: absolute;
+    top: -5px; right: 20px;
+    width: 40px; height: 15px;
+    background: rgba(51, 191, 161, 0.3);
+    transform: rotate(5deg);
+    transition: all 0.3s;
+  }
+
+  .post-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 2px; }
+
+  .post-category {
+    display: inline-block; font-size: 0.7rem; padding: 0.1rem 0.5rem; margin-bottom: 0.8rem;
+    border: 1.5px solid #333; color: #333; font-weight: 800; text-transform: uppercase;
+    background: #fff; position: relative; top: -5px; left: 5px;
+  }
+
+  .post-content { padding: 0.8rem 0.4rem 0.5rem; }
+  .post-content h3 { font-size: 1.05rem; margin: 0; line-height: 1.5; font-weight: 700; color: #222; }
+  .post-date { font-size: 0.75rem; color: #bbb; margin-top: 0.5rem; display: block; font-style: italic; }
+
+  @media (max-width: 970px) {
+    .post-switcher { padding: 0 0.5rem; }
+    .post-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+    .post-card { width: 96%; margin: 0 auto; }
+  }
+
+/* =============================================
+     4. カテゴリー別セクション (ロゴセンター & ガイド右寄せ & チラ見せ)
+     ============================================= */
+@keyframes blink-swipe {
+  0% { transform: translateX(-5px); opacity: 0.3; }
+  50% { transform: translateX(5px); opacity: 1; }
+  100% { transform: translateX(-5px); opacity: 0.3; }
 }
 
-/* まず両方非表示にしておく */
-.hero {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  min-height: 480px;
-  overflow: hidden;
-}
-
-/* 背景動画（PC/スマホ共通） */
-.hero-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.85) contrast(0.95) saturate(1.15);
-}
-
-/* andes-life っぽい黒フィルター */
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(249, 167, 52, 0.05);
-  backdrop-filter: blur(0.5px);
-}
-
-/* テキスト */
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.hero-content h1 {
-  font-size: 1.7rem;
-  font-weight: 400;
-  margin-bottom: 2.5rem;
-  letter-spacing: 0.05em;
-  color: #fff;
-}
-
-.hero-content p {
-  font-size: 1.15rem;
-  opacity: 0.9;
-  color: #fff;
-}
-
-/* ----------新着記事セクション---------- */
-.new-posts {
-  margin-bottom: 3rem;
-}
-
-/* グリッドレイアウト */
-.post-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.8rem;
-}
-
-/* カード全体 */
-.post-card {
-  display: block;
-  background: #fff;
-  border-radius: 0px; /* 丸み */
-  overflow: hidden;
-  text-decoration: none;
-  color: inherit;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-/* ホバー時の浮き上がり */
-.post-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
-}
-
-/* 画像（16:9） */
-.post-card img {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  border-radius: 0px; /* 丸み */
-
-}
-
-/* カード内のテキスト部分 */
-.post-content {
-  padding: 1rem 1.2rem 1.3rem;
-}
-
-/* カテゴリバッジ */
-.post-category {
-  display: inline-block;
-  font-size: 0.75rem;
-  padding: 0.2rem 0.6rem;
-  background: #f2f2f2;
-  border-radius: 6px;
-  color: #666;
-  margin-bottom: 0.5rem;
-}
-
-/* タイトル */
-.post-content h3 {
-  font-size: 1.1rem;
-  margin: 0.4rem 0 0.6rem;
-  line-height: 1.4;
-  font-weight: 600;
-}
-
-/* 日付 */
-.post-date {
-  font-size: 0.8rem;
-  color: #999;
-}
-
-/* タブ切り替え */
-.tabs {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1.2rem;
-}
-.tab {
-  padding: 0.5rem 1.2rem;
-  border: none;
-  background: #f2f2f2;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-.tab.active {
-  background: #333;
-  color: #fff;
-}
-
-/* タブ切り替え（display を使わない） */
-.tab-content {
-  visibility: hidden;
-  opacity: 0;
-  height: 0;
-  overflow: hidden;
-  transition: opacity 0.25s ease, visibility 0.25s ease, height 0.25s ease;
-}
-
-.tab-content.active {
-  visibility: visible;
-  opacity: 1;
-  height: auto;
-  overflow: visible;
-}
-
-/* タブ切り替えアニメーション */
-/* 初期状態（非表示） */
-.tab-content:not(.active) .post-card {
-  opacity: 0;
-  transform: translateY(6px);
-}
-
-/* active のときだけアニメーション */
-.tab-content.active .post-card {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.28s ease, transform 0.28s ease;
-}
-
-
-/* 順番に遅延 */
-.tab-content.active .post-card:nth-child(1) { transition-delay: 0.05s; }
-.tab-content.active .post-card:nth-child(2) { transition-delay: 0.10s; }
-.tab-content.active .post-card:nth-child(3) { transition-delay: 0.15s; }
-.tab-content.active .post-card:nth-child(4) { transition-delay: 0.20s; }
-.tab-content.active .post-card:nth-child(5) { transition-delay: 0.25s; }
-.tab-content.active .post-card:nth-child(6) { transition-delay: 0.30s; }
-
-
-/* ---------------カテゴリ記事セクション------------------- */
-
-/* CATEGORY 見出し（中央） */
 .category-section-title {
-  text-align: center;
-  font-size: 1.7rem;
-  font-weight: 700;
-  color: #101010;
-  letter-spacing: 0.10em;
-  margin-top: 10rem;
-  margin-bottom: 0.5rem;
-  /* text-transform: uppercase; */
+  text-align: center; font-size: 1.7rem; font-weight: 700; color: #101010;
+  letter-spacing: 0.10em; margin-top: 10rem; margin-bottom: 0.5rem;
 }
-.category-section-title .highlight {
-  color: #33bfa1;
-}
+.category-section-title .highlight { color: #33bfa1; }
+
 .category-section-subtitle {
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #636262;
-  letter-spacing: 0.12em;
-  margin-bottom: 3rem;
+  text-align: center; font-size: 1rem; font-weight: 700; color: #636262;
+  letter-spacing: 0.12em; margin-bottom: 3rem;
 }
-/* --------------- カテゴリ記事セクション（.ver2） ------------------- */
 
+/* PC版：グリッド配置 */
 .category-section {
-  margin-top: 3rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2x2カラム */
-  gap: 8rem 5rem; /* 縦の間隔を少し広めに */
+  max-width: 1100px; margin: 0 auto; display: grid;
+  grid-template-columns: repeat(2, 1fr); gap: 8rem 5rem; padding: 0 1rem;
 }
 
-/* ② ロゴを中央に配置 */
-.category-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* これで子要素（ロゴとリスト）が中央に寄る */
-}
+.category-block { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.category-header-centered { text-align: center; width: 100%; margin-bottom: 2rem; }
+.category-logo { width: 260px; height: auto; display: inline-block; }
 
-.category-logo {  
-  width: 260px;
-  height: auto;
-  margin-bottom: 2rem;
-  display: block;
-}
+/* PCではガイドを隠す */
+.swipe-guide-container { display: none; }
 
-/* ① カテゴリー内の記事カードを横並び（左画像・右テキスト）にする */
-.category-block .post-grid {
-  display: flex;
-  flex-direction: column; /* 縦に並べる（カード自体は横長） */
-  gap: 1.2rem;
-  width: 100%; /* 親の幅いっぱいに広げる */
-}
+.category-block .post-grid { display: flex; flex-direction: column; gap: 1.2rem; width: 100%; }
 
 .category-block .post-card {
-  display: flex; /* ここで画像とテキストを横並びに */
-  align-items: center;
-  gap: 1rem;
-  background: transparent; /* 背景なしの方がスッキリします */
-  box-shadow: none;
-  border-radius: 0;
+  display: flex; flex-direction: row; align-items: center;
+  box-shadow: none; background: transparent; gap: 1.2rem;
 }
 
-.category-block .post-card:hover {
-  transform: translateX(5px); /* 横にスライドするホバー演出 */
-}
-
-.category-block .post-card img {
-  width: 250px; /* 画像の幅を固定 */
-  height: 150px;
-  aspect-ratio: 16 / 9;
-  border-radius: 8px; /* 角を少し丸く */
-  flex-shrink: 0; /* 画像が潰れないように固定 */
-}
-
-.category-block .post-content {
-  padding: 0;
-}
-
-/* カテゴリー内の記事ではバッジを非表示にする（ロゴでわかるため） */
-.category-block .post-category {
-  display: none;
-}
-
+.category-block .post-card img { width: 250px; height: 150px; border-radius: 8px; flex-shrink: 0; }
+.category-block .post-content { padding: 0; }
 .category-block .post-content h3 {
-  font-size: 0.95rem; /* 少し小さめに調整 */
-  margin: 0 0 0.2rem 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* 2行以上は省略 */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  font-size: 0.95rem; -webkit-line-clamp: 3; display: -webkit-box;
+  -webkit-box-orient: vertical; overflow: hidden;
 }
 
-.category-block .post-date {
-  font-size: 0.75rem;
-}
-
-/* スマホ対応：1列にする */
-@media (max-width: 768px) {
-  .category-section {
-    grid-template-columns: 1fr;
+@media (max-width: 970px) {
+  .category-section-title { margin-top: 6rem; }
+  
+  .category-section { 
+    display: block; 
+    width: 100%; 
+    padding: 0; 
+    overflow: hidden; /* 横揺れ防止 */
   }
+
+  .category-block { margin-bottom: 2.5rem; display: block; } /* blockに変更して横幅を使い切る */
+
+  /* ロゴは中央に配置 */
+  .category-logo { 
+    display: block;
+    margin: 0 auto -0.5rem; 
+    width: 250px; 
+  }
+  
+  /* ★【ガイドを右端に強制移動】 */
+  .category-header-centered {
+    display: block; /* flexを解除してtext-alignを効かせる */
+    text-align: center;
+    margin-bottom: 1.2rem;
+    width: 100%;
+  }
+
+  .swipe-guide-container {
+    display: block;
+    width: 100%;
+    text-align: right; /* これで右に寄る */
+    padding-right: 1.5rem; /* 画面端からの隙間 */
+    box-sizing: border-box;
+  }
+
+  .swipe-hint {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #668748;
+    animation: blink-swipe 1.8s infinite ease-in-out;
+  }
+
+  /* ★【チラ見せ設定】右のパディングを0にするのがコツ */
+  .category-block .post-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 0 2rem 1.5rem; /* 右(2番目)を0にすることで、次カードがはみ出して見える */
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* スクロールバー非表示 */
+  .category-block .post-grid::-webkit-scrollbar { display: none; }
+  .category-block .post-grid { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* カード幅を80%前後にして、右側に20%の空きを作る */
+  .category-block .post-card {
+    flex: 0 0 80vw; 
+    width: 80vw;
+    flex-shrink: 0;
+    scroll-snap-align: start; /* 左端にピタッと止める */
+    display: block;
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 10px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.05);
+  }
+
+  .category-block .post-card img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+  .category-block .post-content h3 { font-size: 1rem; margin-top: 0rem; -webkit-line-clamp: 2; }
 }
 
+  /* =============================================
+     5. プロフィール (PCのマージン調整済み)
+     ============================================= */
+  .profile-section {
+    max-width: 1000px; margin: 2rem auto 2rem; padding: 5rem 1.5rem; background: #fdfdfd; 
+  }
 
-/* ----------プロフィールセクション---------- */
-.profile-section {
-  margin-top: 4rem;
-  margin-bottom: -7rem;
-  padding: 3.5rem 1rem;
-  background: #fafafa;
-  border-radius: 12px;
-}
-/* 横並びレイアウト */
-.profile-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2.5rem;
-  max-width: 900px;
-  margin: 0 auto;
-}
-/* 各プロフィールカード */
-.profile-card {
-  text-align: center;
-  padding: 1rem;
-}
-/* 画像 */
-.profile-image {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
-}
-/* 名前 */
-.profile-name {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-.profile-subname {
-  font-size: 1.0rem;
-  font-weight: 450;
-  margin-bottom: 0.5rem;
-  color: #0a0a0a
-}
+  .profile-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 7rem 3rem; max-width: 900px; margin: 0 auto;
+  }
 
-.profile-text {
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.6;
-  margin-bottom: 1.2rem;
-}
+  .profile-card {
+    position: relative; padding: 3rem 1.5rem 1.5rem; background: #fff;
+    border: 2px solid #333; box-shadow: 10px 10px 0px #33bfa1; 
+    text-align: left; transition: transform 0.2s ease;
+  }
 
-.profile-links a {
-  margin: 0 0.5rem;
-  color: #333;
-  font-weight: 600;
-  text-decoration: none;
-}
+  .profile-card:hover { transform: translate(-4px, -4px); }
+  .profile-image-wrapper { position: absolute; top: -50px; left: -10px; z-index: 10; }
+  .profile-image { width: 100px; height: 100px; border-radius: 12px; object-fit: cover; border: 3px solid #333; background: #fff; transform: rotate(-6deg); }
 
-.profile-links a:hover {
-  text-decoration: underline;
-}
+  .profile-card:nth-child(even) { box-shadow: 10px 10px 0px #f9a734; }
+  .profile-card:nth-child(even) .profile-image-wrapper { left: auto; right: -10px; }
+  .profile-card:nth-child(even) .profile-image { transform: rotate(6deg); }
 
+  .profile-name { font-size: 1.5rem; font-weight: 800; color: #333; margin-bottom: 0.2rem; display: block; }
+  .profile-subname { font-size: 0.85rem; background: #333; color: #fff; padding: 2px 8px; display: inline-block; font-weight: 600; margin-bottom: 1.2rem; transform: skewX(-10deg); }
+  .profile-text { font-size: 0.9rem; line-height: 1.7; color: #444; margin-bottom: 1rem; }
+
+  .profile-links { display: flex; gap: 1.2rem; justify-content: flex-end; margin-top: 1rem; }
+  .profile-links a { color: #333 !important; font-size: 1rem; font-weight: bold; text-decoration: none; border-bottom: 2px solid transparent; }
+  .profile-links a:hover { color: #33bfa1 !important; border-bottom-color: #33bfa1; }
+
+  @media (max-width: 970px) {
+    .profile-section { padding: 3rem 0.5rem; margin-top: 2rem; } 
+    .profile-grid { grid-template-columns: 1fr; gap: 5.5rem; padding: 0 0.5rem; }
+    .profile-card { max-width: 850px; width: 94%; margin: 0 auto; }
+    .profile-image-wrapper { left: 5px; }
+    .profile-card:nth-child(even) .profile-image-wrapper { right: 5px; left: auto; }
+  }
+
+  /* =============================================
+     6. YouTube
+     ============================================= */
+  .youtube-center {
+    width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 4rem 1rem 8rem; clear: both;
+  }
+  @media (max-width: 970px) {
+    .youtube-center { padding: 3rem 0.5rem 5rem; }
+  }
+  .youtube-box { width: 100%; max-width: 680px; aspect-ratio: 16 / 9; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+  .youtube-box iframe { width: 100%; height: 100%; border-radius: 12px; border: 2px solid #333; }
 </style>
-

@@ -3,63 +3,164 @@ import SimpleLayout from "../../layouts/BaseLayout.astro";
 ---
 
 <SimpleLayout title="お問い合わせ" description="お問い合わせページ">
+  <div class="contact-wrapper">
+    <div class="contact-container">
+      <h2 class="contact-title">お問い合わせ</h2>
 
-  <h2>お問い合わせ</h2>
+      <div class="spacer"></div>
 
-  <div style={{ marginBottom: "2rem" }}></div>
+      <form action="/api/contact" method="POST" class="contact-form">
+        <label>
+          <span class="label-text">お名前 <span class="required">必須</span></span>
+          <input type="text" name="name" required placeholder="例：山田 太郎" />
+        </label>
 
-    <form action="/api/contact" method="POST">
-        
-    <label>
-      お名前
-      <input type="text" name="name" required />
-    </label>
+        <label>
+          <span class="label-text">メールアドレス <span class="required">必須</span></span>
+          <input type="email" name="email" required placeholder="例：example@mail.com" />
+        </label>
 
-    <label>
-      メールアドレス
-      <input type="email" name="email" required />
-    </label>
+        <label>
+          <span class="label-text">お問い合わせ内容 <span class="required">必須</span></span>
+          <textarea 
+            name="message" 
+            rows="6" 
+            required 
+            placeholder="キャンプ場に関するご質問や、当サイトへのご要望などをご自由に入力してください。"
+          ></textarea>
+        </label>
 
-    <label>
-      お問い合わせ内容
-      <textarea name="message" rows="6" required></textarea>
-    </label>
-
-    <button type="submit">送信する</button>
-  </form>
+        <button type="submit">送信する</button>
+      </form>
+    </div>
+  </div>
 </SimpleLayout>
 
 <style>
-.contact-title {
-  font-size: 1.6rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
+  /* 全ての要素でパディング計算を狂わせない */
+  * {
+    box-sizing: border-box;
+  }
 
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.4rem;
-}
+  .contact-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 1rem;
+    overflow: hidden;
+  }
 
-label {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
+  .contact-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
 
-input, textarea {
-  padding: 0.7rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
+  .contact-title {
+    font-size: 1.6rem;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #333;
+    font-weight: 700;
+  }
 
-button {
-  padding: 0.8rem 1.4rem;
-  background: #59b29f;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
+  .spacer {
+    margin-bottom: 2rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem; /* 少し間隔を広げて見やすくしました */
+    width: 100%;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .label-text {
+    font-weight: 600;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* 必須バッジのスタイル */
+  .required {
+    background: #e74c3c;
+    color: white;
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+
+  input, textarea {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px; /* iOSのズーム防止 */
+    background: #fff;
+    -webkit-appearance: none;
+    transition: border-color 0.2s;
+  }
+
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: #59b29f; /* 入力中の色付け */
+    box-shadow: 0 0 0 3px rgba(89, 178, 159, 0.1);
+  }
+
+  /* 記入例（placeholder）の色を薄くする */
+  ::placeholder {
+    color: #bbb;
+    font-size: 0.9rem;
+  }
+
+  button {
+    padding: 1.1rem;
+    background: #59b29f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  button:hover {
+    background: #4a9685;
+  }
+
+  button:active {
+    transform: translateY(1px);
+  }
+
+  /* --- スマホ対応 --- */
+  @media (max-width: 970px) {
+    .contact-wrapper {
+      padding: 0 1.25rem;
+    }
+
+    .contact-title {
+      font-size: 1.4rem;
+    }
+
+    .contact-form {
+      gap: 1.5rem;
+    }
+
+    input, textarea {
+      padding: 0.8rem;
+    }
+  }
 </style>

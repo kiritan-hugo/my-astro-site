@@ -25,11 +25,41 @@ const {
   </body>
 </html>
 
-<style>
-.simple-container {
-  max-width: 800px;
-  margin: 3rem auto;
-  padding: 0 1rem;
-  padding-top: 4rem;
-}
+<style is:global>
+  /* 1. 全要素のパディング計算を「内側」に固定（これがないと見切れます） */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  /* 2. 画面全体が横に揺れるのを物理的に防ぐ */
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* 横スクロールを強制カット */
+    width: 100%;
+    -webkit-text-size-adjust: 100%; /* iOSの勝手なズームを防止 */
+  }
+
+  /* 3. コンテナの設定 */
+  .simple-container {
+    max-width: 800px;
+    width: 100%; /* 常に画面幅に合わせる */
+    margin: 0 auto;
+    padding: 100px 1.25rem 4rem; /* 上の余白をヘッダーに合わせて調整 */
+  }
+
+  /* スマホ（970px以下）での調整 */
+  @media (max-width: 970px) {
+    .simple-container {
+      padding-top: 80px; /* スマホヘッダーに合わせて少し詰める */
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+
+  /* 画像や埋め込み要素が親を突き破らないようにする共通設定 */
+  img, iframe, video {
+    max-width: 100%;
+    height: auto;
+  }
 </style>

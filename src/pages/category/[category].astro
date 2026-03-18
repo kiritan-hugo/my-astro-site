@@ -8,18 +8,13 @@ import FooterMenu from '../../components/FooterMenu.astro';
 export async function getStaticPaths() {
   const allPosts = await getCollection('blog');
 
-  // 1. 生成したい「全パターン」を定義する
-  // URLスラッグ : [そのページに含める記事のカテゴリID]
   const pathConfigs = {
-    // --- まとめページ ---
     "outdoor": ["outdoor", "campsite", "campgear"],
-    "miscellaneous": ["miscellaneous", "gourmet"],
-    
-    // --- 個別ページ（これらも残す） ---
+    "miscellaneous": ["miscellaneous", "gourmet", "travel"],
     "campsite": ["campsite"],
     "campgear": ["campgear"],
     "gourmet": ["gourmet"],
-    // もし他にもあればここに追加してください
+    "travel": ["travel"],
   };
 
   return Object.entries(pathConfigs).map(([slug, categoryList]) => {
@@ -43,22 +38,22 @@ export async function getStaticPaths() {
 const { category } = Astro.params;
 const { posts } = Astro.props;
 
-// 表示用タイトルのマッピング（すべてのスラッグ分を用意）
 const categoryMap: Record<string, string> = {
-  "outdoor": "アウトドア関連",
+  "outdoor": "アウトドア一覧",
   "miscellaneous": "雑記一覧",
-  "campsite": "キャンプ場紹介",
-  "campgear": "キャンプギア紹介",
+  "campsite": "キャンプ場",
+  "campgear": "キャンプギア",
   "gourmet": "グルメ情報",
+  "travel": "トラベル情報",
 };
 
-// 記事カード内のバッジ用（記事本来のカテゴリ名を表示）
 const subCategoryMap: Record<string, string> = {
   "campsite": "キャンプ場",
   "campgear": "キャンプギア",
   "outdoor": "アウトドア",
   "miscellaneous": "雑記",
   "gourmet": "グルメ",
+  "travel": "旅行",
 };
 
 const displayCategory = categoryMap[category] || category;
@@ -110,24 +105,129 @@ const displayCategory = categoryMap[category] || category;
 </html>
 
 <style>
-  /* スタイルは前回と同じなので省略（そのまま維持してください） */
-  .category-container { max-width: 1000px; margin: 0 auto; padding: 160px 1.5rem 4rem; }
+  /* --- 全体のはみ出し防止 --- */
+  * {
+    box-sizing: border-box;
+  }
+
+  /* --- 基本レイアウト（PC: 971px以上） --- */
+  .category-container { 
+    max-width: 1000px; 
+    width: 100%;
+    margin: 0 auto; 
+    padding: 160px 1.5rem 4rem; 
+  }
+
   .category-header { text-align: center; margin-bottom: 3rem; }
-  .category-header .label { display: inline-block; color: #4a7c59; font-weight: bold; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; border-bottom: 2px solid #4a7c59; margin-bottom: 0.5rem; }
+  .category-header .label { 
+    display: inline-block; 
+    color: #4a7c59; 
+    font-weight: bold; 
+    font-size: 0.8rem; 
+    text-transform: uppercase; 
+    letter-spacing: 0.2em; 
+    border-bottom: 2px solid #4a7c59; 
+    margin-bottom: 0.5rem; 
+  }
   .category-header h1 { font-size: 2.2rem; margin: 0.5rem 0; color: #333; font-weight: 700; }
   .category-header p { color: #666; font-size: 0.9rem; }
-  .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2.5rem 1.5rem; }
-  .post-card { text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: all 0.3s ease; }
-  .card-thumb-wrap { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; margin-bottom: 1rem; background: #eee; }
-  .post-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-  .post-card:hover img { transform: scale(1.05); }
-  .card-badge { position: absolute; top: 10px; left: 10px; background: rgba(47, 93, 58, 0.9); color: #fff; font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; font-weight: 500; z-index: 1; }
+
+  /* グリッド設定 */
+  .post-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 2.5rem 1.5rem; 
+    width: 100%;
+  }
+
+  /* カードデザイン */
+  .post-card { 
+    text-decoration: none; 
+    color: inherit; 
+    display: flex; 
+    flex-direction: column; 
+    width: 100%;
+    transition: opacity 0.3s ease;
+  }
+  .post-card:hover { opacity: 0.8; }
+
+  .card-thumb-wrap { 
+    position: relative; 
+    width: 100%; 
+    aspect-ratio: 16 / 9; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    margin-bottom: 1rem; 
+    background: #eee; 
+  }
+
+  .post-card img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    display: block;
+  }
+
+  .card-badge { 
+    position: absolute; 
+    top: 10px; 
+    left: 10px; 
+    background: rgba(47, 93, 58, 0.9); 
+    color: #fff; 
+    font-size: 0.7rem; 
+    padding: 3px 8px; 
+    border-radius: 4px; 
+    font-weight: 500; 
+    z-index: 1; 
+  }
+
   .post-info time { display: block; font-size: 0.75rem; color: #888; margin-bottom: 0.5rem; }
-  .post-info h2 { font-size: 1.05rem; margin: 0; line-height: 1.5; font-weight: 600; color: #333; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-  .no-image { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 0.8rem; }
-  @media (max-width: 768px) {
-    .category-container { padding-top: 100px; }
-    .post-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .post-info h2 { 
+    font-size: 1.05rem; 
+    margin: 0; 
+    line-height: 1.5; 
+    font-weight: 600; 
+    color: #333; 
+    display: -webkit-box; 
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical; 
+    overflow: hidden; 
+  }
+
+  /* --- スマホ・タブレット対応（970px以下） --- */
+  @media (max-width: 970px) {
+    .category-container { 
+      padding-top: 120px; 
+      padding-bottom: 3rem;
+      padding-left: 1.25rem; 
+      padding-right: 1.25rem;
+    }
+    
+    .category-header { margin-bottom: 2rem; }
     .category-header h1 { font-size: 1.8rem; }
+    
+    .post-grid { 
+      grid-template-columns: 1fr; 
+      max-width: 600px; /* 1列の時に広がりすぎないよう制限 */
+      margin: 0 auto; 
+      gap: 2rem;
+    }
+
+    .post-info h2 {
+      font-size: 1.1rem; 
+    }
+  }
+
+  /* 非常に小さい画面（480px以下） --- */
+  @media (max-width: 480px) {
+    .category-container { 
+      padding-top: 100px;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    .category-header h1 { font-size: 1.5rem; }
+    .post-grid { 
+      gap: 1.8rem;
+    }
   }
 </style>

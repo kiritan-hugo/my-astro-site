@@ -1,88 +1,154 @@
 ---
 const { columns = [], rows = [], note = "" } = Astro.props;
-
-// /*
-// columns = ["項目A", "項目B", "項目C"]
-// rows = [
-//   { label: "項目1", values: ["内容1", "内容2", "内容3"] },
-//   { label: "項目2", values: ["内容1", "内容2", "内容3"] },
-// ]
-// */
 ---
 
-
-<table class="infotable2">
-  <thead>
-    <tr>
-      <th></th>
-      {columns.map(col => <th>{col}</th>)}
-    </tr>
-  </thead>
-
-  <tbody>
-    {rows.map(row => (
+<div class="infotable2-wrapper">
+  <table class="infotable2">
+    <thead>
       <tr>
-        <th class="row-label">{row.label}</th>
-        {row.values.map(v => <td>{v}</td>)}
+        <th class="empty-corner"></th>
+        {columns.map(col => <th>{col}</th>)}
       </tr>
-    ))}
-  </tbody>
-</table>
+    </thead>
 
-{note && (
-  <p class="infotable2-note">{note}</p>
-)}
+    <tbody>
+      {rows.map(row => (
+        <tr>
+          <th class="row-label">{row.label}</th>
+          {row.values.map((v, index) => (
+            <td data-label={columns[index]}>{v}</td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  {note && (
+    <p class="infotable2-note">{note}</p>
+  )}
+</div>
 
 <style>
-  .infotable2{
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+  /* --- 全体共通 --- */
+  * {
+    box-sizing: border-box;
   }
-/* セル共通 */
-.infotable2 th {
-  border: 1px solid #d8d2c6;
-  padding: 10px 14px;
-  text-align: center;
-}
-.infotable2 td {
-  border: 1px solid #d8d2c6;
-  padding-left: 20px;
-  padding-right: 20px;
-  text-align: center;
-  white-space: pre-line; /* ← ★ これを追加 */
-}
 
-/* 上の横ヘッダー */
-.infotable2 thead th {
-  background: #efe9dd;
-  color: #271d1d;
-  font-weight: 500;
-}
+  .infotable2-wrapper {
+    width: 100%;
+    margin: 1rem 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 
-/* 左の縦ヘッダー */
-.infotable2 .row-label {
-  background: #efe9dd;
-  color: #271d1d;
-  font-weight: 600;
-  white-space: nowrap;
-  text-align: center;
-  width: auto;
-  min-width: 90px;
-}
+  .infotable2 {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0.5rem;
+  }
 
-/* 行の色なし */
-.infotable2 tbody tr td {
-  background: transparent;
-}
+  /* --- PC表示（971px以上） --- */
+  .infotable2 th, .infotable2 td {
+    border: 1px solid #d8d2c6;
+    padding: 10px 14px;
+    text-align: center;
+  }
 
-/* ▼ 注釈（InfoTable と同じ雰囲気） */
-.infotable2-note {
-  text-align: center;   /* ← 中央寄せ */
-  margin-top: 0rem;
-  margin-bottom: 2rem;
-  font-size: 0.8rem;
-  color: #555;       /* ← 本文と同じ色にする */
-  padding: 0;           /* ← デザイン要素を全部消す */
-  border: none;         /* ← 左線などを完全に無効化 */
-}
+  .infotable2 td {
+    white-space: pre-line;
+    background: transparent;
+  }
+
+  .infotable2 thead th {
+    background: #efe9dd;
+    color: #271d1d;
+    font-weight: 500;
+  }
+
+  .infotable2 .row-label {
+    background: #efe9dd;
+    color: #271d1d;
+    font-weight: 600;
+    white-space: nowrap;
+    min-width: 90px;
+  }
+
+  /* --- スマホ・タブレット対応（970px以下） --- */
+  @media (max-width: 970px) {
+    .infotable2, 
+    .infotable2 thead, 
+    .infotable2 tbody, 
+    .infotable2 th, 
+    .infotable2 td, 
+    .infotable2 tr {
+      display: block;
+      width: 100%;
+    }
+
+    .infotable2 thead tr {
+      display: none;
+    }
+
+    .infotable2 tr {
+      margin-bottom: 1.5rem; /* ★ここを少し詰めました */
+      border: 1px solid #d8d2c6;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    /* 最後のカードだけ下の余白を消して、注釈を近づける */
+    .infotable2 tr:last-child {
+      margin-bottom: 0.5rem;
+    }
+
+    .infotable2 .row-label {
+      background: #4a7c59;
+      color: #fff;
+      padding: 10px 14px;
+      font-size: 1rem;
+      border: none;
+      text-align: left;
+    }
+
+    .infotable2 td {
+      text-align: left;
+      padding: 12px 14px;
+      position: relative;
+      padding-left: 45%;
+      border: none;
+      border-bottom: 1px solid #eee;
+      line-height: 1.5;
+    }
+
+    .infotable2 td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 14px;
+      top: 12px;
+      width: 38%;
+      font-weight: bold;
+      color: #4a7c59;
+      font-size: 0.85rem;
+    }
+
+    .infotable2 td:last-child {
+      border-bottom: none;
+    }
+
+    /* スマホ時の注釈位置を微調整 */
+    .infotable2-note {
+      margin-top: 0.5rem; /* ★テーブルとの距離を近く */
+      margin-bottom: 1.5rem;
+      font-size: 0.75rem; /* 少し小さくして馴染ませる */
+    }
+  }
+
+  /* PC時の注釈スタイル（上書きされないよう外側に配置） */
+  .infotable2-note {
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.8rem;
+    color: #555;
+  }
 </style>

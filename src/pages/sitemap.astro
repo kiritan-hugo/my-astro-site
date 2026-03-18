@@ -1,0 +1,225 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import HeaderArticle from '../components/HeaderArticle.astro';
+import Footer from '../components/Footer.astro';
+import FooterMenu from '../components/FooterMenu.astro';
+// 戻るボタン用の FaChevronLeft を追加
+import { FaChevronRight, FaRegFolderOpen, FaRegFileLines, FaChevronLeft } from "react-icons/fa6";
+
+// 全記事を取得して日付順にソート
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+// カテゴリーIDを安全に取得する関数（ご提示のロジックを統合）
+const getCategoryId = (cat: any) => {
+  if (typeof cat === 'object' && cat !== null) {
+    return (cat as any).id || cat.toString();
+  }
+  return cat;
+};
+
+// サイトマップに表示したい構成の定義
+const categoryGroups = [
+  {
+    groupName: 'アウトドア',
+    items: [
+      { name: 'キャンプ場', slug: 'campsite' },
+      { name: 'キャンプギア', slug: 'campgear' },
+      { name: 'アウトドア全般', slug: 'outdoor' }
+    ]
+  },
+  {
+    groupName: '雑記',
+    items: [
+      { name: '旅行', slug: 'travel' },
+      { name: 'グルメ', slug: 'gourmet' },
+      { name: '雑記全般', slug: 'miscellaneous' }
+    ]
+  }
+];
+
+const displayTitle = "サイトマップ";
+---
+
+<html lang="ja">
+  <head>
+    <BaseHead title={`${displayTitle} - Andes Life`} description="Andes Life の全記事一覧ページです。" />
+  </head>
+  <body>
+    <HeaderArticle />
+
+    <main class="sitemap-container">
+      <header class="sitemap-header">
+        <h1>{displayTitle}</h1>
+      </header>
+
+      <div class="sitemap-content">
+        <section class="sitemap-section">
+          <h2><FaRegFolderOpen /> サイト案内</h2>
+          <ul class="page-list">
+            <li><a href="/"><FaChevronRight size={12} /> ホーム</a></li>
+            <li><a href="/blog"><FaChevronRight size={12} /> 全記事一覧</a></li>
+            <li><a href="/contact"><FaChevronRight size={12} /> お問い合わせ</a></li>
+            <li><a href="/privacy-policy"><FaChevronRight size={12} /> プライバシーポリシー</a></li>
+          </ul>
+        </section>
+
+        {categoryGroups.map((group) => (
+          <section class="sitemap-section">
+            <h2><FaRegFolderOpen /> {group.groupName}</h2>
+            <div class="category-grid">
+              {group.items.map((item) => {
+                // 記事のカテゴリーIDを取得してフィルタリング
+                const subPosts = allPosts.filter(post => getCategoryId(post.data.category) === item.slug);
+                
+                // 記事がある場合のみ表示
+                return subPosts.length > 0 ? (
+                  <div class="sub-category-block">
+                    <h3>{item.name}</h3>
+                    <ul>
+                      {subPosts.map(post => (
+                        <li>
+                          <a href={`/${post.id}/`}>
+                            <FaRegFileLines size={14} /> {post.data.title}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null;
+              })}
+            </div>
+          </section>
+        ))}
+      </div>
+
+      <div class="back-to-top">
+        <a href="/" class="back-btn">
+          <FaChevronLeft size={14} />
+          トップページへ戻る
+        </a>
+      </div>
+    </main>
+
+    <Footer />
+    <FooterMenu />
+  </body>
+</html>
+
+<style>
+  .sitemap-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 160px 1.5rem 5rem;
+  }
+
+  .sitemap-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .sitemap-header h1 {
+    font-size: 2.2rem;
+    color: #333;
+    font-weight: 800;
+  }
+
+  .sitemap-section {
+    margin-bottom: 4rem;
+  }
+
+  .sitemap-section h2 {
+    font-size: 1.4rem;
+    color: #29a48a;
+    border-bottom: 2px solid #29a48a;
+    padding-bottom: 0.6rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sitemap-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .sitemap-section li {
+    margin-bottom: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .sitemap-section a {
+    color: #444;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+
+  .sitemap-section a:hover {
+    color: #29a48a;
+    text-decoration: underline;
+  }
+
+  .sub-category-block {
+    margin-bottom: 2.5rem;
+    padding-left: 0.5rem;
+  }
+
+  .sub-category-block h3 {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 1.2rem;
+    background: #f0fdfa;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    border-left: 4px solid #29a48a;
+  }
+
+  .sitemap-section a svg {
+    margin-top: 4px;
+    color: #999;
+    flex-shrink: 0;
+  }
+
+  /* 戻るボタンのスタイル */
+  .back-to-top {
+    margin-top: 5rem;
+    text-align: center;
+    border-top: 1px solid #eee;
+    padding-top: 3rem;
+  }
+
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.8rem 2.5rem;
+    background: #29a48a;
+    color: #fff !important;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(41, 164, 138, 0.2);
+  }
+
+  .back-btn:hover {
+    background: #228b75;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(41, 164, 138, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .sitemap-container { padding: 120px 1.25rem 4rem; }
+    .sitemap-header h1 { font-size: 1.8rem; }
+    .back-btn { width: 100%; justify-content: center; }
+  }
+</style>

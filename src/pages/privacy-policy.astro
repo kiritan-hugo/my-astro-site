@@ -1,0 +1,156 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import HeaderArticle from '../components/HeaderArticle.astro';
+import Footer from '../components/Footer.astro';
+import FooterMenu from '../components/FooterMenu.astro';
+import { FaChevronLeft } from "react-icons/fa6"; // 戻るアイコン
+
+const displayTitle = "プライバシーポリシー";
+---
+
+<html lang="ja">
+  <head>
+    <BaseHead title={`${displayTitle} - Andes Life`} description="当ブログのプライバシーポリシーおよび免責事項に関するページです。" />
+  </head>
+  <body>
+    <HeaderArticle />
+
+    <main class="legal-container">
+      <header class="legal-header">
+        <h1>{displayTitle}</h1>
+        </header>
+
+      <div class="legal-content">
+        <section>
+          <h2>個人情報の利用目的</h2>
+          <p>当ブログでは、お問い合わせや記事へのコメントの際、名前やメールアドレス等の個人情報を入力いただく場合がございます。取得した個人情報は、お問い合わせに対する回答や必要な情報を電子メールなどを送付する場合に利用させていただくものであり、これらの目的以外では利用いたしません。</p>
+        </section>
+
+        <section>
+          <h2>広告の配信について</h2>
+          <p>当ブログでは、第三者配信の広告サービス（Googleアドセンス、A8.net、もしもアフィリエイト等）を利用しています。広告配信事業者は、ユーザーの興味に応じた広告を表示するためにCookie（クッキー）を使用することがあります。Cookieを使用することで当サイトはお客様のコンピュータを識別できるようになりますが、お客様個人を特定できるものではありません。</p>
+          <p>また、Andes Lifeは、Amazon.co.jpを宣伝しリンクすることによってサイトが紹介料を獲得できる手段を提供することを目的に設定されたアフィリエイトプログラムである、Amazonアソシエイト・プログラムの参加者です。</p>
+        </section>
+
+        <section>
+          <h2>アクセス解析ツールについて</h2>
+          <p>当ブログでは、Googleによるアクセス解析ツール「Googleアナリティクス」を利用しています。このGoogleアナリティクスはトラフィックデータの収集のためにクッキー（Cookie）を使用しております。トラフィックデータは匿名で収集されており、個人を特定するものではありません。</p>
+        </section>
+
+        <section>
+          <h2>免責事項</h2>
+          <p>当ブログからのリンクやバナーなどで移動したサイトで提供される情報、サービス等について一切の責任を負いません。また、当ブログのコンテンツ・情報について、できる限り正確な情報を提供するよう努めておりますが、正確性や安全性を保証するものではありません。情報が古くなっていることもございます。当サイトに掲載された内容によって生じた損害等の一切の責任を負いかねますのでご了承ください。</p>
+        </section>
+
+        <section>
+          <h2>著作権・肖像権について</h2>
+          <p>当ブログで掲載している文章や画像などにつきましては、無断転載を禁止します。当ブログは著作権や肖像権の侵害を目的としたものではありません。著作権や肖像権に関して問題がございましたら、お問い合わせフォームよりご連絡ください。迅速に対応いたします。</p>
+        </section>
+
+        <section>
+          <h2>リンクについて</h2>
+          <p>当ブログは基本的にリンクフリーです。リンクを行う場合の許可や連絡は不要です。ただし、インラインフレームの使用や画像の直リンクはご遠慮ください。</p>
+        </section>
+      </div>
+
+      <div class="back-to-top">
+        <a href="/" class="back-btn">
+          <FaChevronLeft size={14} />
+          トップページへ戻る
+        </a>
+      </div>
+    </main>
+
+    <Footer />
+    <FooterMenu />
+  </body>
+</html>
+
+<style>
+  .legal-container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 160px 1.5rem 5rem;
+  }
+
+  .legal-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .legal-header h1 {
+    font-size: 2.2rem;
+    color: #333;
+    font-weight: 800;
+    display: inline-block;
+    /* 下の線（::after）は削除しました */
+  }
+
+  .legal-content {
+    background: #fff;
+    line-height: 1.9;
+    color: #444;
+  }
+
+  .legal-content section {
+    margin-bottom: 3.5rem;
+  }
+
+  .legal-content h2 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .legal-content h2::before {
+    content: '';
+    width: 6px;
+    height: 1.4rem;
+    background: #29a48a;
+    display: inline-block;
+    border-radius: 2px;
+  }
+
+  .legal-content p {
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    text-align: justify;
+  }
+
+  /* ★戻るボタンのスタイル */
+  .back-to-top {
+    margin-top: 5rem;
+    text-align: center;
+  }
+
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.8rem 2rem;
+    background: #29a48a;
+    color: #fff !important;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(41, 164, 138, 0.2);
+  }
+
+  .back-btn:hover {
+    background: #228b75;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(41, 164, 138, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .legal-container { padding: 120px 1.25rem 4rem; }
+    .legal-header h1 { font-size: 1.8rem; }
+    .back-btn { width: 100%; justify-content: center; } /* スマホでは幅いっぱいに */
+  }
+</style>
