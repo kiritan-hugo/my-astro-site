@@ -12,7 +12,7 @@ export async function post({ request }) {
   // メール送信
   await resend.emails.send({
     from: "お問い合わせ <noreply@yourdomain.com>",
-    to: "andeslife2022@gmail.com"
+    to: "andeslife2022@gmail.com",
     subject: "【重要】andes-life.comからの問い合わせメール",
     text: `
 名前: ${name}
