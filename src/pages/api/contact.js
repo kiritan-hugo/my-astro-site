@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+export const prerender = false;
 
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
 

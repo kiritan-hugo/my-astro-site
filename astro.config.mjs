@@ -10,6 +10,6 @@ import vercel from '@astrojs/vercel';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://andes-life.com',
-  integrations: [mdx(), sitemap(), react(), sitemap()],
+  integrations: [mdx(), sitemap(), react()],
   adapter: vercel(),
 });
