@@ -298,45 +298,70 @@ let h3Count = 0;
     <Footer />
 	<FooterMenu />
 
-	<script>
-	// 本文TOC
-	const tocMainContainer = document.getElementById("tocMainContainer");
-	const tocMainToggle = document.getElementById("tocMainToggle");
+<script is:inline>
+  const initMobileToc = () => {
+    // 1. 本文内目次の「もっと見る」
+    const mainBtn = document.getElementById("tocMainToggle");
+    const mainBox = document.getElementById("tocMainContainer");
+    if (mainBtn && mainBox) {
+      mainBtn.onclick = () => {
+        mainBox.classList.toggle("expanded");
+        mainBtn.textContent = mainBox.classList.contains("expanded") ? "閉じる" : "もっと見る";
+      };
+    }
 
-	tocMainToggle.addEventListener("click", () => {
-	tocMainContainer.classList.toggle("expanded");
-	tocMainToggle.textContent = tocMainContainer.classList.contains("expanded")
-		? "閉じる"
-		: "もっと見る";
-	});
+    // 2. モバイルオーバーレイ制御
+    const overlay = document.getElementById('mobileTocOverlay');
+    const closeBtn = document.getElementById('closeToc');
+    
+    // フッターメニュー内の「目次」ボタンを特定（より柔軟に探す）
+    const allButtons = document.querySelectorAll('button, a');
+    const tocTrigger = Array.from(allButtons).find(el => 
+      el.textContent.includes('目次') || el.innerText.includes('目次')
+    );
 
-	// --- 追加：モバイルオーバーレイ制御用のJS ---
-    const setupMobileToc = () => {
-        const overlay = document.getElementById('mobileTocOverlay');
-        const closeBtn = document.getElementById('closeToc');
-        const links = document.querySelectorAll('.mobile-toc-link');
+    if (overlay && tocTrigger) {
+      // 開く処理
+      tocTrigger.onclick = (e) => {
+        e.preventDefault();
+        overlay.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // 背景スクロール禁止
+        setTimeout(() => overlay.classList.add('is-active'), 10);
+      };
 
-        if (!overlay || !closeBtn) return;
+      // 閉じる処理（✕ボタン）
+      if (closeBtn) {
+        closeBtn.onclick = () => {
+          overlay.classList.remove('is-active');
+          document.body.style.overflow = '';
+          setTimeout(() => { overlay.style.display = 'none'; }, 300);
+        };
+      }
 
-        const open = () => overlay.classList.add('is-active');
-        const close = () => overlay.classList.remove('is-active');
+      // リンクをクリックしたら閉じる
+      overlay.querySelectorAll('.m-toc-link').forEach(link => {
+        link.onclick = () => {
+          overlay.classList.remove('is-active');
+          document.body.style.overflow = '';
+          setTimeout(() => { overlay.style.display = 'none'; }, 300);
+        };
+      });
 
-        // FooterMenu側のボタンにイベントを紐付け（onclickが動かない時用）
-        // 念のためJS側でも「目次」ボタンを探してクリックイベントを追加
-        const footerTocBtn = document.querySelector('.mobile-footer-menu button');
-        footerTocBtn?.addEventListener('click', open);
+      // 外側クリックで閉じる
+      overlay.onclick = (e) => {
+        if (e.target === overlay) {
+          overlay.classList.remove('is-active');
+          document.body.style.overflow = '';
+          setTimeout(() => { overlay.style.display = 'none'; }, 300);
+        }
+      };
+    }
+  };
 
-        closeBtn.addEventListener('click', close);
-        links.forEach(link => link.addEventListener('click', close));
-        overlay.addEventListener('click', (e) => {
-            if (e.target === overlay) close();
-        });
-    };
-
-    // 初回とAstro遷移後の両方で実行
-    setupMobileToc();
-    document.addEventListener('astro:page-load', setupMobileToc);
-	</script>
+  // 初回実行とAstro遷移時の実行
+  initMobileToc();
+  document.addEventListener('astro:page-load', initMobileToc);
+</script>
   </body>
 </html>
 
@@ -430,7 +455,7 @@ let h3Count = 0;
 .article-layout {
   display: flex;
   gap: 2rem;
-  padding-top: 150px;
+  padding-top: 130px;
 }
 /* メイン記事（900px） */
 .main-column {
@@ -552,7 +577,7 @@ let h3Count = 0;
 /* 本文 TOC（中央寄せ・シンプル） */
 .toc-main {
   max-width: 700px;
-  margin: 0 auto 2rem auto;
+  margin: 2rem auto 2rem auto;
   background: #fff;
   border: 1px solid #e5e5e5;
   padding: 1.2rem 1.4rem;
@@ -681,6 +706,8 @@ let h3Count = 0;
 }
 
 /* ---ヒーローセクションcss--- */
+.article-hero { margin-top: -rem; }
+
 .article-hero .title {
 font-size: 1.50rem;
 }
@@ -713,6 +740,11 @@ font-size: 1.50rem;
 
 @media (max-width: 970px) {
   
+  .article-layout {
+
+  padding-top: 90px;
+}
+
 	.sidebar {
     display: none;
   }
@@ -731,14 +763,14 @@ font-size: 1.50rem;
 
 	.category {
 
-	font-size: 0.75rem;
+	font-size: 0.70rem;
 	margin: 0;
 	}
 
 	/* メタデータ（日付） */
 	.meta {
 
-	font-size: 0.7rem;
+	font-size: 0.65rem;
 
 	}
 	

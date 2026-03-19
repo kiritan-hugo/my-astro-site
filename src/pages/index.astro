@@ -66,11 +66,11 @@ const categorySections = {
     <section class="hero">
       <!-- PC用動画 -->
       <video class="hero-video pc-video" autoplay muted loop playsinline>
-        <source src="/videos/hero_main_pc.webm" type="video/mp4" />
+        <source src="/videos/hero_main_pc.webm" type="video/webm" />
       </video>
       <!-- スマホ用動画 -->
       <video class="hero-video sp-video" autoplay muted loop playsinline>
-        <source src="/videos/hero_main_sp.webm" type="video/mp4" />
+        <source src="/videos/hero_main_sp.webm" type="video/webm" />
       </video>
 
       <div class="hero-overlay"></div>
@@ -83,13 +83,12 @@ const categorySections = {
     </section>  
 
     <Background />
-
     <main>
 
     <!-- 新着記事/人気記事セクション -->
-    <div class="bottom-space"></div>
-    <h2 class="category-section-title"><span class="highlight">N</span>ew｜<span class="highlight">P</span>opular</h2>
-    <h2 class="category-section-subtitle">～新着記事＆人気記事～</h2>
+      <h2 class="category-section-title"><span class="highlight">N</span>ew｜<span class="highlight">P</span>opular</h2>
+      <h2 class="category-section-subtitle">～新着記事＆人気記事～</h2>
+    </div>
 
 		<section class="post-switcher">
       <div class="tabs">
@@ -140,11 +139,9 @@ const categorySections = {
             </a>
           ))}
         </div>
-      <div class="bottom-space"></div>
     </section>
 
     <!-- カテゴリ別記事一覧セクション -->
-    <div class="bottom-space"></div>
     <h2 class="category-section-title"><span class="highlight">C</span>ategory</h2>
     <h2 class="category-section-subtitle">～カテゴリー別記事～</h2>
     <section class="category-section">
@@ -245,7 +242,7 @@ const categorySections = {
       </div>      
     </section>
     <!-- ----------プロフィールセクション---------- -->
-    <div class="bottom-space"></div>
+    <div class="profile-margin"></div>
     <h2 class="category-section-title"><span class="highlight">P</span>rofile</h2>
     <h2 class="category-section-subtitle">～プロフィール～</h2>
     <section class="profile-section">
@@ -343,10 +340,6 @@ const categorySections = {
     width: 100%;
     font-family: "Noto Sans JP", sans-serif;
     -webkit-text-size-adjust: 100%;
-  }
-
-  .bottom-space {
-    margin-bottom: 5rem;
   }
 
   /* =============================================
@@ -459,7 +452,8 @@ const categorySections = {
   .tabs {
     display: flex;
     gap: 1rem;
-    margin-bottom: 1.2rem;
+    margin-top: 3rem;
+    margin-bottom: 1.4rem;
     justify-content: center;
   }
 
@@ -500,6 +494,7 @@ const categorySections = {
   .tab-content.active .post-card:nth-child(6) { transition-delay: 0.30s; }
 
   .post-grid {
+    background: #fff;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1.8rem;
@@ -548,9 +543,9 @@ const categorySections = {
   .post-date { font-size: 0.75rem; color: #bbb; margin-top: 0.5rem; display: block; font-style: italic; }
 
   @media (max-width: 970px) {
-    .post-switcher { padding: 0 0.5rem; }
+    .post-switcher { padding: 0 0rem; }
     .post-grid { grid-template-columns: 1fr; gap: 1.2rem; }
-    .post-card { width: 96%; margin: 0 auto; }
+    .post-card { width: 100%; margin: 0 auto; }
   }
 
 /* =============================================
@@ -564,22 +559,22 @@ const categorySections = {
 
 .category-section-title {
   text-align: center; font-size: 1.7rem; font-weight: 700; color: #101010;
-  letter-spacing: 0.10em; margin-top: 10rem; margin-bottom: 0.5rem;
+  letter-spacing: 0.10em; margin-top: 6rem; margin-bottom: 0.5rem;
 }
 .category-section-title .highlight { color: #33bfa1; }
 
 .category-section-subtitle {
   text-align: center; font-size: 1rem; font-weight: 700; color: #636262;
-  letter-spacing: 0.12em; margin-bottom: 3rem;
+  letter-spacing: 0.12em; margin-bottom: 1rem;
 }
 
 /* PC版：グリッド配置 */
 .category-section {
   max-width: 1100px; margin: 0 auto; display: grid;
-  grid-template-columns: repeat(2, 1fr); gap: 8rem 5rem; padding: 0 1rem;
+  grid-template-columns: repeat(2, 1fr); gap: 8rem 5rem; padding: 0 1rem; margin-top: 2rem;
 }
 
-.category-block { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.category-block { display: flex; flex-direction: column; align-items: center; width: 100%; margin-bottom: -2rem; }
 .category-header-centered { text-align: center; width: 100%; margin-bottom: 2rem; }
 .category-logo { width: 260px; height: auto; display: inline-block; }
 
@@ -601,11 +596,11 @@ const categorySections = {
 }
 
 @media (max-width: 970px) {
-  .category-section-title { margin-top: 6rem; }
+  .category-section-title { margin-top: 8rem; }
   
   .category-section { 
     display: block; 
-    width: 100%; 
+    width: 105%; 
     padding: 0; 
     overflow: hidden; /* 横揺れ防止 */
   }
@@ -679,7 +674,7 @@ const categorySections = {
 
   /* =============================================
      5. プロフィール (PCのマージン調整済み)
-     ============================================= */
+     ============================================= */ 
   .profile-section {
     max-width: 1000px; margin: 2rem auto 2rem; padding: 5rem 1.5rem; background: #fdfdfd; 
   }
@@ -717,6 +712,7 @@ const categorySections = {
     .profile-card { max-width: 850px; width: 94%; margin: 0 auto; }
     .profile-image-wrapper { left: 5px; }
     .profile-card:nth-child(even) .profile-image-wrapper { right: 5px; left: auto; }
+    .profile-margin { margin-bottom: -5rem;}
   }
 
   /* =============================================

@@ -4,15 +4,12 @@ import BaseHead from '../components/BaseHead.astro';
 import HeaderArticle from '../components/HeaderArticle.astro';
 import Footer from '../components/Footer.astro';
 import FooterMenu from '../components/FooterMenu.astro';
-// 戻るボタン用の FaChevronLeft を追加
 import { FaChevronRight, FaRegFolderOpen, FaRegFileLines, FaChevronLeft } from "react-icons/fa6";
 
-// 全記事を取得して日付順にソート
 const allPosts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
-// カテゴリーIDを安全に取得する関数（ご提示のロジックを統合）
 const getCategoryId = (cat: any) => {
   if (typeof cat === 'object' && cat !== null) {
     return (cat as any).id || cat.toString();
@@ -20,7 +17,6 @@ const getCategoryId = (cat: any) => {
   return cat;
 };
 
-// サイトマップに表示したい構成の定義
 const categoryGroups = [
   {
     groupName: 'アウトドア',
@@ -71,10 +67,7 @@ const displayTitle = "サイトマップ";
             <h2><FaRegFolderOpen /> {group.groupName}</h2>
             <div class="category-grid">
               {group.items.map((item) => {
-                // 記事のカテゴリーIDを取得してフィルタリング
                 const subPosts = allPosts.filter(post => getCategoryId(post.data.category) === item.slug);
-                
-                // 記事がある場合のみ表示
                 return subPosts.length > 0 ? (
                   <div class="sub-category-block">
                     <h3>{item.name}</h3>
@@ -82,7 +75,8 @@ const displayTitle = "サイトマップ";
                       {subPosts.map(post => (
                         <li>
                           <a href={`/${post.id}/`}>
-                            <FaRegFileLines size={14} /> {post.data.title}
+                            <FaRegFileLines size={14} className="file-icon" /> 
+                            <span>{post.data.title}</span>
                           </a>
                         </li>
                       ))}
@@ -109,10 +103,14 @@ const displayTitle = "サイトマップ";
 </html>
 
 <style>
+  /* 全体コンテナ */
   .sitemap-container {
     max-width: 900px;
     margin: 0 auto;
     padding: 160px 1.5rem 5rem;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden; /* 横揺れ防止 */
   }
 
   .sitemap-header {
@@ -144,21 +142,33 @@ const displayTitle = "サイトマップ";
   .sitemap-section ul {
     list-style: none;
     padding: 0;
+    margin: 0;
   }
 
   .sitemap-section li {
-    margin-bottom: 0.9rem;
-    line-height: 1.5;
+    margin-bottom: 1rem;
+    width: 100%;
   }
 
+  /* --- ここが一番重要 --- */
   .sitemap-section a {
     color: #444;
     text-decoration: none;
-    display: inline-flex;
-    align-items: flex-start;
-    gap: 8px;
+    display: flex; /* 横並び */
+    align-items: flex-start; /* アイコンを上揃えに */
+    gap: 10px;
     font-size: 0.95rem;
     transition: color 0.2s;
+    
+    width: 100%;
+    min-width: 0; /* これがないと文字が突き抜ける */
+  }
+
+  /* アイコンが潰れないように固定 */
+  :global(.file-icon) {
+    flex-shrink: 0;
+    margin-top: 4px;
+    color: #999;
   }
 
   .sitemap-section a:hover {
@@ -168,7 +178,6 @@ const displayTitle = "サイトマップ";
 
   .sub-category-block {
     margin-bottom: 2.5rem;
-    padding-left: 0.5rem;
   }
 
   .sub-category-block h3 {
@@ -182,13 +191,7 @@ const displayTitle = "サイトマップ";
     border-left: 4px solid #29a48a;
   }
 
-  .sitemap-section a svg {
-    margin-top: 4px;
-    color: #999;
-    flex-shrink: 0;
-  }
-
-  /* 戻るボタンのスタイル */
+  /* 戻るボタン */
   .back-to-top {
     margin-top: 5rem;
     text-align: center;
@@ -199,27 +202,44 @@ const displayTitle = "サイトマップ";
   .back-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
-    padding: 0.8rem 2.5rem;
+    padding: 0.8rem 2rem;
     background: #29a48a;
     color: #fff !important;
-    text-decoration: none;
+    text-decoration: none !important;
     border-radius: 50px;
     font-weight: 600;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(41, 164, 138, 0.2);
+    transition: 0.3s;
+    width: auto;
+    max-width: 100%;
   }
 
   .back-btn:hover {
     background: #228b75;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(41, 164, 138, 0.3);
   }
 
+  /* --- スマホレスポンシブ --- */
   @media (max-width: 768px) {
-    .sitemap-container { padding: 120px 1.25rem 4rem; }
-    .sitemap-header h1 { font-size: 1.8rem; }
-    .back-btn { width: 100%; justify-content: center; }
+    .sitemap-container {
+      padding: 100px 1.2rem 4rem;
+    }
+    .sitemap-header {
+      margin-bottom: 2.5rem;
+    }
+    .sitemap-header h1 {
+      font-size: 1.6rem;
+    }
+    .sitemap-section h2 {
+      font-size: 1.2rem;
+    }
+    .sitemap-section a {
+      font-size: 0.9rem; /* スマホで文字がデカすぎないように微調整 */
+    }
+    .sub-category-block {
+      padding-left: 0;
+    }
+
   }
 </style>
