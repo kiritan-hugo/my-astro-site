@@ -68,26 +68,29 @@ import {
     </div>
   </div>
 
-  <div class="sp-menu" id="spMenu">
+ <div class="sp-menu" id="spMenu">
     <button class="close-btn" id="closeBtn">
       <FaXmark size={30} />
     </button>
     <nav>
       <a href="/">ホーム</a>
+      
       <div class="sp-nav-group">
-        <span class="sp-category-title">アウトドア</span>
+        <a href="/category/outdoor" class="sp-category-link">アウトドア</a>
         <div class="sp-sub-links">
           <a href="/category/campsite">・キャンプ場</a>
           <a href="/category/campgear">・キャンプギア</a>
         </div>
       </div>
+      
       <div class="sp-nav-group">
-        <span class="sp-category-title">雑記</span>
+        <a href="/category/miscellaneous" class="sp-category-link">雑記</a>
         <div class="sp-sub-links">
           <a href="/category/travel">・旅行</a>
           <a href="/category/gourmet">・グルメ</a>
         </div>
       </div>
+      
       <a href="/contact">お問い合わせ</a>
       <a href="/sitemap">サイトマップ</a>
     </nav>
@@ -245,7 +248,7 @@ import {
     align-items: center;
   }
 
-  /* --- SP Slide Menu --- */
+ /* --- SP Slide Menu --- */
   .sp-menu {
     position: fixed;
     top: 0; left: -100%;
@@ -263,9 +266,33 @@ import {
   .sp-menu a { color: #fff; text-decoration: none; font-size: 1.1rem; font-weight: 500; }
 
   .sp-nav-group { display: flex; flex-direction: column; gap: 0.8rem; }
-  .sp-category-title { font-size: 1.1rem; font-weight: 700; color: #fff; opacity: 0.6; }
-  .sp-sub-links { display: flex; flex-direction: column; gap: 0.8rem; padding-left: 1rem; border-left: 1px solid rgba(255,255,255,0.2); }
-  .sp-sub-links a { font-size: 0.95rem; color: #ffffff !important; }
+
+  /* ↓ 追記：親リンク用のスタイル（元のsp-category-titleから変更） */
+  .sp-category-link {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff !important;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 4px;
+    transition: color 0.2s ease;
+  }
+  /* 親リンクをホバーしたときの色（お好みで調整してください） */
+  .sp-category-link:hover {
+    color: #a8b89a !important; 
+  }
+
+  .sp-sub-links { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 0.8rem; 
+    padding-left: 1rem; 
+    border-left: 1px solid rgba(255,255,255,0.2); 
+    margin-top: 0.2rem; /* 親リンクとの間隔を微調整 */
+  }
+  .sp-sub-links a { font-size: 0.95rem; color: #ffffff !important; opacity: 0.8; }
+  .sp-sub-links a:hover { opacity: 1; }
 
   @media (max-width: 1020px) {
     .site-header { height: 55px; }

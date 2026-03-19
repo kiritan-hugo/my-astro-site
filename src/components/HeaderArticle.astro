@@ -74,24 +74,28 @@ import {
     </button>
     <nav>
       <a href="/">ホーム</a>
+      
       <div class="sp-nav-group">
-        <span class="sp-category-title">アウトドア</span>
+        <a href="/category/outdoor" class="sp-category-link">アウトドア</a>
         <div class="sp-sub-links">
           <a href="/category/campsite">・キャンプ場</a>
           <a href="/category/campgear">・キャンプギア</a>
         </div>
       </div>
+
       <div class="sp-nav-group">
-        <span class="sp-category-title">雑記</span>
+        <a href="/category/miscellaneous" class="sp-category-link">雑記</a>
         <div class="sp-sub-links">
           <a href="/category/travel">・旅行</a>
           <a href="/category/gourmet">・グルメ</a>
         </div>
       </div>
+
       <a href="/contact">お問い合わせ</a>
       <a href="/sitemap">サイトマップ</a>
     </nav>
   </div>
+
 </header>
 
 <script>
@@ -245,24 +249,54 @@ import {
     padding-top: 4px;
   }
 
-  /* --- SP Slide Menu --- */
+/* --- SP Slide Menu --- */
   .sp-menu {
     position: fixed;
     top: 0; left: -100%;
     width: 80%; height: 100vh;
-    background: rgba(41, 164, 138, 0.98);
+    background: rgba(41, 164, 138, 0.98); /* 濃いグリーン背景 */
     padding: 4rem 2rem;
     transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
+    overflow-y: auto;
   }
   .sp-menu.open { left: 0; }
   .close-btn { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: #fff; display: flex; align-items: center; }
+
   .sp-menu nav { display: flex; flex-direction: column; gap: 1.8rem; }
   .sp-menu a { color: #fff; text-decoration: none; font-size: 1.1rem; font-weight: 500; }
+
+  /* 親カテゴリーリンクのスタイル追加 */
+  .sp-category-link {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff !important;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 4px;
+  }
+
   .sp-nav-group { display: flex; flex-direction: column; gap: 0.8rem; }
-  .sp-category-title { font-size: 1.1rem; font-weight: 700; color: #fff; opacity: 0.7; }
-  .sp-sub-links { display: flex; flex-direction: column; gap: 0.8rem; padding-left: 1rem; border-left: 1px solid rgba(255,255,255,0.3); }
-  .sp-sub-links a { font-size: 0.95rem; color: #ffffff !important; }
+
+  .sp-sub-links { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 0.8rem; 
+    padding-left: 1rem; 
+    border-left: 1px solid rgba(255,255,255,0.3); 
+    margin-top: 0.2rem;
+  }
+  .sp-sub-links a { 
+    font-size: 0.95rem; 
+    color: #ffffff !important; 
+    opacity: 0.9; 
+  }
+  
+  /* ホバー時の視覚効果 */
+  .sp-menu a:hover {
+    opacity: 0.7;
+  }
 
   @media (max-width: 970px) {
     .site-header { height: 55px; }

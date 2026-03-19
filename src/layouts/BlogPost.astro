@@ -7,6 +7,7 @@ import FooterMenu from '../components/FooterMenu.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import HeaderArticle from "../components/HeaderArticle.astro";
 import { getPopularPosts } from '../lib/getPopularPosts';
+import Background from './Background.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
@@ -20,9 +21,12 @@ const categoryMap: Record<string, string> = {
   "gourmet": "グルメ",
 };
 
+// 変換後の名前を取得（辞書になければ元の英単語を表示）
 const displayCategory = categoryMap[category] || category;
+
 const popular = (await getPopularPosts()).slice(0, 5);
 
+// 日付フォーマット関数
 const formatDate = (date) => {
   const d = new Date(date);
   const y = d.getFullYear();
@@ -30,126 +34,230 @@ const formatDate = (date) => {
   const day = String(d.getDate()).padStart(2, "0");
   return `${y}-${m}-${day}`;
 };
+
+// TOC h番号管理
+let h2Count = 0;
+let h3Count = 0;
+
 ---
 
+
 <html lang="ja">
-  <head>
-    <BaseHead title={title} description={description} />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet" />
-  </head>
+	<head>
+		<BaseHead title={title} description={description} />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <body>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+			rel="stylesheet"
+		/>
+
+	</head>
+
+	<body>
     <HeaderArticle />
-    <main class="article-layout">
-      <div class="main-column">
-        <section class="article-hero">
-          <h1 class="title">{title}</h1>
-          <div class="hero-meta-row">
-            <p class="category">{displayCategory}</p>
-            <div class="meta">
-              <span><i class="fa-regular fa-clock"></i> {formatDate(pubDate)}</span>
-              {updatedDate && <span><i class="fa-solid fa-arrows-rotate"></i> {formatDate(updatedDate)}</span>}
-            </div>
-          </div>
-          {heroImage && <img src={heroImage.src} alt={title} class="hero-image" />}
-        </section>
+    <Background />
+	<main class="article-layout">
+		<!-- -----メインコンテンツ----- -->
+		<div class="main-column">
 
-        <nav class="toc-main">
-          <h3 class="toc-main-title">目次</h3>
-          <div class="toc-main-container" id="tocMainContainer">
-            <ul>
-              {(() => {
-                let h2Count = 0; let h3Count = 0;
-                return Astro.props.headings.map(h => {
-                  if (h.depth === 2) {
-                    h2Count++; h3Count = 0;
-                    return <li class="toc-main-level-2"><a href={`#${h.slug}`}>{h2Count}｜ {h.text}</a></li>;
-                  }
-                  if (h.depth === 3) {
-                    h3Count++;
-                    return <li class="toc-main-level-3"><a href={`#${h.slug}`}>{h2Count}-{h3Count}｜ {h.text}</a></li>;
-                  }
-                  return null;
-                });
-              })()}
-            </ul>
-          </div>
-          <button class="toc-main-toggle" id="tocMainToggle">もっと見る</button>
-        </nav>
+			<!-- -----ヒーローセクション----- -->
+			<section class="article-hero">
+				<h1 class="title">{title}</h1>
+				<div class="hero-meta-row">
+					<p class="category">{displayCategory}</p>
+					<div class="meta">
+						<span><i class="fa-regular fa-clock"></i> {formatDate(pubDate)}</span>
+						{updatedDate && <span><i class="fa-solid fa-arrows-rotate"></i>{formatDate(updatedDate)}</span>}
+					</div>
+				</div>
 
-        <article class="main-post-content">
-          <slot />
-        </article>
-      </div>
+				{heroImage && (
+					<img src={heroImage.src} alt={title} class="hero-image" />
+				)}
+			</section>
 
-      <aside class="sidebar">
-        <section class="sidebar-block latest-cards" aria-label="新着記事">
-          <h3 class="sidebar-title">新着記事</h3>
-          <ul class="latest-cards-list">
-            {latestPosts.map(post => (
-              <li class="card">
-                <a class="card-link" href={`/${post.id}`}>
-                  <div class="card-thumb">
-                    {post.data.heroImage ? <Image src={post.data.heroImage} alt={post.data.title} class="thumb-img" width={100} height={60} /> : <div class="thumb-fallback">No Image</div>}
-                  </div>
-                  <div class="card-body">
-                    <div class="card-title">{post.data.title}</div>
-                    <div class="card-meta"><i class="fa-regular fa-clock"></i> {formatDate(post.data.pubDate)}</div>
-                  </div>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
+			<!-- -----本文TOC----- -->
+			<nav class="toc-main">
+			<h3 class="toc-main-title">目次</h3>
 
-        <section class="sidebar-block latest-cards" aria-label="人気記事">
-          <h3 class="sidebar-title">人気記事</h3>
-          <ul class="latest-cards-list">
-            {popular.map(post => (
-              <li class="card">
-                <a class="card-link" href={`/${post.astro.id}`}>
-                  <div class="card-thumb">
-                    {post.astro.data.heroImage ? <Image src={post.astro.data.heroImage} alt={post.astro.data.title} class="thumb-img" width={100} height={60} /> : <div class="thumb-fallback">No Image</div>}
-                  </div>
-                  <div class="card-body">
-                    <div class="card-title">{post.astro.data.title}</div>
-                    <div class="card-meta"><i class="fa-regular fa-clock"></i> {formatDate(post.astro.data.pubDate)} <span class="pv-count">{post.pageviews} PV</span></div>
-                  </div>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
+			<div class="toc-main-container" id="tocMainContainer">
+				<ul>
+				{
+					(() => {
+					let h2Count = 0;
+					let h3Count = 0;
 
-        <section class="sidebar-block toc-sticky">
-          <h3 class="sidebar-title">目次</h3>
-          <div class="toc-side-container">
-            <nav class="toc-side">
-              <ul>
-                {(() => {
-                  let h2Count = 0; let h3Count = 0;
-                  return Astro.props.headings.map(h => {
-                    if (h.depth === 2) {
-                      h2Count++; h3Count = 0;
-                      return <li class="toc-side-level-2"><a href={`#${h.slug}`}>{h2Count}｜ {h.text}</a></li>;
-                    }
-                    if (h.depth === 3) {
-                      h3Count++;
-                      return <li class="toc-side-level-3"><a href={`#${h.slug}`}>{h2Count}-{h3Count}｜ {h.text}</a></li>;
-                    }
-                    return null;
-                  });
-                })()}
-              </ul>
-            </nav>
-          </div>
-          <div class="toc-side-ad"><div class="ad-box">広告スペース</div></div>
-        </section>
-      </aside>
-    </main>
+					return Astro.props.headings.map(h => {
+						if (h.depth === 2) {
+						h2Count++;
+						h3Count = 0;
+						return (
+							<li class="toc-main-level-2">
+							<a href={`#${h.slug}`}>
+								{h2Count}｜ {h.text}
+							</a>
+							</li>
+						);
+						}
 
-    <div id="mobileTocOverlay" class="mobile-toc-overlay" aria-hidden="true">
+						if (h.depth === 3) {
+						h3Count++;
+						return (
+							<li class="toc-main-level-3">
+							<a href={`#${h.slug}`}>
+								{h2Count}-{h3Count}｜ {h.text}
+							</a>
+							</li>
+						);
+						}
+
+						return null;
+					});
+					})()
+				}
+				</ul>
+			</div>
+
+			<button class="toc-main-toggle" id="tocMainToggle">もっと見る</button>
+			</nav>
+
+			<article class="main-post-content">
+			<slot /> 		 <!-- 本文 -->
+			</article>
+
+		</div>
+		<!-- ----------サイドバー---------- -->
+		<aside class="sidebar">
+
+		<!-- 新着記事 -->
+			<section class="sidebar-block latest-cards" aria-label="新着記事">
+			<h3 class="sidebar-title">新着記事</h3>
+			<ul class="latest-cards-list">
+				{latestPosts.map(post => (
+				<li class="card" key={post.id ?? post.url}>
+					<a class="card-link" href={`/${post.id}`} rel="noopener noreferrer">
+					<div class="card-thumb">
+						{post.data.heroImage ? (
+						<Image
+							src={post.data.heroImage}
+							alt={post.data.title}
+							class="thumb-img"
+							sizes="80px"
+						/>
+						) : (
+						<div class="thumb-fallback" aria-hidden="true">No Image</div>
+						)}
+					</div>
+
+					<div class="card-body">
+						<div class="card-title" title={post.data.title}>{post.data.title}</div>
+						<div class="card-meta">
+						<time datetime={post.data.pubDate ? new Date(post.data.pubDate).toISOString() : ''}>
+							<i class="fa-regular fa-clock"></i> {formatDate(post.data.pubDate)}
+						</time>
+						</div>
+					</div>
+					</a>
+				</li>
+				))}
+			</ul>
+			</section>
+
+				<!-- 人気記事 -->
+			<section class="sidebar-block latest-cards" aria-label="人気記事">
+			<h3 class="sidebar-title">人気記事</h3>
+
+			<ul class="latest-cards-list">
+				{popular.map(post => (
+				<li class="card" key={post.astro.id}>
+					<a class="card-link" href={`/${post.astro.id}`} rel="noopener noreferrer">
+
+					<div class="card-thumb">
+						{post.astro.data.heroImage ? (
+						<Image
+							src={post.astro.data.heroImage}
+							alt={post.astro.data.title}
+							class="thumb-img"
+							sizes="80px"
+						/>
+						) : (
+						<div class="thumb-fallback" aria-hidden="true">No Image</div>
+						)}
+					</div>
+
+					<div class="card-body">
+						<div class="card-title" title={post.astro.data.title}>
+						{post.astro.data.title}
+						</div>
+
+						<div class="card-meta">
+						<time datetime={post.astro.data.pubDate ? new Date(post.astro.data.pubDate).toISOString() : ''}>
+							<i class="fa-regular fa-clock"></i>
+							{formatDate(post.astro.data.pubDate)}
+						</time>
+						<span class="pv-count">{post.pageviews} PV</span>
+						</div>
+					</div>
+
+					</a>
+				</li>
+				))}
+			</ul>
+			</section>
+			<!-- サイドバー用追従型TOC + 広告 -->
+			<section class="sidebar-block toc-sticky">
+			<h3 class="sidebar-title">目次</h3>
+
+			<div class="toc-side-container">
+				<nav class="toc-side">
+				<ul>
+					{
+					(() => {
+						let h2Count = 0;
+						let h3Count = 0;
+
+						return Astro.props.headings.map(h => {
+						if (h.depth === 2) {
+							h2Count++;
+							h3Count = 0;
+							return (
+							<li class="toc-side-level-2">
+								<a href={`#${h.slug}`}>
+								{h2Count}｜ {h.text}
+								</a>
+							</li>
+							);
+						}
+
+						if (h.depth === 3) {
+							h3Count++;
+							return (
+							<li class="toc-side-level-3">
+								<a href={`#${h.slug}`}>
+								{h2Count}-{h3Count}｜ {h.text}
+								</a>
+							</li>
+							);
+						}
+
+						return null;
+						});
+					})()
+					}
+				</ul>
+				</nav>
+			</div>
+
+			<!-- 広告（追従） -->
+			<div class="toc-side-ad">
+				<div class="ad-box">広告スペース</div>
+			</div>
+			</section>		
+		</aside>
+	</main>
+
+<div id="mobileTocOverlay" class="mobile-toc-overlay" aria-hidden="true">
       <div class="mobile-toc-content">
         <div class="mobile-toc-header">
           <span>目次</span>
@@ -157,184 +265,483 @@ const formatDate = (date) => {
         </div>
         <nav class="mobile-toc-body">
           <ul>
-            {(() => {
-              let h2Count = 0; let h3Count = 0;
-              return Astro.props.headings.map(h => {
-                if (h.depth === 2) {
-                  h2Count++; h3Count = 0;
-                  return <li class="m-toc-l2"><a href={`#${h.slug}`} class="m-toc-link">{h2Count}｜ {h.text}</a></li>;
-                }
-                if (h.depth === 3) {
-                  h3Count++;
-                  return <li class="m-toc-l3"><a href={`#${h.slug}`} class="m-toc-link">{h2Count}-{h3Count}｜ {h.text}</a></li>;
-                }
-                return null;
-              });
-            })()}
+            {
+              (() => {
+                let h2Count = 0;
+                let h3Count = 0;
+                return Astro.props.headings.map(h => {
+                  if (h.depth === 2) {
+                    h2Count++; h3Count = 0;
+                    return (
+                      <li class="m-toc-l2">
+                        <a href={`#${h.slug}`} class="m-toc-link">{h2Count}｜ {h.text}</a>
+                      </li>
+                    );
+                  }
+                  if (h.depth === 3) {
+                    h3Count++;
+                    return (
+                      <li class="m-toc-l3">
+                        <a href={`#${h.slug}`} class="m-toc-link">{h2Count}-{h3Count}｜ {h.text}</a>
+                      </li>
+                    );
+                  }
+                  return null;
+                });
+              })()
+            }
           </ul>
         </nav>
       </div>
     </div>
 
     <Footer />
-    <FooterMenu />
+	<FooterMenu />
 
-    <script is:inline>
-      function initAllTocFeatures() {
-        const tocMainContainer = document.getElementById("tocMainContainer");
-        const tocMainToggle = document.getElementById("tocMainToggle");
-        if (tocMainToggle && tocMainContainer) {
-          tocMainToggle.onclick = () => {
-            tocMainContainer.classList.toggle("expanded");
-            tocMainToggle.textContent = tocMainContainer.classList.contains("expanded") ? "閉じる" : "もっと見る";
-          };
-        }
+	<script>
+	// 本文TOC
+	const tocMainContainer = document.getElementById("tocMainContainer");
+	const tocMainToggle = document.getElementById("tocMainToggle");
 
+	tocMainToggle.addEventListener("click", () => {
+	tocMainContainer.classList.toggle("expanded");
+	tocMainToggle.textContent = tocMainContainer.classList.contains("expanded")
+		? "閉じる"
+		: "もっと見る";
+	});
+
+	// --- 追加：モバイルオーバーレイ制御用のJS ---
+    const setupMobileToc = () => {
         const overlay = document.getElementById('mobileTocOverlay');
         const closeBtn = document.getElementById('closeToc');
-        const links = document.querySelectorAll('.m-toc-link');
-        const footerBtns = document.querySelectorAll('.mobile-footer-menu button');
-        const tocBtn = Array.from(footerBtns).find(btn => btn.innerText.includes('目次'));
+        const links = document.querySelectorAll('.mobile-toc-link');
 
-        if (!overlay) return;
+        if (!overlay || !closeBtn) return;
 
-        const open = (e) => {
-          if (e) e.preventDefault();
-          overlay.style.display = 'block';
-          document.body.style.overflow = 'hidden';
-          setTimeout(() => overlay.classList.add('is-active'), 10);
-        };
-        const close = () => {
-          overlay.classList.remove('is-active');
-          document.body.style.overflow = '';
-          setTimeout(() => { overlay.style.display = 'none'; }, 300);
-        };
+        const open = () => overlay.classList.add('is-active');
+        const close = () => overlay.classList.remove('is-active');
 
-        tocBtn?.addEventListener('click', open);
-        closeBtn?.addEventListener('click', close);
+        // FooterMenu側のボタンにイベントを紐付け（onclickが動かない時用）
+        // 念のためJS側でも「目次」ボタンを探してクリックイベントを追加
+        const footerTocBtn = document.querySelector('.mobile-footer-menu button');
+        footerTocBtn?.addEventListener('click', open);
+
+        closeBtn.addEventListener('click', close);
         links.forEach(link => link.addEventListener('click', close));
-        overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
-      }
-      initAllTocFeatures();
-      document.addEventListener('astro:page-load', initAllTocFeatures);
-    </script>
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) close();
+        });
+    };
+
+    // 初回とAstro遷移後の両方で実行
+    setupMobileToc();
+    document.addEventListener('astro:page-load', setupMobileToc);
+	</script>
   </body>
 </html>
 
+
 <style>
-  /* --- 共通リセット設定 --- */
-  * { box-sizing: border-box; }
-  
-  /* --- 全体レイアウト --- */
-  .article-layout {
-    display: flex;
-    gap: 2rem;
-    padding: 150px 1rem 0; /* PCでも最低限の左右余白を確保 */
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .main-column { flex: 1; max-width: 850px; min-width: 0; }
-  .sidebar { flex: 0 0 300px; min-width: 300px; }
+	.mobile-toc-overlay {
+        display: none; /* 初期は完全に非表示 */
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-color: rgba(0, 0, 0, 0.75); /* 背景を暗く */
+        z-index: 100000 !important; /* 絶対に最前面 */
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
 
-  /* --- サイドバー関連 --- */
-  .sidebar-block { margin-bottom: 2rem; }
-  .sidebar-title {
-    font-size: 1.1rem; font-weight: 600; background: #e9f4e9;
-    padding: 8px 12px; border-radius: 6px; color: #2f5d3a;
-    margin-bottom: 1rem; border-left: 4px solid #4a7c59;
-  }
-  .latest-cards-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
-  .card { background: #fff; border: 1px solid #eee; border-radius: 4px; overflow: hidden; }
-  .card-link { display: flex; gap: 0.75rem; text-decoration: none; color: inherit; padding: 0.5rem; }
-  .card-thumb { width: 100px; height: 60px; overflow: hidden; background: #f2f2f2; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .thumb-img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 4px; }
-  .card-body { display: flex; flex-direction: column; justify-content: space-between; min-width: 0; flex: 1; }
-  .card-title { font-size: 0.8rem; font-weight: 570; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-  .card-meta { font-size: 0.65rem; color: #666; margin-top: 4px; }
+      /* 表示状態のクラス */
+      .mobile-toc-overlay.is-active {
+        opacity: 1;
+      }
 
-  /* --- 本文内TOC --- */
-  .toc-main { max-width: 700px; margin: 0 auto 2rem auto; background: #fff; border: 1px solid #e5e5e5; padding: 1.2rem; border-radius: 8px; }
-  .toc-main-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; text-align: center; color: #333; }
-  .toc-main-container { max-height: 220px; overflow: hidden; transition: max-height 0.3s ease; }
-  .toc-main-container.expanded { max-height: 2000px; }
-  .toc-main ul { list-style: none; padding: 0; margin: 0; }
-  .toc-main-level-2 { margin: 0.5rem 0; font-weight: 500; }
-  .toc-main-level-3 { margin-left: 1.2rem; font-size: 0.9rem; margin-bottom: 0.3rem; }
-  .toc-main a { text-decoration: none; color: #333; }
-  .toc-main-toggle { margin-top: 1rem; background: #f2f2f2; border: none; padding: 8px; border-radius: 4px; cursor: pointer; width: 100%; font-size: 0.9rem; }
+      .mobile-toc-content {
+        position: absolute;
+        bottom: 0; left: 0;
+        width: 100%;
+        max-height: 80vh; /* 画面の8割まで */
+        background: #fff;
+        border-radius: 20px 20px 0 0;
+        transform: translateY(100%);
+        transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+      }
 
-  /* --- サイドバー追従TOC --- */
-  .toc-sticky { position: sticky; top: 10px; z-index: 10; }
-  .toc-side-container { max-height: 400px; overflow-y: auto; padding-right: 6px; }
-  .toc-side { background: #f8f8f8; padding: 1rem; border-radius: 8px; }
-  .toc-side ul { list-style: none; padding: 0; }
-  .toc-side a { color: #333; text-decoration: none; font-size: 0.85rem; display: block; padding: 2px 0; }
-  .toc-side-level-3 { margin-left: 1rem; font-size: 0.8rem; color: #666; }
+      .mobile-toc-overlay.is-active .mobile-toc-content {
+        transform: translateY(0);
+      }
 
-  /* --- ヒーローセクション --- */
-  .article-hero .title { font-size: 1.5rem; line-height: 1.3; }
-  .hero-meta-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
-  .category { background: #e9f4e9; color: #2f5d3a; padding: 4px 10px; border-radius: 4px; border-left: 3px solid #4a7c59; font-size: 0.85rem; margin: 0; }
-  .meta { display: flex; gap: 0.75rem; font-size: 0.85rem; color: #666; }
-  .hero-image { width: 100%; height: auto; border-radius: 8px; margin-top: 1rem; display: block; }
+      .mobile-toc-header {
+        padding: 1.2rem 1.5rem;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: #2f5d3a;
+      }
 
-  /* --- モバイルオーバーレイ --- */
-.mobile-toc-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 100000 !important;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+      #closeToc {
+        background: #f0f0f0;
+        border: none;
+        width: 32px; height: 32px;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+      }
+
+      .mobile-toc-body {
+        padding: 1rem 1.5rem 2.5rem;
+        overflow-y: auto; /* 長いときにスクロール */
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .mobile-toc-body ul { list-style: none; padding: 0; margin: 0; }
+      .mobile-toc-body li { margin-bottom: 1.2rem; }
+      
+      .m-toc-link {
+        text-decoration: none;
+        color: #333;
+        display: block;
+        line-height: 1.4;
+        font-size: 1rem;
+      }
+
+      .m-toc-l3 {
+        padding-left: 1.5rem;
+        font-size: 0.9rem;
+      }
+      .m-toc-l3 .m-toc-link { color: #666; }
+
+      /* PCでは絶対に表示しない */
+      @media (min-width: 971px) {
+        .mobile-toc-overlay { display: none !important; }
+      }
+	
+
+/* 全体レイアウト */
+.article-layout {
+  display: flex;
+  gap: 2rem;
+  padding-top: 150px;
+}
+/* メイン記事（900px） */
+.main-column {
+	flex: 1;
+	max-width: 850px;
+	min-width: 0;
+}
+/* サイドバー（300px） */
+.sidebar {
+	flex: 0 0 25%;
+	max-width: 300px;
+	min-width: 300px;
+	/* min-width: 200px; */
+}
+.sidebar-block {
+  margin-bottom: 2rem; /* 好きな値に調整できる */
 }
 
-.mobile-toc-overlay.is-active {
-  opacity: 1;
+.sidebar-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: #e9f4e9; /* 柔らかいグリーン */
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: #2f5d3a; /* 深い森のグリーン */
+  margin-bottom: 1rem;
+  border-left: 4px solid #4a7c59; /* アウトドア感のある濃いグリーン */
 }
-
-/* 目次本体：ここが「にょきっと」動く */
-.mobile-toc-content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  max-height: 80vh;
+/* サイドバー 新着カード */
+.latest-cards-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+/* カード枠 */
+.latest-cards-list .card {
   background: #fff;
-  border-radius: 20px 20px 0 0;
-  
-  /* 最初は画面の下に完全に隠しておく */
-  transform: translateY(100%);
-  
-  /* 0.4秒かけて、少し弾むような滑らかな動きで上がってくる */
-  transition: transform 0.4s cubic-bezier(0.33, 1, 0.68, 1);
-  
+  border: 1px solid #eee;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.card-link {
+  display: flex;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.5rem;
+}
+
+/* サムネイル領域（固定サイズ） */
+.card-thumb {
+  width:100px;
+  height: 60px;
+  overflow: hidden;
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+}
+
+/* 画像がない場合のフォールバック */
+.thumb-fallback {
+  font-size: 0.75rem;
+  color: #888;
+  padding: 0.25rem;
+}
+
+/* 右側の本文領域 */
+.card-body {
   display: flex;
   flex-direction: column;
-  box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+  justify-content: space-between;
+  min-width: 0;
+  flex: 1;
 }
-  .mobile-toc-overlay.is-active .mobile-toc-content { transform: translateY(0); }
-  .mobile-toc-header { padding: 1.2rem 1.5rem; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; font-weight: bold; color: #2f5d3a; }
-  #closeToc { background: #f0f0f0; border: none; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-  .mobile-toc-body { padding: 1rem 1.5rem 2.5rem; overflow-y: auto; -webkit-overflow-scrolling: touch; }
-  .mobile-toc-body ul { list-style: none; padding: 0; }
-  .mobile-toc-body li { margin-bottom: 1rem; border-bottom: 1px solid #f9f9f9; padding-bottom: 0.5rem; }
-  .m-toc-link { text-decoration: none; color: #333; display: block; font-size: 0.95rem; }
-  .m-toc-l3 { padding-left: 1.2rem; }
-  .m-toc-l3 .m-toc-link { color: #666; font-size: 0.85rem; }
 
-  /* --- モバイルレスポンシブ --- */
-  @media (max-width: 970px) {
-    .sidebar { display: none; }
-    .article-layout { padding-top: 100px; padding-left: 0; padding-right: 0; width: 100%; }
-    .main-column { padding: 0 1rem; width: 100%; }
-    .article-hero .title { font-size: 1.25rem; font-weight: 700; }
-    .meta { font-size: 0.75rem; }
-    .category { font-size: 0.75rem; }
+/* タイトル（右上） */
+.card-title {
+  font-size: 0.80rem; /* 少し小さめに調整 */
+  font-weight: 570;
+  margin: 0 0 0.2rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* 2行以上は省略 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.6;
+}
+
+/* 日付（右下） */
+.card-meta {
+  font-size: 0.65rem;
+  color: #666;
+  margin-top: 0.1rem;
+}
+
+/* ホバーとフォーカスの視覚フィードバック */
+.card-link:hover,
+.card-link:focus {
+  background: #fafafa;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0,123,255,0.06);
+}
+
+
+
+/* -----本文TOCのCSS----- */
+
+/* 本文 TOC（中央寄せ・シンプル） */
+.toc-main {
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  padding: 1.2rem 1.4rem;
+  border-radius: 8px;
+}
+
+.toc-main-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #333;
+}
+
+.toc-main-container {
+  max-height: 220px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.toc-main-container.expanded {
+  max-height: 2000px;
+}
+
+.toc-main ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-main-level-2 {
+  margin: 0.5rem 0;
+}
+
+.toc-main-level-3 {
+  margin-left: 1rem;
+  font-size: 0.95rem;
+}
+
+.toc-main a {
+  text-decoration: none;
+  color: #333;
+}
+
+.toc-main a:hover {
+  text-decoration: underline;
+}
+
+.toc-main-toggle {
+  margin-top: 1rem;
+  background: #f2f2f2;
+  color: #333;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.toc-main-toggle:hover {
+  background: #e5e5e5;
+}
+
+/* サイドバー TOC（ラベル風） */
+
+/* sticky */
+.toc-sticky {
+  position: sticky;
+  top: 10px;
+  z-index: 10;
+}
+
+/* ★ スクロール式 TOC */
+.toc-side-container {
+  max-height: 400px;      /* 好きな高さに調整 */
+  overflow-y: auto;       /* スクロール可能にする */
+  padding-right: 6px;     /* スクロールバー分の余白 */
+}
+
+/* TOC デザイン */
+.toc-side {
+  background: #f8f8f8;
+  padding: 1px 1rem 1rem 1rem; /* 上だけ減らす */
+  border-radius: 8px;
+}
+/* サイドバー TOC のリストマーカーを消す */
+.toc-side ul,
+.toc-side li {
+  list-style: none;
+  padding: 0;
+}
+
+.toc-side-level-2 a {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.toc-side-level-3 {
+  margin-left: 1rem;
+  font-size: 0.80rem;
+}
+
+.toc-side a {
+  color: #333;
+  text-decoration: none;
+}
+
+.toc-side a:hover {
+  text-decoration: underline;
+}
+
+/* 広告 */
+.toc-side-ad {
+  margin-top: 1.5rem;
+}
+
+.ad-box {
+  background: #f2f2f2;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* ---ヒーローセクションcss--- */
+.article-hero .title {
+font-size: 1.50rem;
+}
+.hero-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* カテゴリと日付の間の余白 */
+  margin-bottom: 1rem;
+}
+
+/* カテゴリをタグ風に */
+.category {
+  background: #e9f4e9;
+  color: #2f5d3a;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border-left: 3px solid #4a7c59;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* メタデータ（日付） */
+.meta {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+
+@media (max-width: 970px) {
+	.sidebar {
+    display: none;
   }
-  
-  /* PC用表示リセット */
-  @media (min-width: 971px) {
-    .mobile-toc-overlay { display: none !important; }
+  .article-layout {
+    padding-top: 100px;
+    padding-left: 1rem;  /* スマホ時に左右に余白がない場合は追加 */
+    padding-right: 1rem;
   }
+
+  /* ★ ここを追加：スマホ時にタイトルを小さくする */
+  .article-hero .title {
+    font-size: 1.25rem; /* PCの1.50remより一回り小さく */
+    line-height: 1.4;   /* スマホは行間を少し詰めると読みやすいです */
+	font-weight: 600;
+    margin-bottom: 0.8rem;
+	}
+
+	.category {
+
+	font-size: 0.75rem;
+	margin: 0;
+	}
+
+	/* メタデータ（日付） */
+	.meta {
+
+	font-size: 0.7rem;
+
+	}
+	
+}
+
 </style>

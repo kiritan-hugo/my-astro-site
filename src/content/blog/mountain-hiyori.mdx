@@ -7,41 +7,231 @@ heroImage: '/public/images/hero/mountain-hiyori.jpg'
 category: 
     - miscellaneous
 ---
+import img01 from '../../assets/posts/2022/mountain-hiyori/20220723_154833-800x600.jpg';
+import img02 from '../../assets/posts/2022/mountain-hiyori/20220723_154846-800x600.jpg';
+import img03 from '../../assets/posts/2022/mountain-hiyori/20220723_154931-800x600.jpg';
+import img04 from '../../assets/posts/2022/mountain-hiyori/20220723_155012-800x600.jpg';
+import img05 from '../../assets/posts/2022/mountain-hiyori/20220723_155114-800x600.jpg';
+import img06 from '../../assets/posts/2022/mountain-hiyori/20220723_155304-800x600.jpg';
+import img07 from '../../assets/posts/2022/mountain-hiyori/20220723_155129-800x600.jpg';
+import img08 from '../../assets/posts/2022/mountain-hiyori/20220723_155159-800x600.jpg';
+import img09 from '../../assets/posts/2022/mountain-hiyori/20220723_155207-800x600.jpg';
+import img10 from '../../assets/posts/2022/mountain-hiyori/20220723_155421-800x600.jpg';
+import img11 from '../../assets/posts/2022/mountain-hiyori/20220723_155434-800x600.jpg';
+import img12 from '../../assets/posts/2022/mountain-hiyori/20220723_155448-800x600.jpg';
+import img13 from '../../assets/posts/2022/mountain-hiyori/20220723_155402-800x600.jpg';
+import img14 from '../../assets/posts/2022/mountain-hiyori/20220723_155240-800x600.jpg';
+import img15 from '../../assets/posts/2022/mountain-hiyori/toutyou-800x600.jpg';
 
+import Balloon from "../../components/Balloon.astro";
+import MapEmbed from "../../components/MapEmbed.astro";
 import { Image } from "astro:assets";
 import ImageWithCaption from '../../components/ImageWithCaption.astro';
-import ImageCompare from '../../components/ImageCompare.astro';
-import StepBlock from '../../components/StepBlock.astro';
+import CaptionBox from "../../components/CaptionBox.astro";
+import InfoTable from "../../components/InfoTable.astro";
+import QuoteBox from '../../components/QuoteBox.astro';
 
-import img01 from '../../assets/posts/2023/hukiage/1689057617465-800x600.jpg';
-import img02 from '../../assets/posts/2022/arjan1000/22-11-07-16-00-38-364_deco-1-800x600.jpg';
+こんにちはkiritanです。
 
+ある日のことでした。
 
+<Balloon person="kiritan" type="left">
+今週も長かった。  
+明日は貴重な休みだからゴロゴロ寝て過ごそう。
+</Balloon>
+
+<Balloon person="sena" type="right">
+ねえ、明日ひま？山登りしに行こうよ。
+</Balloon>
+
+<Balloon person="kiritan" type="left">
+え？山登りとかする人だったっけ？
+</Balloon>
+
+<Balloon person="sena" type="right">
+全然しないよ（笑）
+今回行くところはめっちゃ低い山だから初心者でも大丈夫だよ。
+</Balloon>
+
+こうしてやってきたのは  
+宮城県仙台市北東に位置する宮城野区蒲生干潟。
+
+蒲生干潟の日和山は1991年から一時期を除き、  
+今もなお国土地理院に「日本一標高が低い山」として認定されている名誉ある山だ。  
+標高は**たったの3m**！
+
+はたして、これを山と言っていいのだろうか。
+
+<CaptionBox title="蒲生日和山の裏話">
+実は**1997年からは大阪の天保山が「日本一標高が低い山」として認定されていました。**  
+しかし、2011年の震災の影響でもともと6.05ｍだった標高が3ｍまでに低くなり、  
+それまで日本一低かった大阪の天保山（4.53ｍ）を下回って、  
+2014年4月に18年ぶりに「日本一低い山」の座に返り咲いてます。
+</CaptionBox>
+
+<Balloon person="kiritan" type="left">
+バトル漫画の「数年後強くなって帰ってきた！！」みたいですね
+</Balloon>
+
+今回はそんな**日本一標高が低い山「日和山」へ登ってきたのでみなさんにご紹介いたします！**
+
+## 日和山のアクセス情報
+
+<InfoTable
+  items={[
+    { label: "所在地", value: "宮城県仙台市宮城野区蒲生町87" },
+    { label: "アクセス：", value: "仙台東部道路 仙台港ICより車で約8分" },
+    { label: "駐車場", value: "約40台（無料）" }
+]}
+  note=""
+/>
+
+<MapEmbed src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.029261076115!2d141.0096424154841!3d38.255627392120594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f898920f2927fef%3A0xb73464557e8ca51d!2z5pel5ZKM5bGx!5e0!3m2!1sja!2sjp!4v1658895736185!5m2!1sja!2sjp"  />
+
+## 日本一標高が低い山「日和山」に登ろう！
+
+### 日和山への入り口
 
 <Image src={img01} alt="" />
 
-<ImageCompare
-  left={img01}
-  right={img02}
-  leftLabel="Before"
-  rightLabel="After"
-/>
+日和山の駐車場に着くと、矢印が目立つ「蒲生日和山登山口」と書かれた看板が出迎えてくれる。  
+ちなみに、こちらの階段は復興工事で新しく作られたとか。
+
+矢印に沿って階段を登っていきます。
+
+<Image src={img02} alt="" />
+
+右側の看板には「日和山の概要」が記されている。
+
+震災前の標高6.05m時代の日和山の写真が載っています。
+
+<Image src={img03} alt="" />
+
+階段を登りきると、防潮堤からは蒲生干潟、太平洋が目の前に広がります。
+
+あれ、どこにあるの...？
+
+人が集まってるとこだよ！
+
+<Image src={img04} alt="" />
+
+慣れ親しんだ舗装された道をすすんでゆくと、いよいよ日和山の登山口です。
+
+### 日和山への登山口
+
+<Image src={img05} alt="" />
+
+さあ登山口へ到着しました。（ここまで駐車場から徒歩3分）
+
+周りに木々もなく、**とても見晴らしのいい登山口です。**
+
+<Image src={img06} alt="" />
+
+ご立派な「日和山」看板がお見えしてます。
+
+<Image src={img07} alt="" />
+
+登山口右側にはバス停みたいな日和山の看板。
+
+**そして謎の「クマ出没注意」看板。**
+
+<Balloon person="kiritan" type="left">
+え、クマ出るの？
+</Balloon>
+
+### いざ、日和山へ登山！
+
+<Image src={img08} alt="" />
+
+登山口と書かれた**妙に雰囲気がある立て札。**
+
+近くにはうっそうと草が生息している。
+
+**「落石注意」**の看板もあり、これは**危険度MAX**な登山道だ。
+
+山頂までは6段といったところか。
+
+... 。
+
+  
+senaも心配そうに後ろから見守っている。
+
+**はたして、無事に登り切れるのだろうか。**
+
+### 日和山の山頂
+
+<Image src={img09} alt="" />
+
+あれ。
+
+**ほんとうに3秒で登頂してしまった。**
+
+（登山ってなんだっけ。）
+
+今回はクマにも遭遇せず、落石もなかったので**運がよかったようだ。**
+
+<Image src={img10} alt="" />
+
+山頂には**クマが出たら慌てず餌をあげるよう**看板が立っていた。  
+（餌あげた本人が餌になるのでは。）
+
+<Image src={img11} alt="" />
+
+また、**高山植物の採取禁止**との看板も。
 
 <ImageWithCaption
-  src={img01} 
-  caption="昼白色"
-  url="a"
-  width="80%"
+  src={img12} 
+  caption="山頂からの眺めは格別だ。"
+  url=""
+  width="100%"
   align="center"
 />
-<StepBlock
-  step={1}
-  title="雪面の状態を確認する"
-  text="まずは雪の硬さをチェックします。"
-  images={[img01]}
-  caption="吹上温泉の雪面"
-  imagewidth="80%"
->
 
-</StepBlock>
+### 日和山の下山口
 
+<Image src={img13} alt="" />
+
+なんとありがたいことに**専用の下山口が設置されていた。**
+
+高低差がまったくない下山道は初めての経験だ。
+
+### 最後に
+
+こんなコンパクトな山が近場にあったとは知りませんでした。
+
+ネタくらいのクオリティかと思いきや  
+設置されていた看板や石碑はしっかりしており、雰囲気を高めてくれるものばかりです。  
+また、山頂からの太平洋と蒲生干潟の眺望はとても癒されます。
+
+この地区のシンボル「日和山」に、あなたも訪れてみてはいかがでしょうか。
+
+<Image src={img14} alt="" />
+
+<ImageWithCaption
+  src={img15} 
+  caption="登頂記念でパシャリ"
+  url=""
+  width="100%"
+  align="center"
+/>
+
+## おまけ
+
+ここ日和山を登頂された方には、仙台市高砂市民センターという場所で登頂証明書を貰うことができます。
+
+登頂したこと証明する必要があるので、山頂の写真を撮影しておくといいですよ！
+
+### 高砂市民センターのアクセス情報
+
+<InfoTable
+  items={[
+    { label: "所在地", value: "宮城県仙台市宮城野区高砂1丁目24番地の9" },
+    { label: "アクセス", value: "乗用車:仙台駅より車で約20分<br>仙台東部道路 仙台港ICより車で約1分<br>JR仙石線:陸前高砂駅下車 徒歩10分<br>市営バス:蒲生（6号公園住宅終点）行、 高砂二丁目下車 徒歩5分<br>宮城交通:仙台港フェリーターミナル行、陸前高砂駅下車 徒歩10分" },
+    { label: "駐車場", value: "あり（85台）※複合施設のため駐車場には限りがあります。" },
+    { label: "受付時間", value: "9:00～21:00" },
+    { label: "休館日", value: "月曜日、祝日の翌日、年末年始" }
+]}
+  note=""
+/>
+
+<MapEmbed src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.393811525763!2d140.96979562514554!3d38.27036303577431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f898899f6ea25b3%3A0x837325139299ff25!2z5LuZ5Y-w5biC6auY56CC5biC5rCR44K744Oz44K_44O8!5e0!3m2!1sja!2sjp!4v1658895663489!5m2!1sja!2sjp"  />
