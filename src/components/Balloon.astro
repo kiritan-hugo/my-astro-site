@@ -16,39 +16,38 @@ const char = characters[person];
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-  const balloons = document.querySelectorAll(".balloon-body");
+  const setupBalloons = () => {
+    const balloons = document.querySelectorAll(".balloon-body");
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-      }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        }
+      });
+    }, {
+      threshold: 0.3
     });
-  }, {
-    threshold: 0.3
-  });
 
-  balloons.forEach(b => observer.observe(b));
-});
+    balloons.forEach(b => observer.observe(b));
+  };
+
+  document.addEventListener("DOMContentLoaded", setupBalloons);
+  document.addEventListener("astro:page-load", setupBalloons);
 </script>
 
 <style>
 /* 全体レイアウト */
 .balloon {
   display: flex;
-  gap: 1.2rem;
+  /* ★ 調整：アイコンと吹き出しの間の距離を広げる (1.2rem -> 1.8rem) */
+  gap: 1.8rem; 
   margin: 2.2rem 0;
-  align-items: flex-start;
+  align-items: flex-start; 
 }
 
 .balloon.right {
   flex-direction: row-reverse;
-}
-
-/* 1行のときは高さが小さくなるので、その場合だけ padding を減らす */
-.balloon-body:has(p:only-child) {
-  padding: 0rem 1rem;
 }
 
 /* アイコン＋名前 */
@@ -57,7 +56,6 @@ const char = characters[person];
   flex-direction: column;
   align-items: center;
   flex-shrink: 0;
-
 }
 
 .balloon-icon {
@@ -71,27 +69,30 @@ const char = characters[person];
 .balloon-name {
   margin-top: 0.4rem;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 400;
   color: #333;
 }
 
 /* 吹き出し本体 */
 .balloon-body {
-  padding: 1.2rem 1.4rem;
-  border-radius: 14px;
+  padding: 1.0rem 1.0rem;
+  border-radius: 10px;
   line-height: 1.7; 
-  min-height: 0; /* 高さの自動調整を許可 */
+  min-height: 0;
   position: relative;
   max-width: 650px;
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--border-color);
   background: var(--bg-color);
   box-shadow: 0 4px 14px rgba(0,0,0,0.08);
   overflow: visible;
   opacity: 0;
-  /* スクロールでふわっとあにめーしょん */
   transform: translateY(10px);
   transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-  
+  margin-top: 10px; 
+}
+
+.balloon-body :global(p) {
+  margin: 0;
 }
 
 .balloon-body.is-visible {
@@ -99,129 +100,88 @@ const char = characters[person];
   transform: translateY(0);
 }
 
-/* ▼ 外側：枠線（三角の外側） */
+/* ▼ 三角形の位置：アイコンから離した分、少し調整が必要な場合があります */
 .balloon.left .balloon-body::before {
   content: "";
   position: absolute;
   left: -14px;
-  top: 28px;
+  top: 15px; 
   width: 14px;
   height: 20px;
   background: var(--border-color);
-  clip-path: polygon(0 50%, 100% 0, 100% 100%); /* ★ 左向き */
-
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
 }
 
-
-
-/* ▼ 内側：背景（三角の内側） */
 .balloon.left .balloon-body::after {
   content: "";
   position: absolute;
   left: -11px;
-  top: 30px;
+  top: 16px;
   width: 12px;
-  height: 16px;
+  height: 17px;
   background: var(--bg-color);
-  clip-path: polygon(0 50%, 100% 0, 100% 100%); /* ★ 左向き */
-
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
 }
 
-
-/* ▼ 外側：枠線（三角の外側） */
 .balloon.right .balloon-body::before {
   content: "";
   position: absolute;
   right: -14px;
-  top: 28px;
+  top: 15px;
   width: 14px;
   height: 20px;
   background: var(--border-color);
-  clip-path: polygon(100% 50%, 0 0, 0 100%); /* ★ 右向き */
+  clip-path: polygon(100% 50%, 0 0, 0 100%);
 }
 
-
-
-/* ▼ 内側：背景（三角の内側） */
 .balloon.right .balloon-body::after {
   content: "";
   position: absolute;
-  right: -11px;
-  top: 30px;
-  width: 12px;
-  height: 16px;
+  right: -12px;
+  top: 16px;
+  width: 13px;
+  height: 17px;
   background: var(--bg-color);
-  clip-path: polygon(100% 50%, 0 0, 0 100%); /* ★ 右向き */
+  clip-path: polygon(100% 50%, 0 0, 0 100%);
 }
 
-
-
-
-/* ▼▼ キャラ別スタイル ▼▼ */
-
-/* kiritan：枠＝緑、背景＝白 */
-.balloon.kiritan {
-  --border-color: #33bfa1;
-  --bg-color: #ffffff;
-}
-
-/* sena：枠＝緑、背景＝薄い緑 */
-.balloon.sena {
-  --border-color: #33bfa1;
-  --bg-color: #e8fff5;
-}
+/* キャラ別スタイル */
+.balloon.kiritan { --border-color: #33bfa1; --bg-color: #ffffff; }
+.balloon.sena { --border-color: #33bfa1; --bg-color: #e8fff5; }
 
 /* ▼▼ スマホ用対応 (970px以下) ▼▼ */
 @media (max-width: 970px) {
   .balloon {
-    gap: 0.8rem;
+    /* ★ 調整：スマホでもアイコンとの距離を少し確保 (0.8rem -> 1.2rem) */
+    gap: 1.2rem;
     margin: 1.5rem 0;
+    padding: 0 3px; 
+    box-sizing: border-box;
   }
-
-  /* アイコンを小さく */
   .balloon-icon {
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
   }
-
   .balloon-name {
     font-size: 0.65rem;
   }
-
-  /* 吹き出しの余白を調整 */
   .balloon-body {
-    padding: 0.8rem 1rem;
+    padding: 0.8rem 0.8rem;
     font-size: 0.9rem;
+    /* アイコンとの距離を広げた分、最大幅を再計算して端の余裕を守る */
+    max-width: calc(100% - 120px); 
+    margin-top: 5px; 
+    line-height: 1.4 ;
   }
 
-  /* 左側の三角形の位置をアイコンの中央（15px付近）へ */
-  .balloon.left .balloon-body::before {
-    top: 15px;
-    left: -13px;
-    width: 13px;
-    height: 18px;
-  }
-  .balloon.left .balloon-body::after {
-    top: 16px;
-    left: -10px;
-    width: 11px;
-    height: 16px;
+  .balloon-body :global(*) {
+    line-height: 1.6 !important;
+    margin: 0; /* ついでに余計なマージンも消して中央に寄せやすくする */
   }
 
-  /* 右側の三角形の位置をアイコンの中央（15px付近）へ */
-  .balloon.right .balloon-body::before {
-    top: 15px;
-    right: -13px;
-    width: 13px;
-    height: 18px;
-  }
-  .balloon.right .balloon-body::after {
-    top: 16px;
-    right: -10px;
-    width: 11px;
-    height: 16px;
-  }
+  .balloon.left .balloon-body::before,
+  .balloon.right .balloon-body::before { top: 12px; }
+  .balloon.left .balloon-body::after { top: 13px;  left: -12px;}
+  .balloon.right .balloon-body::after { top: 13px; }
 }
-
-
 </style>
