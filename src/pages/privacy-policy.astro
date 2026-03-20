@@ -67,10 +67,18 @@ const displayTitle = "プライバシーポリシー";
 </html>
 
 <style>
+  /* 全ての要素に適用（最優先） */
+  * { 
+    box-sizing: border-box; 
+    overflow-wrap: break-word; /* 長い単語を途中で折る */
+  }
+
   .legal-container {
     max-width: 850px;
+    width: 100%; /* これを明示的に追加 */
     margin: 0 auto;
     padding: 160px 1.5rem 5rem;
+    overflow: hidden; /* 万が一の中身のハミ出しをカット */
   }
 
   .legal-header {
@@ -82,14 +90,15 @@ const displayTitle = "プライバシーポリシー";
     font-size: 2.2rem;
     color: #333;
     font-weight: 800;
-    display: inline-block;
-    /* 下の線（::after）は削除しました */
+    margin: 0;
+    line-height: 1.3;
   }
 
   .legal-content {
     background: #fff;
     line-height: 1.9;
     color: #444;
+    width: 100%; /* 幅を固定 */
   }
 
   .legal-content section {
@@ -102,7 +111,7 @@ const displayTitle = "プライバシーポリシー";
     margin-bottom: 1.2rem;
     font-weight: 700;
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* centerから変更（複数行になっても崩れない） */
     gap: 10px;
   }
 
@@ -113,18 +122,22 @@ const displayTitle = "プライバシーポリシー";
     background: #29a48a;
     display: inline-block;
     border-radius: 2px;
+    flex-shrink: 0; /* 棒が細く潰れるのを防ぐ */
+    margin-top: 0.2rem; /* 棒の位置微調整 */
   }
 
   .legal-content p {
     margin-bottom: 1.2rem;
     font-size: 1rem;
     text-align: justify;
+    word-break: break-all; /* URLなどのはみ出しを強制回避 */
   }
 
-  /* ★戻るボタンのスタイル */
+  /* 戻るボタン */
   .back-to-top {
     margin-top: 5rem;
     text-align: center;
+    width: 100%;
   }
 
   .back-btn {
@@ -140,17 +153,15 @@ const displayTitle = "プライバシーポリシー";
     font-size: 0.95rem;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(41, 164, 138, 0.2);
+    max-width: 100%; /* ボタン自体がハミ出さないように */
   }
 
-  .back-btn:hover {
-    background: #228b75;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(41, 164, 138, 0.3);
-  }
-
-  @media (max-width: 768px) {
-    .legal-container { padding: 120px 1.25rem 4rem; }
-    .legal-header h1 { font-size: 1.8rem; }
-    .back-btn { width: 100%; justify-content: center; } /* スマホでは幅いっぱいに */
+  @media (max-width: 970px) {
+    .legal-container { 
+      padding: 100px 1rem 4rem; /* 上の余白を少し詰める */
+    }
+    .legal-header h1 { font-size: 1.6rem; }
+    .legal-content h2 { font-size: 1.2rem; }
+    .back-btn { width: 100%; justify-content: center; }
   }
 </style>
