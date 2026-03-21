@@ -1,0 +1,159 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import HeaderArticle from '../components/HeaderArticle.astro';
+import Footer from '../components/Footer.astro';
+import { FaHouse, FaMagnifyingGlass } from "react-icons/fa6";
+---
+
+<html lang="ja">
+  <head>
+    <BaseHead title="404 Not Found - Andes Life" description="お探しのページは見つかりませんでした。" />
+  </head>
+  <body>
+    <HeaderArticle />
+
+    <main class="error-container">
+      <div class="error-content">
+
+        <!-- 分解される404 -->
+        <div class="error-code">
+          <span>4</span>
+          <span>0</span>
+          <span>4</span>
+        </div>
+
+        <h1>ページが見つかりません</h1>
+
+        <p class="error-message">
+          お探しのページは存在しないか、移動した可能性があります。
+        </p>
+
+        <div class="error-actions">
+          <a href="/" class="home-btn">
+            <FaHouse /> ホームへ
+          </a>
+          <a href="/blog" class="search-btn">
+            <FaMagnifyingGlass /> 記事一覧を見る
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+/* レイアウト */
+.error-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding-top: 100px ;
+}
+
+/* 404（分割） */
+.error-code {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.error-code span {
+  font-size: clamp(5rem, 12vw, 9rem);
+  font-weight: 900;
+  color: #111;
+  display: inline-block;
+
+  /* 常に動く */
+  animation: float 3s ease-in-out infinite;
+}
+
+/* それぞれズラす */
+.error-code span:nth-child(1) {
+  animation-delay: 0s;
+}
+.error-code span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.error-code span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* 浮遊 */
+@keyframes float {
+  0%   { transform: translateY(0) rotate(0deg); }
+  50%  { transform: translateY(-25px) rotate(2deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* ホバーで崩れる */
+.error-code:hover span:nth-child(1) {
+  transform: translate(-20px, 10px) rotate(-10deg);
+}
+.error-code:hover span:nth-child(2) {
+  transform: translate(0px, -10px) rotate(5deg);
+}
+.error-code:hover span:nth-child(3) {
+  transform: translate(20px, 10px) rotate(10deg);
+}
+
+/* 見出し */
+.error-content h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+/* テキスト */
+.error-message {
+  color: #777;
+  margin-bottom: 40px;
+}
+
+/* ボタン */
+.error-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.home-btn, .search-btn {
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.home-btn {
+  background: #111;
+  color: #fff;
+}
+
+.home-btn:hover {
+  transform: translateY(-5px) scale(1.05);
+}
+
+.search-btn {
+  border: 1px solid #ddd;
+  color: #333;
+  background: #fff;
+}
+
+.search-btn:hover {
+  transform: translateY(-5px);
+  background: #f3f3f3;
+}
+
+/* モバイル */
+@media (max-width: 768px) {
+  .home-btn, .search-btn {
+    width: 100%;
+  }
+}
+</style>
