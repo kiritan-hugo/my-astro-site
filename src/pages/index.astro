@@ -65,11 +65,11 @@ const categorySections = {
     <!-- ヒーロー動画セクション -->
     <section class="hero">
       <!-- PC用動画 -->
-      <video class="hero-video pc-video" autoplay muted loop playsinline>
+      <video class="hero-video pc-video" autoplay muted loop playsinline poster="/images/hero_main_pc_poster.webp">
         <source src="/videos/hero_main_pc.webm" type="video/webm" />
       </video>
       <!-- スマホ用動画 -->
-      <video class="hero-video sp-video" autoplay muted loop playsinline>
+      <video class="hero-video sp-video" autoplay muted loop playsinline poster="/images/hero_main_sp_poster.webp">
         <source src="/videos/hero_main_sp.webm" type="video/webm" />
       </video>
 
@@ -148,7 +148,9 @@ const categorySections = {
       
 <div class="category-block">
         <div class="category-header">
-          <img src="/images/logos/campsite.png" alt="campsite" class="category-logo" />
+          <a href="/category/campsite">
+            <img src="/images/logos/campsite.png" alt="campsite" class="category-logo" />
+          </a>
           <div class="swipe-guide-container">
             <span class="swipe-hint">Swipe &gt;&gt;</span>
           </div>
@@ -172,7 +174,9 @@ const categorySections = {
 
       <div class="category-block">
         <div class="category-header">
-          <img src="/images/logos/campgear.png" alt="campgear" class="category-logo" />
+          <a href="/category/campgear">
+            <img src="/images/logos/campgear.png" alt="campgear" class="category-logo" />
+          </a>
           <div class="swipe-guide-container">
             <span class="swipe-hint">Swipe &gt;&gt;</span>
           </div>
@@ -196,7 +200,9 @@ const categorySections = {
 
       <div class="category-block">
         <div class="category-header">
-          <img src="/images/logos/outdoor.png" alt="outdoor" class="category-logo" />
+          <a href="/category/outdoor">
+            <img src="/images/logos/outdoor.png" alt="outdoor" class="category-logo" />
+          </a>
           <div class="swipe-guide-container">
             <span class="swipe-hint">Swipe &gt;&gt;</span>
           </div>
@@ -219,7 +225,9 @@ const categorySections = {
 
       <div class="category-block">
         <div class="category-header">
-          <img src="/images/logos/miscellaneous.png" alt="miscellaneous" class="category-logo" />
+          <a href="/category/miscelleneous">
+            <img src="/images/logos/miscellaneous.png" alt="miscellaneous" class="category-logo" />
+          </a>
           <div class="swipe-guide-container">
             <span class="swipe-hint">Swipe &gt;&gt;</span>
           </div>
@@ -307,7 +315,39 @@ const categorySections = {
 
     <Footer />
 
-    <script>
+ <script is:inline>
+  (function() {
+    let lastWidth = window.innerWidth;
+
+    const fixHeroHeight = () => {
+      const hero = document.querySelector('.hero');
+      if (!hero) return;
+
+      // 現在の「実際のピクセル高さ」を取得して固定
+      const vh = window.innerHeight;
+      hero.style.height = vh + 'px';
+      document.documentElement.style.setProperty('--hero-height', vh + 'px');
+    };
+
+    // 初期化
+    fixHeroHeight();
+
+    // 読み込み完了時にもう一度（アドレスバー確定後）
+    window.addEventListener('load', fixHeroHeight);
+
+    // リサイズイベントが発生しても、横幅が変わらなければ（アドレスバーの増減なら）無視する
+    window.addEventListener('resize', () => {
+      const currentWidth = window.innerWidth;
+      if (currentWidth !== lastWidth) {
+        fixHeroHeight();
+        lastWidth = currentWidth;
+      }
+    });
+
+    // Astro View Transitions対応
+    document.addEventListener('astro:page-load', fixHeroHeight);
+  })();
+
     document.querySelectorAll('.tab').forEach(tab => {
     tab.addEventListener('click', () => {
     // タブの active 切り替え
